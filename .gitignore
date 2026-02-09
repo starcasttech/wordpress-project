@@ -1,0 +1,198 @@
+# ========================================
+# SENSITIVE FILES - NEVER COMMIT THESE
+# ========================================
+
+# Environment variables with credentials
+.env
+.env.*
+!.env.example
+
+# WordPress configuration with database credentials
+wp-config.php
+wp-config-local.php
+
+# Database dumps (may contain sensitive data)
+*.sql
+*.sql.gz
+*.mysql
+*.dump
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.swp
+*~
+
+# ========================================
+# LOCAL DEVELOPMENT ONLY
+# ========================================
+
+# Docker configuration (local dev only)
+docker-compose.yml
+docker-compose.override.yml
+Dockerfile
+.dockerignore
+
+# Docker volumes and data
+db_data/
+mysql_data/
+
+# Build and development documentation
+docs/build/
+docs/api/
+docs/internal/
+BUILD.md
+API-KEYS.md
+DEVELOPMENT-NOTES.md
+
+# ========================================
+# WORDPRESS SPECIFIC
+# ========================================
+
+# WordPress cache
+wp-content/cache/
+wp-content/uploads/cache/
+wp-content/w3tc-config/
+wp-content/advanced-cache.php
+wp-content/db.php
+wp-content/object-cache.php
+
+# WordPress upgrades
+wp-content/upgrade/
+wp-content/uploads/wc-logs/
+
+# WordPress backups (large files - do not deploy)
+wp-content/backups-dup-lite/
+wp-content/wpvividbackups/
+wp-content/updraft/
+wp-content/ai1wm-backups/
+wp-content/backup/
+*.zip
+
+# WordPress debug logs
+wp-content/debug.log
+error_log
+php_error.log
+
+# Plugin and theme development
+wp-content/plugins/*/node_modules/
+wp-content/themes/*/node_modules/
+
+# ========================================
+# TEMPORARY & SYSTEM FILES
+# ========================================
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+tmpclaude-*
+.phpunit.result.cache
+
+# Log files
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ========================================
+# IDE & EDITOR FILES
+# ========================================
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PhpStorm / JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# ========================================
+# VERSION CONTROL
+# ========================================
+
+# Git
+.git/
+.gitattributes
+
+# SVN
+.svn/
+
+# ========================================
+# NODE / NPM (if using build tools)
+# ========================================
+
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+package-lock.json
+.npm
+
+# ========================================
+# COMPOSER (if using)
+# ========================================
+
+/vendor/
+composer.phar
+composer.lock
+
+# ========================================
+# TESTING
+# ========================================
+
+# PHPUnit
+.phpunit.result.cache
+phpunit.xml
+
+# ========================================
+# SECURITY & SENSITIVE DATA
+# ========================================
+
+# SSH keys
+*.pem
+*.key
+*.ppk
+id_rsa*
+
+# Certificates
+*.crt
+*.cer
+*.der
+
+# API documentation with keys
+*-api-keys.*
+*-credentials.*
+*-secrets.*
+
+# ========================================
+# RAILWAY DEPLOYMENT
+# ========================================
+
+# Railway CLI
+.railway/
+
+# Only use Railway's environment variables
+# Never commit local .env to production

@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<node>
+		<provider><![CDATA[Openserve]]></provider>
+		<fibreproductname><![CDATA[Openserve 50/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[693.6]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Openserve]]></provider>
+		<fibreproductname><![CDATA[Openserve 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[918.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Openserve]]></provider>
+		<fibreproductname><![CDATA[Openserve 100/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1038.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Openserve]]></provider>
+		<fibreproductname><![CDATA[Openserve 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1158.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Openserve]]></provider>
+		<fibreproductname><![CDATA[Openserve 200/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1326.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Openserve]]></provider>
+		<fibreproductname><![CDATA[Openserve 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1410.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Openserve]]></provider>
+		<fibreproductname><![CDATA[Openserve 300/150Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[300Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[150Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1602.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Openserve]]></provider>
+		<fibreproductname><![CDATA[Openserve 500/250Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[250Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1842.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 60/30Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[60Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[30Mbps]]></uploadspeed>
+		<retailprice><![CDATA[742.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 60/60Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[60Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[60Mbps]]></uploadspeed>
+		<retailprice><![CDATA[906.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 120/60Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[120Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[60Mbps]]></uploadspeed>
+		<retailprice><![CDATA[936.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 120/120Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[120Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[120Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1056.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 240/120Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[240Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[120Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1176.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 240/240Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[240Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[240Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1368.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 400/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[400Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1416.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 400/400Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[400Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[400Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1602.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 1000/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1848.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Frogfoot]]></provider>
+		<fibreproductname><![CDATA[Frogfoot 1000/1000Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[1000Mbps]]></uploadspeed>
+		<retailprice><![CDATA[2052.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vuma]]></provider>
+		<fibreproductname><![CDATA[Vuma 25/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[25Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[576.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vuma]]></provider>
+		<fibreproductname><![CDATA[Vuma 50/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[712.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vuma]]></provider>
+		<fibreproductname><![CDATA[Vuma 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[952.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vuma]]></provider>
+		<fibreproductname><![CDATA[Vuma 100/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[952.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vuma]]></provider>
+		<fibreproductname><![CDATA[Vuma 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1192.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vuma]]></provider>
+		<fibreproductname><![CDATA[Vuma 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1372.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vuma]]></provider>
+		<fibreproductname><![CDATA[Vuma 500/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1552.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vuma]]></provider>
+		<fibreproductname><![CDATA[Vuma 1000/250Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[250Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1960.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vuma]]></provider>
+		<fibreproductname><![CDATA[Vuma 1000/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[2826.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Octotel]]></provider>
+		<fibreproductname><![CDATA[Octotel 25/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[25Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[450.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Octotel]]></provider>
+		<fibreproductname><![CDATA[Octotel 55/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[55Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[768.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Octotel]]></provider>
+		<fibreproductname><![CDATA[Octotel 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1032.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Octotel]]></provider>
+		<fibreproductname><![CDATA[Octotel 150/150Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[150Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[150Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1152.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Octotel]]></provider>
+		<fibreproductname><![CDATA[Octotel 300/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[300Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1338.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Octotel]]></provider>
+		<fibreproductname><![CDATA[Octotel 500/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1578.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Octotel]]></provider>
+		<fibreproductname><![CDATA[Octotel 1000/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1902.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[TT Connect]]></provider>
+		<fibreproductname><![CDATA[TT Connect 30/30Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[30Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[30Mbps]]></uploadspeed>
+		<retailprice><![CDATA[870.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[TT Connect]]></provider>
+		<fibreproductname><![CDATA[TT Connect 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1122.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[TT Connect]]></provider>
+		<fibreproductname><![CDATA[TT Connect 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1236.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[TT Connect]]></provider>
+		<fibreproductname><![CDATA[TT Connect 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1482.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[TT Connect]]></provider>
+		<fibreproductname><![CDATA[TT Connect 400/400Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[400Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[400Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1830.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[TT Connect]]></provider>
+		<fibreproductname><![CDATA[TT Connect 525/525Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[525Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[525Mbps]]></uploadspeed>
+		<retailprice><![CDATA[2070.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[TT Connect]]></provider>
+		<fibreproductname><![CDATA[TT Connect 850/850Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[850Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[850Mbps]]></uploadspeed>
+		<retailprice><![CDATA[2298.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[TT Connect]]></provider>
+		<fibreproductname><![CDATA[TT Connect 1000/1000Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[1000Mbps]]></uploadspeed>
+		<retailprice><![CDATA[2842.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Mitsol]]></provider>
+		<fibreproductname><![CDATA[Mitsol 20/20Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[20Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[20Mbps]]></uploadspeed>
+		<retailprice><![CDATA[642.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Mitsol]]></provider>
+		<fibreproductname><![CDATA[Mitsol 50/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[738.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Mitsol]]></provider>
+		<fibreproductname><![CDATA[Mitsol 120/60Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[120Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[60Mbps]]></uploadspeed>
+		<retailprice><![CDATA[978.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Mitsol]]></provider>
+		<fibreproductname><![CDATA[Mitsol 120/120Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[120Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[120Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1098.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Mitsol]]></provider>
+		<fibreproductname><![CDATA[Mitsol 240/240Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[240Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[240Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1326.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Mitsol]]></provider>
+		<fibreproductname><![CDATA[Mitsol 500/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1590.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Mitsol]]></provider>
+		<fibreproductname><![CDATA[Mitsol 1000/1000Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[1000Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1830.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Evotel]]></provider>
+		<fibreproductname><![CDATA[Evotel 20/10Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[20Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[10Mbps]]></uploadspeed>
+		<retailprice><![CDATA[760.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Evotel]]></provider>
+		<fibreproductname><![CDATA[Evotel 60/60Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[60Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[60Mbps]]></uploadspeed>
+		<retailprice><![CDATA[912.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Evotel]]></provider>
+		<fibreproductname><![CDATA[Evotel 125/125Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[125Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[125Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1104.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Evotel]]></provider>
+		<fibreproductname><![CDATA[Evotel 250/250Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[250Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[250Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1308.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Evotel]]></provider>
+		<fibreproductname><![CDATA[Evotel 600/600Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[600Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[600Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1404.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Evotel]]></provider>
+		<fibreproductname><![CDATA[Evotel 850/850Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[850Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[850Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1764.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Thinkspeed]]></provider>
+		<fibreproductname><![CDATA[Thinkspeed 30/30Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[30Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[30Mbps]]></uploadspeed>
+		<retailprice><![CDATA[810.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Thinkspeed]]></provider>
+		<fibreproductname><![CDATA[Thinkspeed 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1050.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Thinkspeed]]></provider>
+		<fibreproductname><![CDATA[Thinkspeed 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1170.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Thinkspeed]]></provider>
+		<fibreproductname><![CDATA[Thinkspeed 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1410.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Thinkspeed]]></provider>
+		<fibreproductname><![CDATA[Thinkspeed 500/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1650.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Thinkspeed]]></provider>
+		<fibreproductname><![CDATA[Thinkspeed 1000/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1770.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Clearaccess]]></provider>
+		<fibreproductname><![CDATA[Clearaccess 8/8Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[8Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[8Mbps]]></uploadspeed>
+		<retailprice><![CDATA[384.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Clearaccess]]></provider>
+		<fibreproductname><![CDATA[Clearaccess 25/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[25Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[930.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Clearaccess]]></provider>
+		<fibreproductname><![CDATA[Clearaccess 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1182.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Clearaccess]]></provider>
+		<fibreproductname><![CDATA[Clearaccess 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1362.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Clearaccess]]></provider>
+		<fibreproductname><![CDATA[Clearaccess 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1638.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[DNATel]]></provider>
+		<fibreproductname><![CDATA[DNATel 10/10Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[10Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[10Mbps]]></uploadspeed>
+		<retailprice><![CDATA[744.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[DNATel]]></provider>
+		<fibreproductname><![CDATA[DNATel 30/30Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[30Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[30Mbps]]></uploadspeed>
+		<retailprice><![CDATA[780.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[DNATel]]></provider>
+		<fibreproductname><![CDATA[DNATel 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[942.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[DNATel]]></provider>
+		<fibreproductname><![CDATA[DNATel 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1098.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[DNATel]]></provider>
+		<fibreproductname><![CDATA[DNATel 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1182.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vodacom]]></provider>
+		<fibreproductname><![CDATA[Vodacom 20/10Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[20Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[10Mbps]]></uploadspeed>
+		<retailprice><![CDATA[712.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vodacom]]></provider>
+		<fibreproductname><![CDATA[Vodacom 20/20Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[20Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[20Mbps]]></uploadspeed>
+		<retailprice><![CDATA[832.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vodacom]]></provider>
+		<fibreproductname><![CDATA[Vodacom 50/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[952.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vodacom]]></provider>
+		<fibreproductname><![CDATA[Vodacom 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1072.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vodacom]]></provider>
+		<fibreproductname><![CDATA[Vodacom 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1192.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Vodacom]]></provider>
+		<fibreproductname><![CDATA[Vodacom 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1312.8]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Link Layer]]></provider>
+		<fibreproductname><![CDATA[Link Layer 30/30Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[30Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[30Mbps]]></uploadspeed>
+		<retailprice><![CDATA[624.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Link Layer]]></provider>
+		<fibreproductname><![CDATA[Link Layer 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[864.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Link Layer]]></provider>
+		<fibreproductname><![CDATA[Link Layer 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1044.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Link Layer]]></provider>
+		<fibreproductname><![CDATA[Link Layer 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1236.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Link Layer]]></provider>
+		<fibreproductname><![CDATA[Link Layer 500/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1590.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nexus]]></provider>
+		<fibreproductname><![CDATA[Nexus 25/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[25Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[474.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nexus]]></provider>
+		<fibreproductname><![CDATA[Nexus 45/45Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[45Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[45Mbps]]></uploadspeed>
+		<retailprice><![CDATA[822.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nexus]]></provider>
+		<fibreproductname><![CDATA[Nexus 75/75Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[75Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[75Mbps]]></uploadspeed>
+		<retailprice><![CDATA[942.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nexus]]></provider>
+		<fibreproductname><![CDATA[Nexus 150/150Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[150Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[150Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1062.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nexus]]></provider>
+		<fibreproductname><![CDATA[Nexus 250/250Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[250Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[250Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1146.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nexus]]></provider>
+		<fibreproductname><![CDATA[Nexus 500/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1650.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nexus]]></provider>
+		<fibreproductname><![CDATA[Nexus 1000/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1722.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nova]]></provider>
+		<fibreproductname><![CDATA[Nova 20/20Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[20Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[20Mbps]]></uploadspeed>
+		<retailprice><![CDATA[582.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nova]]></provider>
+		<fibreproductname><![CDATA[Nova 40/40Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[40Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[40Mbps]]></uploadspeed>
+		<retailprice><![CDATA[702.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nova]]></provider>
+		<fibreproductname><![CDATA[Nova 60/60Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[60Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[60Mbps]]></uploadspeed>
+		<retailprice><![CDATA[822.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nova]]></provider>
+		<fibreproductname><![CDATA[Nova 150/150Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[150Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[150Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1062.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nova]]></provider>
+		<fibreproductname><![CDATA[Nova 250/250Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[250Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[250Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1146.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nova]]></provider>
+		<fibreproductname><![CDATA[Nova 500/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1662.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[MetroFibre Nova]]></provider>
+		<fibreproductname><![CDATA[Nova 1000/250Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[250Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1734.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Connectivity Services - Steyn City]]></provider>
+		<fibreproductname><![CDATA[Steyn City 10/10Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[10Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[10Mbps]]></uploadspeed>
+		<retailprice><![CDATA[810.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Connectivity Services - Steyn City]]></provider>
+		<fibreproductname><![CDATA[Steyn City 25/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[25Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1050.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Connectivity Services - Steyn City]]></provider>
+		<fibreproductname><![CDATA[Steyn City 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1410.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Connectivity Services - Steyn City]]></provider>
+		<fibreproductname><![CDATA[Steyn City 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1866.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Connectivity Services - Steyn City]]></provider>
+		<fibreproductname><![CDATA[Steyn City 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[2370.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Zoom Fibre]]></provider>
+		<fibreproductname><![CDATA[Zoom Fibre 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[822.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Zoom Fibre]]></provider>
+		<fibreproductname><![CDATA[Zoom Fibre 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1062.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Zoom Fibre]]></provider>
+		<fibreproductname><![CDATA[Zoom Fibre 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1182.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Zoom Fibre]]></provider>
+		<fibreproductname><![CDATA[Zoom Fibre 500/250Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[250Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1380.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Zoom Fibre]]></provider>
+		<fibreproductname><![CDATA[Zoom Fibre 1000/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1530.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Netstream]]></provider>
+		<fibreproductname><![CDATA[Netstream 4/4Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[4Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[4Mbps]]></uploadspeed>
+		<retailprice><![CDATA[726.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Netstream]]></provider>
+		<fibreproductname><![CDATA[Netstream 10/10Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[10Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[10Mbps]]></uploadspeed>
+		<retailprice><![CDATA[882.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Netstream]]></provider>
+		<fibreproductname><![CDATA[Netstream 20/20Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[20Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[20Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1086.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Netstream]]></provider>
+		<fibreproductname><![CDATA[Netstream 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1326.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Netstream]]></provider>
+		<fibreproductname><![CDATA[Netstream 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1566.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Lightstruck - Zinkwazi Glenwood]]></provider>
+		<fibreproductname><![CDATA[Lightstruck 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[948.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Lightstruck - Zinkwazi Glenwood]]></provider>
+		<fibreproductname><![CDATA[Lightstruck 200/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1308.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Lightstruck - Zinkwazi Glenwood]]></provider>
+		<fibreproductname><![CDATA[Lightstruck 250/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[250Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1548.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Lightstruck - Zinkwazi Glenwood]]></provider>
+		<fibreproductname><![CDATA[Lightstruck 250/250Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[250Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[250Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1668.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Lightstruck - Zinkwazi Glenwood]]></provider>
+		<fibreproductname><![CDATA[Lightstruck 500/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1788.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Lightstruck - Zinkwazi Glenwood]]></provider>
+		<fibreproductname><![CDATA[Lightstruck 1000/1000Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[1000Mbps]]></uploadspeed>
+		<retailprice><![CDATA[2628.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 50/25Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[25Mbps]]></uploadspeed>
+		<retailprice><![CDATA[828.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 50/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[50Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[948.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 100/50Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[50Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1068.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 100/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[100Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1188.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 200/100Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[100Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1308.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 200/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[200Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1428.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 250/200Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[250Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[200Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1548.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 250/250Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[250Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[250Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1668.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 500/500Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[500Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[500Mbps]]></uploadspeed>
+		<retailprice><![CDATA[1788.0]]></retailprice>
+	</node>
+	<node>
+		<provider><![CDATA[Port Edward - Paarl - Hermanus - Greytown]]></provider>
+		<fibreproductname><![CDATA[PPHG 1000/1000Mbps]]></fibreproductname>
+		<downloadspeed><![CDATA[1000Mbps]]></downloadspeed>
+		<uploadspeed><![CDATA[1000Mbps]]></uploadspeed>
+		<retailprice><![CDATA[2628.0]]></retailprice>
+	</node>
+</data>

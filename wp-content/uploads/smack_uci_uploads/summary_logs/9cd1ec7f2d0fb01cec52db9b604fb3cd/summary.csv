@@ -1,0 +1,205 @@
+ID,post_type,post_title,post_content,post_excerpt,post_status,post_name,guid,associated_media,failed_media
+26,acf-field,,"a:12:{s:10:""aria-label"";s:0:"""";s:4:""type"";s:4:""text"";s:12:""instructions"";s:0:"""";s:8:""required"";i:0;s:17:""conditional_logic"";i:0;s:7:""wrapper"";a:3:{s:5:""width"";s:0:"""";s:5:""class"";s:0:"""";s:2:""id"";s:0:"""";}s:13:""default_value"";s:0:"""";s:9:""maxlength"";s:0:"""";s:17:""allow_in_bindings"";i:0;s:11:""placeholder"";s:0:"""";s:7:""prepend"";s:0:"""";s:6:""append"";s:0:"""";}",,publish,field_68291dd24bab5,https://starcast.co.za/?post_type=acf-field&p=26,1,0
+31,acf-field,logo,"a:17:{s:10:""aria-label"";s:0:"""";s:4:""type"";s:5:""image"";s:12:""instructions"";s:0:"""";s:8:""required"";i:0;s:17:""conditional_logic"";i:0;s:7:""wrapper"";a:3:{s:5:""width"";s:0:"""";s:5:""class"";s:0:"""";s:2:""id"";s:0:"""";}s:13:""return_format"";s:3:""url"";s:7:""library"";s:3:""all"";s:9:""min_width"";s:0:"""";s:10:""min_height"";s:0:"""";s:8:""min_size"";s:0:"""";s:9:""max_width"";s:0:"""";s:10:""max_height"";s:0:"""";s:8:""max_size"";s:0:"""";s:10:""mime_types"";s:0:"""";s:17:""allow_in_bindings"";i:0;s:12:""preview_size"";s:6:""medium"";}",logo,publish,field_68291e45fcc88,https://starcast.co.za/?post_type=acf-field&#038;p=31,1,0
+32,acf-field,lte_logo,"a:17:{s:10:""aria-label"";s:0:"""";s:4:""type"";s:5:""image"";s:12:""instructions"";s:0:"""";s:8:""required"";i:0;s:17:""conditional_logic"";i:0;s:7:""wrapper"";a:3:{s:5:""width"";s:0:"""";s:5:""class"";s:0:"""";s:2:""id"";s:0:"""";}s:13:""return_format"";s:3:""url"";s:7:""library"";s:3:""all"";s:9:""min_width"";s:0:"""";s:10:""min_height"";s:0:"""";s:8:""min_size"";s:0:"""";s:9:""max_width"";s:0:"""";s:10:""max_height"";s:0:"""";s:8:""max_size"";s:0:"""";s:10:""mime_types"";s:0:"""";s:17:""allow_in_bindings"";i:0;s:12:""preview_size"";s:6:""medium"";}",lte_logo,publish,field_68291e7b02819,https://starcast.co.za/?post_type=acf-field&p=32,1,0
+35,wpcf7_contact_form,"Contact form 1","<label> Your name
+    [text* your-name autocomplete:name] </label>
+
+<label> Your email
+    [email* your-email autocomplete:email] </label>
+
+<label> Subject
+    [text* your-subject] </label>
+
+<label> Your message (optional)
+    [textarea your-message] </label>
+
+[submit ""Submit""]
+[_site_title] ""[your-subject]""
+[_site_title] <wordpress@starcast.co.za>
+From: [your-name] [your-email]
+Subject: [your-subject]
+
+Message Body:
+[your-message]
+
+-- 
+This is a notification that a contact form was submitted on your website ([_site_title] [_site_url]).
+[_site_admin_email]
+Reply-To: [your-email]
+
+0
+0
+
+[_site_title] ""[your-subject]""
+[_site_title] <wordpress@starcast.co.za>
+Message Body:
+[your-message]
+
+-- 
+This email is a receipt for your contact form submission on our website ([_site_title] [_site_url]) in which your email address was used. If that was not you, please ignore this message.
+[your-email]
+Reply-To: [_site_admin_email]
+
+0
+0
+Thank you for your message. It has been sent.
+There was an error trying to send your message. Please try again later.
+One or more fields have an error. Please check and try again.
+There was an error trying to send your message. Please try again later.
+You must accept the terms and conditions before sending your message.
+Please fill out this field.
+This field has a too long input.
+This field has a too short input.
+There was an unknown error uploading the file.
+You are not allowed to upload files of this type.
+The uploaded file is too large.
+There was an error uploading the file.",,publish,contact-form-1,https://starcast.co.za/?post_type=wpcf7_contact_form&p=35,1,0
+36,attachment,woocommerce-placeholder,,,inherit,woocommerce-placeholder,http://starcast.co.za/wp-content/uploads/2025/05/woocommerce-placeholder.png,1,0
+37,page,Shop,,,publish,shop,https://starcast.co.za/shop/,1,0
+38,page,Cart,"<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->",,publish,cart,https://starcast.co.za/cart/,1,0
+39,page,Checkout,"<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->",,publish,checkout,https://starcast.co.za/checkout/,1,0
+40,page,"My account","<!-- wp:shortcode -->[woocommerce_my_account]<!-- /wp:shortcode -->",,publish,my-account,https://starcast.co.za/my-account/,1,0
+41,page,"Refund and Returns Policy","<!-- wp:paragraph -->
+<p><b>This is a sample page.</b></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class=""wp-block-heading"">Overview</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Our refund and returns policy lasts 30 days. If 30 days have passed since your purchase, we can’t offer you a full refund or exchange.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>To be eligible for a return, your item must be unused and in the same condition that you received it. It must also be in the original packaging.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Several types of goods are exempt from being returned. Perishable goods such as food, flowers, newspapers or magazines cannot be returned. We also do not accept products that are intimate or sanitary goods, hazardous materials, or flammable liquids or gases.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Additional non-returnable items:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul>
+<li>Gift cards</li>
+<li>Downloadable software products</li>
+<li>Some health and personal care items</li>
+</ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>To complete your return, we require a receipt or proof of purchase.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Please do not send your purchase back to the manufacturer.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>There are certain situations where only partial refunds are granted:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul>
+<li>Book with obvious signs of use</li>
+<li>CD, DVD, VHS tape, software, video game, cassette tape, or vinyl record that has been opened.</li>
+<li>Any item not in its original condition, is damaged or missing parts for reasons not due to our error.</li>
+<li>Any item that is returned more than 30 days after delivery</li>
+</ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class=""wp-block-heading"">Refunds</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Once your return is received and inspected, we will send you an email to notify you that we have received your returned item. We will also notify you of the approval or rejection of your refund.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you are approved, then your refund will be processed, and a credit will automatically be applied to your credit card or original method of payment, within a certain amount of days.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {""level"":3} -->
+<h3 class=""wp-block-heading"">Late or missing refunds</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>If you haven’t received a refund yet, first check your bank account again.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Then contact your credit card company, it may take some time before your refund is officially posted.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Next contact your bank. There is often some processing time before a refund is posted.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you’ve done all of this and you still have not received your refund yet, please contact us at {email address}.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {""level"":3} -->
+<h3 class=""wp-block-heading"">Sale items</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Only regular priced items may be refunded. Sale items cannot be refunded.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class=""wp-block-heading"">Exchanges</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We only replace items if they are defective or damaged. If you need to exchange it for the same item, send us an email at {email address} and send your item to: {physical address}.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class=""wp-block-heading"">Gifts</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>If the item was marked as a gift when purchased and shipped directly to you, you’ll receive a gift credit for the value of your return. Once the returned item is received, a gift certificate will be mailed to you.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If the item wasn’t marked as a gift when purchased, or the gift giver had the order shipped to themselves to give to you later, we will send a refund to the gift giver and they will find out about your return.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class=""wp-block-heading"">Shipping returns</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>To return your product, you should mail your product to: {physical address}.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>You will be responsible for paying for your own shipping costs for returning your item. Shipping costs are non-refundable. If you receive a refund, the cost of return shipping will be deducted from your refund.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Depending on where you live, the time it may take for your exchanged product to reach you may vary.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you are returning more expensive items, you may consider using a trackable shipping service or purchasing shipping insurance. We don’t guarantee that we will receive your returned item.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class=""wp-block-heading"">Need help?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Contact us at {email} for questions related to refunds and returns.</p>
+<!-- /wp:paragraph -->",,draft,refund_returns,https://starcast.co.za/?page_id=41,1,0
+42,attachment,"Dummy Image 1",,,inherit,dummy-image-1,http://starcast.co.za/wp-content/uploads/2016/08/dummy-1.jpg,1,0
+43,attachment,"Dummy Image 2",,,inherit,dummy-image-2,http://starcast.co.za/wp-content/uploads/2016/08/dummy-2.jpg,1,0
+44,attachment,"Product Dummy Image",,,inherit,prod-dummy-image-1,http://starcast.co.za/wp-content/uploads/2016/08/dummy-prod-1.jpg,1,0

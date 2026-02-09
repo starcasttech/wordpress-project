@@ -1,0 +1,14 @@
+.wt-gdpr-promotion-banner {padding: 0 !important;}
+.wt-gdpr-promotion-banner .wt-gdpr-promotion-banner-header{ padding: 10px 15px;}
+.wt-gdpr-promotion-banner .wt-gdpr-promotion-banner-header p{ font-style: normal; font-weight: 600; font-size: 16px; line-height: 143.02%; letter-spacing: 0.005em; color: #212121; }
+.wt-gdpr-promotion-banner .notice-dismiss{ top:10px; right:15px; }
+.wt-gdpr-promotion-banner-body{ box-sizing: border-box; background: #F6F9FF; border: 0.5px solid #DDDDDD; padding: 17px 15px; border-right: none; border-left: none; }
+.wt-gdpr-promotion-banner .wt-gdpr-promotion-banner-body p{ font-style: normal; font-weight: 500; font-size: 15px; letter-spacing: 0.005em; color: #434343; }
+.wt-gdpr-promotion-banner .wt-gdpr-promotion-banner-body p span { color: #3171FB; }
+.wt-gdpr-promotion-banner-highlights { width: 70%; display: flex; flex-wrap: wrap; list-style-type: none; padding: 0; margin: 0; }
+.wt-gdpr-promotion-banner-highlights li { width: 50%; box-sizing: border-box; padding: 5px 0 5px 30px; position: relative; font-style: normal; font-size: 13px; align-items: center; letter-spacing: 0.005em; color: #434343; }
+.wt-gdpr-promotion-banner-highlights li::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; background-image: url('../../assets/images/tick.png'); background-position: center; background-repeat: no-repeat; }
+.wt-gdpr-promotion-banner .wt-gdpr-promotion-banner-footer { display: flex; padding: 19px 15px; }
+.wt-gdpr-promotion-banner .wt-gdpr-promotion-banner-footer a { margin-right: 21px; font-style: normal; font-weight: 500; font-size: 13px; text-align: center; padding: 5px 17px; border-radius: 3px; }
+.wt-gdpr-promotion-banner .wt-gdpr-promotion-banner-footer a.product-page-btn { background: #3171FB; color: #FFFFFF; }
+.wt-gdpr-promotion-banner .wt-gdpr-promotion-banner-footer .banner-dismiss-btn { border: none; background: transparent; color: #3171FB; font-style: normal; font-weight: 400; font-size: 13px; text-decoration-line: underline; color: #3171FB; }

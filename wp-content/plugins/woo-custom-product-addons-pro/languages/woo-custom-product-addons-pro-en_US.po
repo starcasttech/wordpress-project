@@ -1,0 +1,646 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Woocommerce Custom Product Addons (5.x.x) 5.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-product-addon-2-dev\n"
+"Last-Translator: \n"
+"Language-Team: English (United States)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-02-15T18:11:20+01:00\n"
+"PO-Revision-Date: 2023-02-15 17:12+0000\n"
+"Language: en_US\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: woo-custom-product-addons-pro\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.6.3; wp-6.1.1\n"
+
+#. Plugin Name of the plugin
+msgid "Woocommerce Custom Product Addons (5.x.x)"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://acowebs.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "Woocommerce Product add-on plugin. Add custom fields to your Woocommerce product page. With an easy-to-use Custom Form Builder, now you can add extra product options quickly."
+msgstr ""
+
+#. Author of the plugin
+msgid "Acowebs"
+msgstr ""
+
+#: includes/backend/admin.php:75
+msgid "Please ensure you have activated license for current domain, <a href=\"%s\" target=\"_blank\" >Check our Guideline</a> for more details"
+msgstr ""
+
+#: includes/backend/admin.php:301
+msgid ""
+"This menu has been changed in new version of Product addon plugin,\n"
+"                 Please go to menu <a href=\"%s\" />Product Addons</a> on left sidebar"
+msgstr ""
+
+#: includes/backend/admin.php:359
+msgid "Custom Product Addons"
+msgstr ""
+
+#: includes/backend/admin.php:360
+msgid "Product Addons"
+msgstr ""
+
+#: includes/backend/admin.php:369
+#: includes/backend/admin.php:370
+#: assets/js/backend/main.js:2
+msgid "Forms"
+msgstr ""
+
+#: includes/backend/admin.php:377
+#: includes/backend/admin.php:378
+msgid "Designs"
+msgstr ""
+
+#: includes/backend/admin.php:385
+#: includes/backend/admin.php:386
+#: includes/options.php:48
+#: assets/js/backend/main.js:2
+msgid "Options Lists"
+msgstr ""
+
+#: includes/backend/admin.php:393
+#: includes/backend/admin.php:394
+#: assets/js/backend/main.js:2
+msgid "Settings"
+msgstr ""
+
+#: includes/backend/admin.php:409
+msgid "Acowebs Custom Product Addon"
+msgstr ""
+
+#: includes/backend/admin.php:410
+msgid "Plugin is loading Please wait for a while.."
+msgstr ""
+
+#: includes/backend/product-meta.php:51
+#: includes/backend/product-meta.php:58
+#: includes/backend/product-meta.php:82
+msgid "WCPA Forms"
+msgstr ""
+
+#: includes/backend/product-meta.php:105
+msgid "Product Forms"
+msgstr ""
+
+#: includes/backend/settings.php:60
+#: assets/js/backend/main.js:2
+msgid "Options Price"
+msgstr ""
+
+#: includes/backend/settings.php:61
+#: assets/js/backend/main.js:2
+msgid "Product Price"
+msgstr ""
+
+#: includes/backend/settings.php:62
+#: assets/js/backend/main.js:2
+msgid "Discount"
+msgstr ""
+
+#: includes/backend/settings.php:63
+msgid "Total"
+msgstr ""
+
+#: includes/backend/settings.php:64
+#: assets/js/backend/main.js:2
+msgid "Fee"
+msgstr ""
+
+#: includes/backend/settings.php:68
+msgid "Select options"
+msgstr ""
+
+#: includes/backend/settings.php:69
+msgid "Starting at"
+msgstr ""
+
+#: includes/backend/settings.php:71
+#: assets/js/backend/main.js:2
+msgid "Choose File"
+msgstr ""
+
+#: includes/backend/settings.php:72
+msgid "{count} Files"
+msgstr ""
+
+#: includes/backend/settings.php:73
+msgid "Browse"
+msgstr ""
+
+#: includes/backend/settings.php:75
+msgid "or {action} to choose a file"
+msgstr ""
+
+#: includes/backend/settings.php:77
+msgid "Drag and Drop Files Here"
+msgstr ""
+
+#: includes/backend/settings.php:79
+msgid "Street Address"
+msgstr ""
+
+#: includes/backend/settings.php:80
+msgid "City"
+msgstr ""
+
+#: includes/backend/settings.php:81
+msgid "State"
+msgstr ""
+
+#: includes/backend/settings.php:82
+msgid "Zip Code"
+msgstr ""
+
+#: includes/backend/settings.php:83
+msgid "Country"
+msgstr ""
+
+#: includes/backend/settings.php:84
+msgid "Latitude"
+msgstr ""
+
+#: includes/backend/settings.php:85
+msgid "Longitude"
+msgstr ""
+
+#: includes/backend/settings.php:88
+msgid "Other"
+msgstr ""
+
+#: includes/backend/settings.php:89
+#: assets/js/backend/main.js:2
+msgid "Clear Selection"
+msgstr ""
+
+#: includes/backend/settings.php:90
+msgid "Add Field"
+msgstr ""
+
+#: includes/backend/settings.php:91
+msgid "Remove Field"
+msgstr ""
+
+#: includes/backend/settings.php:99
+msgid "Files are being uploaded."
+msgstr ""
+
+#: includes/backend/settings.php:103
+msgid "Fix error errors shown above"
+msgstr ""
+
+#: includes/backend/settings.php:107
+msgid "Tick the \"I'm not a robot\" verification"
+msgstr ""
+
+#: includes/backend/settings.php:110
+msgid "Field is required"
+msgstr ""
+
+#: includes/backend/settings.php:114
+msgid "Characters %s is not supported"
+msgstr ""
+
+#: includes/backend/settings.php:117
+msgid "Pattern not matching"
+msgstr ""
+
+#: includes/backend/settings.php:121
+msgid "Minimum  %s characters required"
+msgstr ""
+
+#: includes/backend/settings.php:125
+msgid "Maximum %s characters allowed"
+msgstr ""
+
+#: includes/backend/settings.php:129
+msgid "Minimum value is %s"
+msgstr ""
+
+#: includes/backend/settings.php:132
+msgid "Maximum value is %s"
+msgstr ""
+
+#: includes/backend/settings.php:136
+msgid "Select minimum %s fields"
+msgstr ""
+
+#: includes/backend/settings.php:140
+msgid "Select maximum %s fields"
+msgstr ""
+
+#: includes/backend/settings.php:144
+msgid "Maximum %s files allowed"
+msgstr ""
+
+#: includes/backend/settings.php:147
+msgid "Minimum %s files required"
+msgstr ""
+
+#: includes/backend/settings.php:152
+msgid "Maximum file size should be %s"
+msgstr ""
+
+#: includes/backend/settings.php:156
+msgid "Minimum file size should be %s"
+msgstr ""
+
+#: includes/backend/settings.php:161
+msgid "File type is not supported"
+msgstr ""
+
+#: includes/backend/settings.php:165
+msgid "Please enter a valid quantity"
+msgstr ""
+
+#: includes/backend/settings.php:168
+msgid "Other value required"
+msgstr ""
+
+#: includes/backend/settings.php:171
+msgid "%s characters left"
+msgstr ""
+
+#: includes/backend/settings.php:175
+msgid "Provide a valid email address"
+msgstr ""
+
+#: includes/backend/settings.php:178
+msgid "Provide a valid URL"
+msgstr ""
+
+#: includes/backend/settings.php:181
+msgid "Minimum quantity required is %s"
+msgstr ""
+
+#: includes/backend/settings.php:184
+msgid "Maximum quantity allowed is %s"
+msgstr ""
+
+#: includes/backend/settings.php:187
+msgid "Requires minimum  %s"
+msgstr ""
+
+#: includes/backend/settings.php:190
+msgid "Allowed maximum  %s"
+msgstr ""
+
+#: includes/backend/settings.php:236
+msgid "[Edit Options]"
+msgstr ""
+
+#: includes/form.php:200
+msgctxt "Form Custom Post Type Name"
+msgid "Product Forms "
+msgstr ""
+
+#: includes/form.php:201
+#: includes/form.php:202
+msgctxt "Form Custom Post Type Name"
+msgid "Product Form "
+msgstr ""
+
+#: includes/form.php:203
+msgid "Add New Product Form"
+msgstr ""
+
+#: includes/form.php:204
+#: assets/js/backend/main.js:2
+msgid "Add New Form"
+msgstr ""
+
+#: includes/form.php:205
+msgid "Edit Form"
+msgstr ""
+
+#: includes/form.php:206
+msgid "New Form"
+msgstr ""
+
+#: includes/form.php:207
+msgid "Custom Product Options"
+msgstr ""
+
+#: includes/form.php:208
+msgid "View Form"
+msgstr ""
+
+#: includes/form.php:209
+msgid "Search Form"
+msgstr ""
+
+#: includes/form.php:210
+msgid "No Form Found"
+msgstr ""
+
+#: includes/form.php:211
+msgid "No Form Found In Trash"
+msgstr ""
+
+#: includes/form.php:212
+msgid "Parent Form"
+msgstr ""
+
+#: includes/form.php:475
+#: includes/options.php:328
+#: assets/js/backend/main.js:2
+msgid "Copy"
+msgstr ""
+
+#: includes/front.php:155
+msgid "WCPA fields will show only if product has set price"
+msgstr ""
+
+#: includes/helper.php:690
+#: assets/js/backend/main.js:2
+msgid "Default"
+msgstr ""
+
+#: includes/main.php:201
+#: includes/main.php:215
+msgid "Something went wrong."
+msgstr ""
+
+#: includes/meta-display.php:74
+#: includes/order/order.php:368
+msgid " to "
+msgstr ""
+
+#: includes/meta-display.php:234
+#: includes/order/meta-line-item-x.php:287
+#: includes/order/meta-line-item.php:240
+#: includes/order/meta-line-item_v1.php:279
+msgid "View on map"
+msgstr ""
+
+#: includes/options.php:41
+#: includes/options.php:43
+msgctxt "Option Custom Post Type Name"
+msgid "Options Lists"
+msgstr ""
+
+#: includes/options.php:42
+msgctxt "Option Custom Post Type Name"
+msgid "Options List"
+msgstr ""
+
+#: includes/options.php:44
+#: includes/options.php:45
+#: assets/js/backend/main.js:2
+msgid "Add New Options List"
+msgstr ""
+
+#: includes/options.php:46
+msgid "Edit Options List"
+msgstr ""
+
+#: includes/options.php:47
+msgid "New Options List"
+msgstr ""
+
+#: includes/options.php:49
+msgid "View Options List"
+msgstr ""
+
+#: includes/options.php:50
+msgid "Search Options List"
+msgstr ""
+
+#: includes/options.php:51
+msgid "No Options List Found"
+msgstr ""
+
+#: includes/options.php:52
+msgid "No Options List Found In Trash"
+msgstr ""
+
+#: includes/options.php:53
+msgid "Parent Options List"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:8
+#: includes/order/meta-line-item.php:29
+#: includes/order/meta-line-item_v1.php:6
+msgid "Options"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:9
+#: includes/order/meta-line-item.php:31
+#: includes/order/meta-line-item_v1.php:7
+#: assets/js/backend/main.js:2
+msgid "Value"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:10
+#: includes/order/meta-line-item.php:33
+#: includes/order/meta-line-item_v1.php:8
+msgid "Cost"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:45
+#: includes/order/meta-line-item-x.php:78
+#: includes/order/meta-line-item-x.php:83
+#: includes/order/meta-line-item-x.php:95
+#: includes/order/meta-line-item-x.php:121
+#: includes/order/meta-line-item.php:95
+#: includes/order/meta-line-item.php:98
+#: includes/order/meta-line-item_v1.php:33
+#: includes/order/meta-line-item_v1.php:66
+#: includes/order/meta-line-item_v1.php:71
+#: includes/order/meta-line-item_v1.php:83
+#: includes/order/meta-line-item_v1.php:108
+msgid "Label:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:79
+#: includes/order/meta-line-item-x.php:84
+#: includes/order/meta-line-item-x.php:101
+#: includes/order/meta-line-item-x.php:105
+#: includes/order/meta-line-item-x.php:125
+#: includes/order/meta-line-item.php:113
+#: includes/order/meta-line-item.php:118
+#: includes/order/meta-line-item_v1.php:67
+#: includes/order/meta-line-item_v1.php:72
+#: includes/order/meta-line-item_v1.php:88
+#: includes/order/meta-line-item_v1.php:92
+#: includes/order/meta-line-item_v1.php:110
+msgid "Value:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:114
+#: includes/order/meta-line-item_v1.php:101
+msgid "Product ID:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:116
+#: includes/order/meta-line-item_v1.php:103
+msgid "Quantity:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:208
+#: includes/order/meta-line-item_v1.php:201
+msgid "File URL:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:270
+#: includes/order/meta-line-item-x.php:300
+#: includes/order/meta-line-item_v1.php:262
+#: includes/order/meta-line-item_v1.php:292
+msgid "Street address:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:273
+#: includes/order/meta-line-item-x.php:303
+#: includes/order/meta-line-item_v1.php:265
+#: includes/order/meta-line-item_v1.php:295
+msgid "City:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:276
+#: includes/order/meta-line-item-x.php:304
+#: includes/order/meta-line-item_v1.php:268
+#: includes/order/meta-line-item_v1.php:296
+msgid "State:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:279
+#: includes/order/meta-line-item-x.php:305
+#: includes/order/meta-line-item_v1.php:271
+#: includes/order/meta-line-item_v1.php:297
+msgid "Zip code:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:282
+#: includes/order/meta-line-item-x.php:306
+#: includes/order/meta-line-item_v1.php:274
+#: includes/order/meta-line-item_v1.php:298
+msgid "Country:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:285
+#: includes/order/meta-line-item-x.php:307
+#: includes/order/meta-line-item_v1.php:277
+#: includes/order/meta-line-item_v1.php:299
+msgid "Latitude:"
+msgstr ""
+
+#: includes/order/meta-line-item-x.php:286
+#: includes/order/meta-line-item-x.php:308
+#: includes/order/meta-line-item_v1.php:278
+#: includes/order/meta-line-item_v1.php:300
+msgid "Longitude:"
+msgstr ""
+
+#: includes/process/cart.php:536
+msgid " - Discount"
+msgstr ""
+
+#: includes/process/form-validation.php:23
+#: includes/process/form-validation.php:27
+#: includes/process/form-validation.php:29
+#: includes/process/form-validation.php:31
+#: includes/process/form-validation.php:32
+#: includes/process/form-validation.php:34
+#: includes/process/form-validation.php:35
+#: includes/process/form-validation.php:41
+#: includes/process/form-validation.php:45
+#: includes/process/form-validation.php:46
+#: includes/process/form-validation.php:47
+#: includes/process/form-validation.php:48
+msgid "Field %s is required"
+msgstr ""
+
+#: includes/process/form-validation.php:24
+msgid "You have to select minimum %s items for  field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:25
+msgid "You can select only maximum %s items for  field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:37
+#: includes/process/form-validation.php:39
+msgid "The uploaded file exceeds the maximum upload limit for field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:43
+msgid "The uploaded file error for field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:50
+msgid "Group Max Validation Failed"
+msgstr ""
+
+#: includes/process/form-validation.php:51
+msgid "Group Min Validation Failed"
+msgstr ""
+
+#: includes/process/form-validation.php:289
+msgid "Characters %s is not supported for field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:299
+msgid "Value must be less than or equal to %d for field %s "
+msgstr ""
+
+#: includes/process/form-validation.php:306
+msgid "Value must be greater than or equal to %d for field %s "
+msgstr ""
+
+#: includes/process/form-validation.php:322
+msgid "Sorry, the product %s cannot be purchased."
+msgstr ""
+
+#: includes/process/form-validation.php:331
+msgid "You cannot add the amount of &quot;%1$s&quot; because there is not enough stock (%2$s remaining)."
+msgstr ""
+
+#: includes/process/form-validation.php:354
+#: includes/process/form-validation.php:359
+msgid "The uploaded file exceeds the maximum upload limit"
+msgstr ""
+
+#: includes/process/form-validation.php:361
+msgid "The uploaded file error"
+msgstr ""
+
+#: includes/process/form-validation.php:366
+msgid "File exceeds maximum upload size limit of %s MB"
+msgstr ""
+
+#: includes/process/form-validation.php:372
+msgid "File is too small in size, Need %s MB or above"
+msgstr ""
+
+#: includes/process/form-validation.php:380
+msgid "The uploaded file type is not supported for field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:385
+msgid "The uploaded file type is not supported"
+msgstr ""
+
+#. translators: %s Product Name
+#: includes/process/process.php:62
+msgid ""
+"Addon options of product %s has been changed, Cannot proceed with older data. \n"
+"            You can go to product page and fill the addon fields again inorder to make new order"
+msgstr ""
+
+#: includes/process/process.php:112
+msgid "Please verify you are not a bot"
+msgstr ""
+
+#: includes/process/process.php:385
+#: includes/process/process.php:541
+msgid "File %s could not be uploaded."
+msgstr ""

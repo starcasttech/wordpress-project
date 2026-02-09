@@ -1,0 +1,439 @@
+/* Starcast CSV Importer Admin Styles */
+
+.starcast-csv-importer {
+    max-width: 1200px;
+    margin: 20px 0;
+}
+
+.starcast-csv-container {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    padding: 20px;
+}
+
+/* Steps */
+.starcast-csv-step {
+    display: none;
+}
+
+.starcast-csv-step:first-child {
+    display: block;
+}
+
+.starcast-csv-step h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Upload Box */
+.upload-box {
+    margin: 20px 0;
+}
+
+.upload-area {
+    border: 2px dashed #0073aa;
+    border-radius: 4px;
+    padding: 40px;
+    text-align: center;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    background: #f0f8ff;
+    border-color: #005177;
+}
+
+.upload-area.dragover {
+    background: #e8f5ff;
+    border-color: #0073aa;
+}
+
+.upload-icon {
+    color: #0073aa;
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #555;
+}
+
+#browse-button {
+    margin-top: 10px;
+}
+
+/* File Info */
+.file-info {
+    background: #f0f8ff;
+    border: 1px solid #0073aa;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.file-info h3 {
+    margin-top: 0;
+    color: #0073aa;
+}
+
+.file-info p {
+    margin: 5px 0;
+}
+
+/* CSV Requirements */
+.csv-requirements {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.csv-requirements h3 {
+    margin-top: 0;
+}
+
+.csv-requirements ul {
+    margin-left: 20px;
+}
+
+.csv-requirements pre {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow-x: auto;
+    font-size: 12px;
+}
+
+/* Import Config */
+.import-config {
+    margin: 20px 0;
+}
+
+.config-section {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.config-section h3 {
+    margin-top: 0;
+    color: #23282d;
+}
+
+.config-section label {
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.config-section select,
+.config-section input[type="text"] {
+    margin-top: 5px;
+}
+
+/* Field Mapping */
+.mapping-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.mapping-section {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.mapping-section h3 {
+    margin-top: 0;
+}
+
+/* CSV Preview */
+.csv-preview {
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.csv-preview table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.csv-preview th,
+.csv-preview td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.csv-preview th {
+    background: #f0f0f0;
+    font-weight: 600;
+}
+
+.csv-preview tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Field Mapping UI */
+.field-mapping {
+    margin: 10px 0;
+}
+
+.mapping-group {
+    margin-bottom: 20px;
+}
+
+.mapping-group h4 {
+    margin: 10px 0;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mapping-row {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.mapping-row:hover {
+    background: #f5f5f5;
+}
+
+.mapping-label {
+    flex: 1;
+    font-weight: 500;
+}
+
+.mapping-arrow {
+    margin: 0 10px;
+    color: #999;
+}
+
+.mapping-select {
+    flex: 1;
+}
+
+.mapping-select select {
+    width: 100%;
+}
+
+/* Mapping Templates */
+.mapping-templates {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.mapping-templates h4 {
+    margin-top: 0;
+}
+
+.mapping-templates select {
+    margin-right: 10px;
+}
+
+/* Progress Bar */
+.import-progress {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0073aa 0%, #005177 100%);
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #0073aa;
+}
+
+/* Import Stats */
+.import-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.stat {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.stat:nth-child(1) .stat-value { color: #46b450; }
+.stat:nth-child(2) .stat-value { color: #0073aa; }
+.stat:nth-child(3) .stat-value { color: #ffb900; }
+.stat:nth-child(4) .stat-value { color: #dc3232; }
+
+/* Import Log */
+.import-log {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 0;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.import-log .log-entry {
+    margin: 2px 0;
+}
+
+.import-log .log-success {
+    color: #46b450;
+}
+
+.import-log .log-error {
+    color: #dc3232;
+}
+
+.import-log .log-warning {
+    color: #ffb900;
+}
+
+/* Button Groups */
+.button-group {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-group .button {
+    margin: 0 5px;
+}
+
+/* History Page */
+#import-history-container {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+#import-history-container table {
+    margin-top: 0;
+}
+
+#import-history-container .loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mapping-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .import-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mapping-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .mapping-arrow {
+        display: none;
+    }
+    
+    .mapping-label,
+    .mapping-select {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Loading Spinner */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0,0,0,.1);
+    border-radius: 50%;
+    border-top-color: #0073aa;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Notices */
+.starcast-csv-notice {
+    padding: 12px;
+    margin: 10px 0;
+    border-left: 4px solid;
+    background: #fff;
+}
+
+.starcast-csv-notice.notice-success {
+    border-color: #46b450;
+    background: #f0f8f0;
+}
+
+.starcast-csv-notice.notice-error {
+    border-color: #dc3232;
+    background: #fef8f8;
+}
+
+.starcast-csv-notice.notice-warning {
+    border-color: #ffb900;
+    background: #fffef8;
+}

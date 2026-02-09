@@ -1,0 +1,11 @@
+*** Ozow Gateway for WooCommerce Changelog ***
+
+= 1.0.0 - 2023-09-01 =
+* Initial Release
+
+= 1.1.0 - 2024-01-19 = 
+* Added: Compatibility with WooCommerce block-based checkout.
+* Added: High-performance Order Storage (“HPOS”) Support.
+
+= 1.2.0 - 2024-05-08
+* Added: Implemented functionality to resend payment links within the administrative backend.

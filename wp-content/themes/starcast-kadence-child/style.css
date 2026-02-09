@@ -1,0 +1,851 @@
+/*
+Theme Name: Starcast Pro - Kadence Child
+Theme URI: https://starcast.co.za
+Description: Professional ISP theme for Starcast Technologies - Modern, fast, and conversion-optimized design inspired by industry leaders. Features coverage checker, advanced filtering, and promotional systems.
+Author: Starcast Technologies
+Author URI: https://starcast.co.za
+Template: kadence
+Version: 2.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: starcast-pro
+Tags: isp, telecom, fibre, lte, ecommerce
+*/
+
+/* ================================================================
+   STARCAST PRO - SWISS MINIMAL COLOR SYSTEM
+   ================================================================ */
+
+:root {
+    /* Primary - Single Accent Color (Swiss Blue) */
+    --starcast-primary: #007AFF;        /* Clean Swiss Blue */
+    --starcast-primary-dark: #0051D5;   /* Darker variant */
+    --starcast-primary-light: #4DA2FF;  /* Lighter variant */
+
+    /* Accent - Same as primary for minimal palette */
+    --starcast-accent: #007AFF;
+    --starcast-accent-hover: #0051D5;
+    --starcast-secondary: #007AFF;
+
+    /* Status Colors - Minimal and refined */
+    --starcast-success: #34C759;        /* iOS Green */
+    --starcast-warning: #FF9500;        /* iOS Orange */
+    --starcast-danger: #FF3B30;         /* iOS Red */
+    --starcast-info: #007AFF;           /* iOS Blue */
+
+    /* Neutral Grays - Swiss precision */
+    --starcast-dark: #1D1D1F;           /* Apple Dark */
+    --starcast-gray-900: #1D1D1F;
+    --starcast-gray-800: #3A3A3C;
+    --starcast-gray-700: #48484A;
+    --starcast-gray-600: #636366;
+    --starcast-gray-500: #8E8E93;
+    --starcast-gray-400: #AEAEB2;
+    --starcast-gray-300: #C7C7CC;
+    --starcast-gray-200: #E5E5EA;
+    --starcast-gray-100: #F2F2F7;
+    --starcast-gray-50: #F9F9FB;
+    --starcast-white: #FFFFFF;
+
+    /* Gradients - Removed (minimal design) */
+    --starcast-gradient-primary: none;
+    --starcast-gradient-accent: none;
+    --starcast-gradient-hero: none;
+
+    /* Shadows */
+    --starcast-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --starcast-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --starcast-shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --starcast-shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --starcast-shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+    /* Spacing System */
+    --starcast-spacing-xs: 0.5rem;     /* 8px */
+    --starcast-spacing-sm: 1rem;       /* 16px */
+    --starcast-spacing-md: 1.5rem;     /* 24px */
+    --starcast-spacing-lg: 2rem;       /* 32px */
+    --starcast-spacing-xl: 3rem;       /* 48px */
+    --starcast-spacing-2xl: 4rem;      /* 64px */
+    --starcast-spacing-3xl: 6rem;      /* 96px */
+
+    /* Border Radius */
+    --starcast-radius-sm: 0.375rem;    /* 6px */
+    --starcast-radius: 0.5rem;         /* 8px */
+    --starcast-radius-md: 0.75rem;     /* 12px */
+    --starcast-radius-lg: 1rem;        /* 16px */
+    --starcast-radius-xl: 1.5rem;      /* 24px */
+    --starcast-radius-full: 9999px;
+
+    /* Typography */
+    --starcast-font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --starcast-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Animation */
+    --starcast-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --starcast-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================================================
+   GLOBAL RESET & BASE STYLES
+   ================================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--starcast-font-body);
+    color: var(--starcast-gray-800);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================================================================
+   UTILITY BAR (TOP NAVIGATION)
+   ================================================================ */
+
+.starcast-utility-bar {
+    background: var(--starcast-gray-900);
+    color: var(--starcast-white);
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--starcast-gray-800);
+}
+
+.starcast-utility-bar .container {
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.starcast-utility-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.starcast-utility-links a {
+    color: var(--starcast-gray-300);
+    text-decoration: none;
+    transition: var(--starcast-transition-fast);
+}
+
+.starcast-utility-links a:hover {
+    color: var(--starcast-accent);
+}
+
+/* ================================================================
+   HERO SECTION
+   ================================================================ */
+
+.starcast-hero {
+    position: relative;
+    background: var(--starcast-gradient-hero);
+    color: var(--starcast-white);
+    padding: var(--starcast-spacing-3xl) 0;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.starcast-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+    opacity: 0.5;
+}
+
+.starcast-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.starcast-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.starcast-hero-accent {
+    color: var(--starcast-accent);
+    display: block;
+}
+
+.starcast-hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    max-width: 600px;
+}
+
+.starcast-hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ================================================================
+   BUTTONS
+   ================================================================ */
+
+.starcast-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--starcast-radius-lg);
+    text-decoration: none;
+    transition: var(--starcast-transition);
+    cursor: pointer;
+    border: none;
+    gap: 0.5rem;
+}
+
+.starcast-btn-primary {
+    background: var(--starcast-accent);
+    color: var(--starcast-gray-900);
+    box-shadow: var(--starcast-shadow-lg);
+}
+
+.starcast-btn-primary:hover {
+    background: var(--starcast-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--starcast-shadow-xl);
+}
+
+.starcast-btn-secondary {
+    background: var(--starcast-white);
+    color: var(--starcast-primary);
+    border: 2px solid var(--starcast-white);
+}
+
+.starcast-btn-secondary:hover {
+    background: transparent;
+    color: var(--starcast-white);
+    transform: translateY(-2px);
+}
+
+.starcast-btn-outline {
+    background: transparent;
+    color: var(--starcast-primary);
+    border: 2px solid var(--starcast-primary);
+}
+
+.starcast-btn-outline:hover {
+    background: var(--starcast-primary);
+    color: var(--starcast-white);
+}
+
+/* ================================================================
+   COVERAGE CHECKER
+   ================================================================ */
+
+.starcast-coverage-checker {
+    background: var(--starcast-white);
+    padding: var(--starcast-spacing-2xl) 0;
+    position: relative;
+    margin-top: -4rem;
+    z-index: 10;
+}
+
+.starcast-coverage-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--starcast-white);
+    border-radius: var(--starcast-radius-xl);
+    box-shadow: var(--starcast-shadow-xl);
+    padding: var(--starcast-spacing-xl);
+}
+
+.starcast-coverage-card h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--starcast-primary);
+    margin-bottom: var(--starcast-spacing-md);
+}
+
+.starcast-search-box {
+    display: flex;
+    gap: 1rem;
+    margin-top: var(--starcast-spacing-lg);
+}
+
+.starcast-search-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+    border: 2px solid var(--starcast-gray-300);
+    border-radius: var(--starcast-radius-lg);
+    transition: var(--starcast-transition-fast);
+}
+
+.starcast-search-input:focus {
+    outline: none;
+    border-color: var(--starcast-primary);
+    box-shadow: 0 0 0 3px rgba(10, 37, 64, 0.1);
+}
+
+/* ================================================================
+   PACKAGE CARDS
+   ================================================================ */
+
+.starcast-packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: var(--starcast-spacing-xl) 1.5rem;
+    max-width: 1366px;
+    margin: 0 auto;
+}
+
+.starcast-package-card {
+    background: var(--starcast-white);
+    border-radius: var(--starcast-radius-lg);
+    box-shadow: var(--starcast-shadow-md);
+    overflow: hidden;
+    transition: var(--starcast-transition);
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.starcast-package-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--starcast-shadow-xl);
+    border-color: var(--starcast-accent);
+}
+
+.starcast-package-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: var(--starcast-radius-full);
+    letter-spacing: 0.5px;
+    z-index: 5;
+}
+
+.starcast-badge-hot {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.starcast-badge-recommended {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.starcast-badge-deal {
+    background: var(--starcast-gradient-accent);
+    color: var(--starcast-gray-900);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+
+.starcast-package-header {
+    background: var(--starcast-gradient-primary);
+    color: var(--starcast-white);
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.starcast-package-speed {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.starcast-package-name {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.starcast-package-price {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.starcast-package-price small {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.starcast-package-body {
+    padding: 2rem 1.5rem;
+}
+
+.starcast-package-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+}
+
+.starcast-package-features li {
+    padding: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--starcast-gray-700);
+    border-bottom: 1px solid var(--starcast-gray-100);
+}
+
+.starcast-package-features li:last-child {
+    border-bottom: none;
+}
+
+.starcast-package-features li::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--starcast-success);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+/* ================================================================
+   FILTERS & SORTING
+   ================================================================ */
+
+.starcast-filters {
+    background: var(--starcast-gray-100);
+    padding: var(--starcast-spacing-lg);
+    border-radius: var(--starcast-radius-lg);
+    margin-bottom: var(--starcast-spacing-xl);
+}
+
+.starcast-filter-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.starcast-filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.starcast-filter-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--starcast-gray-700);
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.starcast-filter-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--starcast-gray-300);
+    border-radius: var(--starcast-radius);
+    font-size: 1rem;
+    background: var(--starcast-white);
+    transition: var(--starcast-transition-fast);
+}
+
+.starcast-filter-select:focus {
+    outline: none;
+    border-color: var(--starcast-primary);
+    box-shadow: 0 0 0 3px rgba(10, 37, 64, 0.1);
+}
+
+/* ================================================================
+   PROMOTIONAL BANNERS
+   ================================================================ */
+
+.starcast-promo-banner {
+    background: var(--starcast-gradient-accent);
+    color: var(--starcast-gray-900);
+    padding: 1.5rem;
+    border-radius: var(--starcast-radius-lg);
+    margin-bottom: var(--starcast-spacing-xl);
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.125rem;
+    box-shadow: var(--starcast-shadow-lg);
+}
+
+/* ================================================================
+   RESPONSIVE DESIGN
+   ================================================================ */
+
+@media (max-width: 768px) {
+    .starcast-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .starcast-hero p {
+        font-size: 1.125rem;
+    }
+
+    .starcast-packages-grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1rem;
+    }
+
+    .starcast-search-box {
+        flex-direction: column;
+    }
+
+    .starcast-utility-bar {
+        display: none;
+    }
+
+    .starcast-filter-row {
+        flex-direction: column;
+    }
+
+    .starcast-filter-group {
+        width: 100%;
+    }
+}
+
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.starcast-animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.starcast-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ================================================================
+   LOADING STATES
+   ================================================================ */
+
+.starcast-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--starcast-white);
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ================================================================
+   TRUST INDICATORS
+   ================================================================ */
+
+.starcast-trust-bar {
+    background: var(--starcast-gray-50);
+    padding: var(--starcast-spacing-md) 0;
+    text-align: center;
+    border-top: 1px solid var(--starcast-gray-200);
+    border-bottom: 1px solid var(--starcast-gray-200);
+}
+
+.starcast-trust-items {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.starcast-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    color: var(--starcast-gray-700);
+}
+
+.starcast-trust-icon {
+    color: var(--starcast-success);
+    font-size: 1.5rem;
+}
+
+/* ================================================================
+   HOMEPAGE HERO
+   ================================================================ */
+
+.starcast-hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #faf7f4 0%, #f0ebe3 100%);
+}
+
+.starcast-hero h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #2d2823;
+    margin-bottom: 24px;
+}
+
+.starcast-hero h1 span {
+    color: #d67d3e;
+}
+
+.starcast-hero p {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    color: #6b6355;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.hero-buttons .btn {
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #d67d3e;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #c06b32;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #fff;
+    color: #d67d3e;
+    border: 2px solid #d67d3e;
+}
+
+.btn-secondary:hover {
+    background: #d67d3e;
+    color: #fff;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #d67d3e;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #6b6355;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .starcast-hero { padding: 60px 20px; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .hero-buttons .btn { width: 100%; max-width: 300px; }
+}
+
+/* ================================================================
+   HOMEPAGE HERO OVERRIDE
+   ================================================================ */
+
+.starcast-hero {
+    background: linear-gradient(135deg, #faf7f4 0%, #f0ebe3 100%) !important;
+    color: #2d2823 !important;
+    min-height: auto !important;
+}
+
+.starcast-hero::before {
+    content: none !important;
+}
+
+/* ================================================================
+   HOMEPAGE HERO REWORK
+   ================================================================ */
+
+.home-hero {
+    background: linear-gradient(135deg, #faf7f4 0%, #f0ebe3 100%) !important;
+    color: #2d2823 !important;
+    min-height: auto !important;
+    padding: 96px 0 72px !important;
+}
+
+.home-hero::before {
+    content: none !important;
+}
+
+.home-hero .starcast-hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    gap: 32px;
+}
+
+.home-hero .hero-kicker {
+    font-size: 0.875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8b7b6a;
+    margin-bottom: 12px;
+}
+
+.home-hero h1 {
+    font-size: clamp(2.25rem, 4vw, 3.75rem);
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: #2d2823;
+}
+
+.home-hero h1 span {
+    color: #d67d3e;
+}
+
+.home-hero .hero-lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    color: #5f564b;
+    max-width: 640px;
+    margin-bottom: 24px;
+}
+
+.home-hero .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.home-hero .starcast-btn-primary {
+    background: #d67d3e;
+    color: #fff;
+    border: 2px solid #d67d3e;
+}
+
+.home-hero .starcast-btn-primary:hover {
+    background: #c06b32;
+    border-color: #c06b32;
+}
+
+.home-hero .starcast-btn-secondary {
+    background: #fff;
+    color: #d67d3e;
+    border: 2px solid #fff;
+}
+
+.home-hero .starcast-btn-secondary:hover {
+    background: #f6efe7;
+    color: #b65f23;
+}
+
+.home-hero .starcast-btn-outline {
+    background: transparent;
+    color: #d67d3e;
+    border: 2px solid #d67d3e;
+}
+
+.home-hero .starcast-btn-outline:hover {
+    background: #d67d3e;
+    color: #fff;
+}
+
+.home-hero .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.home-hero .hero-stat {
+    background: #fff;
+    border: 1px solid #e9e3da;
+    border-radius: 14px;
+    padding: 18px 16px;
+    box-shadow: 0 12px 24px rgba(45, 40, 35, 0.08);
+    text-align: center;
+}
+
+.home-hero .hero-stat .stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #d67d3e;
+    margin-bottom: 6px;
+}
+
+.home-hero .hero-stat .stat-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b6355;
+}
+
+@media (max-width: 768px) {
+    .home-hero { padding: 72px 0 56px !important; }
+    .home-hero .hero-buttons { flex-direction: column; align-items: stretch; }
+    .home-hero .hero-buttons .starcast-btn { width: 100%; justify-content: center; }
+}
+

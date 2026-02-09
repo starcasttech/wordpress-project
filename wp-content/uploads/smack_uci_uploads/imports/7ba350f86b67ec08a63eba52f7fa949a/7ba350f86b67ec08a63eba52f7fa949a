@@ -1,0 +1,128 @@
+Provider,Fibre Product Name,Download Speed,Upload Speed,Retail Price
+Openserve,Openserve 50/25Mbps,50Mbps,25Mbps,693.6
+Openserve,Openserve 50/50Mbps,50Mbps,50Mbps,918.0
+Openserve,Openserve 100/50Mbps,100Mbps,50Mbps,1038.0
+Openserve,Openserve 100/100Mbps,100Mbps,100Mbps,1158.0
+Openserve,Openserve 200/100Mbps,200Mbps,100Mbps,1326.0
+Openserve,Openserve 200/200Mbps,200Mbps,200Mbps,1410.0
+Openserve,Openserve 300/150Mbps,300Mbps,150Mbps,1602.0
+Openserve,Openserve 500/250Mbps,500Mbps,250Mbps,1842.0
+Frogfoot,Frogfoot 60/30Mbps,60Mbps,30Mbps,742.8
+Frogfoot,Frogfoot 60/60Mbps,60Mbps,60Mbps,906.0
+Frogfoot,Frogfoot 120/60Mbps,120Mbps,60Mbps,936.0
+Frogfoot,Frogfoot 120/120Mbps,120Mbps,120Mbps,1056.0
+Frogfoot,Frogfoot 240/120Mbps,240Mbps,120Mbps,1176.0
+Frogfoot,Frogfoot 240/240Mbps,240Mbps,240Mbps,1368.0
+Frogfoot,Frogfoot 400/200Mbps,400Mbps,200Mbps,1416.0
+Frogfoot,Frogfoot 400/400Mbps,400Mbps,400Mbps,1602.0
+Frogfoot,Frogfoot 1000/500Mbps,1000Mbps,500Mbps,1848.0
+Frogfoot,Frogfoot 1000/1000Mbps,1000Mbps,1000Mbps,2052.0
+Vuma,Vuma 25/25Mbps,25Mbps,25Mbps,576.0
+Vuma,Vuma 50/25Mbps,50Mbps,25Mbps,712.8
+Vuma,Vuma 50/50Mbps,50Mbps,50Mbps,952.8
+Vuma,Vuma 100/50Mbps,100Mbps,50Mbps,952.8
+Vuma,Vuma 100/100Mbps,100Mbps,100Mbps,1192.8
+Vuma,Vuma 200/200Mbps,200Mbps,200Mbps,1372.8
+Vuma,Vuma 500/200Mbps,500Mbps,200Mbps,1552.8
+Vuma,Vuma 1000/250Mbps,1000Mbps,250Mbps,1960.8
+Vuma,Vuma 1000/500Mbps,1000Mbps,500Mbps,2826.0
+Octotel,Octotel 25/25Mbps,25Mbps,25Mbps,450.0
+Octotel,Octotel 55/25Mbps,55Mbps,25Mbps,768.0
+Octotel,Octotel 100/100Mbps,100Mbps,100Mbps,1032.0
+Octotel,Octotel 150/150Mbps,150Mbps,150Mbps,1152.0
+Octotel,Octotel 300/200Mbps,300Mbps,200Mbps,1338.0
+Octotel,Octotel 500/200Mbps,500Mbps,200Mbps,1578.0
+Octotel,Octotel 1000/200Mbps,1000Mbps,200Mbps,1902.0
+TT Connect,TT Connect 30/30Mbps,30Mbps,30Mbps,870.0
+TT Connect,TT Connect 50/50Mbps,50Mbps,50Mbps,1122.0
+TT Connect,TT Connect 100/100Mbps,100Mbps,100Mbps,1236.0
+TT Connect,TT Connect 200/200Mbps,200Mbps,200Mbps,1482.0
+TT Connect,TT Connect 400/400Mbps,400Mbps,400Mbps,1830.0
+TT Connect,TT Connect 525/525Mbps,525Mbps,525Mbps,2070.0
+TT Connect,TT Connect 850/850Mbps,850Mbps,850Mbps,2298.0
+TT Connect,TT Connect 1000/1000Mbps,1000Mbps,1000Mbps,2842.8
+Mitsol,Mitsol 20/20Mbps,20Mbps,20Mbps,642.0
+Mitsol,Mitsol 50/25Mbps,50Mbps,25Mbps,738.0
+Mitsol,Mitsol 120/60Mbps,120Mbps,60Mbps,978.0
+Mitsol,Mitsol 120/120Mbps,120Mbps,120Mbps,1098.0
+Mitsol,Mitsol 240/240Mbps,240Mbps,240Mbps,1326.0
+Mitsol,Mitsol 500/500Mbps,500Mbps,500Mbps,1590.0
+Mitsol,Mitsol 1000/1000Mbps,1000Mbps,1000Mbps,1830.0
+Evotel,Evotel 20/10Mbps,20Mbps,10Mbps,760.8
+Evotel,Evotel 60/60Mbps,60Mbps,60Mbps,912.0
+Evotel,Evotel 125/125Mbps,125Mbps,125Mbps,1104.0
+Evotel,Evotel 250/250Mbps,250Mbps,250Mbps,1308.0
+Evotel,Evotel 600/600Mbps,600Mbps,600Mbps,1404.0
+Evotel,Evotel 850/850Mbps,850Mbps,850Mbps,1764.0
+Thinkspeed,Thinkspeed 30/30Mbps,30Mbps,30Mbps,810.0
+Thinkspeed,Thinkspeed 50/50Mbps,50Mbps,50Mbps,1050.0
+Thinkspeed,Thinkspeed 100/100Mbps,100Mbps,100Mbps,1170.0
+Thinkspeed,Thinkspeed 200/200Mbps,200Mbps,200Mbps,1410.0
+Thinkspeed,Thinkspeed 500/500Mbps,500Mbps,500Mbps,1650.0
+Thinkspeed,Thinkspeed 1000/500Mbps,1000Mbps,500Mbps,1770.0
+Clearaccess,Clearaccess 8/8Mbps,8Mbps,8Mbps,384.0
+Clearaccess,Clearaccess 25/25Mbps,25Mbps,25Mbps,930.0
+Clearaccess,Clearaccess 50/50Mbps,50Mbps,50Mbps,1182.0
+Clearaccess,Clearaccess 100/100Mbps,100Mbps,100Mbps,1362.0
+Clearaccess,Clearaccess 200/200Mbps,200Mbps,200Mbps,1638.0
+DNATel,DNATel 10/10Mbps,10Mbps,10Mbps,744.0
+DNATel,DNATel 30/30Mbps,30Mbps,30Mbps,780.0
+DNATel,DNATel 50/50Mbps,50Mbps,50Mbps,942.0
+DNATel,DNATel 100/100Mbps,100Mbps,100Mbps,1098.0
+DNATel,DNATel 200/200Mbps,200Mbps,200Mbps,1182.0
+Vodacom,Vodacom 20/10Mbps,20Mbps,10Mbps,712.8
+Vodacom,Vodacom 20/20Mbps,20Mbps,20Mbps,832.8
+Vodacom,Vodacom 50/25Mbps,50Mbps,25Mbps,952.8
+Vodacom,Vodacom 50/50Mbps,50Mbps,50Mbps,1072.8
+Vodacom,Vodacom 100/100Mbps,100Mbps,100Mbps,1192.8
+Vodacom,Vodacom 200/200Mbps,200Mbps,200Mbps,1312.8
+Link Layer,Link Layer 30/30Mbps,30Mbps,30Mbps,624.0
+Link Layer,Link Layer 50/50Mbps,50Mbps,50Mbps,864.0
+Link Layer,Link Layer 100/100Mbps,100Mbps,100Mbps,1044.0
+Link Layer,Link Layer 200/200Mbps,200Mbps,200Mbps,1236.0
+Link Layer,Link Layer 500/500Mbps,500Mbps,500Mbps,1590.0
+MetroFibre Nexus,Nexus 25/25Mbps,25Mbps,25Mbps,474.0
+MetroFibre Nexus,Nexus 45/45Mbps,45Mbps,45Mbps,822.0
+MetroFibre Nexus,Nexus 75/75Mbps,75Mbps,75Mbps,942.0
+MetroFibre Nexus,Nexus 150/150Mbps,150Mbps,150Mbps,1062.0
+MetroFibre Nexus,Nexus 250/250Mbps,250Mbps,250Mbps,1146.0
+MetroFibre Nexus,Nexus 500/500Mbps,500Mbps,500Mbps,1650.0
+MetroFibre Nexus,Nexus 1000/200Mbps,1000Mbps,200Mbps,1722.0
+MetroFibre Nova,Nova 20/20Mbps,20Mbps,20Mbps,582.0
+MetroFibre Nova,Nova 40/40Mbps,40Mbps,40Mbps,702.0
+MetroFibre Nova,Nova 60/60Mbps,60Mbps,60Mbps,822.0
+MetroFibre Nova,Nova 150/150Mbps,150Mbps,150Mbps,1062.0
+MetroFibre Nova,Nova 250/250Mbps,250Mbps,250Mbps,1146.0
+MetroFibre Nova,Nova 500/500Mbps,500Mbps,500Mbps,1662.0
+MetroFibre Nova,Nova 1000/250Mbps,1000Mbps,250Mbps,1734.0
+Connectivity Services - Steyn City,Steyn City 10/10Mbps,10Mbps,10Mbps,810.0
+Connectivity Services - Steyn City,Steyn City 25/25Mbps,25Mbps,25Mbps,1050.0
+Connectivity Services - Steyn City,Steyn City 50/50Mbps,50Mbps,50Mbps,1410.0
+Connectivity Services - Steyn City,Steyn City 100/100Mbps,100Mbps,100Mbps,1866.0
+Connectivity Services - Steyn City,Steyn City 200/200Mbps,200Mbps,200Mbps,2370.0
+Zoom Fibre,Zoom Fibre 50/50Mbps,50Mbps,50Mbps,822.0
+Zoom Fibre,Zoom Fibre 100/100Mbps,100Mbps,100Mbps,1062.0
+Zoom Fibre,Zoom Fibre 200/200Mbps,200Mbps,200Mbps,1182.0
+Zoom Fibre,Zoom Fibre 500/250Mbps,500Mbps,250Mbps,1380.0
+Zoom Fibre,Zoom Fibre 1000/500Mbps,1000Mbps,500Mbps,1530.0
+Netstream,Netstream 4/4Mbps,4Mbps,4Mbps,726.0
+Netstream,Netstream 10/10Mbps,10Mbps,10Mbps,882.0
+Netstream,Netstream 20/20Mbps,20Mbps,20Mbps,1086.0
+Netstream,Netstream 50/50Mbps,50Mbps,50Mbps,1326.0
+Netstream,Netstream 100/100Mbps,100Mbps,100Mbps,1566.0
+Lightstruck - Zinkwazi Glenwood,Lightstruck 50/50Mbps,50Mbps,50Mbps,948.0
+Lightstruck - Zinkwazi Glenwood,Lightstruck 200/100Mbps,200Mbps,100Mbps,1308.0
+Lightstruck - Zinkwazi Glenwood,Lightstruck 250/200Mbps,250Mbps,200Mbps,1548.0
+Lightstruck - Zinkwazi Glenwood,Lightstruck 250/250Mbps,250Mbps,250Mbps,1668.0
+Lightstruck - Zinkwazi Glenwood,Lightstruck 500/500Mbps,500Mbps,500Mbps,1788.0
+Lightstruck - Zinkwazi Glenwood,Lightstruck 1000/1000Mbps,1000Mbps,1000Mbps,2628.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 50/25Mbps,50Mbps,25Mbps,828.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 50/50Mbps,50Mbps,50Mbps,948.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 100/50Mbps,100Mbps,50Mbps,1068.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 100/100Mbps,100Mbps,100Mbps,1188.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 200/100Mbps,200Mbps,100Mbps,1308.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 200/200Mbps,200Mbps,200Mbps,1428.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 250/200Mbps,250Mbps,200Mbps,1548.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 250/250Mbps,250Mbps,250Mbps,1668.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 500/500Mbps,500Mbps,500Mbps,1788.0
+Port Edward - Paarl - Hermanus - Greytown,PPHG 1000/1000Mbps,1000Mbps,1000Mbps,2628.0

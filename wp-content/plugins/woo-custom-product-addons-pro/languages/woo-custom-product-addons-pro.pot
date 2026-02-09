@@ -1,0 +1,4029 @@
+# Copyright (C) 2023 Acowebs
+# This file is distributed under the same license as the Woocommerce Custom Product Addons (5.x.x) plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Woocommerce Custom Product Addons (5.x.x) 5.0.12\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-product-addon-2-dev\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-05-10T18:16:38+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: woo-custom-product-addons-pro\n"
+
+#. Plugin Name of the plugin
+msgid "Woocommerce Custom Product Addons (5.x.x)"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://acowebs.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "Woocommerce Product add-on plugin. Add custom fields to your Woocommerce product page. With an easy-to-use Custom Form Builder, now you can add extra product options quickly."
+msgstr ""
+
+#. Author of the plugin
+msgid "Acowebs"
+msgstr ""
+
+#: includes/backend/admin.php:73
+msgid "Create Forms"
+msgstr ""
+
+#: includes/backend/admin.php:95
+msgid "Please ensure you have activated license for current domain, <a href=\"%s\" target=\"_blank\" >Check our Guideline</a> for more details"
+msgstr ""
+
+#: includes/backend/admin.php:362
+msgid ""
+"This menu has been changed in new version of Product addon plugin,\r\n"
+"                 Please go to menu <a href=\"%s\" />Product Addons</a> on left sidebar"
+msgstr ""
+
+#: includes/backend/admin.php:425
+msgid "Custom Product Addons"
+msgstr ""
+
+#: includes/backend/admin.php:426
+msgid "Product Addons"
+msgstr ""
+
+#: includes/backend/admin.php:435
+#: includes/backend/admin.php:436
+#: assets/js/backend/main.js:2
+msgid "Forms"
+msgstr ""
+
+#: includes/backend/admin.php:443
+#: includes/backend/admin.php:444
+msgid "Designs"
+msgstr ""
+
+#: includes/backend/admin.php:451
+#: includes/backend/admin.php:452
+#: includes/options.php:48
+#: assets/js/backend/main.js:2
+msgid "Options Lists"
+msgstr ""
+
+#: includes/backend/admin.php:459
+#: includes/backend/admin.php:460
+#: assets/js/backend/main.js:2
+msgid "Settings"
+msgstr ""
+
+#: includes/backend/admin.php:475
+msgid "Acowebs Custom Product Addon"
+msgstr ""
+
+#: includes/backend/admin.php:476
+msgid "Plugin is loading Please wait for a while.."
+msgstr ""
+
+#: includes/backend/product-meta.php:51
+#: includes/backend/product-meta.php:58
+#: includes/backend/product-meta.php:82
+msgid "WCPA Forms"
+msgstr ""
+
+#: includes/backend/product-meta.php:105
+msgid "Product Forms"
+msgstr ""
+
+#: includes/backend/settings.php:61
+#: assets/js/backend/main.js:2
+msgid "Options Price"
+msgstr ""
+
+#: includes/backend/settings.php:62
+#: assets/js/backend/main.js:2
+msgid "Product Price"
+msgstr ""
+
+#: includes/backend/settings.php:63
+#: assets/js/backend/main.js:2
+msgid "Discount"
+msgstr ""
+
+#: includes/backend/settings.php:64
+msgid "Total"
+msgstr ""
+
+#: includes/backend/settings.php:65
+#: assets/js/backend/main.js:2
+msgid "Fee"
+msgstr ""
+
+#: includes/backend/settings.php:69
+msgid "Select options"
+msgstr ""
+
+#: includes/backend/settings.php:72
+#: assets/js/backend/main.js:2
+msgid "Choose File"
+msgstr ""
+
+#: includes/backend/settings.php:73
+msgid "{count} Files"
+msgstr ""
+
+#: includes/backend/settings.php:74
+msgid "Browse"
+msgstr ""
+
+#: includes/backend/settings.php:76
+msgid "or {action} to choose a file"
+msgstr ""
+
+#: includes/backend/settings.php:78
+msgid "Drag and Drop Files Here"
+msgstr ""
+
+#: includes/backend/settings.php:80
+msgid "Street Address"
+msgstr ""
+
+#: includes/backend/settings.php:81
+msgid "City"
+msgstr ""
+
+#: includes/backend/settings.php:82
+msgid "State"
+msgstr ""
+
+#: includes/backend/settings.php:83
+msgid "Zip Code"
+msgstr ""
+
+#: includes/backend/settings.php:84
+msgid "Country"
+msgstr ""
+
+#: includes/backend/settings.php:85
+msgid "Latitude"
+msgstr ""
+
+#: includes/backend/settings.php:86
+msgid "Longitude"
+msgstr ""
+
+#: includes/backend/settings.php:89
+msgid "Other"
+msgstr ""
+
+#: includes/backend/settings.php:90
+#: assets/js/backend/main.js:2
+msgid "Clear Selection"
+msgstr ""
+
+#: includes/backend/settings.php:91
+msgid "Add Field"
+msgstr ""
+
+#: includes/backend/settings.php:92
+msgid "Remove Field"
+msgstr ""
+
+#: includes/backend/settings.php:100
+msgid "Files are being uploaded."
+msgstr ""
+
+#: includes/backend/settings.php:104
+msgid "Fix error errors shown above"
+msgstr ""
+
+#: includes/backend/settings.php:108
+msgid "Tick the \"I'm not a robot\" verification"
+msgstr ""
+
+#: includes/backend/settings.php:111
+msgid "Field is required"
+msgstr ""
+
+#: includes/backend/settings.php:115
+msgid "Characters %s is not supported"
+msgstr ""
+
+#: includes/backend/settings.php:118
+msgid "Pattern not matching"
+msgstr ""
+
+#: includes/backend/settings.php:122
+msgid "Minimum  %s characters required"
+msgstr ""
+
+#: includes/backend/settings.php:126
+msgid "Maximum %s characters allowed"
+msgstr ""
+
+#: includes/backend/settings.php:130
+msgid "Minimum value is %s"
+msgstr ""
+
+#: includes/backend/settings.php:133
+msgid "Maximum value is %s"
+msgstr ""
+
+#: includes/backend/settings.php:137
+msgid "Select minimum %s fields"
+msgstr ""
+
+#: includes/backend/settings.php:141
+msgid "Select maximum %s fields"
+msgstr ""
+
+#: includes/backend/settings.php:145
+msgid "Maximum %s files allowed"
+msgstr ""
+
+#: includes/backend/settings.php:148
+msgid "Minimum %s files required"
+msgstr ""
+
+#: includes/backend/settings.php:153
+msgid "Maximum file size should be %s"
+msgstr ""
+
+#: includes/backend/settings.php:157
+msgid "Minimum file size should be %s"
+msgstr ""
+
+#: includes/backend/settings.php:162
+msgid "File type is not supported"
+msgstr ""
+
+#: includes/backend/settings.php:166
+msgid "Please enter a valid quantity"
+msgstr ""
+
+#: includes/backend/settings.php:169
+msgid "Other value required"
+msgstr ""
+
+#: includes/backend/settings.php:172
+msgid "%s characters left"
+msgstr ""
+
+#: includes/backend/settings.php:176
+msgid "Provide a valid email address"
+msgstr ""
+
+#: includes/backend/settings.php:179
+msgid "Provide a valid URL"
+msgstr ""
+
+#: includes/backend/settings.php:182
+msgid "Minimum quantity required is %s"
+msgstr ""
+
+#: includes/backend/settings.php:185
+msgid "Maximum quantity allowed is %s"
+msgstr ""
+
+#: includes/backend/settings.php:188
+msgid "Requires minimum  %s"
+msgstr ""
+
+#: includes/backend/settings.php:191
+msgid "Allowed maximum  %s"
+msgstr ""
+
+#: includes/backend/settings.php:238
+msgid "[Edit Options]"
+msgstr ""
+
+#: includes/form.php:206
+msgctxt "Form Custom Post Type Name"
+msgid "Product Forms "
+msgstr ""
+
+#: includes/form.php:207
+#: includes/form.php:208
+msgctxt "Form Custom Post Type Name"
+msgid "Product Form "
+msgstr ""
+
+#: includes/form.php:209
+msgid "Add New Product Form"
+msgstr ""
+
+#: includes/form.php:210
+#: assets/js/backend/main.js:2
+msgid "Add New Form"
+msgstr ""
+
+#: includes/form.php:211
+msgid "Edit Form"
+msgstr ""
+
+#: includes/form.php:212
+msgid "New Form"
+msgstr ""
+
+#: includes/form.php:213
+msgid "Custom Product Options"
+msgstr ""
+
+#: includes/form.php:214
+msgid "View Form"
+msgstr ""
+
+#: includes/form.php:215
+msgid "Search Form"
+msgstr ""
+
+#: includes/form.php:216
+msgid "No Form Found"
+msgstr ""
+
+#: includes/form.php:217
+msgid "No Form Found In Trash"
+msgstr ""
+
+#: includes/form.php:218
+msgid "Parent Form"
+msgstr ""
+
+#: includes/form.php:545
+#: includes/options.php:328
+#: assets/js/backend/main.js:2
+msgid "Copy"
+msgstr ""
+
+#: includes/front.php:157
+msgid "WCPA fields will show only if product has set price"
+msgstr ""
+
+#: includes/front.php:480
+#: includes/meta-display.php:74
+#: includes/order/order.php:413
+msgid " to "
+msgstr ""
+
+#: includes/helper.php:779
+#: assets/js/backend/main.js:2
+msgid "Default"
+msgstr ""
+
+#: includes/main.php:201
+#: includes/main.php:215
+msgid "Something went wrong."
+msgstr ""
+
+#: includes/meta-display.php:241
+#: includes/order/meta-line-item.php:241
+#: includes/order/meta-line-item_v1.php:279
+msgid "View on map"
+msgstr ""
+
+#: includes/options.php:41
+#: includes/options.php:43
+msgctxt "Option Custom Post Type Name"
+msgid "Options Lists"
+msgstr ""
+
+#: includes/options.php:42
+msgctxt "Option Custom Post Type Name"
+msgid "Options List"
+msgstr ""
+
+#: includes/options.php:44
+#: includes/options.php:45
+#: assets/js/backend/main.js:2
+msgid "Add New Options List"
+msgstr ""
+
+#: includes/options.php:46
+msgid "Edit Options List"
+msgstr ""
+
+#: includes/options.php:47
+msgid "New Options List"
+msgstr ""
+
+#: includes/options.php:49
+msgid "View Options List"
+msgstr ""
+
+#: includes/options.php:50
+msgid "Search Options List"
+msgstr ""
+
+#: includes/options.php:51
+msgid "No Options List Found"
+msgstr ""
+
+#: includes/options.php:52
+msgid "No Options List Found In Trash"
+msgstr ""
+
+#: includes/options.php:53
+msgid "Parent Options List"
+msgstr ""
+
+#: includes/order/meta-line-item.php:30
+#: includes/order/meta-line-item_v1.php:6
+msgid "Options"
+msgstr ""
+
+#: includes/order/meta-line-item.php:32
+#: includes/order/meta-line-item_v1.php:7
+#: assets/js/backend/main.js:2
+msgid "Value"
+msgstr ""
+
+#: includes/order/meta-line-item.php:34
+#: includes/order/meta-line-item_v1.php:8
+msgid "Cost"
+msgstr ""
+
+#: includes/order/meta-line-item.php:96
+#: includes/order/meta-line-item.php:99
+#: includes/order/meta-line-item_v1.php:33
+#: includes/order/meta-line-item_v1.php:66
+#: includes/order/meta-line-item_v1.php:71
+#: includes/order/meta-line-item_v1.php:83
+#: includes/order/meta-line-item_v1.php:108
+#: assets/js/backend/order.js:2
+msgid "Label:"
+msgstr ""
+
+#: includes/order/meta-line-item.php:114
+#: includes/order/meta-line-item.php:119
+#: includes/order/meta-line-item_v1.php:67
+#: includes/order/meta-line-item_v1.php:72
+#: includes/order/meta-line-item_v1.php:88
+#: includes/order/meta-line-item_v1.php:92
+#: includes/order/meta-line-item_v1.php:110
+#: assets/js/backend/order.js:2
+msgid "Value:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:101
+msgid "Product ID:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:103
+msgid "Quantity:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:201
+msgid "File URL:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:262
+#: includes/order/meta-line-item_v1.php:292
+msgid "Street address:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:265
+#: includes/order/meta-line-item_v1.php:295
+msgid "City:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:268
+#: includes/order/meta-line-item_v1.php:296
+msgid "State:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:271
+#: includes/order/meta-line-item_v1.php:297
+msgid "Zip code:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:274
+#: includes/order/meta-line-item_v1.php:298
+msgid "Country:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:277
+#: includes/order/meta-line-item_v1.php:299
+msgid "Latitude:"
+msgstr ""
+
+#: includes/order/meta-line-item_v1.php:278
+#: includes/order/meta-line-item_v1.php:300
+msgid "Longitude:"
+msgstr ""
+
+#: includes/process/cart.php:663
+msgid " - Discount"
+msgstr ""
+
+#: includes/process/form-validation.php:23
+#: includes/process/form-validation.php:27
+#: includes/process/form-validation.php:29
+#: includes/process/form-validation.php:31
+#: includes/process/form-validation.php:32
+#: includes/process/form-validation.php:34
+#: includes/process/form-validation.php:35
+#: includes/process/form-validation.php:41
+#: includes/process/form-validation.php:45
+#: includes/process/form-validation.php:46
+#: includes/process/form-validation.php:47
+#: includes/process/form-validation.php:48
+msgid "Field %s is required"
+msgstr ""
+
+#: includes/process/form-validation.php:24
+msgid "You have to select minimum %s items for  field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:25
+msgid "You can select only maximum %s items for  field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:37
+#: includes/process/form-validation.php:39
+msgid "The uploaded file exceeds the maximum upload limit for field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:43
+msgid "The uploaded file error for field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:50
+msgid "Group Max Validation Failed"
+msgstr ""
+
+#: includes/process/form-validation.php:51
+msgid "Group Min Validation Failed"
+msgstr ""
+
+#: includes/process/form-validation.php:287
+msgid "Characters %s is not supported for field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:297
+msgid "Value must be less than or equal to %d for field %s "
+msgstr ""
+
+#: includes/process/form-validation.php:304
+msgid "Value must be greater than or equal to %d for field %s "
+msgstr ""
+
+#: includes/process/form-validation.php:320
+msgid "Sorry, the product %s cannot be purchased."
+msgstr ""
+
+#: includes/process/form-validation.php:329
+msgid "You cannot add the amount of &quot;%1$s&quot; because there is not enough stock (%2$s remaining)."
+msgstr ""
+
+#: includes/process/form-validation.php:352
+#: includes/process/form-validation.php:357
+msgid "The uploaded file exceeds the maximum upload limit"
+msgstr ""
+
+#: includes/process/form-validation.php:359
+msgid "The uploaded file error"
+msgstr ""
+
+#: includes/process/form-validation.php:364
+msgid "File exceeds maximum upload size limit of %s MB"
+msgstr ""
+
+#: includes/process/form-validation.php:370
+msgid "File is too small in size, Need %s MB or above"
+msgstr ""
+
+#: includes/process/form-validation.php:380
+msgid "The uploaded file type is not supported for field %s"
+msgstr ""
+
+#: includes/process/form-validation.php:384
+#: includes/process/form-validation.php:390
+msgid "The uploaded file type is not supported"
+msgstr ""
+
+#. translators: %s Product Name
+#: includes/process/process.php:68
+msgid ""
+"Addon options of product %s has been changed, Cannot proceed with older data. \r\n"
+"            You can go to product page and fill the addon fields again inorder to make new order"
+msgstr ""
+
+#: includes/process/process.php:119
+msgid "Please verify you are not a bot"
+msgstr ""
+
+#: includes/process/process.php:457
+#: includes/process/process.php:621
+msgid "File %s could not be uploaded."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "January"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "February"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "March"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "April"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "May"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "June"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "July"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "August"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "September"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "October"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "November"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "December"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "Sunday"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "Monday"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "Tuesday"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "Wednesday"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "Thursday"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "Friday"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/order.js:2
+msgid "Saturday"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/product.js:2
+msgid "Search"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure ?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Do you want to do this"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/product.js:2
+msgid "Cancel"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Submit"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "[Empty Title]"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No results found"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "There are no matching results found."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No forms in trash."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hey, Your trash is empty."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Back"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Create Your First Form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hey, You haven't created any forms yet, please create one"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No forms found"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You may deleted some forms from the previous page."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Delete form ?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to delete the form?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Yes"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to delete the form permanently?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Selected"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Restore"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Export"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Delete"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "ID"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "TITLE"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Actions"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Delete forms ?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to delete these forms permanently?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Language"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product Categories"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product Lists"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Status"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Author"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to delete these forms?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Categories"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Products"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Translations"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Forms Per Page"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Columns"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No File Chosen"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Import / Export Forms"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Export Forms"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Import Forms"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Import"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Your forms are exporting..."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Re-upload all images"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Note: External images will re-upload"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Trash"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hey there,"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Welcome to Custom Product Addon"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Export/Import"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Screen Options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable Weight"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Fixed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Multiply by value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Percentage of Product Weight"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom Formula"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Use Formula Templates"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Weight"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select Custom Formula"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Choose custom formula that is created from formula builder"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Different weight for each options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Same for all options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Weight options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Set weight for addon fields. It will not be visible in frontend. It can be used for shipping rate calculations"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable Price"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Percentage of Product Price"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Characters to exclude from length"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enter all characters to exclude for counting, use \\s for space, or enable regular expression from below and enter regex code"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Use Regular expression"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Regular expression can be used to exclude/include characters"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Price"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Use Price as Fee"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Price will be counting once per order irrespective of quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Use just for show"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "It can use just to show the price value, price will not count in total amount"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field Label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Cart/Order Label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "If you want different label for cart/order pages. Leave blank if you want to use same as field label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable/Disable Field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Is Field Required"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Element ID"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Unique ID for the field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field Placeholder"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field Description"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show help text as Tooltip"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field Default Value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field Name"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "* Name must be unique"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom CSS class"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Class will be applied to the parent DIV of the element"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Fee Label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Applicable in case it is fee type, Leave blank to use label itself"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable conditional logic"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable conditions"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide field in Cart & Checkout"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide field in Order detail"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide fields in"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation message can be managed from the Global settings page, Use this option only if you want to change a message specific to a field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field required  error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation message for required field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation message for invalid email"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation message for invalid url"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Different price for each options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Pricing options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Sync options with base language?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Set tooltip for each items"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable tooltip option for each items"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Set description for each items"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Description option for each items"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum options allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum options required"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable \"Other\""
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Let users to enter an unlisted option"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable clear selection"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show clear selection button after options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Other option text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label for item 'Other' in case you have enabled Other option"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable product image"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum fields error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{minfield} - To display minimum fields allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum fields error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxfield} - To display maximum fields allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Other field validation error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error displayed when other field checked and no other value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Quantity field validation error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error displayed when entering invalid quantity value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable manual input"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Will disable entering value manually"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum date"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable all days before this"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Max Date"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable all days after this"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum time"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable hours before this"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Max time"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable hours after this"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show datePicker inline"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "DatePicker will be visible always"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide input field for inline datepicker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Function must return a date object"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Date picker custom configurations - Advanced use only"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "For setting custom JavaScript code for each date config properties."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select days to disable in Date picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select days to enable in Date picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Set high priority for Enable/Disable"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Date format eg:(Y-m-d)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Default it will  take WordPress dateformat, Leave blank if you dont want to change the Date format"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Time format eg:(H:i)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Default it will  take WordPress time format, Leave Blank if you dont want to change the Date format"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "DateTime Format eg:(Y-m-d H:i)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Default it will  take WordPress date time format, Leave blank if you dont want to change the Date format"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Configuration (JSON format)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Wordpress SHORTCODE is also supported"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Display characters left message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Display characters left message against the field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Allowed Characters(Regex)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Use regular expression"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Allowed characters error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{characters} - To display errored characters"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Regex pattern for validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Eg. [0-9]{3}"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Pattern error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{pattern} - To display pattern"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Password"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Phone"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Max length"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Allow multiple emails"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "User can enter multiple emails comma separated"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum length error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxLength} - To display maximum length"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Min length"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum characters length user must enter. Though user can leave this field blank if you have not set this as required field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum length error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Characters left message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{charLeft} - To display characters left"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "(Leave blank for no limit)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "In Cart & Checkout"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "In Order detail"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "From email"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hides images"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Number increment step"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum value error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{minValue} - To display minimum value allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum value error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxValue} - To display maximum value allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Visible in Cart, Checkout & Order Detail"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show this in Cart, Checkout and Order Details pages"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Allow multiple selections"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Inline"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show field inline"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show as product image"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Image selected will be shown as product gallery image"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Image display size in pixel"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "(Leave blank or 0 to use default image size)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Zoom image on hover"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable Zoom Image in Mobile"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable zoom image for width less than 480px devices"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "All devices"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "In touch devices only"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Desktop only"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable popUp"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Squircle"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Square"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Circle"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Box display type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Tool tip text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Leave Blank if no tool tips to show"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Default (As per theme configuration)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Above"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Left"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Below"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select description position"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Setting 'Default' will take label position from  theme design"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select label position"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Basic file upload"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Basic with Ajax/Async upload"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Droppable upload"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select upload button type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Any Files"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Images"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Videos"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Documents"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Design Files"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Audio Files"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Archives"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select allowed file types"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Basic - browser default"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Advanced( with search )"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select dropdown type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom date picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select DatePicker type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Text content"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Rich text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select content type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Single date"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Multiple dates"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Date range"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select DatePicker mode"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Basic - Browser default"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom color picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select color picker type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select color format"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Sketch Picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Block Picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Chrome Picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Circle Picker (Inline)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Compact Picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Github Picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Twitter Picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select color picker mode"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enter color picker custom colors"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Follow this format: #417505, #BD10E0, #9013FE, #4A90E2"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable repeater field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "None"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Another field value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Bind Repeater with"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select \"None\" to show a repeater add/remove button"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field value must be numeric inorder to function this"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Repeater maximum limit"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Set the maximum number of times a field can be repeated."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Repeated Section name"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Leave blank to hide name for repeated section. You can use  following Tags {section_name} to show the same label as original field, and  {counter} for showing the count of the repeated field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Repeated field label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Leave blank to hide label for repeated field. You can use  following Tags, {field_label} to show the same label as original field, and  {counter} for showing the count of the repeated field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Repeater add button label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Leave blank for global value."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Repeater remove button label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show selected Option Label on top"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Height in PX"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Use this configuration only if you want to change styles specific to this field, for changing styles globally, use the design section on menu (Product Addons>>Designs)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable field specific styling"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label text color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Description text color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field label size (px)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Description size (px)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Toggle"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Button"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Check UI style"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Single Column"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "2 Column"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "3 Column"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "4 Column"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Fields alignment"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Set scroll bar for this options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Set scroll bar height in pixel(px)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable mapping field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkout field group"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Independent products"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable this to add the products to cart independently"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable quantity field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable this to display a quantity field. Default : 1"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum Quantity required"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Max Quantity required, leave blank if no limit"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum quantity error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "%s - To display minimum fields allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum quantity error message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "%s - To display maximum fields allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label for Quantity field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Leave Blank if no quantity label needed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "CheckBox value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "This value will be shown in cart and order details if customer has checked this"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Independent quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable this to add products to cart independent of base product quantity - Not supported for independent products in cart"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show product image"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show product image of options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable custom label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable this to add the custom name for the products."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable custom image"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Upload images for each options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Keep accordion opened initially"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Applicable only if accordion enabled"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Format for showing price in group field options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Use tag {price} for price. Leave blank to take this value from general settings."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Blank"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Fill color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You have to enable Show in checkout/Cart settings (in General tab) inorder to apply this price in cart as well."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Type 1"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Type 2"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Time picker style"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Time increment step (Minutes)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Supports with picker style Type 2"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show price against each fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Price Summary Section"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Total"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enter value to multiply"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Percentage"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "eg: ({value}>2?{value}*10:0), here value will be the value entered by customer"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Per Character"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Allow multiple URLs"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "User can enter multiple URLs comma separated"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum file size required(in MB) "
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "File extensions Supported"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Example: jpg,jpeg,png,gif (leave blank for using default wordpress types)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Multiple file upload"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable multiple file upload"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum file count - Multiple upload"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "(It will take as 10 if not set)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum file count - Multiple upload"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum Files Count Error Message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxfilecount} - To display maximum file count"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum Files Count Error Message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum File Size Error Message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxfilesize} - To display maximum file size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Minimum File Size Error Message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{minfilesize} - To display minimum file size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "File Extension Error Message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{fileextensions} - To display allowed extension"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom Time Picker"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Basic - Browser Default"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select Time Picker type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show google map"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show address fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "(City, State, Country, Postal code and so on)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show inline"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Display label and value inline"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Display statictext inline"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Total selected options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Sum of field values"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Total quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom formula"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select validation type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select fields to validate"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Write custom formula for validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Formula must return a numeric value to compare with the min and max value set for validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom formula accepted"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Rows Count"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable Different image for Product Gallery"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "set different image for product gallery image"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Image selection type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Color Item selection type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Display size in pixel"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Label inside field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Label inside of the color field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Adjust width based on label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Adjust width based on the label inside"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Text Mode"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Box"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Different Price for each options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Pricing Options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable Zoom Image in mobile"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable PopUp"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Outline"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Shadow"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Tick"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Tick with Shadow"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "General"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Pricing"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Advanced"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Conditional"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Repeater"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation Messages"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Design"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Mapping Fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Edit"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Remove"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "remove"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Warning"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Do not show confirm box again"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "External Field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Extra fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Attribute/Variations"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom Attributes"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product Quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Stock Status"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Stock Quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "WCPA Custom Fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product SKUs"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product List (IDs)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "User Role"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select Field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Relations"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "In Stock"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "On Backorder"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Choose Global Field Options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Choose Options Lists"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Global Option"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product ID"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Description text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add Global Option"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add new"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "For Global Field set price from Options List"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "For Global Field set weight from Options List"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "All Sections"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Default/First Section"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select Form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select Form Section"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select dates"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select Property"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select Property First"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Width"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Height"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Other Translations"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add New Translation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Translate this form in %s"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/product.js:2
+msgid "Proceed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You can create new post in default language only, You can translate it once created form in base language "
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Close"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "This action will reload this page, please save all changes if any changes made before proceeding."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Title"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select a field from the builder"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Section Name"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Section Title in Form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Section Title Tag"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Class Name"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Default (Based on Form Settings)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Section Total Price"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Standard"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Accordion"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Layout"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You can use custom formula for binding to quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "If you want to bind a field with quantity, You can use"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You can copy this data to export the form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Products which belongs to Form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No products found"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Assign form to products"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Save"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You can manage forms assigned to products from product edit page as well, and also can re-order forms"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form will be assigned to products under this selected categories"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Refresh"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Use Global Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom Formulas"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "New Formula"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add New"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Do you want to delete ?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Do you want to delete the formula?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add Condition"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Condition"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Else Condition"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Else Condition?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Else"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Builder View"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Json Editor"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Done"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Conditional Formula"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Convert to general formula ?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to convert existing conditional formula to general formula?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Constants/Variables"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Formulas"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Advanced Formula Builder"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Export form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Your form is exporting..."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Export form ?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to export this form?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Note: All unsaved changes will be lost."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Name must be unique"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Maximum value must be greater than or equal to Minimum value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form is loading..."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Build New Form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Drag and drop elements to create form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add new form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Formula builder"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Save changes"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You can translate translatable fields like Labels, descriptions, values from this language.You can make changes in the based language "
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Save Changes"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Info"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Copied!"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select JSON"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select file"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide options price ( applicable for fields having options)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Product Price"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Options Price"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Fee ( if fee has set)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Discount ( if fee has set discount)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Addon data"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show in Cart"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show in Checkout"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show in Order"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show or Hide Price In"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add in Order Meta( Price will be saved along with order meta, Third party plugins will be using this data)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide Zero Price"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide Zero In option prices"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide Zero in cart"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Discounted Price (For discount Plugins)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show discounted price for addon fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show original price strike in field prices"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show original price strike in summary price "
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show original price strike in total price"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Total Price"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Display Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Price Summary Section Labels"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Options Price Label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product Price Label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Total Label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Summary Section Title"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Discount Label"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Use {sign} to add + sign for positive prices"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add to Cart button text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add to cart button text in archive/product listing page in case product has additional fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product Price prefix"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Set a prefix text before the price in archive and product page. Leave blank if no prefix needed. eg: 'Starting at'"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "File Upload Button Text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Change default file upload field button text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Upload field selected files count"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Place holder when custom selected multiple files for upload"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Droppable Field Description"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Change default droppable file upload description text- Use {action} to insert action in between"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Droppable File Upload Action Text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Change default droppable file upload clickable text - {action}"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Droppable File place holder"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Set default droppable file upload placeholder text, This can be managed from individual upload fields as well"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Other Strings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "\"Other\" option in  a radio/checkbox group to select if no valid options provided"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "\"Clear Selection\" text for radio/checkbox fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Repeater add Button Text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Repeater remove Button Text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Google Place Selector Fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label for \"Street Address\" field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label for \"City\" field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label for \"State\" field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label for \"Zip Code\" field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label for \"Country\" field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label for \"Latitude\" field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label for \"Longitude\" field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Content Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error Messages for field Validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Message to show when Form validation fails"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Required field message"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on allowed characters validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{characters} - Display characters not allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on pattern validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on minimum length validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{minLength} - To display minimum length allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on maximum length validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxLength} - To display maximum length allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on minimum value validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on maximum value validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on minimum fields validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{minOptions} - To display minimum fields allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on maximum fields validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxOptions} - To display maximum fields allowed"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on maximum files count validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxFileCount} - To display maximum file count"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on minimum files count validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{minFileCount} - To display minimum file count"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on maximum file size validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxFileSize} - To display maximum file size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on minimum file size validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{minFileSize} - To display minimum file size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on file extension support validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Message when trying to submit cart while files are being uploaded"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on quantity validation error"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error on other value validation error"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Message for characters left"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{charLeft} - To display characters left count"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation message for invalid URL"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation message for field minimum quantity error"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{minQuantity} - To display minimum quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation message for field maximum quantity error"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "{maxQuantity} - To display maximum quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation message for minimum value error in Group Validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation message for maximum value error in Group Validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Message to tick Captcha field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Validation Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Plugin License"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "License Status"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Active"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Inactive"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "License Key"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "De Activate"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Activate"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Key"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Active URL"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Key Expires On"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product Custom Fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom Field Slug"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Default Value"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide empty fields in cart"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hide empty fields in cart, checkout and order"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Update summary price as quantity change"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "In price summary section, price will be updated as quantity change"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable scrolling to error field on validation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You can disable scrolling behaviour of page on form validation."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable cart edit"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable the edit options button for items on the cart page"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable ajax add to cart in product detail page"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Additional class for add to cart button in archieve page"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Override cart meta template"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Override template in cart and checkout"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Update top product price as price changes"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Always use non-native date picker in mobile"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Product gallery image update preference"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "If have configured product gallery image for multiple fields, Gallery image can be image configured for last field or last updated field"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Accordion Open/Close status on page load"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Append forms assigned by category at"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Append forms assigned by category at end or start of directly assigned forms. Also it can adjust individual product level as well"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Google ReCaptcha settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "reCAPTCHA Version:"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "reCAPTCHA Site Key:"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "reCAPTCHA Secret Key:"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable Captcha for all forms"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You can enable Captcha based on forms from Form settings, If you enable captcha for all forms, It will show captcha for all forms irrespective of the individual form settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Google Map APi Keys"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Google Map API Key:"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Don't forget to restrict the API key by site domains."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "If you need to use Google Maps in your forms, you have to paste Google Map API Key here."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Google Map Place Selector Country Restriction:"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Provide Country ISO (2 letter) code for Countries comma separated. Leave Blank for no retstrictions"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Plugin Init Triggers"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Plugin Init Triggers:"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Javascript event triggers to render product addon fields (useful for QuickView plugins). add multiple triggers separated by comma"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "We have added popular quick view plugins triggers out of the box, If any missing, you can add it here manually "
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Other Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Upload Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom File Extension Support"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Choose to Enable the Extensions"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add Custom Extensions"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom Extension"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "MiME Type"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Consider Fee once in an order"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "disabled"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "As default addon price set as fee will be calculated once irrespective of product quantity. But will be counted as multiple if the same Fee has applied for other products in the same order. If you enabled this, it will be applied the fee once per order "
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show Fee in Sub Total displaying section"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "enabled"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Apply coupon discount also for the Fee"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Show options price multiplied by quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Each field price will be shown multiplied by product quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Disable applying discounts for form fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable this to avoid applying the discount for product form fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "De-Selectable image/color/toggle groups (radio type)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Tick  this for enabling color and image group radio(single) selection un-selectable"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enqueue scripts on all pages"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Load js/css files on shop listing pages as well, other than product detail page.It is must to load scripts on archive pages if the product has quick view feature inorder to render product addon fields on popups"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Responsive form layout"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Enable layout responsive for smaller screens. It will show half width fields to full (100%) in small screens"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Tax for addon (Experimental feature)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Applicable only if tax is enabled"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Same as product tax"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No tax for addon"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form Render Hooks Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form Render Hook (All product Type)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Before Add to Cart Button"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "After Add to Cart Button"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Before Add to Cart Quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "After Add to Cart Quantity"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form Render Hook Priority:"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form Render Hook  (Variable Products)"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Before Variation Form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "After Variation Form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Advanced Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Default:"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Import/Export Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Export Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Import Settings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "List of all forms created"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Content/Strings"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+#: assets/js/backend/product.js:2
+msgid "Custom fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "License Activation"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Import / Export"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form Preview"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label position"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Description position"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom Type #1"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Custom Type #2"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Browser Default"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Upload field style"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "+/- Buttons"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field quantity input style"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label width when Label/Description position is left side"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field label size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field description size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error messages text size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Label font weight"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Description font weight"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field border size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field border radius"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Input field height"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkbox/Radio label size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkbox/Radio border width"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkbox/Radio width"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkbox/Radio height"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkbox border radius"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Check button border width"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Check button border radius"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Section title size"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field quantity field width"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field quantity field radius"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field label color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field desc color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkbox/Radio label color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Error messages color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field border color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Input field background color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field border color on focus"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Input field text color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkbox border color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkbox selected bg color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Checkbox tick color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Radio border color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Radio selected bg color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Radio selected border color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Button color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Button text color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Separation line colors"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Image selection outline"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Image tick selection background"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Image tick selection color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Image tick selection border"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Image selection shadow"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Popup magnifier icon bg"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Popup magnifier icon color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Popup magnifier icon border"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Check button color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Check button border color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Check button selected border color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Toggle background"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Toggle checked background"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Toggle circle color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Section title color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Section title background"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field quantity +/- button BG"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field quantity +/- button BG on hover"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Field quantity +/- button text"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Common configurations"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Styles configurations"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select form style"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Color themes"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Select form color theme"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Reset to default"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "This will reset the styles and colors with default values"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "The look and feel of the form"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Form Appearance"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "of"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No options list in trash."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Create your first options list"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Hey, You haven't created any options list yet, please create one"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add new options list"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No options lists found"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You may deleted some options list from the previous page."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Delete options list ?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to delete the options list ?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to delete the options list permanently?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to delete these options list permanently?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Are you sure do you want to delete these options list ?"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Options Per Page"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "No file chosen"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Choose file"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Import / Export Options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Export Options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Import Options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Your options are exporting..."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "You can create options list here and can be use it in your form fields"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add new option"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Tooltip"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Description"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Image"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Color"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "All unsaved changes will be lost."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Remove Existing Options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Edit group"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "This action will reload this page, Please save all changes if any made before proceeding."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Group-"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Required"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Values should be unique"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Options List is loading..."
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Build New Options List,"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Edit Options List,"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Drag and drop elements to create options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Import/Export Options"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Publish"
+msgstr ""
+
+#: assets/js/backend/main.js:2
+msgid "Add New Group"
+msgstr ""
+
+#: assets/js/backend/order.js:2
+msgid "No options selected"
+msgstr ""
+
+#: assets/js/backend/order.js:2
+msgid "No file"
+msgstr ""
+
+#: assets/js/backend/order.js:2
+msgid "to"
+msgstr ""
+
+#: assets/js/backend/order.js:2
+msgid "Addon fields"
+msgstr ""
+
+#: assets/js/backend/order.js:2
+msgid "Edit options"
+msgstr ""
+
+#: assets/js/backend/product.js:2
+msgid "Configurations"
+msgstr ""
+
+#: assets/js/backend/product.js:2
+msgid "Enter value"
+msgstr ""

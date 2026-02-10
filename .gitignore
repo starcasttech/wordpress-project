@@ -31,7 +31,6 @@ wp-config-local.php
 # Docker configuration (local dev only)
 docker-compose.yml
 docker-compose.override.yml
-Dockerfile
 .dockerignore
 
 # Docker volumes and data

@@ -52,3 +52,16 @@ Store per-user billing/package in user meta:
 3. Create page “Customer Dashboard” with shortcode:
    - `[starcast_customer_dashboard]`
 4. Customer logs in and sees package + billing summary
+
+## Test run (2026-03-03)
+- Created test customer user:
+  - username: `dashboardtest`
+  - user id: `20`
+- Allocated package + billing test values to user meta.
+- Verified dashboard render through plugin runtime call (`dashboard_content()`):
+  - Result: `OK` (dashboard HTML rendered)
+  - Confirmed billing section contains "Current Balance".
+
+### Notes
+- Existing production plugin `wp-content/plugins/starcast-customer-dashboard.php` is active and drives WooCommerce My Account dashboard endpoints.
+- New scaffold plugin folder exists but is currently inactive to avoid conflict.

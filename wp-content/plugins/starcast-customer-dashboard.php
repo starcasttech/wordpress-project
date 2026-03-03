@@ -80,6 +80,7 @@ class Starcast_Customer_Dashboard {
         unset($items['edit-account']);
         unset($items['orders']);
         unset($items['downloads']);
+        unset($items['subscriptions']);
 
         // Add custom items
         $new_items = array(

@@ -1,0 +1,47 @@
+.scd-dashboard {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+}
+
+.scd-dashboard h2 {
+  margin-bottom: 1rem;
+}
+
+.scd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.scd-card {
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+.scd-card h3 {
+  margin-top: 0;
+  margin-bottom: .8rem;
+}
+
+.scd-status {
+  display: inline-block;
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.scd-status-active { background: #e6f7ec; color: #127a3f; }
+.scd-status-pending { background: #fff4d8; color: #8a5a00; }
+.scd-status-suspended { background: #ffe4e4; color: #a30f0f; }
+.scd-status-cancelled { background: #f1f1f1; color: #444; }
+
+.scd-login-required {
+  padding: 1rem;
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  background: #fafafa;
+}

@@ -81,6 +81,7 @@ class Starcast_Customer_Dashboard {
         unset($items['orders']);
         unset($items['downloads']);
         unset($items['subscriptions']);
+        unset($items['wps_subscriptions']);
 
         // Add custom items
         $new_items = array(

@@ -49,9 +49,11 @@ class Starcast_Customer_Dashboard {
         // Enqueue styles
         add_action('wp_enqueue_scripts', array($this, 'enqueue_styles'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_header_nav_styles'), 20);
+        add_action('wp_footer', array($this, 'force_hide_account_hero'), 100);
 
         // Login page styling
         add_action('login_enqueue_scripts', array($this, 'enqueue_login_styles'));
+        add_action('login_head', array($this, 'print_login_layout_overrides'), 100);
 
         // Hide Shop page from frontend menus
         add_filter('wp_nav_menu_objects', array($this, 'filter_shop_menu_item'), 10, 2);
@@ -73,10 +75,12 @@ class Starcast_Customer_Dashboard {
     }
     
     public function add_menu_items($items) {
-        // Remove default dashboard and edit-account
+        // Remove default/unused WooCommerce items for cleaner ISP dashboard
         unset($items['dashboard']);
         unset($items['edit-account']);
-        
+        unset($items['orders']);
+        unset($items['downloads']);
+
         // Add custom items
         $new_items = array(
             'dashboard' => __('Dashboard', 'starcast-customer-dashboard'),
@@ -85,10 +89,10 @@ class Starcast_Customer_Dashboard {
             'account-details' => __('Account Details', 'starcast-customer-dashboard'),
             'support' => __('Support', 'starcast-customer-dashboard'),
         );
-        
+
         // Insert custom items at the beginning
         $items = array_merge($new_items, $items);
-        
+
         return $items;
     }
     
@@ -699,10 +703,61 @@ class Starcast_Customer_Dashboard {
         wp_add_inline_style('starcast-header-nav-ui', $this->get_header_nav_css());
     }
 
+    public function force_hide_account_hero() {
+        if (!function_exists('is_account_page') || !is_account_page()) {
+            return;
+        }
+        echo "<script>
+        (function() {
+            var hero = document.querySelector('section.entry-hero.page-hero-section');
+            if (hero) {
+                hero.remove();
+            }
+        })();
+        </script>";
+    }
+
     public function enqueue_login_styles() {
         wp_register_style('starcast-login-ui', false);
         wp_enqueue_style('starcast-login-ui');
         wp_add_inline_style('starcast-login-ui', $this->get_login_css());
+    }
+
+    public function print_login_layout_overrides() {
+        echo "<style id='starcast-login-layout-overrides'>
+        body.login {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 100vh !important;
+            padding: 24px 16px !important;
+        }
+
+        body.login #login {
+            width: min(320px, calc(100vw - 40px)) !important;
+            max-width: 320px !important;
+            margin: 0 auto !important;
+            padding: 12px 0 0 !important;
+        }
+
+        body.login .login form {
+            border-radius: 24px !important;
+            padding: 20px 18px 14px !important;
+            overflow: hidden !important;
+        }
+
+        body.login .login form .input,
+        body.login .login input[type='text'],
+        body.login .login input[type='password'] {
+            border-radius: 14px !important;
+        }
+
+        @media (max-width: 480px) {
+            body.login #login {
+                width: calc(100vw - 28px) !important;
+            }
+        }
+        </style>";
     }
 
     public function filter_shop_menu_item($items, $args) {
@@ -749,12 +804,80 @@ class Starcast_Customer_Dashboard {
             background: radial-gradient(1200px 800px at 15% -10%, #f2f7ff 0%, #f8f4ff 35%, #ffffff 70%);
         }
 
+        .woocommerce-account .entry-hero-section {
+            display: none !important;
+        }
+
         .woocommerce-account .woocommerce {
             max-width: 1100px;
             margin: 0 auto;
             padding: 32px 20px 60px;
             font-family: 'IBM Plex Sans', sans-serif;
             color: var(--starcast-ink);
+        }
+
+        .woocommerce-account:not(.logged-in) .entry-content .woocommerce {
+            max-width: 420px;
+            margin: 12px auto 24px;
+            padding: 22px 20px 18px;
+            background: var(--starcast-surface);
+            border: 1px solid #1f2937;
+            border-radius: 24px;
+            box-shadow: var(--starcast-shadow);
+        }
+
+        .woocommerce-account:not(.logged-in) #inner-wrap {
+            min-height: calc(100vh - 220px);
+            display: flex;
+            align-items: center;
+            padding-top: 28px;
+        }
+
+        .woocommerce-account:not(.logged-in) #primary,
+        .woocommerce-account:not(.logged-in) #primary .content-container,
+        .woocommerce-account:not(.logged-in) #primary #main,
+        .woocommerce-account:not(.logged-in) #primary .content-wrap,
+        .woocommerce-account:not(.logged-in) #primary .entry-content-wrap,
+        .woocommerce-account:not(.logged-in) #primary .entry-content {
+            width: 100%;
+        }
+
+        .woocommerce-account:not(.logged-in) .entry-content .woocommerce > h2 {
+            text-align: center;
+            margin: 0 0 12px;
+        }
+
+        .woocommerce-account:not(.logged-in) .woocommerce-form-login {
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .woocommerce-account:not(.logged-in) .woocommerce-form-login .form-row {
+            margin-bottom: 12px;
+        }
+
+        .woocommerce-account:not(.logged-in) .woocommerce-form-login .input-text,
+        .woocommerce-account:not(.logged-in) .woocommerce-form-login input[type='text'],
+        .woocommerce-account:not(.logged-in) .woocommerce-form-login input[type='password'],
+        .woocommerce-account:not(.logged-in) .woocommerce-form-login input[type='email'] {
+            width: 100%;
+            border: 1px solid #111827;
+            border-radius: 14px;
+            padding: 12px 14px;
+        }
+
+        .woocommerce-account:not(.logged-in) .woocommerce-form-login__submit {
+            width: 100%;
+            border-radius: 14px;
+            margin-top: 8px;
+        }
+
+        .woocommerce-account:not(.logged-in) .lost_password {
+            text-align: center;
+            margin-bottom: 0;
         }
 
         .woocommerce-account .woocommerce-MyAccount-navigation {
@@ -1073,6 +1196,17 @@ class Starcast_Customer_Dashboard {
             .woocommerce-account .woocommerce-MyAccount-navigation {
                 margin-bottom: 18px;
             }
+
+            .woocommerce-account:not(.logged-in) .entry-content .woocommerce {
+                max-width: 100%;
+                margin: 10px auto 20px;
+                border-radius: 20px;
+            }
+
+            .woocommerce-account:not(.logged-in) #inner-wrap {
+                min-height: auto;
+                display: block;
+            }
         }
         ";
     }
@@ -1182,6 +1316,10 @@ class Starcast_Customer_Dashboard {
     private function get_header_nav_css() {
         return "
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+        .entry-hero.page-hero-section {
+            display: none !important;
+        }
 
         .kadence-header .main-navigation a,
         .kadence-header .primary-menu a,

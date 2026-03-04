@@ -190,7 +190,7 @@
     }
 
     .lte-package-page .provider-logo-area {
-        height: 100px;
+        height: 120px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -202,6 +202,11 @@
         max-width: 200px;
         max-height: 90px;
         object-fit: contain;
+    }
+
+    .lte-package-page .provider-logo-main[alt="vodacom" i] {
+        max-width: 240px;
+        max-height: 120px;
     }
     
     .lte-package-page .provider-name-main {

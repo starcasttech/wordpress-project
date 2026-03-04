@@ -252,12 +252,12 @@
     
     .package-dropdown {
         width: 100%;
-        padding: 12px 12px;
+        padding: 10px 36px 10px 12px;
         border: 1px solid #000000;
         border-radius: 8px;
         background: #ffffff;
         font-family: inherit;
-        font-size: 1.1rem;
+        font-size: 0.88rem;
         font-weight: 500;
         color: #2d2823;
         cursor: pointer;

@@ -30,13 +30,6 @@
                 </div>
             </div>
             <div class="checkbox-option">
-                <input type="radio" name="router-choice" id="router-refurbished" value="refurbished">
-                <div class="router-option-content">
-                    <label for="router-refurbished">Refurbished Router R749</label>
-                    <div class="router-model">Any available router will be provided</div>
-                </div>
-            </div>
-            <div class="checkbox-option">
                 <input type="radio" name="router-choice" id="router-own" value="own">
                 <label for="router-own">Use My Own Router</label>
             </div>
@@ -65,7 +58,7 @@
     
     body {
         font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #f0ebe3 0%, #e8dfd5 30%, #ede4d8 70%, #f0ebe3 100%);
+        background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 30%, #f0f4fb 70%, #f8f9fa 100%);
         background-attachment: fixed;
         color: #2d2823;
         line-height: 1.4;
@@ -230,7 +223,7 @@
     .continue-btn {
         width: 100%;
         padding: 14px;
-        background: #d67d3e;
+        background: #00b4cc;
         color: white;
         border: none;
         border-radius: 8px;
@@ -242,7 +235,7 @@
     }
     
     .continue-btn:hover:not(:disabled) {
-        background: #c56d31;
+        background: #0094a8;
     }
     
     .continue-btn:disabled {
@@ -255,9 +248,9 @@
         color: #2d2823;
         text-align: left;
         padding: 16px;
-        background: rgba(214, 125, 62, 0.1);
+        background: rgba(0, 180, 204, 0.1);
         border-radius: 6px;
-        border: 1px solid rgba(214, 125, 62, 0.3);
+        border: 1px solid rgba(0, 180, 204, 0.3);
     }
     
     .note-item {
@@ -307,11 +300,28 @@ document.addEventListener('DOMContentLoaded', () => {
             'ZTE MF286A', 'ZTE MF286C', 'ZTE MF296D', 'ZTE MF297D',
             'TP-Link Archer MR600', 'TP-Link Archer MR400', 'TP-Link TL-MR6400'
         ],
+        'mtn-5g': [
+            'BROVI 5G CPE 5 (H155-381)', 'BROVI 5G H155-382', 'BROVI 5G H352-381',
+            'Huawei 5G CPE PRO 2', 'Huawei 5G-SIC-100',
+            'Nokia FastMile 5G Gateway 3.2',
+            'TOZED ZLT X100 PRO', 'TOZED ZLT X20',
+            'TP-Link NX510v 5G',
+            'ZTE 5G CPE MC801A', 'ZTE G5B', 'ZTE G5C', 'ZTE G5TS',
+            'ZTE MC888 5G', 'ZTE MC888D 5G', 'ZTE MC889 5G'
+        ],
+        'vodacom-5g': [
+            'Huawei 5G CPE PRO 2',
+            'Nokia FastMile 5G Gateway 3.2',
+            'ZTE 5G CPE MC801A',
+            'ZTE 5G CPE G5TS'
+        ],
         '5g': [
-            'Huawei 5G CPE PRO 2', 'Huawei 4G Router 3 Pro',
-            'ZTE 5G CPE MC801A', 'ZTE 5G CPE MC888D', 'ZTE 5G MC888',
-            'TP-Link NX510v (5G AX3000)', 'Nokia FastMile 5G Gateway 3.2',
-            'Brovi 5G CPE 5 H155-381'
+            'Huawei 5G CPE PRO 2', 'Huawei 5G-SIC-100',
+            'Nokia FastMile 5G Gateway 3.2',
+            'BROVI 5G CPE 5 (H155-381)', 'BROVI 5G H155-382', 'BROVI 5G H352-381',
+            'ZTE 5G CPE MC801A', 'ZTE G5B', 'ZTE G5C', 'ZTE G5TS',
+            'ZTE MC888 5G', 'ZTE MC888D 5G', 'ZTE MC889 5G',
+            'TP-Link NX510v 5G', 'TOZED ZLT X100 PRO', 'TOZED ZLT X20'
         ],
         'mobile-data': [
             'Any mobile device', 'Smartphone', 'Tablet', 'Mobile hotspot device',
@@ -322,11 +332,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Determine package type from package data
     function getPackageType(packageData) {
         if (!packageData || !packageData.name) return 'fixed-lte';
-        
+
         const name = packageData.name.toLowerCase();
         const type = packageData.type ? packageData.type.toLowerCase() : '';
-        
-        if (name.includes('5g') || type === 'fixed-5g') return '5g';
+        const provider = packageData.provider ? packageData.provider.toLowerCase() : '';
+
+        if (name.includes('5g') || type === 'fixed-5g') {
+            if (provider.includes('mtn')) return 'mtn-5g';
+            if (provider.includes('vodacom')) return 'vodacom-5g';
+            return '5g';
+        }
         if (name.includes('mobile') || type === 'mobile-data') return 'mobile-data';
         return 'fixed-lte';
     }
@@ -340,7 +355,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update package type display
         const typeNames = {
             'fixed-lte': 'Fixed LTE/4G Packages',
-            '5g': '5G Packages', 
+            'mtn-5g': 'MTN 5G Packages',
+            'vodacom-5g': 'Vodacom 5G Packages',
+            '5g': '5G Packages',
             'mobile-data': 'Mobile Data Packages'
         };
         packageTypeDisplay.textContent = typeNames[packageType] || 'Your Package';
@@ -380,7 +397,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Define router data
                 const routerOptions = {
                     'new': { price: 1599, description: 'New Router' },
-                    'refurbished': { price: 749, description: 'Refurbished Router' },
                     'own': { price: 0, description: 'Own Compatible Router' }
                 };
                 

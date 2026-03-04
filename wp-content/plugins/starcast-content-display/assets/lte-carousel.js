@@ -28,178 +28,183 @@
       }
       return '';
     }
-    
+
     // Handle empty providers case
     if (!providers || providers.length === 0) {
-      packageDisplay.innerHTML = '<div class="no-packages">No providers available at the moment.</div>';
+      packageDisplay.textContent = 'No providers available at the moment.';
       return;
     }
-    
+
+    // Build package info panel as a DOM element (safe, no innerHTML for dynamic data)
+    function buildPackageInfoEl(pkg) {
+      const panel = document.createElement('div');
+      panel.className = 'pkg-info-panel';
+
+      const rows = [
+        { label: 'Data',          value: pkg.data    || '' },
+        { label: 'Speed',         value: pkg.speed   ? (pkg.speed + (String(pkg.speed).toLowerCase().includes('mbps') ? '' : ' Mbps')) : '' },
+        { label: 'AUP',           value: pkg.aup     || '', extraClass: 'pkg-info-aup' },
+        { label: 'Speed after AUP', value: pkg.throttle || '' },
+      ];
+
+      rows.forEach(function(row) {
+        if (!row.value) return;
+        const rowEl = document.createElement('div');
+        rowEl.className = 'pkg-info-row' + (row.extraClass ? ' ' + row.extraClass : '');
+
+        const labelEl = document.createElement('span');
+        labelEl.className = 'pkg-info-label';
+        labelEl.textContent = row.label;
+
+        const valueEl = document.createElement('span');
+        valueEl.className = 'pkg-info-value';
+        valueEl.textContent = row.value;
+
+        rowEl.appendChild(labelEl);
+        rowEl.appendChild(valueEl);
+        panel.appendChild(rowEl);
+      });
+
+      return panel;
+    }
+
     // Create all provider cards
     function createAllProviderCards() {
-      packageDisplay.innerHTML = '';
-      
+      packageDisplay.textContent = '';
+
       providers.forEach((provider, providerIndex) => {
-        const packages = provider?.packages || [];
-        
-        if (!packages.length) {
-          return; // Skip providers with no packages
-        }
-        
-        // Sort packages by priority: Fixed, Uncapped, 5G, Mobile, then others
-        const sortedPackages = [...packages].sort((a, b) => {
-          function getTypePriority(pkg) {
-            const name = pkg.name.toLowerCase();
-            const type = pkg.type ? pkg.type.toLowerCase() : '';
-            
-            // Remove provider name from beginning to get actual package type
-            const cleanName = name
-              .replace(/^(vodacom|mtn|telkom)\s+/i, '') // Remove provider prefix
-              .trim();
-            
-            // Priority 1: Fixed packages (highest priority)
-            if (cleanName.includes('fixed') || name.includes('fixed')) return 1;
-            
-            // Priority 2: Uncapped packages  
-            if (cleanName.includes('uncapped') || name.includes('uncapped') || 
-                pkg.data?.toLowerCase().includes('uncapped')) return 2;
-            
-            // Priority 3: 5G packages
-            if (cleanName.includes('5g') || name.includes('5g') || type === 'fixed-5g') return 3;
-            
-            // Priority 4: Mobile packages
-            if (cleanName.includes('mobile') || name.includes('mobile') || type === 'mobile-data') return 4;
-            
-            // Priority 5: Everything else (LTE, data packages, etc.)
+        const packages = provider && provider.packages ? provider.packages : [];
+
+        if (!packages.length) return;
+
+        // Sort: Fixed first, then Uncapped, 5G, Mobile, others — then by price
+        const sortedPackages = packages.slice().sort(function(a, b) {
+          function priority(pkg) {
+            const n = pkg.name.toLowerCase().replace(/^(vodacom|mtn|telkom)\s+/i, '').trim();
+            if (n.includes('fixed'))    return 1;
+            if (n.includes('uncapped') || (pkg.data && pkg.data.toLowerCase().includes('uncapped'))) return 2;
+            if (n.includes('5g'))       return 3;
+            if (n.includes('mobile'))   return 4;
             return 5;
           }
-          
-          const aPriority = getTypePriority(a);
-          const bPriority = getTypePriority(b);
-          
-          // Sort by priority first, then by price within same priority
-          if (aPriority !== bPriority) return aPriority - bPriority;
-          return a.price - b.price;
+          const pa = priority(a), pb = priority(b);
+          return pa !== pb ? pa - pb : a.price - b.price;
         });
+
         let selectedPackage = sortedPackages[0];
-        
-        const providerName = escapeHtml(provider.name || '');
+        const providerName = provider.name || '';
         const providerLogo = sanitizeUrl(provider.logo || '');
 
         const providerCard = document.createElement('div');
         providerCard.className = 'provider-package-card';
         providerCard.dataset.providerIndex = providerIndex;
-        
-        // Create package details HTML
-        let packageDetailsHTML = '';
-        if (selectedPackage.speed && selectedPackage.speed !== '') {
-          const speedValue = escapeHtml(selectedPackage.speed);
-          packageDetailsHTML += `<div class="detail-item"><span class="detail-label">Speed:</span><span class="detail-value">${speedValue}${speedValue.includes('Mbps') ? '' : 'Mbps'}</span></div>`;
+
+        // --- Logo / provider name ---
+        const nameDiv = document.createElement('div');
+        nameDiv.className = 'provider-name-main';
+        nameDiv.textContent = providerName;
+
+        const logoArea = document.createElement('div');
+        logoArea.className = 'provider-logo-area';
+
+        if (providerLogo) {
+          const img = document.createElement('img');
+          img.src = providerLogo;
+          img.alt = providerName;
+          img.className = 'provider-logo-main';
+          img.onerror = function() {
+            this.style.display = 'none';
+            logoArea.appendChild(nameDiv);
+          };
+          logoArea.appendChild(img);
+        } else {
+          logoArea.appendChild(nameDiv);
         }
-        if (selectedPackage.data && selectedPackage.data !== '') {
-          let dataValue = String(selectedPackage.data).replace(/unlimited/gi, 'Uncapped').replace(/Unlimited/g, 'Uncapped');
-          dataValue = escapeHtml(dataValue);
-          packageDetailsHTML += `<div class="detail-item"><span class="detail-label">Data:</span><span class="detail-value">${dataValue}</span></div>`;
-        }
-        if (selectedPackage.aup && selectedPackage.aup !== '') {
-          const aupValue = escapeHtml(selectedPackage.aup);
-          packageDetailsHTML += `<div class="detail-item"><span class="detail-label">FUP:</span><span class="detail-value">${aupValue}${aupValue.includes('GB') ? '' : 'GB'}</span></div>`;
-        }
-        if (selectedPackage.throttle && selectedPackage.throttle !== '') {
-          const throttleValue = escapeHtml(selectedPackage.throttle);
-          packageDetailsHTML += `<div class="detail-item"><span class="detail-label">Throttle:</span><span class="detail-value">${throttleValue}</span></div>`;
-        }
-        
-        providerCard.innerHTML = `
-          ${providerLogo ? `<img src="${providerLogo}" alt="${providerName}" class="provider-logo-main">` : `<div class="provider-name-main">${providerName}</div>`}
-          
-          <div class="package-name-display">${escapeHtml(selectedPackage.name || '')}</div>
-          
-          <div class="price-display">
-            <span class="price-main">R${escapeHtml(selectedPackage.price)}</span>
-            <span class="price-period">pm</span>
-          </div>
-          
-          <div class="package-selector">
-            <select class="package-dropdown">
-              ${sortedPackages.map(pkg => `
-                <option value="${escapeHtml(pkg.id)}" data-name="${escapeHtml(pkg.name)}" data-price="${escapeHtml(pkg.price)}" data-speed="${escapeHtml(pkg.speed)}" data-data="${escapeHtml(pkg.data)}" data-aup="${escapeHtml(pkg.aup)}" data-throttle="${escapeHtml(pkg.throttle)}">
-                  ${escapeHtml(pkg.name)}
-                </option>
-              `).join('')}
-            </select>
-          </div>
-          
-          <div class="feature-checklist">
-            <div class="feature-item">
-              <div class="feature-checkmark"></div>
-              <div class="feature-text">Same day activation</div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-checkmark"></div>
-              <div class="feature-text">Free router delivery</div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-checkmark"></div>
-              <div class="feature-text">Choose between new or used router</div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-checkmark"></div>
-              <div class="feature-text">New Router R1599</div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-checkmark"></div>
-              <div class="feature-text">Refurbished router R749</div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-checkmark"></div>
-              <div class="feature-text">Order processing fee R249</div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-checkmark"></div>
-              <div class="feature-text">Pro rata rates apply</div>
-            </div>
-          </div>
-          
-          <button class="check-availability-btn">Sign Up</button>
-        `;
-        
+        providerCard.appendChild(logoArea);
+
+        // --- Package name ---
+        const packageNameEl = document.createElement('div');
+        packageNameEl.className = 'package-name-display';
+        packageNameEl.textContent = selectedPackage.name || '';
+        providerCard.appendChild(packageNameEl);
+
+        // --- Price ---
+        const priceDisplay = document.createElement('div');
+        priceDisplay.className = 'price-display';
+        const priceMain = document.createElement('span');
+        priceMain.className = 'price-main';
+        priceMain.textContent = 'R' + (selectedPackage.price || '0');
+        const pricePeriod = document.createElement('span');
+        pricePeriod.className = 'price-period';
+        pricePeriod.textContent = 'pm';
+        priceDisplay.appendChild(priceMain);
+        priceDisplay.appendChild(pricePeriod);
+        providerCard.appendChild(priceDisplay);
+
+        // --- Dropdown ---
+        const packageSelector = document.createElement('div');
+        packageSelector.className = 'package-selector';
+        const dropdown = document.createElement('select');
+        dropdown.className = 'package-dropdown';
+        sortedPackages.forEach(function(pkg) {
+          const opt = document.createElement('option');
+          opt.value = pkg.id;
+          opt.dataset.name     = pkg.name;
+          opt.dataset.price    = pkg.price;
+          opt.dataset.speed    = pkg.speed    || '';
+          opt.dataset.data     = pkg.data     || '';
+          opt.dataset.aup      = pkg.aup      || '';
+          opt.dataset.throttle = pkg.throttle || '';
+          opt.textContent = pkg.name;
+          dropdown.appendChild(opt);
+        });
+        packageSelector.appendChild(dropdown);
+        providerCard.appendChild(packageSelector);
+
+        // --- Package info panel (dynamic) ---
+        const infoContainer = document.createElement('div');
+        infoContainer.className = 'pkg-info-container';
+        infoContainer.appendChild(buildPackageInfoEl(selectedPackage));
+        providerCard.appendChild(infoContainer);
+
+        // --- Sign Up button ---
+        const signUpBtn = document.createElement('button');
+        signUpBtn.className = 'check-availability-btn';
+        signUpBtn.textContent = 'Sign Up';
+        providerCard.appendChild(signUpBtn);
+
         packageDisplay.appendChild(providerCard);
-        
-        // Add dropdown change handler for this specific card
-        const dropdown = providerCard.querySelector('.package-dropdown');
+
+        // Dropdown change: update name, price, and package info panel
         dropdown.addEventListener('change', function() {
           const selectedOption = this.options[this.selectedIndex];
-          const packageNameEl = providerCard.querySelector('.package-name-display');
-          const priceEl = providerCard.querySelector('.price-main');
-          
           packageNameEl.textContent = selectedOption.dataset.name;
-          priceEl.textContent = 'R' + selectedOption.dataset.price;
-          
-          // Update selected package for this card
-          selectedPackage = packages.find(pkg => pkg.id == selectedOption.value);
+          priceMain.textContent = 'R' + selectedOption.dataset.price;
+
+          selectedPackage = packages.find(function(pkg) { return pkg.id == selectedOption.value; });
+          if (selectedPackage) {
+            infoContainer.textContent = '';
+            infoContainer.appendChild(buildPackageInfoEl(selectedPackage));
+          }
         });
-        
-        // Add click handler for availability button
-        const availabilityBtn = providerCard.querySelector('.check-availability-btn');
-        availabilityBtn.addEventListener('click', function() {
-          const dropdown = providerCard.querySelector('.package-dropdown');
+
+        // Sign Up button: store package and navigate
+        signUpBtn.addEventListener('click', function() {
           const selectedOption = dropdown.options[dropdown.selectedIndex];
-          const currentSelectedPackage = packages.find(pkg => pkg.id == selectedOption.value);
-          
+          const currentPkg = packages.find(function(pkg) { return pkg.id == selectedOption.value; });
+
           try {
             const packageData = {
-              id: currentSelectedPackage.id,
-              name: currentSelectedPackage.name,
-              price: currentSelectedPackage.price,
-              provider: currentSelectedPackage.provider,
-              speed: currentSelectedPackage.speed,
-              data: currentSelectedPackage.data,
-              aup: currentSelectedPackage.aup,
-              throttle: currentSelectedPackage.throttle,
-              type: currentSelectedPackage.type
+              id:       currentPkg.id,
+              name:     currentPkg.name,
+              price:    currentPkg.price,
+              provider: currentPkg.provider,
+              speed:    currentPkg.speed,
+              data:     currentPkg.data,
+              aup:      currentPkg.aup,
+              throttle: currentPkg.throttle,
+              type:     currentPkg.type
             };
-            
             sessionStorage.setItem('selectedPackage', JSON.stringify(packageData));
             window.location.href = signupUrl;
           } catch (error) {
@@ -209,173 +214,87 @@
         });
       });
     }
-    
+
     // Create scroll indicators for mobile
     function createScrollIndicators() {
       const scrollIndicators = document.getElementById('scroll-indicators');
-      if (!scrollIndicators) {
-        console.error('Scroll indicators container not found');
-        return;
-      }
-      
-      scrollIndicators.innerHTML = '';
-      
-      providers.forEach((_, index) => {
+      if (!scrollIndicators) return;
+
+      scrollIndicators.textContent = '';
+
+      providers.forEach(function(_, index) {
         const dot = document.createElement('div');
-        dot.className = 'scroll-dot';
-        if (index === 0) dot.classList.add('active');
-        
-        dot.addEventListener('click', () => {
-          const card = document.querySelector(`[data-provider-index="${index}"]`);
-          if (card) {
-            card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          }
+        dot.className = 'scroll-dot' + (index === 0 ? ' active' : '');
+        dot.addEventListener('click', function() {
+          const card = document.querySelector('[data-provider-index="' + index + '"]');
+          if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         });
-        
         scrollIndicators.appendChild(dot);
       });
     }
-    
-    // Initialize by creating all provider cards
-    try {
-      createAllProviderCards();
-    } catch (error) {
-      console.error('Error creating provider cards:', error);
-    }
-    
-    // Create scroll indicators
-    try {
-      createScrollIndicators();
-    } catch (error) {
-      console.error('Error creating scroll indicators:', error);
-    }
-    
-    // Function to update scroll indicators based on scroll position
+
+    try { createAllProviderCards(); } catch (e) { console.error('Error creating provider cards:', e); }
+
+    // Auto-snap first card to center on load
+    setTimeout(() => {
+      const firstCard = packageDisplay.querySelector('.provider-package-card');
+      if (firstCard) {
+        firstCard.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
+      }
+    }, 50);
+
+    try { createScrollIndicators(); } catch (e) { console.error('Error creating scroll indicators:', e); }
+
+    // Scroll indicator updates
     function updateScrollIndicators() {
       const scrollDots = document.querySelectorAll('.scroll-dot');
       const cards = packageDisplay.querySelectorAll('.provider-package-card');
-      
-      if (!scrollDots.length || !packageDisplay || !cards.length) return;
-      
-      if (window.innerWidth <= 768) {
-        const containerCenter = packageDisplay.offsetLeft + packageDisplay.offsetWidth / 2;
-        let closestCardIndex = 0;
-        let minDistance = Infinity;
-        
-        cards.forEach((card, index) => {
-          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-          const distance = Math.abs(cardCenter - packageDisplay.scrollLeft - packageDisplay.offsetWidth / 2);
-          
-          if (distance < minDistance) {
-            minDistance = distance;
-            closestCardIndex = index;
-          }
-        });
-        
-        scrollDots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === closestCardIndex);
-        });
-      } else {
-        // Desktop fallback
-        const scrollLeft = packageDisplay.scrollLeft;
-        const cardWidth = packageDisplay.querySelector('.provider-package-card')?.offsetWidth || 380;
-        const gap = 60; // Default gap between cards
-        const cardWithGap = cardWidth + gap;
-        
-        // Calculate which card is most visible
-        let activeIndex = Math.round(scrollLeft / cardWithGap);
-        activeIndex = Math.max(0, Math.min(activeIndex, providers.length - 1));
-        
-        // Update active dot
-        scrollDots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === activeIndex);
-        });
-      }
+      if (!scrollDots.length || !cards.length) return;
+
+      let activeIndex = 0;
+      const containerCenter = packageDisplay.scrollLeft + packageDisplay.offsetWidth / 2;
+      let minDist = Infinity;
+      cards.forEach(function(card, i) {
+        const dist = Math.abs((card.offsetLeft + card.offsetWidth / 2) - containerCenter);
+        if (dist < minDist) { minDist = dist; activeIndex = i; }
+      });
+      scrollDots.forEach(function(dot, i) { dot.classList.toggle('active', i === activeIndex); });
     }
-    
-    // Enhanced scroll snapping for mobile
+
     function enhanceScrollSnapping() {
-      if (window.innerWidth <= 768) {
-        const cards = packageDisplay.querySelectorAll('.provider-package-card');
-        let isScrolling = false;
-        let scrollTimer;
-        
-        packageDisplay.addEventListener('scroll', () => {
-          if (!isScrolling) {
-            isScrolling = true;
-          }
-          
-          clearTimeout(scrollTimer);
-          scrollTimer = setTimeout(() => {
-            isScrolling = false;
-            
-            // Find the card closest to center
-            const containerCenter = packageDisplay.scrollLeft + packageDisplay.offsetWidth / 2;
-            let closestCard = null;
-            let minDistance = Infinity;
-            
-            cards.forEach(card => {
-              const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-              const distance = Math.abs(cardCenter - containerCenter);
-              
-              if (distance < minDistance) {
-                minDistance = distance;
-                closestCard = card;
-              }
-            });
-            
-            if (closestCard) {
-              closestCard.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'center'
-              });
-            }
-          }, 150);
-        });
-      }
-    }
-    
-    // Add scroll listener for indicators with debouncing
-    let scrollTimeout;
-    
-    if (packageDisplay) {
-      packageDisplay.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(updateScrollIndicators, 100);
-      });
-    }
-    
-    // Update indicators on window resize
-    window.addEventListener('resize', () => {
-      setTimeout(updateScrollIndicators, 100);
-      enhanceScrollSnapping();
-    });
-    
-    // Initialize scroll snapping
-    enhanceScrollSnapping();
-    
-    // Desktop scroll arrows functionality
-    const leftArrow = document.getElementById('desktop-scroll-left');
-    const rightArrow = document.getElementById('desktop-scroll-right');
-    
-    if (leftArrow && rightArrow) {
-      leftArrow.addEventListener('click', () => {
-        packageDisplay.scrollBy({
-          left: -400,
-          behavior: 'smooth'
-        });
-      });
-      
-      rightArrow.addEventListener('click', () => {
-        packageDisplay.scrollBy({
-          left: 400,
-          behavior: 'smooth'
-        });
+      if (window.innerWidth > 768) return;
+      const cards = packageDisplay.querySelectorAll('.provider-package-card');
+      let scrollTimer;
+      packageDisplay.addEventListener('scroll', function() {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function() {
+          const center = packageDisplay.scrollLeft + packageDisplay.offsetWidth / 2;
+          let closest = null, minDist = Infinity;
+          cards.forEach(function(card) {
+            const dist = Math.abs((card.offsetLeft + card.offsetWidth / 2) - center);
+            if (dist < minDist) { minDist = dist; closest = card; }
+          });
+          if (closest) closest.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }, 150);
       });
     }
 
-    if (debugEnabled) {
-      console.log('LTE carousel initialized', { providersCount: providers.length });
-    }
+    let scrollTimeout;
+    packageDisplay.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateScrollIndicators, 100);
+    });
+    window.addEventListener('resize', function() {
+      setTimeout(updateScrollIndicators, 100);
+      enhanceScrollSnapping();
+    });
+    enhanceScrollSnapping();
+
+    // Desktop scroll arrows
+    const leftArrow  = document.getElementById('desktop-scroll-left');
+    const rightArrow = document.getElementById('desktop-scroll-right');
+    if (leftArrow)  leftArrow.addEventListener('click',  function() { packageDisplay.scrollBy({ left: -400, behavior: 'smooth' }); });
+    if (rightArrow) rightArrow.addEventListener('click', function() { packageDisplay.scrollBy({ left:  400, behavior: 'smooth' }); });
+
+    if (debugEnabled) console.log('LTE carousel initialized', { providersCount: providers.length });
   });

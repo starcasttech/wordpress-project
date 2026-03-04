@@ -219,6 +219,14 @@
         font-size: 12px;
         color: #666;
     }
+
+    .device-tag-any {
+        background: rgba(0, 180, 204, 0.08);
+        border-color: rgba(0, 180, 204, 0.4);
+        color: #007a8a;
+        font-weight: 500;
+        width: 100%;
+    }
     
     .continue-btn {
         width: 100%;
@@ -294,6 +302,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Device compatibility data based on package type
     const deviceCompatibility = {
+        'mtn-lte': [
+            'Huawei B525S-23A', 'Huawei B525S-65A', 'Huawei B525S-95A',
+            'Huawei B535-932', 'Huawei B612-233', 'Huawei B612S-25D',
+            'Huawei B612S-51D', 'Huawei B618S-22D', 'Huawei B618S-65D', 'Huawei B818-263',
+            'ZTE MF286A', 'ZTE MF286C', 'ZTE MF286C1', 'ZTE MF286D', 'ZTE MF286R',
+            'ZTE MF296C', 'ZTE MF296D', 'ZTE MF297D',
+            'TP-Link Archer MR600', 'TP-Link Archer MR400',
+            'ZyXEL LTE7460', 'ZyXEL LTE7480', 'ZyXEL LTE7490',
+            'MikroTik Chateau LTE12'
+        ],
+        'vodacom-lte': [
+            'Huawei B525S-65A', 'Huawei B535-932',
+            'Huawei B612-233', 'Huawei B612S-25D', 'Huawei B618S-22D',
+            'ZTE MF286C1', 'ZTE MF286R',
+            'TP-Link Archer MR600',
+            'Alcatel Linkhub HH72v'
+        ],
         'fixed-lte': [
             'Huawei B525S-23A', 'Huawei B525S-65A', 'Huawei B535-932',
             'Huawei B612-233', 'Huawei B612S-25D', 'Huawei B618S-22D',
@@ -343,7 +368,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return '5g';
         }
         if (name.includes('mobile') || type === 'mobile-data') return 'mobile-data';
-        return 'fixed-lte';
+
+        // Fixed LTE — split by provider
+        if (provider.includes('mtn')) return 'mtn-lte';
+        if (provider.includes('vodacom')) return 'vodacom-lte';
+        // Telkom / Openserve / unknown — no restrictions
+        return 'telkom-lte';
     }
     
     // Update compatibility list based on package type
@@ -354,19 +384,36 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update package type display
         const typeNames = {
-            'fixed-lte': 'Fixed LTE/4G Packages',
-            'mtn-5g': 'MTN 5G Packages',
+            'mtn-lte':    'MTN Fixed LTE/4G Packages',
+            'vodacom-lte':'Vodacom Fixed LTE/4G Packages',
+            'telkom-lte': 'Telkom / Openserve Fixed LTE Packages',
+            'fixed-lte':  'Fixed LTE/4G Packages',
+            'mtn-5g':     'MTN 5G Packages',
             'vodacom-5g': 'Vodacom 5G Packages',
-            '5g': '5G Packages',
-            'mobile-data': 'Mobile Data Packages'
+            '5g':         '5G Packages',
+            'mobile-data':'Mobile Data Packages'
         };
         packageTypeDisplay.textContent = typeNames[packageType] || 'Your Package';
-        
-        // Update device list
-        const devices = deviceCompatibility[packageType] || [];
-        compatibilityList.innerHTML = devices.map(device => 
-            `<span class="device-tag">${device}</span>`
-        ).join('');
+
+        compatibilityList.textContent = '';
+
+        // Telkom/Openserve: no router restrictions
+        if (packageType === 'telkom-lte') {
+            var note = document.createElement('span');
+            note.className = 'device-tag device-tag-any';
+            note.textContent = 'Any standard LTE router is compatible — Telkom/Openserve does not restrict router models';
+            compatibilityList.appendChild(note);
+            return;
+        }
+
+        // Build device tags
+        var devices = deviceCompatibility[packageType] || [];
+        devices.forEach(function(device) {
+            var tag = document.createElement('span');
+            tag.className = 'device-tag';
+            tag.textContent = device;
+            compatibilityList.appendChild(tag);
+        });
     }
     
     // Handle router selection

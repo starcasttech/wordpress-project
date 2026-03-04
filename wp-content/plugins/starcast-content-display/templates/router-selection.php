@@ -23,10 +23,10 @@
                 <input type="radio" name="router-choice" id="router-new" value="new">
                 <div class="router-option-content">
                     <label for="router-new">New Router R1,599</label>
-                    <div class="router-model">TP-Link MR600</div>
+                    <div class="router-model">ZTE MC801A 5G CPE</div>
                 </div>
                 <div class="router-image-right">
-                    <img src="<?php echo esc_url(site_url('/wp-content/uploads/website-images/tplink-mr600.png')); ?>" alt="TP-Link MR600" class="router-thumb-right">
+                    <img src="<?php echo esc_url(site_url('/wp-content/uploads/website-images/zte-mc801a.png')); ?>" alt="ZTE MC801A" class="router-thumb-right">
                 </div>
             </div>
             <div class="checkbox-option">
@@ -113,8 +113,8 @@
     }
     
     .router-thumb-right {
-        width: 117px;
-        height: 60px;
+        width: 150px;
+        height: 80px;
         object-fit: contain;
         border-radius: 6px;
         background: rgba(255, 255, 255, 0.9);
@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Define router data
                 const routerOptions = {
-                    'new': { price: 1599, description: 'New Router' },
+                    'new': { price: 1599, description: 'ZTE MC801A 5G CPE' },
                     'own': { price: 0, description: 'Own Compatible Router' }
                 };
                 

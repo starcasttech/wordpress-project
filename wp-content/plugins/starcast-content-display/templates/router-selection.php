@@ -301,52 +301,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Device compatibility data based on package type
+    // Sources: Vodacom official, Afrihost, Axxess, Webafrica — verified 2025
     const deviceCompatibility = {
-        'mtn-lte': [
-            'Huawei B525S-23A', 'Huawei B535-932',
-            'Huawei B612-233', 'Huawei B618S-22D', 'Huawei B818-263',
-            'ZTE MF286C', 'ZTE MF286D', 'ZTE MF297D',
-            'TP-Link Archer MR600'
-        ],
+        // MTN no longer approves 4G-only routers — only 5G routers are approved (2025)
+        'mtn-lte': null,
+
+        // Vodacom fixed LTE — officially approved models
         'vodacom-lte': [
             'Huawei B525S-65A', 'Huawei B535-932',
-            'Huawei B612S-25D', 'Huawei B618S-22D',
-            'ZTE MF286C1',
+            'Huawei B612-233', 'Huawei B612S-25D', 'Huawei B618S-22D',
+            'ZTE MF286C', 'ZTE MF286C1', 'ZTE MF286R',
             'TP-Link Archer MR600',
             'Alcatel Linkhub HH72v'
         ],
-        'fixed-lte': [
-            'Huawei B525S-23A', 'Huawei B525S-65A', 'Huawei B535-932',
-            'Huawei B612-233', 'Huawei B618S-22D',
-            'ZTE MF286C', 'ZTE MF297D',
-            'TP-Link Archer MR600'
-        ],
+
+        // MTN 5G — officially approved (Axxess, Webafrica, Afrihost confirmed)
         'mtn-5g': [
-            'BROVI 5G CPE 5 (H155-381)', 'BROVI 5G H155-382', 'BROVI 5G H352-381',
-            'Huawei 5G CPE PRO 2', 'Huawei 5G-SIC-100',
+            'Huawei 5G CPE PRO 2',
             'Nokia FastMile 5G Gateway 3.2',
-            'TOZED ZLT X100 PRO', 'TOZED ZLT X20',
-            'TP-Link NX510v 5G',
+            'BROVI 5G CPE 5 H155-381', 'BROVI 5G H155-382',
+            'TP-Link NX510v',
             'ZTE 5G CPE MC801A', 'ZTE G5B', 'ZTE G5C', 'ZTE G5TS',
-            'ZTE MC888 5G', 'ZTE MC888D 5G', 'ZTE MC889 5G'
+            'ZTE MC888 5G', 'ZTE MC888D 5G'
         ],
+
+        // Vodacom 5G — strictly enforced, only 4 approved (Cool Ideas, Afrihost confirmed)
         'vodacom-5g': [
             'Huawei 5G CPE PRO 2',
             'Nokia FastMile 5G Gateway 3.2',
             'ZTE 5G CPE MC801A',
-            'ZTE 5G CPE G5TS'
+            'ZTE G5TS'
         ],
-        '5g': [
-            'Huawei 5G CPE PRO 2', 'Huawei 5G-SIC-100',
-            'Nokia FastMile 5G Gateway 3.2',
-            'BROVI 5G CPE 5 (H155-381)', 'BROVI 5G H155-382', 'BROVI 5G H352-381',
-            'ZTE 5G CPE MC801A', 'ZTE G5B', 'ZTE G5C', 'ZTE G5TS',
-            'ZTE MC888 5G', 'ZTE MC888D 5G', 'ZTE MC889 5G',
-            'TP-Link NX510v 5G', 'TOZED ZLT X100 PRO', 'TOZED ZLT X20'
-        ],
+
         'mobile-data': [
-            'Any mobile device', 'Smartphone', 'Tablet', 'Mobile hotspot device',
-            'USB modem', 'MiFi device', 'Laptop with SIM slot'
+            'Any mobile device', 'Smartphone', 'Tablet',
+            'Mobile hotspot / MiFi device', 'USB modem'
         ]
     };
     
@@ -398,6 +387,15 @@ document.addEventListener('DOMContentLoaded', () => {
             var note = document.createElement('span');
             note.className = 'device-tag device-tag-any';
             note.textContent = 'Any standard LTE router is compatible — Telkom/Openserve does not restrict router models';
+            compatibilityList.appendChild(note);
+            return;
+        }
+
+        // MTN LTE (4G-only): MTN no longer approves 4G-only routers as of 2025
+        if (packageType === 'mtn-lte') {
+            var note = document.createElement('span');
+            note.className = 'device-tag device-tag-any';
+            note.textContent = 'MTN no longer approves 4G-only routers — a 5G-capable router is required. See the MTN 5G approved list above.';
             compatibilityList.appendChild(note);
             return;
         }

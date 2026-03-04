@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Starcast Content Display
  * Description: Theme-independent content display for Starcast ISP platform - Fibre packages, LTE packages, and custom functionality
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Starcast Technologies
  */
 
@@ -40,14 +40,14 @@ class Starcast_Content_Display {
 
         if ($has_fibre_packages || $has_lte_packages || $has_package_selection) {
 
-            wp_enqueue_style('starcast-packages', plugin_dir_url(__FILE__) . 'assets/starcast-packages.css', [], '1.0.0');
-            wp_enqueue_script('starcast-packages', plugin_dir_url(__FILE__) . 'assets/starcast-packages.js', ['jquery'], '1.0.0', true);
+            wp_enqueue_style('starcast-packages', plugin_dir_url(__FILE__) . 'assets/starcast-packages.css', [], '1.3.0');
+            wp_enqueue_script('starcast-packages', plugin_dir_url(__FILE__) . 'assets/starcast-packages.js', ['jquery'], '1.3.0', true);
         }
 
         if ($has_fibre_carousel) {
-            wp_enqueue_style('starcast-fibre-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;600;700&display=swap', [], '1.0.0');
-            wp_enqueue_style('starcast-fibre-carousel', plugin_dir_url(__FILE__) . 'assets/fibre-carousel.css', [], '1.0.0');
-            wp_enqueue_script('starcast-fibre-carousel', plugin_dir_url(__FILE__) . 'assets/fibre-carousel.js', [], '1.0.0', true);
+            wp_enqueue_style('starcast-fibre-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;600;700&display=swap', [], '1.3.0');
+            wp_enqueue_style('starcast-fibre-carousel', plugin_dir_url(__FILE__) . 'assets/fibre-carousel.css', [], '1.3.0');
+            wp_enqueue_script('starcast-fibre-carousel', plugin_dir_url(__FILE__) . 'assets/fibre-carousel.js', [], '1.3.0', true);
 
             $providers_csv = $this->get_fibre_carousel_providers_from_content($post_content);
             $provider_data = $this->get_fibre_provider_data($providers_csv);
@@ -58,9 +58,9 @@ class Starcast_Content_Display {
         }
 
         if ($has_lte_carousel) {
-            wp_enqueue_style('starcast-lte-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap', [], '1.0.0');
-            wp_enqueue_style('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.css', [], '1.0.0');
-            wp_enqueue_script('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.js', [], '1.0.0', true);
+            wp_enqueue_style('starcast-lte-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap', [], '1.3.0');
+            wp_enqueue_style('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.css', [], '1.5.2');
+            wp_enqueue_script('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.js', [], '1.5.2', true);
 
             $provider_data = $this->get_lte_provider_data();
             wp_localize_script('starcast-lte-carousel', 'starcastLteData', [
@@ -329,12 +329,15 @@ class Starcast_Content_Display {
                 $download = get_field('download', $post->ID) ?: get_post_meta($post->ID, 'download', true);
                 $upload = get_field('upload', $post->ID) ?: get_post_meta($post->ID, 'upload', true);
 
+                // Skip packages with missing speed data
+                if (!$download || !$upload) continue;
+
                 $packages[] = [
                     'id' => $post->ID,
                     'title' => get_the_title($post),
                     'price' => $price ? intval($price) : 0,
-                    'download' => $download ?: 'N/A',
-                    'upload' => $upload ?: 'N/A',
+                    'download' => $download,
+                    'upload' => $upload,
                     'provider' => $provider->name,
                     'download_speed' => intval(preg_replace('/[^0-9]/', '', $download)),
                     'has_promo' => is_promo_active($post->ID),
@@ -387,7 +390,7 @@ class Starcast_Content_Display {
                 'post_type' => 'lte_packages',
                 'numberposts' => -1,
                 'orderby' => 'meta_value_num',
-                'meta_key' => 'display_order',
+                'meta_key' => 'price',
                 'order' => 'ASC',
                 'tax_query' => [[
                     'taxonomy' => 'lte_provider',
@@ -404,9 +407,23 @@ class Starcast_Content_Display {
                 if (!$speed) $speed = '';
 
                 $data = get_field('data', $post->ID) ?: get_post_meta($post->ID, 'data', true);
-                if (!$data) $data = '';
+                if (!$data) {
+                    // Derive from uncapped + data_gb meta keys
+                    $is_uncapped = get_post_meta($post->ID, 'uncapped', true);
+                    $data_gb     = get_post_meta($post->ID, 'data_gb', true);
+                    if ($is_uncapped) {
+                        $data = 'Uncapped';
+                    } elseif ($data_gb && intval($data_gb) >= 1000) {
+                        $data = (intval($data_gb) / 1000) . ' TB';
+                    } elseif ($data_gb) {
+                        $data = $data_gb . ' GB';
+                    } else {
+                        $data = '';
+                    }
+                }
 
                 $aup = get_field('aup', $post->ID) ?: get_post_meta($post->ID, 'aup', true);
+                if (!$aup) $aup = get_post_meta($post->ID, 'aup_info', true);
                 if (!$aup) $aup = '';
 
                 $throttle = get_field('throttle', $post->ID) ?: get_post_meta($post->ID, 'throttle', true);

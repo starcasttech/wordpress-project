@@ -432,54 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'telkom-lte';
     }
     
-    // Update compatibility list based on package type
-    function updateCompatibilityList(packageData) {
-        const packageType = getPackageType(packageData);
-        const packageTypeDisplay = document.getElementById('package-type-display');
-        const compatibilityList = document.getElementById('compatibility-list');
-        
-        // Update package type display
-        const typeNames = {
-            'mtn-lte':    'MTN Fixed LTE/4G Packages',
-            'vodacom-lte':'Vodacom Fixed LTE/4G Packages',
-            'telkom-lte': 'Telkom / Openserve Fixed LTE Packages',
-            'fixed-lte':  'Fixed LTE/4G Packages',
-            'mtn-5g':     'MTN 5G Packages',
-            'vodacom-5g': 'Vodacom 5G Packages',
-            '5g':         '5G Packages',
-            'mobile-data':'Mobile Data Packages'
-        };
-        packageTypeDisplay.textContent = typeNames[packageType] || 'Your Package';
-
-        compatibilityList.textContent = '';
-
-        // Telkom/Openserve: no router restrictions
-        if (packageType === 'telkom-lte') {
-            var note = document.createElement('span');
-            note.className = 'device-tag device-tag-any';
-            note.textContent = 'Any standard LTE router is compatible — Telkom/Openserve does not restrict router models';
-            compatibilityList.appendChild(note);
-            return;
-        }
-
-        // MTN LTE (4G-only): MTN no longer approves 4G-only routers as of 2025
-        if (packageType === 'mtn-lte') {
-            var note = document.createElement('span');
-            note.className = 'device-tag device-tag-any';
-            note.textContent = 'MTN no longer approves 4G-only routers — a 5G-capable router is required. See the MTN 5G approved list above.';
-            compatibilityList.appendChild(note);
-            return;
-        }
-
-        // Build device tags
-        var devices = deviceCompatibility[packageType] || [];
-        devices.forEach(function(device) {
-            var tag = document.createElement('span');
-            tag.className = 'device-tag';
-            tag.textContent = device;
-            compatibilityList.appendChild(tag);
-        });
-    }
+    // Router lists are now static HTML — no dynamic update needed
     
     // Handle router selection
     function handleRouterSelection() {
@@ -534,9 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize functions
     displaySelectedPackage();
     
-    // Update compatibility list based on selected package
-    if (selectedPackage && Object.keys(selectedPackage).length > 0) {
-        updateCompatibilityList(selectedPackage);
+    if (false) { // compatibility list is now static
     }
     
     handleRouterSelection();

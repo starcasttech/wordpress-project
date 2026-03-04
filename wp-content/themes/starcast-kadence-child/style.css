@@ -17,21 +17,21 @@ Tags: isp, telecom, fibre, lte, ecommerce
    ================================================================ */
 
 :root {
-    /* Primary - Single Accent Color (Swiss Blue) */
-    --starcast-primary: #007AFF;        /* Clean Swiss Blue */
-    --starcast-primary-dark: #0051D5;   /* Darker variant */
-    --starcast-primary-light: #4DA2FF;  /* Lighter variant */
+    /* Primary Palette — Navy + Teal */
+    --starcast-primary: #1a2d5a;        /* Deep Navy */
+    --starcast-primary-dark: #0f1f3d;   /* Darker Navy */
+    --starcast-primary-light: #2d4a8a;  /* Lighter Navy */
 
-    /* Accent - Same as primary for minimal palette */
-    --starcast-accent: #007AFF;
-    --starcast-accent-hover: #0051D5;
-    --starcast-secondary: #007AFF;
+    /* Accent — Electric Teal */
+    --starcast-accent: #00b4cc;
+    --starcast-accent-hover: #0094a8;
+    --starcast-secondary: #1a2d5a;
 
-    /* Status Colors - Minimal and refined */
-    --starcast-success: #34C759;        /* iOS Green */
-    --starcast-warning: #FF9500;        /* iOS Orange */
-    --starcast-danger: #FF3B30;         /* iOS Red */
-    --starcast-info: #007AFF;           /* iOS Blue */
+    /* Status Colors */
+    --starcast-success: #34C759;
+    --starcast-warning: #FF9500;
+    --starcast-danger: #FF3B30;
+    --starcast-info: #00b4cc;
 
     /* Neutral Grays - Swiss precision */
     --starcast-dark: #1D1D1F;           /* Apple Dark */
@@ -47,10 +47,10 @@ Tags: isp, telecom, fibre, lte, ecommerce
     --starcast-gray-50: #F9F9FB;
     --starcast-white: #FFFFFF;
 
-    /* Gradients - Removed (minimal design) */
-    --starcast-gradient-primary: none;
-    --starcast-gradient-accent: none;
-    --starcast-gradient-hero: none;
+    /* Gradients */
+    --starcast-gradient-primary: linear-gradient(135deg, #1a2d5a 0%, #0f3460 100%);
+    --starcast-gradient-accent: linear-gradient(135deg, #00b4cc 0%, #0094a8 100%);
+    --starcast-gradient-hero: linear-gradient(135deg, #f8f7f5 0%, #eef2f7 100%);
 
     /* Shadows */
     --starcast-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -99,6 +99,11 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide default page title hero globally (to be replaced with custom promo strip) */
+.entry-hero.page-hero-section {
+    display: none !important;
 }
 
 /* ================================================================
@@ -616,236 +621,500 @@ body {
 }
 
 /* ================================================================
-   HOMEPAGE HERO
+   GLOBAL BUTTON OVERRIDES — Navy / Teal
    ================================================================ */
 
-.starcast-hero {
-    text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #faf7f4 0%, #f0ebe3 100%);
+.btn-primary, .wp-element-button,
+.wp-block-button__link {
+    background: var(--starcast-primary) !important;
+    color: #fff !important;
+    border-color: var(--starcast-primary) !important;
 }
-
-.starcast-hero h1 {
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 800;
-    color: #2d2823;
-    margin-bottom: 24px;
-}
-
-.starcast-hero h1 span {
-    color: #d67d3e;
-}
-
-.starcast-hero p {
-    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-    color: #6b6355;
-    max-width: 600px;
-    margin: 0 auto 40px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 60px;
-}
-
-.hero-buttons .btn {
-    padding: 16px 32px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-.btn-primary {
-    background: #d67d3e;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background: #c06b32;
-    transform: translateY(-2px);
+.btn-primary:hover, .wp-element-button:hover,
+.wp-block-button__link:hover {
+    background: var(--starcast-accent) !important;
+    border-color: var(--starcast-accent) !important;
+    color: #fff !important;
 }
 
 .btn-secondary {
     background: #fff;
-    color: #d67d3e;
-    border: 2px solid #d67d3e;
+    color: var(--starcast-primary);
+    border: 2px solid var(--starcast-primary);
 }
-
 .btn-secondary:hover {
-    background: #d67d3e;
+    background: var(--starcast-primary);
     color: #fff;
 }
 
-.hero-stats {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    flex-wrap: wrap;
+/* ================================================================
+   HIDE PAGE TITLE ON HOME PAGE
+   ================================================================ */
+
+.post-690 .entry-header,
+.home .entry-header {
+    display: none !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-.stat-item {
-    text-align: center;
-}
-
-.stat-value {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #d67d3e;
-}
-
-.stat-label {
-    font-size: 0.875rem;
-    color: #6b6355;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-@media (max-width: 768px) {
-    .starcast-hero { padding: 60px 20px; }
-    .hero-buttons { flex-direction: column; align-items: center; }
-    .hero-buttons .btn { width: 100%; max-width: 300px; }
+/* Remove the top margin Kadence adds to content area on that page */
+.post-690 .content-area,
+.post-690 .entry-content-wrap {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 
 /* ================================================================
-   HOMEPAGE HERO OVERRIDE
+   FULL-WIDTH BREAKOUT — Hero carousel breaks out of content container
+   ================================================================ */
+
+/* (merged into main .sc-hero-carousel rule below) */
+
+/* Deals carousel also breaks out slightly for breathing room */
+.sc-deals-carousel-wrap {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+@media (max-width: 767px) {
+    .sc-deals-carousel-wrap {
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+/* ================================================================
+   HERO SECTION — Shared classes used by home-page post content
    ================================================================ */
 
 .starcast-hero {
-    background: linear-gradient(135deg, #faf7f4 0%, #f0ebe3 100%) !important;
-    color: #2d2823 !important;
+    background: var(--starcast-gradient-hero) !important;
+    color: var(--starcast-primary) !important;
     min-height: auto !important;
 }
+.starcast-hero::before { content: none !important; }
 
-.starcast-hero::before {
-    content: none !important;
+.starcast-hero h1 span { color: var(--starcast-accent); }
+.stat-value            { color: var(--starcast-accent); }
+
+/* ================================================================
+   HOMEPAGE HERO CAROUSEL
+   ================================================================ */
+
+.sc-hero-carousel {
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
+    background: #0f1f3d;
+    min-height: 480px;
+}
+
+.sc-hero-track {
+    display: flex;
+    width: 300%;
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.sc-hero-slide {
+    width: calc(100% / 3);
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    padding: 60px 40px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sc-hero-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.18);
+    pointer-events: none;
+}
+
+.sc-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 580px;
+    color: #fff;
+}
+
+.sc-hero-kicker {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #00b4cc;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.sc-hero-content h1 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.sc-hero-content h1 em {
+    font-style: normal;
+    color: #00b4cc;
+}
+
+.sc-hero-content p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.88;
+    margin-bottom: 32px;
+    max-width: 480px;
+    line-height: 1.6;
+}
+
+.sc-hero-btn {
+    display: inline-block;
+    padding: 15px 36px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.25s;
+    margin-right: 12px;
+    margin-bottom: 8px;
+}
+
+.sc-hero-btn.primary {
+    background: #00b4cc;
+    color: #fff;
+}
+.sc-hero-btn.primary:hover { background: #0094a8; color: #fff; transform: translateY(-2px); }
+
+.sc-hero-btn.outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.6);
+}
+.sc-hero-btn.outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); color: #fff; }
+
+/* Promo badge inside slide */
+.sc-slide-badge {
+    display: inline-block;
+    background: #00b4cc;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+}
+
+/* Dots */
+.sc-hero-dots {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.sc-hero-dot {
+    width: 28px;
+    height: 5px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: background 0.3s, width 0.3s;
+    border: none;
+    padding: 0;
+}
+.sc-hero-dot.active { background: #fff; width: 42px; }
+
+/* Arrow nav */
+.sc-hero-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sc-hero-arrow:hover { background: rgba(255,255,255,0.28); }
+.sc-hero-arrow.prev { left: 16px; }
+.sc-hero-arrow.next { right: 16px; }
+
+@media (max-width: 768px) {
+    .sc-hero-slide { padding: 50px 24px 70px; min-height: 380px; }
+    .sc-hero-arrow { display: none; }
 }
 
 /* ================================================================
-   HOMEPAGE HERO REWORK
+   HOMEPAGE DEALS CAROUSEL
    ================================================================ */
 
-.home-hero {
-    background: linear-gradient(135deg, #faf7f4 0%, #f0ebe3 100%) !important;
-    color: #2d2823 !important;
-    min-height: auto !important;
-    padding: 96px 0 72px !important;
-}
-
-.home-hero::before {
-    content: none !important;
-}
-
-.home-hero .starcast-hero-inner {
-    max-width: 1100px;
+.sc-deals-carousel-wrap {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
-    display: grid;
-    gap: 32px;
+    padding: 56px 20px 48px;
+    position: relative;
 }
 
-.home-hero .hero-kicker {
-    font-size: 0.875rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #8b7b6a;
-    margin-bottom: 12px;
-}
-
-.home-hero h1 {
-    font-size: clamp(2.25rem, 4vw, 3.75rem);
-    line-height: 1.1;
-    margin-bottom: 16px;
-    color: #2d2823;
-}
-
-.home-hero h1 span {
-    color: #d67d3e;
-}
-
-.home-hero .hero-lede {
-    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-    color: #5f564b;
-    max-width: 640px;
-    margin-bottom: 24px;
-}
-
-.home-hero .hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 24px;
-}
-
-.home-hero .starcast-btn-primary {
-    background: #d67d3e;
-    color: #fff;
-    border: 2px solid #d67d3e;
-}
-
-.home-hero .starcast-btn-primary:hover {
-    background: #c06b32;
-    border-color: #c06b32;
-}
-
-.home-hero .starcast-btn-secondary {
-    background: #fff;
-    color: #d67d3e;
-    border: 2px solid #fff;
-}
-
-.home-hero .starcast-btn-secondary:hover {
-    background: #f6efe7;
-    color: #b65f23;
-}
-
-.home-hero .starcast-btn-outline {
-    background: transparent;
-    color: #d67d3e;
-    border: 2px solid #d67d3e;
-}
-
-.home-hero .starcast-btn-outline:hover {
-    background: #d67d3e;
-    color: #fff;
-}
-
-.home-hero .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-    margin-top: 8px;
-}
-
-.home-hero .hero-stat {
-    background: #fff;
-    border: 1px solid #e9e3da;
-    border-radius: 14px;
-    padding: 18px 16px;
-    box-shadow: 0 12px 24px rgba(45, 40, 35, 0.08);
-    text-align: center;
-}
-
-.home-hero .hero-stat .stat-value {
-    font-size: 1.75rem;
+.sc-deals-title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
     font-weight: 800;
-    color: #d67d3e;
+    color: #1a2d5a;
+    text-align: center;
     margin-bottom: 6px;
 }
 
-.home-hero .hero-stat .stat-label {
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
+.sc-deals-subtitle {
+    text-align: center;
+    color: #4a5568;
+    margin-bottom: 32px;
+    font-size: 1rem;
+}
+
+.sc-deals-track-outer {
+    position: relative;
+}
+
+/* Deals carousel dot indicators */
+.sc-deals-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.sc-deals-dot {
+    width: 28px;
+    height: 5px;
+    border-radius: 3px;
+    background: #d0d8e8;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.25s, width 0.25s;
+}
+
+.sc-deals-dot.active {
+    background: var(--starcast-primary);
+    width: 42px;
+}
+
+.sc-deals-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 8px;
+}
+.sc-deals-track::-webkit-scrollbar { display: none; }
+
+.sc-deal-card {
+    scroll-snap-align: start;
+    flex: 0 0 270px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: visible;
+    box-shadow: 0 4px 20px rgba(26,45,90,0.10);
+    border: 1.5px solid #111;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.25s, box-shadow 0.25s;
+    text-decoration: none;
+    color: inherit;
+}
+.sc-deal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(26,45,90,0.22);
+}
+
+/* Bookmark ribbon badge */
+.sc-deal-badge {
+    position: absolute;
+    top: -1px;
+    right: 18px;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #6b6355;
+    color: #fff;
+    text-align: center;
+    width: 54px;
+    padding: 8px 4px 10px;
+    z-index: 2;
+    line-height: 1.2;
+}
+.sc-deal-badge::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 27px solid transparent;
+    border-right: 27px solid transparent;
+}
+.sc-deal-badge.promo              { background: #00b4cc; }
+.sc-deal-badge.promo::after       { border-top: 10px solid #00b4cc; }
+.sc-deal-badge.lte                { background: #1a5fa8; }
+.sc-deal-badge.lte::after         { border-top: 10px solid #1a5fa8; }
+.sc-deal-badge.area               { background: #5c35a0; width: 64px; right: 14px; font-size: 0.54rem; }
+.sc-deal-badge.area::after        { border-left-width: 32px; border-right-width: 32px; border-top: 10px solid #5c35a0; }
+
+.sc-deal-logo-wrap { position: relative; align-self: center; display: inline-block; }
+.sc-deal-logo-sub {
+    position: absolute;
+    bottom: 4px;
+    left: 75px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #003D9E;
+    letter-spacing: 0.04em;
+    background: rgba(255,255,255,0.88);
+    padding: 1px 5px;
+    border-radius: 3px;
+    line-height: 1.4;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
-@media (max-width: 768px) {
-    .home-hero { padding: 72px 0 56px !important; }
-    .home-hero .hero-buttons { flex-direction: column; align-items: stretch; }
-    .home-hero .hero-buttons .starcast-btn { width: 100%; justify-content: center; }
+.sc-deal-body {
+    padding: 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
+.sc-deal-logo {
+    max-width: 170px;
+    max-height: 72px;
+    object-fit: contain;
+    align-self: center;
+    display: block;
+}
+
+.sc-deal-speed      { font-size: 1.35rem; font-weight: 800; color: #1a2d5a; }
+.sc-deal-speed span { font-size: 0.85rem; font-weight: 400; color: #6b7280; }
+
+.sc-deal-price-block { display: flex; align-items: baseline; gap: 8px; }
+.sc-deal-price-promo { font-size: 1.65rem; font-weight: 800; color: #00b4cc; }
+.sc-deal-price-was   { font-size: 0.95rem; color: #9ca3af; text-decoration: line-through; }
+.sc-deal-price-reg   { font-size: 1.65rem; font-weight: 800; color: #1a2d5a; }
+.sc-deal-pm          { font-size: 0.82rem; color: #6b7280; font-weight: 400; margin-left: 1px; }
+
+.sc-deal-note { font-size: 0.78rem; color: #6b7280; line-height: 1.4; display: block; visibility: visible; overflow: visible; }
+.sc-deal-note strong { color: #00b4cc; }
+
+.sc-deal-btn {
+    display: block;
+    text-align: center;
+    background: #1a2d5a;
+    color: white !important;
+    padding: 11px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-decoration: none;
+    margin-top: auto;
+    transition: background 0.2s;
+}
+.sc-deal-btn:hover { background: #00b4cc; color: white !important; }
+
+/* Carousel scroll arrows (desktop) */
+.sc-deals-arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1a2d5a;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 5;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    box-shadow: 0 4px 12px rgba(26,45,90,0.25);
+}
+.sc-deals-arrow:hover { background: #00b4cc; }
+.sc-deals-arrow.prev  { left: -20px; }
+.sc-deals-arrow.next  { right: -20px; }
+
+@media (min-width: 900px) {
+    .sc-deals-arrow { display: flex; }
+    .sc-deal-card   { flex: 0 0 calc(25% - 15px); }
+}
+
+@media (max-width: 600px) {
+    .sc-deal-card { flex: 0 0 85vw; }
+}
+
+/* ================================================================
+   HOMEPAGE CTA BLOCK
+   ================================================================ */
+
+.sc-cta-block {
+    text-align: center;
+    background: var(--starcast-gradient-primary);
+    color: white;
+    padding: 72px 20px;
+    border-radius: 16px;
+    margin: 40px 0;
+}
+.sc-cta-block h2 { color: white; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 16px; }
+.sc-cta-block p  { opacity: 0.9; margin-bottom: 36px; max-width: 680px; margin-left: auto; margin-right: auto; font-size: 1.1rem; }
+
+.sc-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.sc-cta-btns a.primary {
+    background: #00b4cc; color: white; padding: 15px 38px; border-radius: 8px;
+    text-decoration: none; font-weight: 700; display: inline-block; transition: background 0.2s;
+}
+.sc-cta-btns a.primary:hover { background: #0094a8; color: white; }
+.sc-cta-btns a.outline {
+    background: transparent; color: white; padding: 15px 38px; border-radius: 8px;
+    text-decoration: none; font-weight: 700; border: 2px solid rgba(255,255,255,0.65);
+    display: inline-block; transition: all 0.2s;
+}
+.sc-cta-btns a.outline:hover { background: rgba(255,255,255,0.1); border-color: white; color: white; }
+
+@media (max-width: 640px) {
+    .sc-cta-btns { flex-direction: column; align-items: center; }
+    .sc-cta-btns a { width: 100%; max-width: 300px; text-align: center; }
+}

@@ -401,10 +401,11 @@
     }
     
     .scroll-indicators {
-        display: none;
+        display: flex;
         justify-content: center;
-        gap: 5px;
-        margin: 5px 0 2px 0;
+        align-items: center;
+        gap: 6px;
+        margin: 0;
         position: relative;
         z-index: 2;
     }
@@ -425,15 +426,19 @@
     
     /* Desktop Scroll Arrows */
     .desktop-scroll-container {
-        position: relative;
-        display: flex;
-        align-items: center;
         width: 100%;
     }
-    
+
+    .lte-nav-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 20px;
+    }
+
     .desktop-scroll-arrow {
-        position: absolute;
-        bottom: 6px;
+        position: static;
         width: 44px;
         height: 44px;
         border-radius: 50%;
@@ -448,22 +453,15 @@
         justify-content: center;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(15px);
+        flex-shrink: 0;
     }
-    
+
     .desktop-scroll-arrow:hover {
         background: rgba(0, 0, 0, 0.85);
         color: white;
         transform: scale(1.05);
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
         border-color: rgba(255, 255, 255, 0.5);
-    }
-    
-    .desktop-scroll-left {
-        left: calc(50% - 52px);
-    }
-    
-    .desktop-scroll-right {
-        left: calc(50% + 8px);
     }
     
     .desktop-scroll-arrow svg {

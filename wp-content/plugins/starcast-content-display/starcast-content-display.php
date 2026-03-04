@@ -59,8 +59,8 @@ class Starcast_Content_Display {
 
         if ($has_lte_carousel) {
             wp_enqueue_style('starcast-lte-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap', [], '1.3.0');
-            wp_enqueue_style('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.css', [], '1.5.3');
-            wp_enqueue_script('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.js', [], '1.5.3', true);
+            wp_enqueue_style('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.css', [], '1.5.4');
+            wp_enqueue_script('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.js', [], '1.5.4', true);
 
             $provider_data = $this->get_lte_provider_data();
             wp_localize_script('starcast-lte-carousel', 'starcastLteData', [

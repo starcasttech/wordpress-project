@@ -303,27 +303,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Device compatibility data based on package type
     const deviceCompatibility = {
         'mtn-lte': [
-            'Huawei B525S-23A', 'Huawei B525S-65A', 'Huawei B525S-95A',
-            'Huawei B535-932', 'Huawei B612-233', 'Huawei B612S-25D',
-            'Huawei B612S-51D', 'Huawei B618S-22D', 'Huawei B618S-65D', 'Huawei B818-263',
-            'ZTE MF286A', 'ZTE MF286C', 'ZTE MF286C1', 'ZTE MF286D', 'ZTE MF286R',
-            'ZTE MF296C', 'ZTE MF296D', 'ZTE MF297D',
-            'TP-Link Archer MR600', 'TP-Link Archer MR400',
-            'ZyXEL LTE7460', 'ZyXEL LTE7480', 'ZyXEL LTE7490',
-            'MikroTik Chateau LTE12'
+            'Huawei B525S-23A', 'Huawei B535-932',
+            'Huawei B612-233', 'Huawei B618S-22D', 'Huawei B818-263',
+            'ZTE MF286C', 'ZTE MF286D', 'ZTE MF297D',
+            'TP-Link Archer MR600'
         ],
         'vodacom-lte': [
             'Huawei B525S-65A', 'Huawei B535-932',
-            'Huawei B612-233', 'Huawei B612S-25D', 'Huawei B618S-22D',
-            'ZTE MF286C1', 'ZTE MF286R',
+            'Huawei B612S-25D', 'Huawei B618S-22D',
+            'ZTE MF286C1',
             'TP-Link Archer MR600',
             'Alcatel Linkhub HH72v'
         ],
         'fixed-lte': [
             'Huawei B525S-23A', 'Huawei B525S-65A', 'Huawei B535-932',
-            'Huawei B612-233', 'Huawei B612S-25D', 'Huawei B618S-22D',
-            'ZTE MF286A', 'ZTE MF286C', 'ZTE MF296D', 'ZTE MF297D',
-            'TP-Link Archer MR600', 'TP-Link Archer MR400', 'TP-Link TL-MR6400'
+            'Huawei B612-233', 'Huawei B618S-22D',
+            'ZTE MF286C', 'ZTE MF297D',
+            'TP-Link Archer MR600'
         ],
         'mtn-5g': [
             'BROVI 5G CPE 5 (H155-381)', 'BROVI 5G H155-382', 'BROVI 5G H352-381',

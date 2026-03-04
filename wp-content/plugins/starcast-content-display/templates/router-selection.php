@@ -36,8 +36,57 @@
         </div>
 
         <div class="compatibility-section">
-            <h4>Compatible with <span id="package-type-display">your package</span></h4>
-            <div class="compatibility-list" id="compatibility-list"></div>
+            <h4>Compatible Routers</h4>
+
+            <div class="compat-provider">
+                <div class="compat-provider-label mtn">MTN 5G</div>
+                <div class="compat-tags">
+                    <span class="device-tag">Huawei 5G CPE PRO 2</span>
+                    <span class="device-tag">Nokia FastMile 5G Gateway 3.2</span>
+                    <span class="device-tag">BROVI 5G CPE 5 H155-381</span>
+                    <span class="device-tag">BROVI 5G H155-382</span>
+                    <span class="device-tag">TP-Link NX510v</span>
+                    <span class="device-tag">ZTE MC801A</span>
+                    <span class="device-tag">ZTE G5B</span>
+                    <span class="device-tag">ZTE G5C</span>
+                    <span class="device-tag">ZTE G5TS</span>
+                    <span class="device-tag">ZTE MC888 5G</span>
+                    <span class="device-tag">ZTE MC888D 5G</span>
+                </div>
+            </div>
+
+            <div class="compat-provider">
+                <div class="compat-provider-label vodacom">Vodacom 5G</div>
+                <div class="compat-tags">
+                    <span class="device-tag">Huawei 5G CPE PRO 2</span>
+                    <span class="device-tag">Nokia FastMile 5G Gateway 3.2</span>
+                    <span class="device-tag">ZTE MC801A</span>
+                    <span class="device-tag">ZTE G5TS</span>
+                </div>
+            </div>
+
+            <div class="compat-provider">
+                <div class="compat-provider-label vodacom">Vodacom Fixed LTE</div>
+                <div class="compat-tags">
+                    <span class="device-tag">Huawei B525S-65A</span>
+                    <span class="device-tag">Huawei B535-932</span>
+                    <span class="device-tag">Huawei B612-233</span>
+                    <span class="device-tag">Huawei B612S-25D</span>
+                    <span class="device-tag">Huawei B618S-22D</span>
+                    <span class="device-tag">ZTE MF286C</span>
+                    <span class="device-tag">ZTE MF286C1</span>
+                    <span class="device-tag">ZTE MF286R</span>
+                    <span class="device-tag">TP-Link Archer MR600</span>
+                    <span class="device-tag">Alcatel Linkhub HH72v</span>
+                </div>
+            </div>
+
+            <div class="compat-provider">
+                <div class="compat-provider-label telkom">Telkom / Openserve</div>
+                <div class="compat-tags">
+                    <span class="device-tag device-tag-any">Any standard LTE router — Telkom/Openserve does not restrict router models</span>
+                </div>
+            </div>
         </div>
         
         <button class="continue-btn" id="continue-btn" disabled>Continue</button>
@@ -205,27 +254,49 @@
         text-transform: capitalize;
     }
     
-    .compatibility-list {
+    .compat-provider {
+        margin-bottom: 14px;
+    }
+
+    .compat-provider:last-child {
+        margin-bottom: 0;
+    }
+
+    .compat-provider-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 2px 8px;
+        border-radius: 3px;
+        display: inline-block;
+        margin-bottom: 7px;
+    }
+
+    .compat-provider-label.mtn    { background: #ffe000; color: #1a1a1a; }
+    .compat-provider-label.vodacom { background: #e60000; color: white; }
+    .compat-provider-label.telkom  { background: #003087; color: white; }
+
+    .compat-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 5px;
     }
-    
+
     .device-tag {
         background: white;
         border: 1px solid #ddd;
         padding: 4px 8px;
         border-radius: 4px;
         font-size: 12px;
-        color: #666;
+        color: #444;
     }
 
     .device-tag-any {
-        background: rgba(0, 180, 204, 0.08);
-        border-color: rgba(0, 180, 204, 0.4);
-        color: #007a8a;
+        background: rgba(0, 135, 200, 0.07);
+        border-color: rgba(0, 135, 200, 0.3);
+        color: #005f8a;
         font-weight: 500;
-        width: 100%;
     }
     
     .continue-btn {

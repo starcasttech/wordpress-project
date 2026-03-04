@@ -391,9 +391,9 @@
         justify-content: center;
         text-align: center;
         line-height: 1.2;
-        margin: 0 auto;
+        margin: auto auto 0;
     }
-    
+
     .check-availability-btn:hover {
         background: #0094a8;
         transform: translateY(-2px);

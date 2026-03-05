@@ -11,8 +11,8 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
 # Configure Apache (Railway)
-# Fix: ensure only one MPM is enabled (avoid "More than one MPM loaded")
-RUN a2dismod mpm_event mpm_worker || true \
+# Fix: directly remove ALL MPM symlinks, then enable only prefork
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load \
     && a2enmod mpm_prefork rewrite
 
 # Expose port

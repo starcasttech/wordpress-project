@@ -44,6 +44,7 @@ docs/internal/
 BUILD.md
 API-KEYS.md
 DEVELOPMENT-NOTES.md
+Progress.md
 
 # ========================================
 # WORDPRESS SPECIFIC
@@ -60,6 +61,24 @@ wp-content/object-cache.php
 # WordPress upgrades
 wp-content/upgrade/
 wp-content/uploads/wc-logs/
+
+# ========================================
+# CUSTOMER SENSITIVE DATA — NEVER COMMIT
+# ========================================
+
+# Customer ID documents (SA ID numbers, passports, etc.)
+wp-content/uploads/ID-Documents/
+
+# Import/export data — may contain customer PII
+wp-content/uploads/smack_uci_uploads/
+wp-content/uploads/wpallimport/
+wp-content/uploads/wc-imports/
+wp-content/uploads/woocommerce_uploads/
+
+# Plugin-generated caches and logs (not needed in git)
+wp-content/uploads/complianz/
+wp-content/uploads/really-simple-ssl/
+wp-content/uploads/wpcode/cache/
 
 # WordPress backups (large files - do not deploy)
 wp-content/backups-dup-lite/

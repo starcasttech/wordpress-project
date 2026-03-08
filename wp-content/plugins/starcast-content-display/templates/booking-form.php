@@ -278,13 +278,13 @@ function send_technician_booking_emails($order, $customer_data, $preferred_date,
 }
 
 :root {
-    --primary-color: #d67d3e;
-    --primary-color-dark: #c56d31;
+    --primary-color: #00b4cc;
+    --primary-color-dark: #0094a8;
     --text-dark: #2d2823;
     --text-light: #6b6355;
-    --bg-light: #faf7f4;
-    --bg-gradient: linear-gradient(135deg, #faf7f4 0%, #f0ebe3 30%, #f7f2eb 70%, #faf7f4 100%);
-    --border-color: #ede8e1;
+    --bg-light: #f8f9fa;
+    --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 30%, #f0f4fb 70%, #f8f9fa 100%);
+    --border-color: #e2e8f0;
     --white: #ffffff;
     --font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --card-shadow: 0 8px 32px rgba(74, 69, 63, 0.1);
@@ -312,7 +312,7 @@ function send_technician_booking_emails($order, $customer_data, $preferred_date,
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 20%, rgba(214, 125, 62, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 20% 20%, rgba(0, 180, 204, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(242, 237, 230, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 60%, rgba(232, 227, 219, 0.2) 0%, transparent 50%);
     pointer-events: none;
@@ -395,12 +395,12 @@ function send_technician_booking_emails($order, $customer_data, $preferred_date,
     font-weight: 600; 
     font-size: 1rem;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 14px 0 rgba(214, 125, 62, 0.25);
+    box-shadow: 0 4px 14px 0 rgba(0, 180, 204, 0.25);
 }
 .btn-secondary:hover { 
     background: var(--primary-color-dark);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px 0 rgba(214, 125, 62, 0.35);
+    box-shadow: 0 6px 20px 0 rgba(0, 180, 204, 0.35);
 }
 .error-message { 
     text-align: center; 
@@ -459,7 +459,7 @@ function send_technician_booking_emails($order, $customer_data, $preferred_date,
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(214, 125, 62, 0.2);
+    box-shadow: 0 0 0 4px rgba(0, 180, 204, 0.2);
     background: rgba(255, 255, 255, 0.95);
 }
 .btn-submit {
@@ -473,14 +473,14 @@ function send_technician_booking_emails($order, $customer_data, $preferred_date,
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 14px 0 rgba(214, 125, 62, 0.25);
+    box-shadow: 0 4px 14px 0 rgba(0, 180, 204, 0.25);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 .btn-submit:hover { 
     background: var(--primary-color-dark);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px 0 rgba(214, 125, 62, 0.35);
+    box-shadow: 0 6px 20px 0 rgba(0, 180, 204, 0.35);
 }
 .terms-note { 
     text-align: center; 

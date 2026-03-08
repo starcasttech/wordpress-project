@@ -5,7 +5,6 @@
 ?>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/mobile-optimization.css">
 
 
 <div class="signup-page">
@@ -688,8 +687,8 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
 
 <style>
 :root {
-    --primary-color: #d67d3e;
-    --primary-color-dark: #c56d31;
+    --primary-color: #00b4cc;
+    --primary-color-dark: #0094a8;
     --text-dark: #2d2823;
     --text-light: #6b6355;
     --bg-light: #faf7f4;
@@ -700,7 +699,7 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
 }
 
 .signup-page {
-    background: linear-gradient(135deg, #f0ebe3 0%, #e8dfd5 30%, #ede4d8 70%, #f0ebe3 100%);
+    background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 30%, #f0f4fb 70%, #f8f9fa 100%);
     background-attachment: fixed;
     padding: 40px 20px;
     font-family: var(--font-family-secondary);
@@ -823,7 +822,7 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(214, 125, 62, 0.15);
+    box-shadow: 0 0 0 4px rgba(0, 180, 204, 0.15);
 }
 .id-upload-container {
     border: 2px dashed var(--border-color);
@@ -863,7 +862,7 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
     border-radius: 12px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 180, 204, 0.3);
 }
 .btn-submit:hover:not(:disabled) { background-color: var(--primary-color-dark); transform: translateY(-3px); }
 .btn-submit:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
@@ -909,7 +908,7 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
     .btn-submit { padding: 14px; font-size: 0.95rem; }
     .checkbox-container { font-size: 0.7rem; gap: 8px; }
     .terms-section { padding: 14px; }
-    .form-row { grid-template-columns: 1fr 1fr; gap: 15px; }
+    .form-row { grid-template-columns: 1fr; gap: 12px; }
 }
 </style>
 
@@ -1004,7 +1003,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             
                             priceElement.innerHTML = `
                                 <span style="text-decoration: line-through; text-decoration-color: #9ca3af; color: #9ca3af; font-size: 0.8em; font-weight: normal;">R${originalPrice}</span>
-                                <span style="color: #d67d3e; font-size: 1.2em; margin-left: 8px;">R${promoPrice}</span>
+                                <span style="color: #00b4cc; font-size: 1.2em; margin-left: 8px;">R${promoPrice}</span>
                             `;
                         }
                         
@@ -1021,7 +1020,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             const discountPercentage = Math.round((discount / originalPrice) * 100);
                             
                             promoBadge.innerHTML = `
-                                <div style="background: linear-gradient(135deg, #d67d3e, #c56d31); color: white; padding: 12px 16px; border-radius: 12px; text-align: center; margin-top: 15px; box-shadow: 0 4px 12px rgba(214, 125, 62, 0.3);">
+                                <div style="background: linear-gradient(135deg, #00b4cc, #0094a8); color: white; padding: 12px 16px; border-radius: 12px; text-align: center; margin-top: 15px; box-shadow: 0 4px 12px rgba(0, 180, 204, 0.3);">
                                     <div style="font-size: 0.85em; opacity: 0.9;">SPECIAL OFFER</div>
                                     <div style="font-size: 1.2em; font-weight: 700; margin-top: 4px;">${promoCode}</div>
                                     <div style="display: flex; justify-content: center; gap: 10px; margin-top: 8px;">

@@ -5,7 +5,6 @@
 ?>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/mobile-optimization.css">
 
 
 
@@ -827,8 +826,8 @@ function send_lte_application_confirmation_emails($order, $customer_data, $packa
 
 <style>
 :root {
-    --primary-color: #d67d3e;
-    --primary-color-dark: #c56d31;
+    --primary-color: #00b4cc;
+    --primary-color-dark: #0094a8;
     --text-dark: #2d2823;
     --text-light: #6b6355;
     --bg-light: #faf7f4;
@@ -839,7 +838,7 @@ function send_lte_application_confirmation_emails($order, $customer_data, $packa
 }
 
 .lte-signup-page {
-    background: linear-gradient(135deg, #f0ebe3 0%, #e8dfd5 30%, #ede4d8 70%, #f0ebe3 100%);
+    background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 30%, #f0f4fb 70%, #f8f9fa 100%);
     background-attachment: fixed;
     padding: 40px 20px;
     font-family: var(--font-family-secondary);
@@ -916,7 +915,7 @@ function send_lte_application_confirmation_emails($order, $customer_data, $packa
 .router-divider {
     width: 100%;
     height: 1px;
-    background: linear-gradient(to right, transparent, #e8e3db 20%, #e8e3db 80%, transparent);
+    background: linear-gradient(to right, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
     margin-bottom: 12px;
 }
 
@@ -944,7 +943,7 @@ function send_lte_application_confirmation_emails($order, $customer_data, $packa
 .router-price {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #d67d3e;
+    color: #00b4cc;
 }
 .package-provider { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
 .package-price { font-size: 2rem; font-weight: 800; color: #4a90e2; margin: 8px 0; }
@@ -999,7 +998,7 @@ function send_lte_application_confirmation_emails($order, $customer_data, $packa
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(214, 125, 62, 0.15);
+    box-shadow: 0 0 0 4px rgba(0, 180, 204, 0.15);
 }
 .id-upload-container {
     border: 2px dashed var(--border-color);
@@ -1025,7 +1024,7 @@ function send_lte_application_confirmation_emails($order, $customer_data, $packa
     border-radius: 12px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 180, 204, 0.3);
 }
 .btn-submit:hover:not(:disabled) { background-color: var(--primary-color-dark); transform: translateY(-3px); }
 .btn-submit:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
@@ -1066,7 +1065,7 @@ function send_lte_application_confirmation_emails($order, $customer_data, $packa
     .btn-submit { padding: 14px; font-size: 0.95rem; }
     .checkbox-container { font-size: 0.7rem; gap: 8px; }
     .terms-section { padding: 14px; }
-    .form-row { grid-template-columns: 1fr 1fr; gap: 15px; }
+    .form-row { grid-template-columns: 1fr; gap: 12px; }
 }
 </style>
 

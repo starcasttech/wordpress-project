@@ -9,9 +9,9 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #f0ebe3 0%, #e8dfd5 30%, #ede4d8 70%, #f0ebe3 100%);
+    background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 30%, #f0f4fb 70%, #f8f9fa 100%);
     background-attachment: fixed;
-    color: #4a453f;
+    color: #334155;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -21,11 +21,10 @@
   
   .fibre-page {
     font-family: 'Poppins', 'Inter', sans-serif;
-    color: #4a453f;
+    color: #334155;
     background: transparent;
     width: 100%;
     overflow-x: hidden;
-    min-height: 100vh;
   }
   
   .container {
@@ -52,7 +51,7 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 20%, rgba(214, 125, 62, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 20% 20%, rgba(0, 180, 204, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 80% 80%, rgba(242, 237, 230, 0.3) 0%, transparent 50%),
       radial-gradient(circle at 40% 60%, rgba(232, 227, 219, 0.2) 0%, transparent 50%);
   }
@@ -73,7 +72,7 @@
   }
 
   .fibre-page .heading-gradient span {
-    color: #d67d3e;
+    color: #00b4cc;
   }
   
   .fibre-page .subheading {
@@ -132,7 +131,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: #d67d3e;
+    background: #00b4cc;
     border-radius: 2px;
   }
   
@@ -140,7 +139,7 @@
   /* Provider Package Display */
   .fibre-page .provider-package-display {
     display: flex;
-    gap: 60px;
+    gap: 15px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
@@ -180,7 +179,7 @@
     min-width: 380px;
     max-width: 380px;
     height: auto;
-    max-height: 580px;
+    max-height: 540px;
     flex-shrink: 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -240,7 +239,7 @@
   }
   
   .fibre-page .price-main {
-    font-size: 2.4rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: #4a90e2;
     line-height: 1;
@@ -305,7 +304,7 @@
     align-items: center;
     gap: 10px;
     padding: 6px 0;
-    border-bottom: 1px dotted #e8e3db;
+    border-bottom: 1px dotted #e2e8f0;
   }
   
   .fibre-page .feature-item:last-child {
@@ -419,7 +418,7 @@
     width: 100%;
     max-width: 280px;
     padding: 16px 24px;
-    background: #ff6b35;
+    background: #00b4cc;
     color: white;
     border: none;
     border-radius: 12px;
@@ -427,7 +426,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 180, 204, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -437,23 +436,23 @@
   }
   
   .fibre-page .check-availability-btn:hover {
-    background: #e55a2b;
+    background: #0094a8;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 6px 16px rgba(0, 180, 204, 0.35);
   }
   
   .fibre-page .scroll-indicators {
     display: none;
     justify-content: center;
-    gap: 8px;
-    margin: 10px 0 4px 0;
+    gap: 5px;
+    margin: 5px 0 2px 0;
     position: relative;
     z-index: 2;
   }
   
   .fibre-page .scroll-dot {
-    width: 8px;
-    height: 8px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background-color: rgba(107, 99, 85, 0.3);
     transition: all 0.3s ease;
@@ -467,15 +466,21 @@
   
   /* Desktop Scroll Arrows */
   .desktop-scroll-container {
-    position: relative;
     display: flex;
     align-items: center;
     width: 100%;
   }
-  
+
+  .carousel-nav-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
   .desktop-scroll-arrow {
-    position: absolute;
-    bottom: 6px;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -484,14 +489,13 @@
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(15px);
   }
-  
+
   .desktop-scroll-arrow:hover {
     background: rgba(0, 0, 0, 0.85);
     color: white;
@@ -499,15 +503,7 @@
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     border-color: rgba(255, 255, 255, 0.5);
   }
-  
-  .desktop-scroll-left {
-    left: calc(50% - 52px);
-  }
-  
-  .desktop-scroll-right {
-    left: calc(50% + 8px);
-  }
-  
+
   .desktop-scroll-arrow svg {
     width: 30px;
     height: 30px;
@@ -546,7 +542,7 @@
   }
 
   .fibre-page .package-price-badge .price-main {
-    color: #d67d3e;
+    color: #00b4cc;
   }
   
   .fibre-page .package-price-badge .currency {
@@ -616,8 +612,8 @@
     color: #ffffff;
     font-size: 0.8rem;
     font-weight: 600;
-    background: #d67d3e;
-    border: 1px solid #c56d31;
+    background: #00b4cc;
+    border: 1px solid #0094a8;
     border-radius: 6px;
     padding: 6px 12px;
     display: inline-block;
@@ -628,7 +624,7 @@
   
   /* Fibre Promo Styles */
   .fibre-page .package-card.has-promo {
-    border: 2px solid #d67d3e;
+    border: 2px solid #00b4cc;
     box-shadow: 
       0 20px 40px rgba(214, 125, 62, 0.2),
       0 8px 16px rgba(214, 125, 62, 0.15);
@@ -666,7 +662,7 @@
   }
   
   .fibre-page .promo-badge-promo {
-    background: #d67d3e;
+    background: #00b4cc;
     color: white;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     font-weight: 700;
@@ -697,19 +693,19 @@
   }
   
   .fibre-page .promo-price .price-main {
-    color: #d67d3e;
+    color: #00b4cc;
   }
   
   .fibre-page .fibre-promo-text {
-    background: rgba(214, 125, 62, 0.1);
-    color: #d67d3e;
+    background: rgba(0, 180, 204, 0.1);
+    color: #00b4cc;
     padding: 6px 10px;
     border-radius: 6px;
     font-size: 0.7rem;
     font-weight: 600;
     margin-top: 8px;
     text-align: center;
-    border: 1px solid rgba(214, 125, 62, 0.3);
+    border: 1px solid rgba(0, 180, 204, 0.3);
     position: relative;
     z-index: 2;
     backdrop-filter: blur(10px);
@@ -730,7 +726,7 @@
   /* Responsive Adjustments */
   @media (max-width: 1024px) {
     .fibre-page .provider-package-display {
-      gap: 25px;
+      gap: 6px;
       padding: 15px;
       background: transparent;
       margin-left: calc(-50vw + 50%);
@@ -744,7 +740,7 @@
       min-width: 340px;
       max-width: 340px;
       padding: 24px;
-      max-height: 560px;
+      max-height: 520px;
     }
   }
   
@@ -752,25 +748,30 @@
     .container {
       padding: 0 16px;
     }
-    
+
     .fibre-page .heading-gradient {
       font-size: 1.8rem;
     }
-    
+
     .fibre-page .section-title {
       font-size: 1.5rem;
     }
-    
+
     .fibre-page .title-container {
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
-    
-    .desktop-scroll-arrow {
+
+    .fibre-page .fibre-section {
+      padding: 12px 0 40px;
+    }
+
+    .desktop-scroll-arrow,
+    .carousel-nav-arrows {
       display: none;
     }
-    
+
     .fibre-page .provider-package-display {
-      gap: 20px;
+      gap: 5px;
       padding: 10px;
       background: transparent;
       margin-left: -16px;
@@ -778,25 +779,60 @@
       width: 100vw;
       max-width: 100vw;
     }
-    
+
     .fibre-page .provider-package-card {
       width: calc(100vw - 80px) !important;
       min-width: calc(100vw - 80px) !important;
       max-width: calc(100vw - 80px) !important;
-      padding: 20px;
+      padding: 14px;
       margin: 0 10px;
-      max-height: 540px;
+      max-height: none;
     }
-    
+
     .fibre-page .provider-logo-main {
-      max-width: 160px;
-      max-height: 65px;
+      max-width: 130px;
+      max-height: 45px;
+      margin-bottom: 4px;
     }
-    
+
+    .fibre-page .speed-info {
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .fibre-page .price-display {
+      margin-bottom: 8px;
+    }
+
     .fibre-page .price-main {
-      font-size: 2.5rem;
+      font-size: 1.5rem;
     }
-    
+
+    .fibre-page .package-dropdown {
+      min-height: 44px;
+      padding: 8px 32px 8px 10px;
+      font-size: 0.95rem;
+    }
+
+    .fibre-page .feature-checklist {
+      margin-bottom: 8px;
+    }
+
+    .fibre-page .feature-item {
+      padding: 3px 0;
+      gap: 8px;
+    }
+
+    .fibre-page .feature-text {
+      font-size: 0.8rem;
+    }
+
+    .fibre-page .check-availability-btn {
+      padding: 12px 20px;
+      font-size: 0.9rem;
+      border-radius: 10px;
+    }
+
     .fibre-page .scroll-indicators {
       display: flex;
     }
@@ -806,14 +842,14 @@
     .container {
       padding: 0 12px;
     }
-    
+
     .fibre-page .fibre-section {
-      padding-top: 12px;
-      padding-bottom: 24px;
+      padding-top: 8px;
+      padding-bottom: 20px;
     }
-    
+
     .fibre-page .provider-package-display {
-      gap: 16px;
+      gap: 4px;
       padding: 8px;
       background: transparent;
       margin-left: -12px;
@@ -823,51 +859,50 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
-    
+
     .fibre-page .provider-package-display::-webkit-scrollbar {
       display: none;
     }
-    
+
     .fibre-page .provider-package-card {
       width: calc(100vw - 64px) !important;
       min-width: calc(100vw - 64px) !important;
       max-width: calc(100vw - 64px) !important;
-      padding: 18px;
+      padding: 14px;
       margin: 0 8px;
-      max-height: 520px;
+      max-height: none;
     }
-    
+
     .fibre-page .provider-logo-main {
-      max-width: 140px;
-      max-height: 55px;
+      max-width: 120px;
+      max-height: 42px;
     }
-    
+
     .fibre-page .price-main {
-      font-size: 2.2rem;
+      font-size: 1.4rem;
     }
-    
+
     .fibre-page .feature-checklist {
-      margin-bottom: 20px;
+      margin-bottom: 6px;
     }
-    
+
+    .fibre-page .feature-item {
+      padding: 2px 0;
+    }
+
     .fibre-page .check-availability-btn {
-      padding: 12px 18px;
-      font-size: 0.95rem;
-      max-width: 280px;
+      padding: 11px 16px;
+      font-size: 0.9rem;
+      max-width: 260px;
     }
-    
+
     .fibre-page .scroll-indicators {
       display: flex;
-      margin: 0 0 12px 0;
-      position: sticky;
-      top: 60px;
-      z-index: 10;
-      background: #ffffff;
-      backdrop-filter: blur(15px);
-      padding: 10px 0;
-      border-radius: 16px;
-      border: 1px solid #000000;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      margin: 6px 0 4px;
+      padding: 4px 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
     }
   }
   
@@ -878,11 +913,11 @@
       min-width: calc(100vw - 48px) !important;
       max-width: calc(100vw - 48px) !important;
       margin: 0 16px;
-      max-height: 520px;
+      max-height: 480px;
     }
     
     .fibre-page .price-main {
-      font-size: 2.2rem;
+      font-size: 1.5rem;
     }
     
     .fibre-page .feature-text {
@@ -898,11 +933,11 @@
       max-width: calc(100vw - 24px) !important;
       margin: 0 12px;
       padding: 18px;
-      max-height: 520px;
+      max-height: 480px;
     }
     
     .fibre-page .provider-package-display {
-      gap: 12px;
+      gap: 3px;
       padding: 8px;
       background: transparent;
       margin-left: -12px;
@@ -945,7 +980,7 @@
     }
     
     .fibre-page .provider-package-display {
-      gap: 20px;
+      gap: 5px;
       padding: 15px;
       background: transparent;
       margin-left: -20px;
@@ -959,7 +994,7 @@
       min-width: 320px;
       max-width: 320px;
       padding: 22px;
-      max-height: 560px;
+      max-height: 520px;
     }
     
     .fibre-page .provider-package-display {
@@ -1009,7 +1044,7 @@
       min-width: calc(100vw - 72px);
       padding: 20px;
       margin: 0 12px;
-      max-height: 540px;
+      max-height: 500px;
     }
   }
 

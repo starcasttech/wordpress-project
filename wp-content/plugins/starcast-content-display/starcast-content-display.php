@@ -46,7 +46,7 @@ class Starcast_Content_Display {
 
         if ($has_fibre_carousel) {
             wp_enqueue_style('starcast-fibre-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;600;700&display=swap', [], '1.3.0');
-            wp_enqueue_style('starcast-fibre-carousel', plugin_dir_url(__FILE__) . 'assets/fibre-carousel.css', [], '1.3.0');
+            wp_enqueue_style('starcast-fibre-carousel', plugin_dir_url(__FILE__) . 'assets/fibre-carousel.css', [], '1.4.0');
             wp_enqueue_script('starcast-fibre-carousel', plugin_dir_url(__FILE__) . 'assets/fibre-carousel.js', [], '1.3.0', true);
 
             $providers_csv = $this->get_fibre_carousel_providers_from_content($post_content);
@@ -59,7 +59,7 @@ class Starcast_Content_Display {
 
         if ($has_lte_carousel) {
             wp_enqueue_style('starcast-lte-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap', [], '1.3.0');
-            wp_enqueue_style('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.css', [], '1.5.7');
+            wp_enqueue_style('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.css', [], '1.6.1');
             wp_enqueue_script('starcast-lte-carousel', plugin_dir_url(__FILE__) . 'assets/lte-carousel.js', [], '1.5.7', true);
 
             $provider_data = $this->get_lte_provider_data();

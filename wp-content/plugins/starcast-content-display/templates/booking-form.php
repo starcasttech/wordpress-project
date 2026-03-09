@@ -301,7 +301,6 @@ function send_technician_booking_emails($order, $customer_data, $preferred_date,
     overflow-x: hidden;
     line-height: 1.6;
     position: relative;
-    min-height: 100vh;
 }
 
 .booking-page::before {
@@ -491,27 +490,52 @@ function send_technician_booking_emails($order, $customer_data, $preferred_date,
 }
 @media (max-width: 768px) {
     .booking-page {
-        padding: 80px 20px;
+        padding: 20px 16px;
     }
-    .form-row { 
-        grid-template-columns: 1fr; 
-        gap: 16px;
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
-    .booking-card { 
-        padding: 32px; 
+    .booking-card {
+        padding: 20px;
+        border-radius: 16px;
     }
-    .booking-title { 
-        font-size: 2rem; 
+    .booking-title {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
     }
     .booking-description {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+    .form-section {
+        margin-bottom: 16px;
+    }
+    .form-section h4 {
         font-size: 1.1rem;
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+    }
+    .form-group {
+        margin-bottom: 12px;
+    }
+    .form-group label {
+        margin-bottom: 4px;
+        font-size: 0.85rem;
     }
     .form-group input, .form-group select, .form-group textarea {
-        padding: 14px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        font-size: 0.9rem;
     }
     .btn-submit {
-        padding: 18px;
-        font-size: 1rem;
+        padding: 14px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+    .terms-note {
+        font-size: 0.8rem;
+        margin-top: 12px;
     }
 }
 </style>

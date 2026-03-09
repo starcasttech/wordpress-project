@@ -875,19 +875,30 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
 
 /* Responsive */
 @media (max-width: 768px) {
-    .signup-page { padding: 20px 15px; }
-    .signup-card { padding: 25px; }
-    .signup-title { font-size: 2rem; }
-    .package-price { font-size: 2rem; }
-    .package-speed { gap: 15px; }
-    .form-row { grid-template-columns: 1fr; }
-    .form-group input, .form-group textarea { padding: 12px 14px; }
-    .id-upload-container { padding: 16px; }
+    .signup-page { padding: 16px 12px; }
+    .signup-card { padding: 16px; border-radius: 12px; }
+    .signup-title { font-size: 1.5rem; margin-bottom: 12px; }
+    .package-summary { padding: 12px; margin-bottom: 14px; border-radius: 10px; }
+    .package-provider { font-size: 1rem; margin-bottom: 4px; }
+    .package-price { font-size: 1.4rem; margin: 4px 0; }
+    .package-speed { gap: 12px; margin: 4px 0; }
+    .package-speed-item { font-size: 0.85rem; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .signup-form { gap: 0; }
+    .form-section h4 { font-size: 1rem; margin-bottom: 10px; padding-bottom: 6px; }
+    .form-group { gap: 4px; margin-bottom: 10px; }
+    .form-group label { font-size: 0.82rem; }
+    .form-group input, .form-group textarea { padding: 10px 12px; font-size: 0.9rem; }
+    .id-upload-container { padding: 12px; }
+    .btn-submit { padding: 12px; font-size: 0.9rem; }
+    .checkbox-container { font-size: 0.75rem; gap: 8px; }
+    .terms-section { padding: 12px; }
+    .terms-note { font-size: 0.8rem; margin-top: 10px; }
 }
 @media (max-width: 480px) {
     .signup-page { padding: 0; }
-    .signup-card { 
-        padding: 20px; 
+    .signup-card {
+        padding: 14px;
         border-radius: 0;
         border: none;
         box-shadow: none;
@@ -900,15 +911,16 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
         padding: 0;
         margin: 0;
     }
-    .signup-title { font-size: 1.6rem; margin-bottom: 20px; }
-    .package-summary { padding: 16px; margin-bottom: 20px; }
-    .package-price { font-size: 1.8rem; }
-    .form-section h4 { font-size: 1.1rem; }
-    .form-group input, .form-group textarea { padding: 12px 14px; }
-    .btn-submit { padding: 14px; font-size: 0.95rem; }
+    .signup-title { font-size: 1.4rem; margin-bottom: 10px; }
+    .package-summary { padding: 10px; margin-bottom: 12px; }
+    .package-provider { font-size: 0.95rem; }
+    .package-price { font-size: 1.3rem; }
+    .form-section h4 { font-size: 0.95rem; }
+    .form-group input, .form-group textarea { padding: 9px 10px; }
+    .btn-submit { padding: 12px; font-size: 0.9rem; }
     .checkbox-container { font-size: 0.7rem; gap: 8px; }
-    .terms-section { padding: 14px; }
-    .form-row { grid-template-columns: 1fr; gap: 12px; }
+    .terms-section { padding: 10px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
 }
 </style>
 

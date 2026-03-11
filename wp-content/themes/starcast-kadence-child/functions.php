@@ -4,7 +4,7 @@
  * Professional ISP theme with advanced features
  *
  * @package Starcast_Pro
- * @version 2.0.0
+ * @version 2.0.2
  */
 
 // Exit if accessed directly
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('STARCAST_VERSION', '2.0.0');
+define('STARCAST_VERSION', '2.0.3');
 define('STARCAST_THEME_DIR', get_stylesheet_directory());
 define('STARCAST_THEME_URI', get_stylesheet_directory_uri());
 
@@ -20,13 +20,10 @@ define('STARCAST_THEME_URI', get_stylesheet_directory_uri());
  * Enqueue parent and child theme styles
  */
 function starcast_enqueue_styles() {
-    // Parent theme
-    wp_enqueue_style('kadence-parent-style', get_template_directory_uri() . '/style.css');
-
-    // Child theme
+    // Child theme — depend on kadence-global which Kadence always registers
     wp_enqueue_style('starcast-pro-style',
         get_stylesheet_directory_uri() . '/style.css',
-        array('kadence-parent-style'),
+        array('kadence-global'),
         STARCAST_VERSION
     );
 
@@ -98,6 +95,24 @@ function starcast_utility_bar() {
     <?php
 }
 add_action('kadence_before_header', 'starcast_utility_bar');
+
+/**
+ * Add Log In / My Account to mobile drawer menu
+ * Sign Up is intentionally excluded from mobile menu
+ */
+function starcast_add_login_to_mobile_menu($items, $args) {
+    // Kadence uses menu_id='mobile-menu' for the drawer (even when falling back to primary theme_location)
+    if (isset($args->menu_id) && $args->menu_id === 'mobile-menu') {
+        if (is_user_logged_in()) {
+            $items .= '<li class="menu-item"><a href="' . esc_url(home_url('/my-account')) . '">My Account</a></li>';
+            $items .= '<li class="menu-item"><a href="' . esc_url(wp_logout_url(home_url())) . '">Logout</a></li>';
+        } else {
+            $items .= '<li class="menu-item"><a href="' . esc_url(home_url('/my-account')) . '">Log In</a></li>';
+        }
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'starcast_add_login_to_mobile_menu', 10, 2);
 
 /**
  * Custom package display shortcode with filters
@@ -434,6 +449,6 @@ add_action('wp_footer', 'starcast_load_svg_sprites', 9999);
  * Replace footer HTML content with custom site footer text.
  */
 function starcast_filter_footer_html_content($content) {
-    return '&copy; 2023 Starcast Technologies<br>Reg No 2023/770423/07';
+    return '&copy; 2023 Starcast Technologies | Reg No. 2023/770423/07';
 }
 add_filter('theme_mod_footer_html_content', 'starcast_filter_footer_html_content');

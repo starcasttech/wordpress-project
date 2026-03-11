@@ -5,7 +5,7 @@ Description: Professional ISP theme for Starcast Technologies - Modern, fast, an
 Author: Starcast Technologies
 Author URI: https://starcast.co.za
 Template: kadence
-Version: 2.0.0
+Version: 2.0.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: starcast-pro
@@ -1117,4 +1117,842 @@ body {
 @media (max-width: 640px) {
     .sc-cta-btns { flex-direction: column; align-items: center; }
     .sc-cta-btns a { width: 100%; max-width: 300px; text-align: center; }
+}
+
+/* ================================================================
+   2026 LAYOUT REFINEMENT PASS
+   ================================================================ */
+
+:root {
+    --starcast-surface: #ffffff;
+    --starcast-surface-soft: #f5f8fc;
+    --starcast-border: rgba(26, 45, 90, 0.12);
+    --starcast-border-strong: rgba(26, 45, 90, 0.2);
+    --starcast-shadow-card: 0 18px 45px -28px rgba(15, 31, 61, 0.45);
+    --starcast-shadow-press: 0 12px 24px -18px rgba(15, 31, 61, 0.42);
+}
+
+html,
+body {
+    overflow-x: clip;
+}
+
+body {
+    background:
+        radial-gradient(circle at top left, rgba(0, 180, 204, 0.08), transparent 28%),
+        linear-gradient(180deg, #f7fafc 0%, #eef4f9 100%);
+}
+
+.content-area {
+    margin-top: clamp(1.5rem, 2.2vw, 2.75rem) !important;
+    margin-bottom: clamp(2rem, 3vw, 3.25rem) !important;
+}
+
+.entry-content-wrap {
+    padding: clamp(1rem, 1.8vw, 1.75rem) !important;
+}
+
+.single-entry,
+.loop-entry,
+.woocommerce-account .woocommerce,
+.signup-card,
+.router-selection-page .container,
+.fibre-page .provider-package-card,
+.lte-package-page .provider-package-card,
+.starcast-package-card {
+    background: var(--starcast-surface);
+    border: 1px solid var(--starcast-border);
+    box-shadow: var(--starcast-shadow-card);
+}
+
+button,
+.button,
+.wp-block-button__link,
+input[type="submit"],
+input[type="button"],
+.starcast-btn,
+.sc-hero-btn,
+.sc-deal-btn,
+.continue-btn,
+.btn-submit,
+.check-availability-btn {
+    border-radius: 14px !important;
+    border: 1px solid rgba(11, 28, 57, 0.12) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.32),
+        0 10px 18px -14px rgba(15, 31, 61, 0.55) !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease !important;
+}
+
+button:hover,
+.button:hover,
+.wp-block-button__link:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+.starcast-btn:hover,
+.sc-hero-btn:hover,
+.sc-deal-btn:hover,
+.continue-btn:hover,
+.btn-submit:hover,
+.check-availability-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.36),
+        0 18px 28px -18px rgba(15, 31, 61, 0.55) !important;
+    filter: saturate(1.02);
+}
+
+button:active,
+.button:active,
+.wp-block-button__link:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+.starcast-btn:active,
+.sc-hero-btn:active,
+.sc-deal-btn:active,
+.continue-btn:active,
+.btn-submit:active,
+.check-availability-btn:active {
+    transform: translateY(0);
+    box-shadow: var(--starcast-shadow-press) !important;
+}
+
+.starcast-utility-bar {
+    padding: 0.45rem 0;
+}
+
+.starcast-utility-bar .container {
+    gap: 1rem;
+}
+
+.starcast-utility-links {
+    gap: 1rem;
+}
+
+.site-main-header-inner-wrap {
+    min-height: 72px;
+}
+
+.site-branding .site-title {
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+}
+
+.main-navigation .primary-menu-container > ul > li.menu-item > a {
+    border-radius: 999px;
+    padding: 0.72rem 0.95rem;
+}
+
+.main-navigation .primary-menu-container > ul > li.menu-item > a:hover,
+.main-navigation .primary-menu-container > ul > li.current-menu-item > a {
+    background: rgba(0, 180, 204, 0.08);
+}
+
+.fibre-page .desktop-scroll-container,
+.lte-package-page .desktop-scroll-container {
+    padding-bottom: 0.5rem;
+}
+
+.fibre-page .provider-package-display,
+.lte-package-page .provider-package-display {
+    gap: 1rem !important;
+    padding: 0.25rem 0.1rem 1rem !important;
+    scroll-padding-inline: 0.75rem;
+}
+
+.fibre-page .provider-package-card,
+.lte-package-page .provider-package-card {
+    border-radius: 22px !important;
+    padding: 1rem !important;
+}
+
+.fibre-page .provider-package-card:hover,
+.lte-package-page .provider-package-card:hover,
+.starcast-package-card:hover {
+    transform: translateY(-4px) !important;
+}
+
+.fibre-page .fibre-header,
+.lte-package-page .lte-header,
+.starcast-hero,
+.sc-hero-slide {
+    min-height: clamp(280px, 38vw, 420px) !important;
+}
+
+.starcast-hero,
+.sc-hero-slide {
+    padding-top: clamp(2rem, 4vw, 3.5rem) !important;
+    padding-bottom: clamp(2.25rem, 4vw, 4rem) !important;
+}
+
+.sc-hero-content,
+.starcast-hero-content {
+    max-width: 640px;
+}
+
+.starcast-package-card,
+.starcast-package-header,
+.starcast-package-body,
+.starcast-filters,
+.starcast-promo-banner,
+.starcast-coverage-card,
+.sc-deal-card,
+.sc-cta-block {
+    border-radius: 22px;
+}
+
+.starcast-packages-grid {
+    gap: 1.2rem;
+    padding-top: clamp(1rem, 2vw, 1.5rem);
+    padding-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.starcast-package-header {
+    padding: 1.25rem 1.25rem 1rem;
+}
+
+.starcast-package-body {
+    padding: 1rem 1.15rem 1.15rem;
+}
+
+.starcast-package-speed {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.starcast-package-name {
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.starcast-package-price {
+    margin-top: 0.65rem;
+}
+
+.starcast-package-features {
+    gap: 0.15rem;
+}
+
+.starcast-package-features li {
+    padding: 0.62rem 0;
+    font-size: 0.94rem;
+}
+
+.starcast-filters {
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.25rem;
+}
+
+.starcast-filter-row {
+    gap: 0.9rem;
+}
+
+.starcast-filter-select,
+.starcast-search-input,
+.signup-form input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.signup-form select,
+.signup-form textarea,
+.woocommerce form .input-text,
+.woocommerce form select,
+.woocommerce form textarea,
+.router-selection-page input[type="text"],
+.router-selection-page input[type="email"],
+.router-selection-page input[type="tel"] {
+    min-height: 48px;
+    border-radius: 14px !important;
+    border: 1px solid var(--starcast-border-strong) !important;
+    background: #fff !important;
+    box-shadow: inset 0 1px 2px rgba(15, 31, 61, 0.04);
+}
+
+.starcast-search-box {
+    gap: 0.8rem;
+}
+
+.signup-page,
+.lte-signup-page,
+.router-selection-page {
+    min-height: auto !important;
+    padding: clamp(1rem, 2vw, 2rem) 0 !important;
+}
+
+.signup-page .container,
+.lte-signup-page .container {
+    max-width: 980px !important;
+    padding: 0 clamp(0.9rem, 2vw, 1.4rem) !important;
+}
+
+.router-selection-page .container {
+    max-width: 880px !important;
+    padding: clamp(1rem, 2.4vw, 1.6rem) !important;
+    border-radius: 28px;
+}
+
+.signup-card {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: clamp(1.15rem, 2.5vw, 2rem) !important;
+    border-radius: 28px !important;
+}
+
+.signup-title {
+    font-size: clamp(1.7rem, 3vw, 2.35rem) !important;
+    line-height: 1.1;
+    margin-bottom: 1rem !important;
+}
+
+.package-summary,
+.warning-message,
+.router-selection-page .selected-package,
+.compatibility-section {
+    border-radius: 18px !important;
+}
+
+.package-summary,
+.warning-message {
+    padding: 1rem 1.1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.signup-card .package-summary {
+    padding: 1.2rem 1.15rem !important;
+    border: 1px solid rgba(26, 45, 90, 0.16) !important;
+    border-radius: 24px !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 18px 34px -26px rgba(15, 31, 61, 0.38) !important;
+}
+
+.signup-card .package-details {
+    display: grid;
+    justify-items: center;
+    gap: 0.85rem;
+}
+
+.signup-card .provider-logo {
+    max-width: 172px !important;
+    max-height: 52px !important;
+    margin-bottom: 0 !important;
+}
+
+.signup-card .package-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.15rem;
+    margin: 0 !important;
+    color: var(--starcast-primary) !important;
+    font-size: 1.2rem !important;
+    line-height: 1;
+}
+
+.signup-card .package-price-value {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #3f84ff;
+}
+
+.signup-card .package-speed {
+    gap: 1rem !important;
+    margin: 0 !important;
+}
+
+.signup-card .package-speed-item {
+    font-size: 0.98rem !important;
+    font-weight: 700;
+}
+
+.signup-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.signup-form .form-section {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1rem 1.05rem !important;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(245, 248, 252, 0.9), #fff);
+    border: 1px solid rgba(26, 45, 90, 0.08);
+}
+
+.signup-form .form-section h4 {
+    margin: 0 0 0.2rem;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+}
+
+.signup-form .form-row {
+    gap: 0.8rem !important;
+    margin: 0 !important;
+}
+
+.signup-form .form-group {
+    margin-bottom: 0 !important;
+}
+
+.signup-form label {
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.id-upload-container,
+.upload-preview {
+    border-radius: 18px;
+}
+
+.terms-section {
+    margin-top: 0 !important;
+    padding: 1rem 1.05rem !important;
+    border-radius: 20px;
+    background: rgba(245, 248, 252, 0.92);
+    border: 1px solid rgba(26, 45, 90, 0.08);
+}
+
+.btn-submit {
+    width: 100%;
+    min-height: 54px;
+    letter-spacing: 0.04em;
+}
+
+.router-options {
+    gap: 0.9rem !important;
+}
+
+.checkbox-option {
+    align-items: center !important;
+    gap: 1rem !important;
+    padding: 1rem 1.05rem !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--starcast-border) !important;
+    box-shadow: none !important;
+}
+
+.router-option-content label,
+.checkbox-option label {
+    font-size: 1rem !important;
+    line-height: 1.3;
+}
+
+.router-thumb-right {
+    width: clamp(88px, 12vw, 118px) !important;
+    height: auto !important;
+}
+
+.compatibility-section {
+    margin-top: 1rem !important;
+    padding: 1rem 1.05rem !important;
+    background: linear-gradient(180deg, rgba(245, 248, 252, 0.96), #fff);
+    border: 1px solid rgba(26, 45, 90, 0.08);
+}
+
+.compat-tags {
+    gap: 0.5rem !important;
+}
+
+.device-tag {
+    border-radius: 999px !important;
+    padding: 0.45rem 0.7rem !important;
+}
+
+.continue-btn {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 1rem !important;
+}
+
+.service-note {
+    margin-top: 1rem !important;
+    padding: 0.95rem 1rem !important;
+    border-radius: 18px;
+}
+
+.woocommerce-account .woocommerce,
+.woocommerce-account:not(.logged-in) .entry-content .woocommerce {
+    border-radius: 28px;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation li a,
+.woocommerce-account .woocommerce-form-login,
+.woocommerce-account .woocommerce-form-register,
+.woocommerce-account .woocommerce-MyAccount-content {
+    border-radius: 18px;
+}
+
+@media (max-width: 1024px) {
+    .content-area {
+        margin-top: 1.25rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .fibre-page .provider-package-card,
+    .lte-package-page .provider-package-card {
+        min-width: min(310px, 82vw) !important;
+    }
+
+    .signup-page .container,
+    .lte-signup-page .container,
+    .router-selection-page .container {
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 767px) {
+    body.page-id-683 .content-area,
+    body.page-id-1359 .content-area {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    body.page-id-683 .content-container.site-container,
+    body.page-id-1359 .content-container.site-container,
+    body.page-id-683 .site-main,
+    body.page-id-1359 .site-main,
+    body.page-id-683 .content-wrap,
+    body.page-id-1359 .content-wrap {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    body.page-id-683 article.entry,
+    body.page-id-1359 article.entry,
+    body.page-id-683 .entry-content-wrap,
+    body.page-id-1359 .entry-content-wrap,
+    body.page-id-683 .entry-content,
+    body.page-id-1359 .entry-content {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+    }
+
+    body.page-id-683 .entry-hero.page-hero-section,
+    body.page-id-1359 .entry-hero.page-hero-section {
+        display: none !important;
+    }
+
+    .starcast-utility-bar {
+        display: none;
+    }
+
+    .entry-content-wrap {
+        padding: 0.85rem !important;
+    }
+
+    .site-main-header-inner-wrap {
+        min-height: 64px;
+    }
+
+    .sc-hero-slide,
+    .starcast-hero,
+    .fibre-page .fibre-header,
+    .lte-package-page .lte-header {
+        min-height: auto !important;
+    }
+
+    .starcast-packages-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.9rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .starcast-filter-row,
+    .starcast-search-box,
+    .signup-form .form-row {
+        grid-template-columns: 1fr !important;
+        flex-direction: column !important;
+    }
+    .signup-form .form-row.name-row,
+    .signup-form .form-row.id-phone-row,
+    .booking-form .form-row.name-row,
+    .booking-form .form-row:has(#contact_email),
+    .booking-form .form-row:has(#preferred_date) {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+    }
+
+    .fibre-page .provider-package-display,
+    .lte-package-page .provider-package-display {
+        gap: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    .fibre-page .provider-package-card,
+    .lte-package-page .provider-package-card {
+        min-width: 86vw !important;
+        border-radius: 18px !important;
+    }
+
+    .router-selection-page .container {
+        padding: 1rem !important;
+        border-radius: 22px !important;
+    }
+
+    .signup-form .form-section,
+    .terms-section,
+    .compatibility-section,
+    .service-note,
+    .checkbox-option {
+        padding: 0.85rem !important;
+        border-radius: 16px !important;
+    }
+
+    .signup-title {
+        font-size: 1.45rem !important;
+    }
+
+    .router-image-right {
+        margin-left: 0 !important;
+    }
+
+    .checkbox-option {
+        align-items: flex-start !important;
+    }
+
+    .router-thumb-right {
+        width: 78px !important;
+    }
+
+    .main-navigation .primary-menu-container > ul > li.menu-item > a {
+        padding: 0.55rem 0.8rem;
+    }
+
+    .signup-page,
+    .lte-signup-page {
+        padding: 0 !important;
+    }
+
+    .signup-page .container,
+    .lte-signup-page .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .signup-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0.9rem 0.85rem 1rem !important;
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .signup-card .package-summary,
+    .signup-form .form-section,
+    .terms-section,
+    .warning-message {
+        border-radius: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0.85rem 0.75rem 1rem !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .checkbox-container {
+        display: block !important;
+        position: relative;
+        padding-left: 1.6rem;
+        font-size: 0.84rem !important;
+        line-height: 1.45 !important;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        position: absolute;
+        left: 0;
+        top: 0.1rem;
+        margin: 0;
+    }
+
+    .checkbox-container .checkmark {
+        display: none !important;
+    }
+
+    .terms-note {
+        font-size: 0.78rem !important;
+        line-height: 1.45;
+    }
+}
+
+/* ================================================================
+   FIBRE + LTE CAROUSEL CLEANUP
+   ================================================================ */
+
+.fibre-page .fibre-header::before,
+.fibre-page .fibre-section::before,
+.lte-package-page .lte-header::before,
+.lte-package-page .lte-section::before {
+    background:
+        radial-gradient(circle at 18% 22%, rgba(0, 180, 204, 0.08) 0%, transparent 42%),
+        radial-gradient(circle at 82% 78%, rgba(37, 99, 235, 0.06) 0%, transparent 40%) !important;
+}
+
+.fibre-page,
+.lte-package-page {
+    background: transparent !important;
+}
+
+.fibre-page .fibre-section,
+.lte-package-page .lte-section,
+.fibre-page .container,
+.lte-package-page .container,
+.fibre-page .title-container,
+.lte-package-page .title-container,
+.fibre-page .desktop-scroll-container,
+.lte-package-page .desktop-scroll-container,
+.fibre-page .scroll-indicators,
+.lte-package-page .scroll-indicators,
+.fibre-page .lte-nav-row,
+.lte-package-page .lte-nav-row,
+.fibre-page .carousel-nav-arrows,
+.lte-package-page .carousel-nav-arrows {
+    background: transparent !important;
+}
+
+article:has(.fibre-page),
+article:has(.lte-package-page),
+.entry-content-wrap:has(.fibre-page),
+.entry-content-wrap:has(.lte-package-page) {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+.fibre-page .provider-package-display,
+.lte-package-page .provider-package-display {
+    align-items: stretch;
+}
+
+.fibre-page .provider-package-card,
+.lte-package-page .provider-package-card {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    justify-content: flex-start;
+}
+
+.fibre-page .package-selector,
+.lte-package-page .package-selector {
+    margin-bottom: 0.75rem !important;
+}
+
+.fibre-page .package-dropdown,
+.lte-package-page .package-dropdown,
+.lte-package-page select {
+    border-color: rgba(26, 45, 90, 0.2) !important;
+    color: var(--starcast-primary) !important;
+    background-color: #fff !important;
+}
+
+.fibre-page .feature-checklist,
+.lte-package-page .feature-checklist {
+    width: 100%;
+    margin-bottom: 0.9rem !important;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.fibre-page .feature-item,
+.lte-package-page .feature-item {
+    align-items: flex-start !important;
+    gap: 0.65rem !important;
+    padding: 0.3rem 0 !important;
+    min-height: 0 !important;
+}
+
+.fibre-page .feature-text,
+.lte-package-page .feature-text {
+    display: block;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    line-height: 1.4 !important;
+    color: #5c6b84 !important;
+}
+
+.fibre-page .scroll-dot,
+.lte-package-page .scroll-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(26, 45, 90, 0.22) !important;
+}
+
+.fibre-page .scroll-dot.active,
+.lte-package-page .scroll-dot.active {
+    width: 28px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #00b4cc, #1a5fa8) !important;
+    transform: none !important;
+}
+
+.fibre-page .desktop-scroll-arrow,
+.lte-package-page .desktop-scroll-arrow {
+    background: var(--starcast-primary) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.fibre-page .desktop-scroll-arrow:hover,
+.lte-package-page .desktop-scroll-arrow:hover {
+    background: var(--starcast-accent) !important;
+}
+
+@media (max-width: 768px) {
+    .fibre-page .title-container,
+    .lte-package-page .title-container {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .fibre-page .container,
+    .lte-package-page .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .fibre-page .provider-package-display,
+    .lte-package-page .provider-package-display {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 1rem 0.85rem !important;
+        scroll-padding-inline: 1rem !important;
+        overflow-x: auto !important;
+    }
+
+    .fibre-page .provider-package-card,
+    .lte-package-page .provider-package-card {
+        width: calc(100vw - 32px) !important;
+        min-width: calc(100vw - 32px) !important;
+        max-width: calc(100vw - 32px) !important;
+        margin: 0 0.15rem !important;
+        padding: 1rem 1rem 1.05rem !important;
+        border-radius: 24px !important;
+    }
+
+    .fibre-page .feature-text,
+    .lte-package-page .feature-text {
+        font-size: 0.82rem !important;
+    }
+
+    .fibre-page .scroll-indicators,
+    .lte-package-page .scroll-indicators,
+    .fibre-page .lte-nav-row,
+    .lte-package-page .lte-nav-row {
+        padding: 0 1rem 0.35rem !important;
+    }
 }

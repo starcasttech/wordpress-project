@@ -891,6 +891,8 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
     .package-speed-item { font-size: 0.8rem; gap: 4px; }
     .speed-icon { font-size: 0.9rem; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-row.name-row,
+    .form-row.id-phone-row { grid-template-columns: 1fr 1fr; gap: 8px; }
     .signup-form { gap: 0; }
     .form-section { margin-bottom: 8px; }
     .form-section h4 { font-size: 0.9rem; margin-bottom: 8px; padding-bottom: 4px; }
@@ -926,6 +928,8 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
     .checkbox-container { font-size: 0.68rem; gap: 6px; }
     .terms-section { padding: 8px; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-row.name-row,
+    .form-row.id-phone-row { grid-template-columns: 1fr 1fr; gap: 6px; }
 }
 </style>
 

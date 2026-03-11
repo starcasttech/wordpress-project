@@ -501,6 +501,12 @@ function send_technician_booking_emails($order, $customer_data, $preferred_date,
         grid-template-columns: 1fr;
         gap: 0;
     }
+    .form-row.name-row,
+    .form-row:has(#contact_email):has(#contact_phone),
+    .form-row:has(#preferred_date):has(#preferred_time) {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
     .booking-card {
         padding: 16px;
         border-radius: 0;

@@ -875,30 +875,38 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
 
 /* Responsive */
 @media (max-width: 768px) {
-    .signup-page { padding: 16px 12px; }
-    .signup-card { padding: 16px; border-radius: 12px; }
-    .signup-title { font-size: 1.5rem; margin-bottom: 12px; }
-    .package-summary { padding: 12px; margin-bottom: 14px; border-radius: 10px; }
-    .package-provider { font-size: 1rem; margin-bottom: 4px; }
-    .package-price { font-size: 1.4rem; margin: 4px 0; }
-    .package-speed { gap: 12px; margin: 4px 0; }
-    .package-speed-item { font-size: 0.85rem; }
+    .signup-page { padding: 10px 0 0; min-height: auto; }
+    .signup-card { padding: 14px; border-radius: 10px; box-shadow: none; border: 1px solid #e2e8f0; }
+    .signup-title { font-size: 1.3rem; margin-bottom: 8px; }
+    .package-summary {
+        padding: 10px 12px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        border: 1px solid #e2e8f0;
+    }
+    .package-provider { font-size: 0.9rem; margin-bottom: 2px; }
+    .package-price { font-size: 1.2rem; margin: 2px 0; }
+    .package-speed { gap: 10px; margin: 2px 0; }
+    .package-speed-item { font-size: 0.8rem; gap: 4px; }
+    .speed-icon { font-size: 0.9rem; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
     .signup-form { gap: 0; }
-    .form-section h4 { font-size: 1rem; margin-bottom: 10px; padding-bottom: 6px; }
-    .form-group { gap: 4px; margin-bottom: 10px; }
-    .form-group label { font-size: 0.82rem; }
-    .form-group input, .form-group textarea { padding: 10px 12px; font-size: 0.9rem; }
-    .id-upload-container { padding: 12px; }
-    .btn-submit { padding: 12px; font-size: 0.9rem; }
-    .checkbox-container { font-size: 0.75rem; gap: 8px; }
-    .terms-section { padding: 12px; }
-    .terms-note { font-size: 0.8rem; margin-top: 10px; }
+    .form-section { margin-bottom: 8px; }
+    .form-section h4 { font-size: 0.9rem; margin-bottom: 8px; padding-bottom: 4px; }
+    .form-group { gap: 3px; margin-bottom: 8px; }
+    .form-group label { font-size: 0.8rem; }
+    .form-group input, .form-group textarea { padding: 8px 10px; font-size: 0.85rem; border-radius: 6px; }
+    .id-upload-container { padding: 10px; }
+    .btn-submit { padding: 11px; font-size: 0.85rem; border-radius: 8px; }
+    .checkbox-container { font-size: 0.72rem; gap: 6px; }
+    .terms-section { padding: 10px; }
+    .terms-note { font-size: 0.75rem; margin-top: 8px; }
 }
 @media (max-width: 480px) {
     .signup-page { padding: 0; }
     .signup-card {
-        padding: 14px;
+        padding: 12px;
         border-radius: 0;
         border: none;
         box-shadow: none;
@@ -906,20 +914,17 @@ function send_application_confirmation_emails($order, $customer_data, $package_p
         max-width: 100vw;
         margin: 0;
     }
-    .container {
-        max-width: 100vw;
-        padding: 0;
-        margin: 0;
-    }
-    .signup-title { font-size: 1.4rem; margin-bottom: 10px; }
-    .package-summary { padding: 10px; margin-bottom: 12px; }
-    .package-provider { font-size: 0.95rem; }
-    .package-price { font-size: 1.3rem; }
-    .form-section h4 { font-size: 0.95rem; }
-    .form-group input, .form-group textarea { padding: 9px 10px; }
-    .btn-submit { padding: 12px; font-size: 0.9rem; }
-    .checkbox-container { font-size: 0.7rem; gap: 8px; }
-    .terms-section { padding: 10px; }
+    .container { max-width: 100vw; padding: 0; margin: 0; }
+    .signup-title { font-size: 1.2rem; margin-bottom: 6px; }
+    .package-summary { padding: 8px 10px; margin-bottom: 10px; border-radius: 6px; }
+    .package-provider { font-size: 0.85rem; }
+    .package-price { font-size: 1.1rem; }
+    .form-section h4 { font-size: 0.85rem; }
+    .form-group { margin-bottom: 6px; }
+    .form-group input, .form-group textarea { padding: 8px; font-size: 0.85rem; }
+    .btn-submit { padding: 10px; font-size: 0.85rem; }
+    .checkbox-container { font-size: 0.68rem; gap: 6px; }
+    .terms-section { padding: 8px; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
 }
 </style>

@@ -172,8 +172,10 @@
         }
         
         const providerName = escapeHtml(provider.name || '');
-        const downloadText = escapeHtml(String(selectedPackage.download || '').replace(/\s*Mbps/i, ''));
-        const uploadText = escapeHtml(String(selectedPackage.upload || '').replace(/\s*Mbps/i, ''));
+        const rawDownload = String(selectedPackage.download || '').replace(/\s*Mbps/i, '').trim();
+        const rawUpload = String(selectedPackage.upload || '').replace(/\s*Mbps/i, '').trim();
+        const downloadText = escapeHtml(rawDownload === 'N/A' ? '' : rawDownload);
+        const uploadText = escapeHtml(rawUpload === 'N/A' ? '' : rawUpload);
         const providerLogo = sanitizeUrl(provider.logo || '');
 
         const providerCard = document.createElement('div');
@@ -216,10 +218,6 @@
               <div class="feature-text">
                 <span class="promo-tooltip-trigger">How our promotion works</span>
               </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-checkmark"></div>
-              <div class="feature-text">Free-to-use router</div>
             </div>
             <div class="feature-item">
               <div class="feature-checkmark"></div>
@@ -410,7 +408,15 @@
     } catch (error) {
       console.error('Error creating provider cards:', error);
     }
-    
+
+    // Auto-snap first card to center on load
+    setTimeout(() => {
+      const firstCard = packageDisplay.querySelector('.provider-package-card');
+      if (firstCard) {
+        firstCard.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
+      }
+    }, 50);
+
     // Create scroll indicators
     try {
       createScrollIndicators();

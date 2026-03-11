@@ -49,7 +49,7 @@
 
 .package-filter:hover,
 .package-filter:focus {
-    border-color: #d67d3e;
+    border-color: #00b4cc;
     outline: none;
     box-shadow: 0 0 0 3px rgba(214, 125, 62, 0.1);
 }
@@ -111,7 +111,7 @@
 .package-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    border-color: #d67d3e;
+    border-color: #00b4cc;
 }
 
 .package-header {
@@ -153,7 +153,7 @@
 .speed-value {
     font-size: 18px;
     font-weight: 700;
-    color: #d67d3e;
+    color: #00b4cc;
 }
 
 /* Package Details (LTE) */
@@ -232,7 +232,7 @@
 }
 
 .btn-primary {
-    background: #d67d3e;
+    background: #00b4cc;
     color: white;
 }
 

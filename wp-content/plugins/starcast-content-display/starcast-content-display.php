@@ -321,6 +321,8 @@ class Starcast_Content_Display {
             $logo = function_exists('get_field') ? get_field('logo', $provider) : null;
             if (is_array($logo) && isset($logo['url'])) {
                 $logo = $logo['url'];
+            } elseif (is_numeric($logo)) {
+                $logo = wp_get_attachment_url((int) $logo) ?: '';
             }
 
             $packages = [];
@@ -506,6 +508,8 @@ class Starcast_Content_Display {
 
                 if (is_array($logo) && isset($logo['url'])) {
                     $logo = $logo['url'];
+                } elseif (is_numeric($logo)) {
+                    $logo = wp_get_attachment_url((int) $logo) ?: '';
                 }
 
                 $grouped[] = [

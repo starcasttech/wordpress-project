@@ -44,7 +44,8 @@ class WPCode_Conditional_Logic {
 	 * @return void
 	 */
 	public function register_type( $type ) {
-		$this->types[ $type->name ] = $type;
+		$type_name                 = $type->name ?? '';
+		$this->types[ $type_name ] = $type;
 	}
 
 	/**

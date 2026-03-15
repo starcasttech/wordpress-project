@@ -45,7 +45,7 @@ $err_found   = ($package == null || $package->Status < 100);
                 '%1 and %2 are replaced with <a> and </a> respectively',
                 'duplicator'
             ),
-            '<a href="' . DUP_Settings::getSsdirUrl() . '/{$package->NameHash}.log" target="_blank">',
+            '<a href="' . DUP_Settings::getSsdirLogsUrl() . '/{$package->NameHash}.log" target="_blank">',
             '</a>'
         );
         ?>

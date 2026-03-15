@@ -4,9 +4,10 @@ if (! function_exists('blocksy_assemble_selector')) {
 	return;
 }
 
-// Icon size
-$iconSize = blocksy_akg( 'cta_button_icon_size', $atts, 15 );
 $has_secondary_text = blocksy_akg( 'has_header_button_secondary_text', $atts, 'no' );
+
+
+$iconSize = blocksy_akg( 'cta_button_icon_size', $atts, 15 );
 
 if ($iconSize !== 15) {
 	blocksy_output_responsive([
@@ -17,6 +18,21 @@ if ($iconSize !== 15) {
 		'variableName' => 'theme-icon-size',
 		'value' => $iconSize,
 		'responsive' => true
+	]);
+}
+
+$button_gap = blocksy_akg( 'cta_button_gap', $atts, '0.5em' );
+
+if ($button_gap !== '0.5em') {
+	blocksy_output_responsive([
+		'css' => $css,
+		'tablet_css' => $tablet_css,
+		'mobile_css' => $mobile_css,
+		'selector' => blocksy_assemble_selector($root_selector),
+		'variableName' => 'theme-button-gap',
+		'value' => $button_gap,
+		'responsive' => true,
+		'unit' => ''
 	]);
 }
 

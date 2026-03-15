@@ -52,6 +52,7 @@ add_filter(
 		$classes['SingleProductAdditionalActions'] = $prefix . 'single/additional-actions-layer.php';
 
 		$classes['WooCommerceCheckout'] = $prefix . 'common/checkout.php';
+		$classes['WooCommerceCart'] = $prefix . 'common/cart.php';
 
 		return $classes;
 	}
@@ -60,6 +61,8 @@ add_filter(
 class WooCommerce {
 	public $single = null;
 	public $checkout = null;
+	public $cart = null;
+	public $import_export = null;
 
 	private $default_variation_cache = [];
 
@@ -71,8 +74,9 @@ class WooCommerce {
 		$this->single = new WooCommerceSingle();
 
 		$this->checkout = new WooCommerceCheckout();
+		$this->cart = new WooCommerceCart();
 
-		new WooImportExport();
+		$this->import_export = new WooImportExport();
 		new WooVariationImagesImportExport();
 	}
 

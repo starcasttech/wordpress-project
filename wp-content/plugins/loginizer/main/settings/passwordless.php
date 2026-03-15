@@ -14,7 +14,7 @@ function loginizer_page_passwordless(){
 	}
 	
 	if(!loginizer_is_premium() && count($_POST) > 0){
-		$lz_error['not_in_free'] = __('This feature is not available in the Free version. <a href="'.LOGINIZER_PRICING_URL.'" target="_blank" style="text-decoration:none; color:green;"><b>Upgrade to Pro</b></a>', 'loginizer');
+		$lz_error['not_in_free'] = __('This feature is not available in the Free version.', 'loginizer').' <a href="'.LOGINIZER_PRICING_URL.'" target="_blank" style="text-decoration:none; color:green;"><b>'.esc_html__('Upgrade to Pro', 'loginizer').'</b></a>';
 		return loginizer_page_passwordless_T();
 	}
 

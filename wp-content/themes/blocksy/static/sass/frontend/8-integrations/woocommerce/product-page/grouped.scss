@@ -1,3 +1,5 @@
+@use "../../../1-helpers/functions";
+
 form.grouped_form {
 	--form-margin-bottom: 0;
 
@@ -57,11 +59,11 @@ form.grouped_form {
 	// action buttons
 	.added_to_cart,
 	.single_add_to_cart_button {
-		@include media-breakpoint-down (xs) {
+		@include functions.media-breakpoint-down (xs) {
 			width: 100%;
 		}
 
-		@include media-breakpoint-up (sm) {
+		@include functions.media-breakpoint-up (sm) {
 			float: left;
 			width: calc(50% - 7px);
 		}

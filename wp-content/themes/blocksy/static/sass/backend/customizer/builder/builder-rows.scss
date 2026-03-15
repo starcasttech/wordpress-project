@@ -1,6 +1,8 @@
+@use "variables";
+
 .placements-builder {
 	position: relative;
-	height: $panel-placement-height;
+	height: variables.$panel-placement-height;
 	width: 100%;
 	// padding: 34px 25px;
 	padding: 25px 25px;

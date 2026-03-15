@@ -180,52 +180,6 @@ class WooCommerceCheckout {
 			1,
 			4
 		);
-
-		add_action(
-			'woocommerce_before_template_part',
-			function ($template_name, $template_path, $located, $args) {
-				if ($template_name !== 'cart/cart-shipping.php') {
-					return;
-				}
-
-				ob_start();
-			},
-			1,
-			4
-		);
-
-		add_action(
-			'woocommerce_after_template_part',
-			function ($template_name, $template_path, $located, $args) {
-				if ($template_name !== 'cart/cart-shipping.php') {
-					return;
-				}
-
-				$result = ob_get_clean();
-
-				// drop the first column
-				$result = preg_replace(
-					'/<th>.+?<\/th>/',
-					'',
-					$result
-				);
-
-				// add option title, collspan and remove data-title
-				echo preg_replace(
-					'/(<td data-title=".*>)/',
-					'<td colspan="2">' . blocksy_html_tag(
-						'div',
-						[
-							'class' => 'ct-shipping-heading'
-						],
-						$args['package_name']
-					),
-					$result
-				);
-			},
-			1,
-			4
-		);
 	}
 
 	public function has_custom_checkout() {

@@ -1,7 +1,7 @@
-$transition-duration: 0.25s;
-
-@import 'modal';
-@import 'panel';
+@use 'variables';
+@use 'modal';
+@use 'panel';
+@use "../../1-helpers/functions";
 
 body {
 	&[data-panel] {
@@ -28,13 +28,13 @@ body {
 	opacity: 0;
 	display: none;
 	pointer-events: none;
-	transition: opacity $transition-duration ease-in-out;
+	transition: opacity variables.$transition-duration ease-in-out;
 
 	.ct-panel-inner {
 		display: flex;
 		flex-direction: column;
 
-		@include media-breakpoint-down(sm) {
+		@include functions.media-breakpoint-down(sm) {
 			--panel-padding: 25px;
 		}
 	}
@@ -46,11 +46,11 @@ body {
 	align-items: center;
 	padding-inline: var(--panel-padding, 35px);
 
-	@include media-breakpoint-down(sm) {
+	@include functions.media-breakpoint-down(sm) {
 		padding-top: 20px;
 	}
 
-	@include media-breakpoint-up(md) {
+	@include functions.media-breakpoint-up(md) {
 		padding-top: 30px;
 	}
 

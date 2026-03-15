@@ -567,7 +567,9 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 		'css' => $css,
 		'tablet_css' => $tablet_css,
 		'mobile_css' => $mobile_css,
-		'selector' => '#woo-cart-panel',
+		'selector' => blocksy_assemble_selector(
+			$root_selector[0] . ' #woo-cart-panel'
+		),
 		'variableName' => 'side-panel-width',
 		'responsive' => true,
 		'unit' => '',
@@ -588,7 +590,9 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 		'mobile_css' => $mobile_css,
 		'variables' => [
 			'default' => [
-				'selector' => '#woo-cart-panel .ct-panel-actions',
+				'selector' => blocksy_assemble_selector(
+					$root_selector[0] . ' #woo-cart-panel .ct-panel-actions'
+				),
 				'variable' => 'theme-text-color'
 			],
 		],
@@ -607,17 +611,23 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 		'mobile_css' => $mobile_css,
 		'variables' => [
 			'default' => [
-				'selector' => '#woo-cart-panel .cart_list, #woo-cart-panel [class*="empty-message"]',
+				'selector' => blocksy_assemble_selector(
+					$root_selector[0] . ' #woo-cart-panel .cart_list, ' . $root_selector[0] . ' #woo-cart-panel [class*="empty-message"]'
+				),
 				'variable' => 'theme-text-color'
 			],
 
 			'link_initial' => [
-				'selector' => '#woo-cart-panel .cart_list',
+				'selector' => blocksy_assemble_selector(
+					$root_selector[0] . ' #woo-cart-panel .cart_list'
+				),
 				'variable' => 'theme-link-initial-color'
 			],
 
 			'link_hover' => [
-				'selector' => '#woo-cart-panel .cart_list',
+				'selector' => blocksy_assemble_selector(
+					$root_selector[0] . ' #woo-cart-panel .cart_list'
+				),
 				'variable' => 'theme-link-hover-color'
 			],
 		],
@@ -634,7 +644,9 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 		'mobile_css' => $mobile_css,
 		'variables' => [
 			'default' => [
-				'selector' => '#woo-cart-panel .total',
+				'selector' => blocksy_assemble_selector(
+					$root_selector[0] . ' #woo-cart-panel .total'
+				),
 				'variable' => 'theme-text-color'
 			],
 		],
@@ -645,7 +657,9 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 		'css' => $css,
 		'tablet_css' => $tablet_css,
 		'mobile_css' => $mobile_css,
-		'selector' => '#woo-cart-panel',
+		'selector' => blocksy_assemble_selector(
+			$root_selector[0] . ' #woo-cart-panel'
+		),
 		'value' => blocksy_akg('cart_panel_shadow', $atts, blocksy_box_shadow_value([
 			'enable' => true,
 			'h_offset' => 0,
@@ -661,7 +675,9 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 	]);
 
 	blocksy_output_background_css([
-		'selector' => '#woo-cart-panel .ct-panel-inner',
+		'selector' => blocksy_assemble_selector(
+			$root_selector[0] . ' #woo-cart-panel .ct-panel-inner'
+		),
 		'css' => $css,
 		'tablet_css' => $tablet_css,
 		'mobile_css' => $mobile_css,
@@ -678,7 +694,9 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 	]);
 
 	blocksy_output_background_css([
-		'selector' => '#woo-cart-panel',
+		'selector' => blocksy_assemble_selector(
+			$root_selector[0] . ' #woo-cart-panel'
+		),
 		'css' => $css,
 		'tablet_css' => $tablet_css,
 		'mobile_css' => $mobile_css,
@@ -708,12 +726,16 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 		'responsive' => true,
 		'variables' => [
 			'default' => [
-				'selector' => '#woo-cart-panel .ct-toggle-close',
+				'selector' => blocksy_assemble_selector(
+					$root_selector[0] . ' #woo-cart-panel .ct-toggle-close'
+				),
 				'variable' => 'theme-icon-color'
 			],
 
 			'hover' => [
-				'selector' => '#woo-cart-panel .ct-toggle-close:hover',
+				'selector' => blocksy_assemble_selector(
+					$root_selector[0] . ' #woo-cart-panel .ct-toggle-close:hover'
+				),
 				'variable' => 'theme-icon-color'
 			]
 		],
@@ -732,12 +754,16 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 			'responsive' => true,
 			'variables' => [
 				'default' => [
-					'selector' => '#woo-cart-panel .ct-toggle-close[data-type="type-2"]',
+					'selector' => blocksy_assemble_selector(
+						$root_selector[0] . ' #woo-cart-panel .ct-toggle-close[data-type="type-2"]'
+					),
 					'variable' => 'toggle-button-border-color'
 				],
 
 				'hover' => [
-					'selector' => '#woo-cart-panel .ct-toggle-close[data-type="type-2"]:hover',
+					'selector' => blocksy_assemble_selector(
+						$root_selector[0] . ' #woo-cart-panel .ct-toggle-close[data-type="type-2"]:hover'
+					),
 					'variable' => 'toggle-button-border-color'
 				]
 			],
@@ -757,12 +783,16 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 			'responsive' => true,
 			'variables' => [
 				'default' => [
-					'selector' => '#woo-cart-panel .ct-toggle-close[data-type="type-3"]',
+					'selector' => blocksy_assemble_selector(
+						$root_selector[0] . ' #woo-cart-panel .ct-toggle-close[data-type="type-3"]'
+					),
 					'variable' => 'toggle-button-background'
 				],
 
 				'hover' => [
-					'selector' => '#woo-cart-panel .ct-toggle-close[data-type="type-3"]:hover',
+					'selector' => blocksy_assemble_selector(
+						$root_selector[0] . ' #woo-cart-panel .ct-toggle-close[data-type="type-3"]:hover'
+					),
 					'variable' => 'toggle-button-background'
 				]
 			],
@@ -773,7 +803,9 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 
 	if ($cart_panel_close_button_icon_size !== 12) {
 		$css->put(
-			'#woo-cart-panel .ct-toggle-close',
+			blocksy_assemble_selector(
+				$root_selector[0] . ' #woo-cart-panel .ct-toggle-close'
+			),
 			'--theme-icon-size: ' . $cart_panel_close_button_icon_size . 'px'
 		);
 	}
@@ -784,7 +816,9 @@ if ($cart_drawer_type === 'offcanvas' || is_customize_preview()) {
 
 		if ($cart_panel_close_button_border_radius !== 5) {
 			$css->put(
-				'#woo-cart-panel .ct-toggle-close',
+				blocksy_assemble_selector(
+					$root_selector[0] . ' #woo-cart-panel .ct-toggle-close'
+				),
 				'--toggle-button-radius: ' . $cart_panel_close_button_border_radius . 'px'
 			);
 		}
@@ -796,7 +830,9 @@ blocksy_output_spacing([
 	'css' => $css,
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
-	'selector' => '.woocommerce-mini-cart',
+	'selector' => blocksy_assemble_selector(
+		$root_selector[0] . ' .woocommerce-mini-cart'
+	),
 	'property' => 'theme-border-radius',
 	'value' => blocksy_default_akg('mini_cart_image_radius', $atts,
 		blocksy_spacing_value(),

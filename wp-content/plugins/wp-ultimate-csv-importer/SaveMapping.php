@@ -8,7 +8,7 @@
 
 namespace Smackcoders\FCSV;
 
-if (! defined('ABSPATH'))
+if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
 
 $import_extensions = glob(__DIR__ . '/importExtensions/*.php');
@@ -22,7 +22,7 @@ class SaveMapping
 	private static $instance = null, $validatefile;
 	private static $smackcsv_instance = null;
 	private static $core = null;
-	public $media_log,$manage_filter;
+	public $media_log, $manage_filter;
 	public $check_manage_filter = false;
 	private function __construct()
 	{
@@ -32,14 +32,14 @@ class SaveMapping
 		add_action('wp_ajax_ImportState', array($this, 'import_state_function'));
 		add_action('wp_ajax_ImportStop', array($this, 'import_stop_function'));
 		add_action('wp_ajax_checkmain_mode', array($this, 'checkmain_mode'));
-		add_action('wp_ajax_close_notification_action',array($this, 'handle_close_notification_action'));
+		add_action('wp_ajax_close_notification_action', array($this, 'handle_close_notification_action'));
 		add_action('wp_ajax_bulk_file_import', array($this, 'bulk_file_import_function'));
 		add_action('wp_ajax_bulk_import', array($this, 'bulk_import'));
 		add_action('wp_ajax_PauseImport', array($this, 'pause_import'));
 		add_action('wp_ajax_ResumeImport', array($this, 'resume_import'));
 		add_action('wp_ajax_DeactivateMail', array($this, 'deactivate_mail'));
 		add_action('wp_ajax_smackuci_check_review_popup', array($this, 'smackuci_check_review_popup'));
-add_action('wp_ajax_nopriv_smackuci_check_review_popup', array($this, 'smackuci_check_review_popup'));
+		add_action('wp_ajax_nopriv_smackuci_check_review_popup', array($this, 'smackuci_check_review_popup'));
 
 
 	}
@@ -55,43 +55,45 @@ add_action('wp_ajax_nopriv_smackuci_check_review_popup', array($this, 'smackuci_
 		return SaveMapping::$instance;
 	}
 
-public function smackuci_check_review_popup() {
-	check_ajax_referer('smack-ultimate-csv-importer', 'securekey');
+	public function smackuci_check_review_popup()
+	{
+		check_ajax_referer('smack-ultimate-csv-importer', 'securekey');
 
-    global $wpdb;
+		global $wpdb;
 
-    $table = $wpdb->prefix . "smackuci_events";
+		$table = $wpdb->prefix . "smackuci_events";
 
-    $dont_show = get_option('smackuci_dont_show_again', false);
+		$dont_show = get_option('smackuci_dont_show_again', false);
 
-    if (isset($_POST['Later']) && $_POST['Later'] === "true") {
-        $import_count = (int) $wpdb->get_var("SELECT COUNT(*) FROM $table");
+		if (isset($_POST['Later']) && $_POST['Later'] === "true") {
+			$import_count = (int) $wpdb->get_var("SELECT COUNT(*) FROM $table");
 
-        update_option('smackuci_last_feedback_check', $import_count);
+			update_option('smackuci_last_feedback_check', $import_count);
 
-        wp_send_json_success(['reset' => true]);
-    }
+			wp_send_json_success(['reset' => true]);
+		}
 
-    if (isset($_POST['DontNotopen']) && $_POST['DontNotopen'] === "true") {
-        update_option('smackuci_dont_show_again', true);
-        wp_send_json_success(['dont_show' => true]);
-    }
+		if (isset($_POST['DontNotopen']) && $_POST['DontNotopen'] === "true") {
+			update_option('smackuci_dont_show_again', true);
+			wp_send_json_success(['dont_show' => true]);
+		}
 
-    $import_count = (int) $wpdb->get_var("SELECT COUNT(*) FROM $table");
+		$import_count = (int) $wpdb->get_var("SELECT COUNT(*) FROM $table");
 
-    $last_shown_at = (int) get_option('smackuci_last_feedback_check', 0);
+		$last_shown_at = (int) get_option('smackuci_last_feedback_check', 0);
 
-    if ($import_count >= ($last_shown_at + 10) && !$dont_show) {
-        update_option('smackuci_last_feedback_check', $import_count);
-        wp_send_json_success(['show_popup' => true]);
-    }
+		if ($import_count >= ($last_shown_at + 10) && !$dont_show) {
+			update_option('smackuci_last_feedback_check', $import_count);
+			wp_send_json_success(['show_popup' => true]);
+		}
 
-    wp_send_json_error(['show_popup' => false]);
-}
+		wp_send_json_error(['show_popup' => false]);
+	}
 
 
 
-	public function handle_close_notification_action() {
+	public function handle_close_notification_action()
+	{
 		check_ajax_referer('smack-ultimate-csv-importer', 'securekey');
 
 		$get_option = get_option('updateMessageDisplay');
@@ -113,16 +115,16 @@ public function smackuci_check_review_popup() {
 		}
 		$get_option = get_option('updateMessageDisplay');
 		if ($get_option === false) {
-		//	$result['notice_message'] = $this->updateMessage();
+			//	$result['notice_message'] = $this->updateMessage();
 			$result['notice_display'] = true;
 			add_option('updateMessageDisplay', 'true');
-		}else {
+		} else {
 			// Option exists, check its value
 			if ($get_option === 'true') {
-			//	$result['notice_message'] = $this->updateMessage(); // Option is true
+				//	$result['notice_message'] = $this->updateMessage(); // Option is true
 				$result['notice_display'] = true;
-			}else{
-			//	$result['notice_message'] = $this->updateMessage();
+			} else {
+				//	$result['notice_message'] = $this->updateMessage();
 				$result['notice_display'] = false;
 			}
 		}
@@ -130,24 +132,25 @@ public function smackuci_check_review_popup() {
 		wp_die();
 	}
 
-	public function updateMessage(){
-		
+	public function updateMessage()
+	{
+
 		$message = '';
 		$response = wp_safe_remote_get('https://www.smackcoders.com/wp-versions/wp-ultimate-csv-importer-free.json');
-		
-		if ( is_wp_error( $response ) ) {
+
+		if (is_wp_error($response)) {
 			return $message;
 		}
 		$response = json_decode($response);
 		$current_plugin_version = '7.14';
-        if($current_plugin_version < $response->version[0]) {
-			
-            $message = $response->message[0];
-        }
+		if ($current_plugin_version < $response->version[0]) {
+
+			$message = $response->message[0];
+		}
 		return $message;
 	}
 
-	
+
 	/**
 	 * Save the mapped fields on using new mapping
 	 * @return boolean
@@ -181,9 +184,9 @@ public function smackuci_check_review_popup() {
 	public function save_fields_function()
 	{
 		check_ajax_referer('smack-ultimate-csv-importer', 'securekey');
-		$hash_key      = sanitize_key($_POST['HashKey']);
-		$type          = sanitize_text_field($_POST['Types']);
-		$map_fields    = sanitize_text_field($_POST['MappedFields']);
+		$hash_key = sanitize_key($_POST['HashKey']);
+		$type = sanitize_text_field($_POST['Types']);
+		$map_fields = sanitize_text_field($_POST['MappedFields']);
 		//$map_filter    = sanitize_text_field($_POST['MappedFilter']);
 		$mapping_type = sanitize_text_field($_POST['MappingType']);
 		$counter = isset($counter) ? $counter : 0;
@@ -195,7 +198,7 @@ public function smackuci_check_review_popup() {
 			$media_settings['media_handle_option'] = 'true';
 			$media_settings['use_ExistingImage'] = 'true';
 			$image_info = array(
-				'media_settings'  => $media_settings
+				'media_settings' => $media_settings
 			);
 			update_option('smack_image_options', $image_info);
 		}
@@ -203,7 +206,7 @@ public function smackuci_check_review_popup() {
 		$file_table_name = $wpdb->prefix . "smackcsv_file_events";
 
 		$filters = json_decode(stripslashes($_POST['MappedFilter']), true);
-		$mapping_filter = serialize($filters);	
+		$mapping_filter = serialize($filters);
 
 		$mapped_fields = json_decode(stripslashes($map_fields), true);
 		$helpers_instance = ImportHelpers::getInstance();
@@ -227,19 +230,19 @@ public function smackuci_check_review_popup() {
 				}
 			}
 			if ($key !== 'BUNDLEMETA') {
-				
+
 				$map_data[$key] = $value;
 			}
-		}		
-		$get_detail   = $wpdb->get_results("SELECT file_name FROM $file_table_name WHERE `hash_key` = '$hash_key'");
+		}
+		$get_detail = $wpdb->get_results("SELECT file_name FROM $file_table_name WHERE `hash_key` = '$hash_key'");
 		$get_file_name = $get_detail[0]->file_name;
 		$get_hash = $wpdb->get_results("SELECT eventKey FROM $template_table_name");
 		$mapping_fields = serialize($map_data);
 		$time = date('Y-m-d h:i:s');
 		$get_file_name = $get_detail[0]->file_name;
-		
+
 		// Using prepare to safely insert the values
-		if(!empty($get_hash)){
+		if (!empty($get_hash)) {
 			foreach ($get_hash as $hash_values) {
 				$inserted_hash_values[] = $hash_values->eventKey;
 			}
@@ -266,7 +269,7 @@ public function smackuci_check_review_popup() {
 					$mapping_type
 				);
 			}
-		}else{
+		} else {
 			$query = $wpdb->prepare(
 				"INSERT INTO $template_table_name (mapping, mapping_filter , createdtime, module, csvname, eventKey, mapping_type) 
 				VALUES (%s, %s, %s, %s, %s, %s, %s)",
@@ -285,7 +288,7 @@ public function smackuci_check_review_popup() {
 		$fileiteration = '5';
 		update_option('sm_bulk_import_free_iteration_limit', $fileiteration);
 		$response['success'] = true;
-		$response['file_iteration'] = (int)$fileiteration;
+		$response['file_iteration'] = (int) $fileiteration;
 		echo wp_json_encode($response);
 		wp_die();
 	}
@@ -424,7 +427,7 @@ public function smackuci_check_review_popup() {
 		global $wpdb, $core_instance, $uci_woocomm_meta, $uci_woocomm_bundle_meta, $product_attr_instance, $wpmlimp_class;
 		$header_array = [];
 		$upload_dir = SaveMapping::$smackcsv_instance->create_upload_dir();
-		$hash_key  = sanitize_key($_POST['HashKey']);
+		$hash_key = sanitize_key($_POST['HashKey']);
 		$check = sanitize_text_field($_POST['Check']);
 		$media_type = sanitize_text_field($_POST['MediaType']);
 		$selected_type = sanitize_text_field($_POST['Types']);
@@ -453,8 +456,8 @@ public function smackuci_check_review_popup() {
 		if (empty($file_extension)) {
 			$file_extension = 'xml';
 		}
-		if($file_extension == 'xlsx' || $file_extension == 'xls'){
-			$file_extension = 'csv';                    
+		if ($file_extension == 'xlsx' || $file_extension == 'xls') {
+			$file_extension = 'csv';
 		}
 		$upload_dir = SaveMapping::$smackcsv_instance->create_upload_dir();
 		$file_size = filesize($upload_dir . $hash_key . '/' . $hash_key);
@@ -629,16 +632,12 @@ public function smackuci_check_review_popup() {
 										}
 									}
 								}
-								foreach ($map as $group_name => $group_value) {
-									if ($group_name == 'CORE') {
-										$get_arr = $this->main_import_process($map, $header_array, $value_array, $selected_type, $get_mode, $i, $check, $hash_key, $unmatched_row, '', '', $media_type);
-										$post_id = $get_arr['id'];
-										$core_instance->detailed_log = $get_arr['detail_log'];
-										$failed_media_log  = $get_arr['failed_media_log'];
-										$core_instance->media_log = $get_arr['media_log'];
-										$media_log = $core_instance->media_log;
-									}
-								}
+								$get_arr = $this->main_import_process($map, $header_array, $value_array, $selected_type, $get_mode, $i, $check, $hash_key, $unmatched_row, '', '', $media_type);
+								$post_id = $get_arr['id'];
+								$core_instance->detailed_log = $get_arr['detail_log'];
+								$failed_media_log = $get_arr['failed_media_log'];
+								$core_instance->media_log = $get_arr['media_log'];
+								$media_log = $core_instance->media_log;
 
 
 								$helpers_instance->get_post_ids($post_id, $hash_key);
@@ -649,7 +648,7 @@ public function smackuci_check_review_popup() {
 								if ($i == $total_rows) {
 									$fields = $wpdb->get_results("UPDATE $log_table_name SET status = 'Completed' WHERE hash_key = '$hash_key'");
 								}
-								if (count($core_instance->detailed_log) > $file_iteration) {
+								if (is_countable($core_instance->detailed_log) && count($core_instance->detailed_log) > $file_iteration) {
 									$log_manager_instance->get_event_log($hash_key, $file_name, $file_extension, $get_mode, $total_rows, $selected_type, $core_instance->detailed_log, $addHeader);
 									$log_manager_instance->manage_records($hash_key, $selected_type, $file_name, $total_rows);
 									$addHeader = false;
@@ -794,16 +793,12 @@ public function smackuci_check_review_popup() {
 									}
 								}
 							}
-							foreach ($map as $group_name => $group_value) {
-								if ($group_name == 'CORE') {
-									$get_arr = $this->main_import_process($map, $header_array, $value_array, $selected_type, $get_mode, $i, $check, $hash_key, $unmatched_row, '', '', $media_type);
-									$post_id = $get_arr['id'];
-									$core_instance->detailed_log = $get_arr['detail_log'];
-									$failed_media_log  = $get_arr['failed_media_log'];
-									$core_instance->media_log = $get_arr['media_log'];
-									$media_log = $core_instance->media_log;
-								}
-							}
+							$get_arr = $this->main_import_process($map, $header_array, $value_array, $selected_type, $get_mode, $i, $check, $hash_key, $unmatched_row, '', '', $media_type);
+							$post_id = $get_arr['id'];
+							$core_instance->detailed_log = $get_arr['detail_log'];
+							$failed_media_log = $get_arr['failed_media_log'];
+							$core_instance->media_log = $get_arr['media_log'];
+							$media_log = $core_instance->media_log;
 							$helpers_instance->get_post_ids($post_id, $hash_key);
 
 							$remaining_records = $total_rows - $i;
@@ -812,7 +807,7 @@ public function smackuci_check_review_popup() {
 							if ($i == $total_rows) {
 								$fields = $wpdb->get_results("UPDATE $log_table_name SET status = 'Completed' WHERE hash_key = '$hash_key'");
 							}
-							if (count($core_instance->detailed_log) > $file_iteration) {
+							if (is_countable($core_instance->detailed_log) && count($core_instance->detailed_log) > $file_iteration) {
 								$log_manager_instance->get_event_log($hash_key, $file_name, $file_extension, $get_mode, $total_rows, $selected_type, $core_instance->detailed_log, $addHeader);
 								$addHeader = false;
 								$core_instance->detailed_log = [];
@@ -839,7 +834,7 @@ public function smackuci_check_review_popup() {
 				fclose($h);
 			}
 		}
-		if($file_extension == 'tsv'){
+		if ($file_extension == 'tsv') {
 			if (version_compare(PHP_VERSION, '8.1.0', '<')) {  // Only do this if PHP version is less than 8.1.0
 				if (!ini_get("auto_detect_line_endings")) {
 					ini_set("auto_detect_line_endings", true);
@@ -984,16 +979,12 @@ public function smackuci_check_review_popup() {
 								}
 							}
 						}
-						foreach ($map as $group_name => $group_value) {
-							if ($group_name == 'CORE') {
-								$get_arr = $this->main_import_process($map, $header_array, $value_array, $selected_type, $get_mode, $i, $check, $hash_key, $unmatched_row, '', '', $media_type);
-								$post_id = $get_arr['id'];
-								$core_instance->detailed_log = $get_arr['detail_log'];
-								$failed_media_log  = $get_arr['failed_media_log'];
-								$core_instance->media_log = $get_arr['media_log'];
-								$media_log = $core_instance->media_log;
-							}
-						}
+						$get_arr = $this->main_import_process($map, $header_array, $value_array, $selected_type, $get_mode, $i, $check, $hash_key, $unmatched_row, '', '', $media_type);
+						$post_id = $get_arr['id'];
+						$core_instance->detailed_log = $get_arr['detail_log'];
+						$failed_media_log = $get_arr['failed_media_log'];
+						$core_instance->media_log = $get_arr['media_log'];
+						$media_log = $core_instance->media_log;
 						$helpers_instance->get_post_ids($post_id, $hash_key);
 
 						$remaining_records = $total_rows - $i;
@@ -1002,7 +993,7 @@ public function smackuci_check_review_popup() {
 						if ($i == $total_rows) {
 							$fields = $wpdb->get_results("UPDATE $log_table_name SET status = 'Completed' WHERE hash_key = '$hash_key'");
 						}
-						if (count($core_instance->detailed_log) > $file_iteration) {
+						if (is_countable($core_instance->detailed_log) && count($core_instance->detailed_log) > $file_iteration) {
 							$log_manager_instance->get_event_log($hash_key, $file_name, $file_extension, $get_mode, $total_rows, $selected_type, $core_instance->detailed_log, $addHeader);
 							$addHeader = false;
 							$core_instance->detailed_log = [];
@@ -1035,7 +1026,7 @@ public function smackuci_check_review_popup() {
 
 			$lined_number = ($file_iteration * ($page_number - 1));
 			$limit = min(($file_iteration * $page_number) - 1, $total_rows - 1); // Ensure limit does not exceed total rows
-		
+
 			$header_array = [];
 			$value_array = [];
 			$i = 0;
@@ -1096,7 +1087,7 @@ public function smackuci_check_review_popup() {
 					$get_arr = $this->main_import_process($mapping, $header_array['header'], $value_array['value'], $selected_type, $get_mode, $i, $check, $hash_key, $unmatched_row, '', '', '');
 					$post_id = $get_arr['id'];
 					$core_instance->detailed_log = $get_arr['detail_log'];
-					$failed_media_log  = $get_arr['failed_media_log'];
+					$failed_media_log = $get_arr['failed_media_log'];
 					$media_log = $get_arr['media_log'];
 
 					$helpers_instance->get_post_ids($post_id, $hash_key);
@@ -1108,7 +1099,7 @@ public function smackuci_check_review_popup() {
 					if ($i == $total_rows - 1) {
 						$wpdb->get_results("UPDATE $log_table_name SET status = 'Completed' WHERE hash_key = '$hash_key'");
 					}
-					if (is_countable($core_instance->detailed_log) && count($core_instance->detailed_log) > $file_iteration ) {
+					if (is_countable($core_instance->detailed_log) && count($core_instance->detailed_log) > $file_iteration) {
 						$log_manager_instance->get_event_log($hash_key, $file_name, $file_extension, $get_mode, $total_rows, $selected_type, $core_instance->detailed_log, $addHeader);
 						$log_manager_instance->manage_records($hash_key, $selected_type, $file_name, $total_rows);
 						$addHeader = false;
@@ -1148,26 +1139,26 @@ public function smackuci_check_review_popup() {
 				$import_name_as = $unmatched_object->import_name_as($import_type);
 				if ($type == 'cct') {
 					$jettable = $wpdb->prefix . 'jet_cct_' . $import_type;
-					$get_total_row_count =  $wpdb->get_col("SELECT DISTINCT _ID FROM $jettable WHERE cct_status != 'trash' ");
+					$get_total_row_count = $wpdb->get_col("SELECT DISTINCT _ID FROM $jettable WHERE cct_status != 'trash' ");
 					$unmatched_id = array_diff($get_total_row_count, $test);
 					foreach ($unmatched_id as $keys => $values) {
 						$wpdb->get_results("DELETE FROM $jettable WHERE `_ID`='$values' ");
 					}
-				}else{
+				} else {
 					if ($import_type_value == 'category' || $import_type_value == 'post_tag' || $import_type_value == 'product_cat' || $import_type_value == 'product_tag') {
 
-						$get_total_row_count =  $wpdb->get_col("SELECT term_id FROM {$wpdb->prefix}term_taxonomy WHERE taxonomy = '$import_type_value'");
+						$get_total_row_count = $wpdb->get_col("SELECT term_id FROM {$wpdb->prefix}term_taxonomy WHERE taxonomy = '$import_type_value'");
 						if (is_array($entries_array)) {
 							$unmatched_id = array_diff($get_total_row_count, $entries_array);
 						}
-	
+
 						foreach ($unmatched_id as $keys => $values) {
 							$wpdb->get_results("DELETE FROM {$wpdb->prefix}terms WHERE `term_id` = '$values' ");
 						}
 					}
 					if ($import_type_value == 'post' || $import_type_value == 'product' || $import_type_value == 'page' || $import_name_as == 'CustomPosts') {
-	
-						$get_total_row_count =  $wpdb->get_col("SELECT DISTINCT ID FROM {$wpdb->prefix}posts WHERE post_type = '{$import_type_value}' AND post_status != 'trash' ");
+
+						$get_total_row_count = $wpdb->get_col("SELECT DISTINCT ID FROM {$wpdb->prefix}posts WHERE post_type = '{$import_type_value}' AND post_status != 'trash' ");
 						if (is_array($entries_array)) {
 							$unmatched_id = array_diff($get_total_row_count, $entries_array);
 						}
@@ -1350,7 +1341,7 @@ public function smackuci_check_review_popup() {
 		if ($rollback_option == 'true') {
 			$response['rollback'] = true;
 		}
-		$total_records = $wpdb->get_results("SELECT status FROM $log_table_name WHERE hash_key = '$hash_key' ", ARRAY_A);
+		$total_records = $wpdb->get_results($wpdb->prepare("SELECT status FROM $log_table_name WHERE hash_key = %s ", $hash_key), ARRAY_A);
 		if ($total_records[0]['status'] == 'Completed') {
 			if (get_option('failed_line_number')) {
 				delete_option('failed_line_number');
@@ -1376,7 +1367,7 @@ public function smackuci_check_review_popup() {
 	public function background_starts_function()
 	{
 		check_ajax_referer('smack-ultimate-csv-importer', 'securekey');
-		$hash_key  = sanitize_key($_POST['HashKey']);
+		$hash_key = sanitize_key($_POST['HashKey']);
 		$check = sanitize_text_field($_POST['Check']);
 		$unmatched_row_value = get_option('sm_uci_pro_settings');
 		$unmatched_row = $unmatched_row_value['unmatchedrow'];
@@ -1408,13 +1399,13 @@ public function smackuci_check_review_popup() {
 
 		$response = [];
 
-		$background_values = $wpdb->get_results("SELECT mapping , module  FROM $template_table_name WHERE `eventKey` = '$hash_key' ");
+		$background_values = $wpdb->get_results($wpdb->prepare("SELECT mapping , module  FROM $template_table_name WHERE `eventKey` = %s ", $hash_key));
 		foreach ($background_values as $values) {
 			$mapped_fields_values = $values->mapping;
 			$selected_type = $values->module;
 		}
 
-		$get_id = $wpdb->get_results("SELECT id , mode ,file_name , total_rows FROM $file_table_name WHERE `hash_key` = '$hash_key'");
+		$get_id = $wpdb->get_results($wpdb->prepare("SELECT id , mode ,file_name , total_rows FROM $file_table_name WHERE `hash_key` = %s", $hash_key));
 		$get_mode = $get_id[0]->mode;
 		$total_rows = $get_id[0]->total_rows;
 		$file_name = $get_id[0]->file_name;
@@ -1422,8 +1413,8 @@ public function smackuci_check_review_popup() {
 		if (empty($file_extension)) {
 			$file_extension = 'xml';
 		}
-		if($file_extension == 'xlsx' || $file_extension == 'xls'){
-			$file_extension = 'csv';                    
+		if ($file_extension == 'xlsx' || $file_extension == 'xls') {
+			$file_extension = 'csv';
 		}
 		$file_size = filesize($upload_dir . $hash_key . '/' . $hash_key);
 		$filesize = $helpers_instance->formatSizeUnits($file_size);
@@ -1463,7 +1454,7 @@ public function smackuci_check_review_popup() {
 						$post_id = $get_arr['id'];
 						$core_instance->detailed_log = $get_arr['detail_log'];
 						$media_log = $get_arr['media_log'];
-						$failed_media_log  = $get_arr['failed_media_log'];
+						$failed_media_log = $get_arr['failed_media_log'];
 						$helpers_instance->get_post_ids($post_id, $hash_key);
 
 						$import_table_name = $wpdb->prefix . "import_postID";
@@ -1514,7 +1505,7 @@ public function smackuci_check_review_popup() {
 				fclose($h);
 			}
 		}
-		if($file_extension == 'tsv'){
+		if ($file_extension == 'tsv') {
 			if (!ini_get("auto_detect_line_endings")) {
 				ini_set("auto_detect_line_endings", true);
 			}
@@ -1529,7 +1520,7 @@ public function smackuci_check_review_popup() {
 				$delimiter = SaveMapping::$validatefile->getFileDelimiter($file_path, 5);
 				while (($data = fgetcsv($h, 0, "\t")) !== FALSE) {
 					// Read the data from a single line
-					
+
 					array_push($info, $data);
 					if ($line_number == 0) {
 						$header_array = $info[$line_number];
@@ -1539,7 +1530,7 @@ public function smackuci_check_review_popup() {
 						$post_id = $get_arr['id'];
 						$core_instance->detailed_log = $get_arr['detail_log'];
 						$media_log = $get_arr['media_log'];
-						$failed_media_log  = $get_arr['failed_media_log'];
+						$failed_media_log = $get_arr['failed_media_log'];
 						$helpers_instance->get_post_ids($post_id, $hash_key);
 
 						$import_table_name = $wpdb->prefix . "import_postID";
@@ -1617,7 +1608,7 @@ public function smackuci_check_review_popup() {
 					$tag = $child->getName();
 				}
 				$total_xml_count = $this->get_xml_count($path, $tag);
-				if ($total_xml_count == 0  || $tag == 'channel') {
+				if ($total_xml_count == 0 || $tag == 'channel') {
 					$sub_child = $this->get_child($child, $path);
 					$tag = $sub_child['child_name'];
 					$total_xml_count = $sub_child['total_count'];
@@ -1647,7 +1638,7 @@ public function smackuci_check_review_popup() {
 				$post_id = $get_arr['id'];
 				$core_instance->detailed_log = $get_arr['detail_log'];
 				$media_log = $get_arr['media_log'];
-				$failed_media_log  = $get_arr['failed_media_log'];
+				$failed_media_log = $get_arr['failed_media_log'];
 				$helpers_instance->get_post_ids($post_id, $hash_key);
 				$line_numbers = $line_number + 1;
 				$remaining_records = $total_rows - $line_numbers;
@@ -1696,10 +1687,10 @@ public function smackuci_check_review_popup() {
 				$log_manager_instance->get_event_log($hash_key, $file_name, $file_extension, $get_mode, $total_rows, $selected_type, $core_instance->detailed_log, $addHeader);
 			}
 		}
-		
+
 		$log_manager_instance->manage_records($hash_key, $selected_type, $file_name, $total_rows);
 
-		$count = count($info);
+		$count = (is_array($info) || $info instanceof Countable) ? count($info) : 0;
 
 		for ($i = 1; $i <= $count; $i++) {
 
@@ -1758,26 +1749,28 @@ public function smackuci_check_review_popup() {
 		$content = $entries->item(0)->textContent;
 		return $content;
 	}
-	public function manage_filteration($manage_filter, $header_array, $value_array, $core_instance, $line_number, $hash_key) {
+	public function manage_filteration($manage_filter, $header_array, $value_array, $core_instance, $line_number, $hash_key)
+	{
 		global $wpdb;
 		$helpers_instance = ImportHelpers::getInstance();
 		$log_table_name = $wpdb->prefix . "import_detail_log";
 		$unikey_name = 'hash_key';
 		$unikey_value = $hash_key;
-		
+
 		$updated_row_counts = $helpers_instance->update_count($unikey_value, $unikey_name);
 		$skipped_count = $updated_row_counts['skipped'];
-		
+
 		$conditions = [];
 		foreach ($manage_filter as $filter) {
 			$element = $filter['element'];
 			$rule = strtolower(trim($filter['rule']));
 			$value = trim($filter['value']);
 			$condition = isset($filter['condition']) ? strtoupper(trim($filter['condition'])) : '';
-			
+
 			$key = array_search($element, $header_array);
-			if ($key === false) continue;
-			
+			if ($key === false)
+				continue;
+
 			$actual_value = trim($value_array[$key]);
 			switch ($rule) {
 				case 'equals':
@@ -1822,7 +1815,7 @@ public function smackuci_check_review_popup() {
 		if (empty($conditions)) {
 			return;
 		}
-		
+
 		// First, evaluate AND conditions
 		$filtered_conditions = [$conditions[0]['match']];
 		for ($i = 0; $i < count($conditions) - 1; $i++) {
@@ -1832,13 +1825,13 @@ public function smackuci_check_review_popup() {
 				$filtered_conditions[] = $conditions[$i + 1]['match'];
 			}
 		}
-		
+
 		// Then evaluate OR conditions
 		$result = false;
 		foreach ($filtered_conditions as $value) {
 			$result |= $value;
 		}
-		
+
 		if (!$result) {
 			$core_instance->detailed_log[$line_number] = [
 				'Message' => "Skipped: Data does not match filter conditions.",
@@ -1846,22 +1839,22 @@ public function smackuci_check_review_popup() {
 			];
 			$wpdb->query($wpdb->prepare("UPDATE $log_table_name SET skipped = %d WHERE $unikey_name = %s", $skipped_count, $unikey_value));
 		}
-	}	
+	}
 	public function main_import_process($map, $header_array, $value_array, $selected_type, $get_mode, $line_number, $check, $hash_key, $unmatched_row, $gmode = null, $templatekey = null, $media_type = null)
 	{
 		$return_arr = [];
 		$core_instance = CoreFieldsImport::getInstance();
-		$order_meta = $attr_data =$meta_data = '';
+		$order_meta = $attr_data = $meta_data = '';
 		$jetengine_map = [];
 		$meta_data = '';
 		$att_data = '';
 		$woocom_image = '';
 		$bsi_data = '';
-		$post_id='';
+		$post_id = '';
 		global $core_instance, $uci_woocomm_meta, $uci_woocomm_bundle_meta, $product_attr_instance, $wpmlimp_class;
 		/*** check manage filteration */
-		$this->check_manage_filter ? $this->manage_filteration($this->manage_filter,$header_array,$value_array,$core_instance,$line_number,$hash_key) : '';
-		if (preg_match("/(Can't|Skipped|Duplicate)/", $core_instance->detailed_log[$line_number]['Message']) === 0) { 
+		$this->check_manage_filter ? $this->manage_filteration($this->manage_filter, $header_array, $value_array, $core_instance, $line_number, $hash_key) : '';
+		if (preg_match("/(Can't|Skipped|Duplicate)/", $core_instance->detailed_log[$line_number]['Message']) === 0) {
 			foreach ($map as $group_name => $group_value) {
 				if ($group_name == 'CORE') {
 					$wpml_map = isset($map['WPML']) ? $map['WPML'] : '';
@@ -1870,34 +1863,34 @@ public function smackuci_check_review_popup() {
 					if ($selected_type == 'WooCommerce Orders') {
 						$order_meta = !empty($map['ORDERMETA']) ? $map['ORDERMETA'] : '';
 					}
-					if($selected_type=='WooCommerce Product'){
-						$meta_data = isset($map['ECOMMETA'])?$map['ECOMMETA']:'';
-						$attr_data = isset($map['ATTERMETA'])?$map['ATTERMETA']:'';
+					if ($selected_type == 'WooCommerce Product') {
+						$meta_data = isset($map['ECOMMETA']) ? $map['ECOMMETA'] : '';
+						$attr_data = isset($map['ATTERMETA']) ? $map['ATTERMETA'] : '';
 					}
-					if($selected_type=='WooCommerce Customer'){
-						$bsi_data = isset($map['BSI'])?$map['BSI']:'';
+					if ($selected_type == 'WooCommerce Customer') {
+						$bsi_data = isset($map['BSI']) ? $map['BSI'] : '';
 					}
-					$post_id = $core_instance->set_core_values($header_array, $value_array, $map['CORE'], $selected_type, $get_mode, $line_number, $check, $hash_key, $unmatched_row, $gmode, $templatekey, $wpml_map, $media_map, $media_type, $order_meta,$meta_data,$attr_data,$bsi_data);
+					$post_id = $core_instance->set_core_values($header_array, $value_array, $map['CORE'], $selected_type, $get_mode, $line_number, $check, $hash_key, $unmatched_row, $gmode, $templatekey, $wpml_map, $media_map, $media_type, $order_meta, $meta_data, $attr_data, $bsi_data);
 				}
 			}
 			foreach ($map as $group_name => $group_value) {
 
 				switch ($group_name) {
-	case 'ELEMENTOR':
-							$elementor_instance = ElementorImport::getInstance();
-							$elementor_instance->set_elementor_value($header_array, $value_array, $map['ELEMENTOR'], $post_id, $selected_type, $hash_key, $gmode, $templatekey);
-							break;
-	
+					case 'ELEMENTOR':
+						$elementor_instance = ElementorImport::getInstance();
+						$elementor_instance->set_elementor_value($header_array, $value_array, $map['ELEMENTOR'], $post_id, $selected_type, $hash_key, $gmode, $templatekey);
+						break;
+
 					case 'AIOSEO':
 						$all_seo_instance = AllInOneSeoImport::getInstance();
 						$all_seo_instance->set_all_seo_values($header_array, $value_array, $map['AIOSEO'], $post_id, $selected_type, $get_mode);
 						break;
-	
+
 					case 'RANKMATH':
 						$rankmath_instance = RankMathImport::getInstance();
 						$rankmath_instance->set_rankmath_values($header_array, $value_array, $map['RANKMATH'], $post_id, $selected_type);
 						break;
-	
+
 					// case 'ECOMMETA':
 					// 	$variation_id = isset($variation_id) ? $variation_id : '';
 					// 	$uci_woocomm_meta->set_product_meta_values($header_array, $value_array, $map['ECOMMETA'], $post_id, $variation_id, $selected_type, $line_number, $get_mode, $hash_key);
@@ -1909,123 +1902,123 @@ public function smackuci_check_review_popup() {
 					// 	$woocom_image = isset($map['PRODUCTIMAGEMETA']) ? $map['PRODUCTIMAGEMETA'] : [];
 					// 	$product_meta_instance->set_product_meta_values($header_array, $value_array, $map['ATTRMETA'], $post_id, $variation_id, $selected_type, $line_number, $get_mode, $hash_key);
 					// 	break;
-	
+
 					case 'JE':
 						$jet_engine_instance = JetEngineImport::getInstance();
 						$jet_engine_instance->set_jet_engine_values($header_array, $value_array, $map['JE'], $post_id, $selected_type, $get_mode, $hash_key, $line_number);
 						break;
-						
+
 					case 'POLYLANG':
 						$polylang_instance = PolylangImport::getInstance();
 						$polylang_instance->set_polylang_values($header_array, $value_array, $map['POLYLANG'], $post_id, $selected_type);
 						break;
-	
+
 					case 'COUPONMETA':
 						$variation_id = isset($variation_id) ? $variation_id : '';
 						$product_meta_instance = ProductMetaImport::getInstance();
 						$poly_array = isset($map['POLYLANG']) ? $map['POLYLANG'] : [];
 						$uci_woocomm_meta->set_product_meta_values($header_array, $value_array, $map['COUPONMETA'], $post_id, $variation_id, $selected_type, $line_number, $get_mode, $hash_key);
 						break;
-	
+
 					case 'PPOMMETA':
 						$meta_type = 'PPOMMETA';
 						$uci_woocomm_meta->set_product_meta_values($header_array, $value_array, $map['PPOMMETA'], $post_id, '', $meta_type, $line_number, $get_mode, $hash_key);
 						break;
-						
-					case 'EPOMETA':	
-							$meta_type = 'EPOMETA';
-							$uci_woocomm_meta->set_product_meta_values($header_array, $value_array, $map['EPOMETA'], $post_id, '', $meta_type, $line_number, $get_mode, $hash_key);
-							break;
-					case 'WCPAMETA' :
-							$meta_type = 'WCPAMETA';
-							$uci_woocomm_meta->set_product_meta_values($header_array, $value_array, $map['WCPAMETA'], $post_id, '', $meta_type, $line_number, $get_mode, $hash_key);
-							break;
-	
+
+					case 'EPOMETA':
+						$meta_type = 'EPOMETA';
+						$uci_woocomm_meta->set_product_meta_values($header_array, $value_array, $map['EPOMETA'], $post_id, '', $meta_type, $line_number, $get_mode, $hash_key);
+						break;
+					case 'WCPAMETA':
+						$meta_type = 'WCPAMETA';
+						$uci_woocomm_meta->set_product_meta_values($header_array, $value_array, $map['WCPAMETA'], $post_id, '', $meta_type, $line_number, $get_mode, $hash_key);
+						break;
+
 					case 'BUNDLEMETA':
 						$bundle_type = 'BUNDLEMETA';
 						$uci_woocomm_meta->set_product_meta_values($header_array, $value_array, $map['BUNDLEMETA'], $post_id, '', $bundle_type, $line_number, $get_mode, $hash_key);
 						break;
 
 					case 'EVENTS':
-							if (is_plugin_active('events-manager/events-manager.php') && $selected_type == 'event') {
+						if (is_plugin_active('events-manager/events-manager.php') && $selected_type == 'event') {
 							$merge = [];
 							$merge = array_merge($map['CORE'], $map['EVENTS']);
 							$map['TERMS'] = isset($map['TERMS']) ? $map['TERMS'] : '';
 							$events_instance = EventsManagerImport::getInstance();
 							$events_instance->set_events_values($header_array, $value_array, $merge, $post_id, $selected_type, $get_mode, $map['TERMS'], $gmode);
 							break;
-							}elseif (is_plugin_active('the-events-calendar/the-events-calendar.php') && $selected_type == 'tribe_events') {
+						} elseif (is_plugin_active('the-events-calendar/the-events-calendar.php') && $selected_type == 'tribe_events') {
 							$merge = [];
 							$merge = array_merge($map['CORE'], $map['EVENTS']);
 							$map['TERMS'] = isset($map['TERMS']) ? $map['TERMS'] : '';
 							$events_instance = EventCalendarImport::getInstance();
 							$events_instance->set_events_values($header_array, $value_array, $merge, $post_id, $selected_type, $get_mode, $map['TERMS'], $gmode);
 							break;
-							}
-	
+						}
+
 					case 'JECCT':
 						$jet_engine_cct_instance = JetEngineCCTImport::getInstance();
 						$jet_engine_cct_instance->set_jet_engine_cct_values($header_array, $value_array, $map['JECCT'], $post_id, $selected_type, $get_mode, $hash_key, $line_number);
 						break;
-	
+
 					case 'JECPT':
 						$jet_engine_cpt_instance = JetEngineCPTImport::getInstance();
 						$jet_engine_cpt_instance->set_jet_engine_cpt_values($header_array, $value_array, $map['JECPT'], $post_id, $selected_type, $get_mode, $hash_key, $line_number);
 						break;
-						case 'JEREVIEW':
-							$jet_engine_instance = JetReviewsImport::getInstance();
-							$jet_engine_instance->set_jet_reviews_values($header_array, $value_array, $map['JEREVIEW'], $post_id, $selected_type, $get_mode, $hash_key, $line_number, $gmode, $templatekey);
-							break;
-						case 'JEBOOKING':
-							$jet_engine_instance = JetBookingImport::getInstance();
-							$jet_engine_instance->set_jet_booking_values($header_array, $value_array, $map['JEBOOKING'], $post_id, $selected_type, $get_mode, $hash_key, $line_number, $gmode, $templatekey);
-							break;
-							
+					case 'JEREVIEW':
+						$jet_engine_instance = JetReviewsImport::getInstance();
+						$jet_engine_instance->set_jet_reviews_values($header_array, $value_array, $map['JEREVIEW'], $post_id, $selected_type, $get_mode, $hash_key, $line_number, $gmode, $templatekey);
+						break;
+					case 'JEBOOKING':
+						$jet_engine_instance = JetBookingImport::getInstance();
+						$jet_engine_instance->set_jet_booking_values($header_array, $value_array, $map['JEBOOKING'], $post_id, $selected_type, $get_mode, $hash_key, $line_number, $gmode, $templatekey);
+						break;
+
 					case 'CFS':
 						$cfs_instance = CFSImport::getInstance();
 						$cfs_instance->set_cfs_values($line_number, $header_array, $value_array, $map['CFS'], $post_id, $selected_type, $hash_key);
 						break;
-	
+
 					case 'BSI':
-						global $billing_class,$customer_billing_class;
-						if($selected_type == 'WooCommerce Customer'){
+						global $billing_class, $customer_billing_class;
+						if ($selected_type == 'WooCommerce Customer') {
 							//$customer_billing_class->set_bsi_values($header_array, $value_array, $map['BSI'], $post_id, $selected_type);
-						}else{
+						} else {
 							$billing_class->set_bsi_values($header_array, $value_array, $map['BSI'], $post_id, $selected_type);
 						}
 						break;
-	
+
 					case 'WPMEMBERS':
 						global $wpmember_class;
 						$wpmember_class->set_wpmembers_values($line_number, $header_array, $value_array, $map['WPMEMBERS'], $post_id, $selected_type, $hash_key);
 						break;
-					
+
 					case 'MEMBERS':
 						global $member_class;
 						$member_class->set_multirole_values($header_array, $value_array, $map['MEMBERS'], $post_id, $selected_type);
 						break;
-	
+
 					case 'TERMS':
 						$terms_taxo_instance = TermsandTaxonomiesImport::getInstance();
 						$poly_array = isset($map['POLYLANG']) ? $map['POLYLANG'] : '';
 						$terms_taxo_instance->set_terms_taxo_values($header_array, $value_array, $map['TERMS'], $post_id, $selected_type, $get_mode, $line_number, $poly_array);
 						break;
-	
+
 					case 'CORECUSTFIELDS':
 						$wordpress_custom_instance = WordpressCustomImport::getInstance();
 						$wordpress_custom_instance->set_wordpress_custom_values($header_array, $value_array, $map['CORECUSTFIELDS'], $post_id, $selected_type, $hash_key, $line_number, $templatekey, $gmode);
 						break;
-	
+
 					case 'FORUM':
 						$bbpress_instance = BBPressImport::getInstance();
 						$bbpress_instance->set_bbpress_values($header_array, $value_array, $map['FORUM'], $post_id, $selected_type, $get_mode);
 						break;
-	
+
 					case 'TOPIC':
 						$bbpress_instance = BBPressImport::getInstance();
 						$bbpress_instance->set_bbpress_values($header_array, $value_array, $map['TOPIC'], $post_id, $selected_type, $get_mode);
 						break;
-	
+
 					case 'REPLY':
 						$bbpress_instance = BBPressImport::getInstance();
 						$bbpress_instance->set_bbpress_values($header_array, $value_array, $map['REPLY'], $post_id, $selected_type, $get_mode);
@@ -2037,61 +2030,61 @@ public function smackuci_check_review_popup() {
 					case 'LPCOURSE':
 						$learn_merge = [];
 						$learn_merge = array_merge($map['LPCOURSE'], $map['LPCURRICULUM']);
-	
+
 						$learnpress_instance = LearnPressImport::getInstance();
 						$learnpress_instance->set_learnpress_values($header_array, $value_array, $learn_merge, $post_id, $selected_type);
 						break;
-	
+
 					case 'LPLESSON':
 						$learnpress_instance = LearnPressImport::getInstance();
 						$learnpress_instance->set_learnpress_values($header_array, $value_array, $map['LPLESSON'], $post_id, $selected_type);
 						break;
-	
+
 					case 'LPQUIZ':
 						$learnpress_instance = LearnPressImport::getInstance();
 						$learnpress_instance->set_learnpress_values($header_array, $value_array, $map['LPQUIZ'], $post_id, $selected_type);
 						break;
-	
+
 					case 'LPQUESTION':
 						$learnpress_instance = LearnPressImport::getInstance();
 						$learnpress_instance->set_learnpress_values($header_array, $value_array, $map['LPQUESTION'], $post_id, $selected_type);
 						break;
-	
+
 					case 'LPORDER':
 						$learnpress_instance = LearnPressImport::getInstance();
 						$learnpress_instance->set_learnpress_values($header_array, $value_array, $map['LPORDER'], $post_id, $selected_type);
 						break;
-	
+
 					case 'LIFTERLESSON':
 						$lifterlms_instance = LifterLmsImport::getInstance();
 						$lifterlms_instance->set_lifterlms_values($header_array, $value_array, $map['LIFTERLESSON'], $post_id, $selected_type, $get_mode);
 						break;
-	
+
 					case 'LIFTERCOURSE':
 						$lifterlms_instance = LifterLmsImport::getInstance();
 						$lifterlms_instance->set_lifterlms_values($header_array, $value_array, $map['LIFTERCOURSE'], $post_id, $selected_type, $get_mode);
 						break;
-	
+
 					case 'LIFTERCOUPON':
 						$lifterlms_instance = LifterLmsImport::getInstance();
 						$lifterlms_instance->set_lifterlms_values($header_array, $value_array, $map['LIFTERCOUPON'], $post_id, $selected_type, $get_mode);
 						break;
-	
+
 					case 'JOB':
 						$job_listing_instance = JobListingImport::getInstance();
 						$job_listing_instance->set_job_listing_values($header_array, $value_array, $map['JOB'], $post_id, $selected_type);
 						break;
-	
+
 					case 'WPML':
 						$wpmlimp_class = WPMLImport::getInstance();
 						$wpmlimp_class->set_wpml_values($header_array, $value_array, $map['WPML'], $post_id, $selected_type, $line_number);
 						break;
-	
+
 					case 'METABOX':
 						$metabox_instance = MetaBoxImport::getInstance();
 						$metabox_instance->set_metabox_values($line_number, $header_array, $value_array, $map['METABOX'], $post_id, $selected_type, $hash_key);
 						break;
-	
+
 					case 'PODS':
 						$map['WPML'] = isset($map['WPML']) ? $map['WPML'] : '';
 						$pods_instance = PodsImport::getInstance();
@@ -2120,33 +2113,113 @@ public function smackuci_check_review_popup() {
 						$fifu_instance->set_fifu_values($header_array, $value_array, $map['FIFUCUSTOMPOST'], $post_id, $selected_type, $get_mode);
 						break;
 					case 'SLIMSEO':
-        $slimseo_instance = SlimSeoImport::getInstance();
-        $slimseo_instance->set_slimseo_values(
-            $header_array,
-            $value_array,
-            $map['SLIMSEO'],
-            $post_id,
-            $selected_type,
-            $hash_key,
-            $gmode,
-            $templatekey,
-            $line_number
-        );
-        break;
-case 'LISTEO':
-    $listeo_instance = ListeoImport::getInstance();
-    $listeo_instance->set_listeo_values(
-        $header_array,
-        $value_array,
-        $map['LISTEO'],
-        $post_id,
-        $selected_type,
-        $hash_key,
-        $gmode,
-        $templatekey,
-        $line_number
-    );
-    break;
+						$slimseo_instance = SlimSeoImport::getInstance();
+						$slimseo_instance->set_slimseo_values(
+							$header_array,
+							$value_array,
+							$map['SLIMSEO'],
+							$post_id,
+							$selected_type,
+							$hash_key,
+							$gmode,
+							$templatekey,
+							$line_number
+						);
+						break;
+					case 'LISTEO':
+						$listeo_instance = ListeoImport::getInstance();
+						$listeo_instance->set_listeo_values(
+							$header_array,
+							$value_array,
+							$map['LISTEO'],
+							$post_id,
+							$selected_type,
+							$hash_key,
+							$gmode,
+							$templatekey,
+							$line_number
+						);
+						break;
+
+					case 'EDD_DOWNLOADS':
+						if (class_exists('Easy_Digital_Downloads')) {
+
+							EDDImport::getInstance()->import_downloads(
+								$header_array,
+								$value_array,
+								$map['EDD_DOWNLOADS'],
+								$post_id,
+								$hash_key,
+								$gmode,
+								$templatekey,
+								$line_number
+							);
+
+						}
+						break;
+
+					case 'EDD_CUSTOMERS':
+						if (class_exists('Easy_Digital_Downloads')) {
+
+							EDDImport::getInstance()->import_customers(
+								$header_array,
+								$value_array,
+								$map['EDD_CUSTOMERS'],
+								$hash_key,
+								$gmode,
+								$templatekey,
+								$line_number
+							);
+
+						}
+						break;
+
+					case 'EDD_DISCOUNTS':
+						if (class_exists('Easy_Digital_Downloads')) {
+
+							EDDImport::getInstance()->import_discounts(
+								$header_array,
+								$value_array,
+								$map['EDD_DISCOUNTS'],
+								$hash_key,
+								$gmode,
+								$templatekey,
+								$line_number
+							);
+
+						}
+						break;
+					case 'SURECART_COUPONS':
+					case 'SURECART_CUSTOMERS':
+						if (is_plugin_active('surecart/surecart.php')) {
+							$surecart_instance = SureCartImport::getInstance();
+							$meta_map = $group_value;
+							
+							if ($group_name == 'SURECART_CUSTOMERS') {
+								$surecart_instance->import_customers($header_array, $value_array, $meta_map, $hash_key, $gmode, $templatekey, $line_number);
+							} elseif ($group_name == 'SURECART_COUPONS') {
+								$surecart_instance->import_coupons($header_array, $value_array, $meta_map, $hash_key, $gmode, $templatekey, $line_number);
+							}
+						}
+						break;
+					
+					case 'SURECART_PRODUCTS':
+						if (is_plugin_active('surecart/surecart.php')) {
+
+							SureCartImport::getInstance()->import_products(
+								$header_array,
+								$value_array,
+								$map['SURECART_PRODUCTS'],
+								$post_id,
+								$hash_key,
+								$gmode,
+								$templatekey,
+								$line_number
+							);
+
+						}
+						break;
+
 
 					case 'YOASTSEO':
 						$yoast_instance = YoastSeoImport::getInstance();
@@ -2155,7 +2228,7 @@ case 'LISTEO':
 					case 'JEREL':
 						$jet_engine_rel_instance = JetEngineRELImport::getInstance();
 						$jet_engine_rel_instance->set_jet_engine_rel_values($header_array, $value_array, $map['JEREL'], $post_id, $selected_type, $get_mode, $hash_key, $line_number, $gmode, $templatekey = null);
-	
+
 					case 'LISTINGMETA':
 						$listing_instance = ListingImport::getInstance();
 						$listing_instance->set_listing_values($header_array, $value_array, $map['LISTINGMETA'], $post_id, $selected_type);
@@ -2173,15 +2246,15 @@ case 'LISTEO':
 				delete_option('failed_attachment_ids');
 				$core_instance->detailed_log[$line_number]['failed_image_count'] = (is_array($stored_ids) && count($stored_ids) > 0) ? count($stored_ids) : '';
 			}
-			$return_arr['failed_media_log'] = 	!empty($core_instance->failed_media_data) ? $core_instance->failed_media_data : [];
-			$return_arr['media_log'] = 	!empty($core_instance->media_log) ? $core_instance->media_log : [];
-			$return_arr['id'] = $post_id;	
+			$return_arr['failed_media_log'] = !empty($core_instance->failed_media_data) ? $core_instance->failed_media_data : [];
+			$return_arr['media_log'] = !empty($core_instance->media_log) ? $core_instance->media_log : [];
+			$return_arr['id'] = $post_id;
 		}
 		$return_arr['detail_log'] = $core_instance->detailed_log;
 		return $return_arr;
 	}
 
-	public	function bulk_file_import_function()
+	public function bulk_file_import_function()
 	{
 		check_ajax_referer('smack-ultimate-csv-importer', 'securekey');
 		global $wpdb;
@@ -2202,14 +2275,14 @@ case 'LISTEO':
 		$upload_dir = SaveMapping::$smackcsv_instance->create_upload_dir();
 		$file_size = filesize($upload_dir . $hash_key . '/' . $hash_key);
 		$filesize = $helpers_instance->formatSizeUnits($file_size);
-		$response['total_rows'] = (int)$total_rows;
+		$response['total_rows'] = (int) $total_rows;
 		$response['file_extension'] = $file_extension;
 		$response['file_name'] = $file_name;
 		$response['filesize'] = $filesize;
 		if ($selected_type == 'elementor_library') {
 			$response['file_iteration'] = 1000000;
 		} else {
-			$response['file_iteration'] = (int)$fileiteration;
+			$response['file_iteration'] = (int) $fileiteration;
 		}
 		if (get_option('total_attachment_ids')) {
 			delete_option('total_attachment_ids');

@@ -10,7 +10,7 @@ function _duplicatorSortFiles($a, $b)
     return filemtime($b) - filemtime($a);
 }
 
-$logs = glob(DUP_Settings::getSsdirPath() . '/*.log') ;
+$logs = glob(DUP_Settings::getSsdirLogsPath() . '/*.log') ;
 if ($logs != false && count($logs)) {
     usort($logs, '_duplicatorSortFiles');
     @chmod(DUP_Util::safePath($logs[0]), 0644);
@@ -33,7 +33,7 @@ if (!isset($logname) || !$logname) {
     $logname = (count($logs) > 0) ? basename($logs[0]) : "";
 }
 
-$logurl   = DUP_Settings::getSsdirUrl() . '/' . $logname;
+$logurl   = DUP_Settings::getSsdirLogsUrl() . '/' . $logname;
 $logfound = (strlen($logname) > 0) ? true : false;
 ?>
 
@@ -45,13 +45,13 @@ $logfound = (strlen($logname) > 0) ? true : false;
     td#dup-log-panel-left div.opts {float:right;}
     td#dup-log-panel-right {vertical-align: top; padding-left:15px; max-width: 375px}
     #dup-log-content {
-        padding:5px; 
-        background: #fff; 
-        min-height:500px; 
-        width: calc(100vw - 630px);; 
+        padding:5px;
+        background: #fff;
+        min-height:500px;
+        width: calc(100vw - 630px);
         border:1px solid silver;
-        overflow:scroll; 
-        word-wrap: break-word; 
+        overflow:scroll;
+        word-wrap: break-word;
         margin:0;
         line-height: 2;
     }

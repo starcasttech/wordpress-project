@@ -1,73 +1,80 @@
+@use "sass:color";
+@use "variables";
+
 .ct-dark-mode {
-	color: lighten($background, 50%);
+	color: color.adjust(variables.$background, $lightness: 50%);
 
 	a,
 	.button-link {
-		color: $accent;
+		color: variables.$accent;
 
 		&:hover {
-			color: lighten($accent, 10%);
+			color: color.adjust(variables.$accent, $lightness: 10%);
 		}
 	}
 
 	#customize-controls {
-		background: $background;
-		border-inline-end-color: $border;
+		background: variables.$background;
+		border-inline-end-color: variables.$border;
 
 		.description {
-			color: lighten($background, 50%);
+			color: color.adjust(variables.$background, $lightness: 50%);
 		}
 
 		.wp-full-overlay-header {
-			background: $background_light;
-			border-bottom-color: $border;
+			background: variables.$background_light;
+			border-bottom-color: variables.$border;
 
 			.customize-controls-close {
 				// color: $light;
-				color: $color_background_light;
+				color: variables.$color_background_light;
 				background: transparent;
-				border-color: $border;
+				border-color: variables.$border;
 
 				&:hover {
-					color: $light;
+					color: variables.$light;
 				}
 			}
 
 			.ct-revert,
 			.customize-controls-preview-toggle {
-				color: $color_background_light;
+				color: variables.$color_background_light;
 				background: transparent;
-				border-right-color: $border;
+				border-right-color: variables.$border;
 
 				&:hover {
-					color: $light;
+					color: variables.$light;
 				}
 			}
 		}
 
 		.customize-info {
-			border-bottom-color: $border;
+			border-bottom-color: variables.$border;
 
 			.accordion-section-title {
-				color: $color_background_light;
-				background: $background_light;
+				color: variables.$color_background_light;
+				background: variables.$background_light;
+
+				.preview-notice {
+					color: inherit;
+				}
 			}
 
 			.customize-panel-description,
 			.customize-section-description,
 			.no-widget-areas-rendered-notice {
-				color: $color_background_light;
-				border-top-color: $border;
-				background: $background_light;
+				color: variables.$color_background_light;
+				border-top-color: variables.$border;
+				background: variables.$background_light;
 
 				.button-link {
-					color: $accent;
+					color: variables.$accent;
 				}
 			}
 
 			&.open {
 				.customize-help-toggle {
-					color: $light;
+					color: variables.$light;
 				}
 			}
 
@@ -75,7 +82,7 @@
 				color: inherit;
 
 				&:hover {
-					color: $light;
+					color: variables.$light;
 				}
 
 				&:focus {
@@ -88,44 +95,44 @@
 		}
 
 		.theme-location-set {
-			color: $accent;
+			color: variables.$accent;
 		}
 
 		#customize-notifications-area {
-			border-bottom-color: $border;
+			border-bottom-color: variables.$border;
 		}
 
 		// group title
 		.ct-group-title {
-			border-top-color: $border;
+			border-top-color: variables.$border;
 
 			h3 {
-				color: lighten($accent, 7%);
+				color: color.adjust(variables.$accent, $lightness: 7%);
 			}
 		}
 
 		// group divider
 		.ct-group-divider h3 {
-			background: $border;
+			background: variables.$border;
 		}
 
 		.control-section {
 
 			> h3.accordion-section-title {
-				color: lighten($background, 80%);
+				color: color.adjust(variables.$background, $lightness: 80%);
 
 
 				&:not(:has(.accordion-trigger)) {
 
 					&:hover, &:focus {
-						background-color: $background_light;
+						background-color: variables.$background_light;
 					}
 				}
 
 				&:has(.accordion-trigger) .accordion-trigger {
 
 					&:hover, &:focus {
-						background-color: $background_light;
+						background-color: variables.$background_light;
 					}
 				}
 			}
@@ -133,23 +140,25 @@
 	}
 
 	.customize-section-title {
-		background: $background_light;
-		border-bottom-color: $border;
+		background: variables.$background_light;
+		border-bottom-color: variables.$border;
 
 		h3 {
-			color: $color_background_light;
+			color: variables.$color_background_light;
 		}
 	}
 
+
 	.customize-panel-back, 
 	.customize-section-back {
-		color: $light;
-		background: $background_light;
-		border-right-color: $border;
-		border-left-color: $border;
+		color: variables.$light !important;
+		background: variables.$background_light;
+		border-right-color: variables.$border;
+		border-left-color: variables.$border;
 
 		&:hover {
-			border-left-color: $accent;
+			color: var(--ui-accent-color) !important;
+			border-left-color: variables.$accent;
 		}
 	}
 
@@ -159,53 +168,42 @@
 		}
 
 		.accordion-section-content {
-			color: lighten($background, 60%);
+			color: color.adjust(variables.$background, $lightness: 60%);
 		}
 		
 		.control-panel-themes > .accordion-section-title {
-			color: lighten($background, 40%);
+			color: color.adjust(variables.$background, $lightness: 40%);
 			background: transparent;
-			border-bottom-color: $border;
+			border-bottom-color: variables.$border;
 		}
 	}
 
 	// footer actions
 	.expanded .wp-full-overlay-footer {
-		background: $background_light;
-		border-top-color: $border;
+		background: variables.$background_light;
+		border-top-color: variables.$border;
 
 		.collapse-sidebar-arrow {
-			color: $background_light;
+			color: variables.$background_light;
 		}
 
 		.devices {
 			background: inherit;
-			// box-shadow: -20px 0 10px -5px $background_light;
-
-			// &:before {
-			// 	position: absolute;
-			// 	content: '';
-			// 	top: 0;
-			// 	left: -5px;
-			// 	width: 1px;
-			// 	height: 100%;
-			// 	background: $border;
-			// }
 
 			button {
 				&:not(.active) {
 					&:before {
-						color: $light;
+						color: variables.$light;
 					}
 				}
 
 				&.active,
 				&:focus {
 					&:before {
-						color: $accent;
+						color: variables.$accent;
 					}
 
-					border-bottom-color: $accent;
+					border-bottom-color: variables.$accent;
 				}
 
 				&:focus,
@@ -220,8 +218,8 @@
 	#customize-save-button-wrapper {
 		.button {
 			&.active {
-				background: darken($accent, 7%);
-				border-color: darken($accent, 9%);
+				background: color.adjust(variables.$accent, $lightness: -7%);
+				border-color: color.adjust(variables.$accent, $lightness: -9%);
 			}
 
 			&.publish-settings {
@@ -229,7 +227,7 @@
 			}
 
 			&:focus {
-				box-shadow: 0 1px 0 darken($accent, 7%);
+				box-shadow: 0 1px 0 color.adjust(variables.$accent, $lightness: -7%);
 			}
 		}
 	}
@@ -238,21 +236,21 @@
 	.button-primary {
 		color: #fff;
 		text-shadow: none;
-		background: $accent;
-		border-color: lighten($accent, 4%);
-		box-shadow: 0 1px 0 darken($accent, 8%);
+		background: variables.$accent;
+		border-color: color.adjust(variables.$accent, $lightness: 4%);
+		box-shadow: 0 1px 0 color.adjust(variables.$accent, $lightness: -8%);
 
 		&:hover,
 		&:focus {
 			color: #fff;
-			background: darken($accent, 2%);
-			border-color: darken($accent, 3%);
+			background: color.adjust(variables.$accent, $lightness: -2%);
+			border-color: color.adjust(variables.$accent, $lightness: -3%);
 		}
 
 		&:disabled {
-			color: $color_background_light !important;
-			background: lighten($background_light, 5%) !important;
-			border-color: lighten($background_light, 8%) !important;
+			color: variables.$color_background_light !important;
+			background: color.adjust(variables.$background_light, $lightness: 5%) !important;
+			border-color: color.adjust(variables.$background_light, $lightness: 8%) !important;
 		}
 	}
 
@@ -262,19 +260,19 @@
 
 	// notice
 	.notice {
-		color: $color_background_light;
-		background: $background_light;
+		color: variables.$color_background_light;
+		background: variables.$background_light;
 	}
 
 	.notice-dismiss,
 	.customize-screen-options-toggle {
 		&:before {
-			color: $color_background_light;
+			color: variables.$color_background_light;
 		}
 
 		&:hover {
 			&:before {
-				color: $light;
+				color: variables.$light;
 			}
 		}
 
@@ -286,23 +284,23 @@
 
 	// site area
 	.wp-full-overlay {
-		background: $background_light !important;
+		background: variables.$background_light !important;
 	}
 
 	// block widgets
 	.customize-widgets-header {
-		background: $background;
-		border-bottom-color: $border;
+		background: variables.$background;
+		border-bottom-color: variables.$border;
 	}
 
 	.customize-widgets-editor-history-button,
 	.customize-widgets-more-menu button {
-		color: $light;
+		color: variables.$light;
 	}
 
 	.wp-block-legacy-widget__edit-form {
 		border-color: var(--optionBorderColor);
-		background: darken($background_light, 1.5%);
+		background: color.adjust(variables.$background_light, $lightness: -1.5%);
 	}
 }
 
@@ -310,37 +308,37 @@
 // outer section
 .ct-dark-mode #customize-outer-theme-controls {
 	.customize-control-title {
-		color: lighten($background, 50%);
+		color: color.adjust(variables.$background, $lightness: 50%);
 	}
 
 	#customize-control-changeset_status  {
 		.customize-inside-control-row {
-			color: lighten($background, 70%);
-			background: $background_light;
-			border-bottom-color: $border;
+			color: color.adjust(variables.$background, $lightness: 70%);
+			background: variables.$background_light;
+			border-bottom-color: variables.$border;
 
 			&:first-of-type {
-				border-top-color: $border;
+				border-top-color: variables.$border;
 			}
 		}
 	}
 
 	.notice {
-		background: $background_light;
+		background: variables.$background_light;
 	}
 
 	.preview-control-element {
-		color: $light;
-		border-top-color: $border;
-		border-bottom-color: $border;
-		background: $background_light;
+		color: variables.$light;
+		border-top-color: variables.$border;
+		border-bottom-color: variables.$border;
+		background: variables.$background_light;
 	}
 
 	.customize-copy-preview-link {
 		text-shadow: none !important;
 
 		&:before, &:after {
-			background: $background_light;
+			background: variables.$background_light;
 		}
 	}
 }

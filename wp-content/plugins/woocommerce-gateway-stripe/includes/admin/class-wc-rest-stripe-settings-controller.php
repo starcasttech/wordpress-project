@@ -20,16 +20,16 @@ class WC_REST_Stripe_Settings_Controller extends WC_Stripe_REST_Base_Controller 
 	/**
 	 * Stripe payment gateway.
 	 *
-	 * @var WC_Gateway_Stripe
+	 * @var WC_Stripe_UPE_Payment_Gateway
 	 */
 	private $gateway;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param WC_Gateway_Stripe $gateway Stripe payment gateway.
+	 * @param WC_Stripe_UPE_Payment_Gateway $gateway Stripe payment gateway.
 	 */
-	public function __construct( WC_Gateway_Stripe $gateway ) {
+	public function __construct( WC_Stripe_UPE_Payment_Gateway $gateway ) {
 		$this->gateway = $gateway;
 	}
 
@@ -71,12 +71,17 @@ class WC_REST_Stripe_Settings_Controller extends WC_Stripe_REST_Base_Controller 
 						'type'              => 'array',
 						'items'             => [
 							'type' => 'string',
-							'enum' => array_merge( $this->gateway->get_upe_available_payment_methods(), WC_Stripe_Helper::get_legacy_available_payment_method_ids() ),
+							'enum' => $this->gateway->get_upe_available_payment_methods(),
 						],
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'is_oc_enabled'                    => [
 						'description'       => __( 'If Optimized Checkout should be enabled.', 'woocommerce-gateway-stripe' ),
+						'type'              => 'boolean',
+						'validate_callback' => 'rest_validate_request_arg',
+					],
+					'is_ap_enabled'                    => [
+						'description'       => __( 'If Adaptive Pricing should be enabled.', 'woocommerce-gateway-stripe' ),
 						'type'              => 'boolean',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
@@ -185,7 +190,7 @@ class WC_REST_Stripe_Settings_Controller extends WC_Stripe_REST_Base_Controller 
 						'type'              => 'array',
 						'items'             => [
 							'type' => 'string',
-							'enum' => array_merge( $this->gateway->get_upe_available_payment_methods(), WC_Stripe_Helper::get_legacy_available_payment_method_ids() ),
+							'enum' => $this->gateway->get_upe_available_payment_methods(),
 						],
 						'validate_callback' => 'rest_validate_request_arg',
 					],
@@ -250,11 +255,12 @@ class WC_REST_Stripe_Settings_Controller extends WC_Stripe_REST_Base_Controller 
 				'is_short_statement_descriptor_enabled'    => 'yes' === $this->gateway->get_option( 'is_short_statement_descriptor_enabled' ),
 
 				/* Settings > Advanced settings */
-				'is_debug_log_enabled'                     => 'yes' === $this->gateway->get_option( 'logging' ),
-				'is_upe_enabled'                           => true,
-				'is_oc_enabled'                            => 'yes' === $this->gateway->get_option( 'optimized_checkout_element' ),
-				'oc_layout'                                => $this->gateway->get_validated_option( 'optimized_checkout_layout' ),
-				'is_pmc_enabled'                           => 'yes' === $this->gateway->get_option( 'pmc_enabled' ),
+				'is_debug_log_enabled'                  => 'yes' === $this->gateway->get_option( 'logging' ),
+				'is_upe_enabled'                        => true,
+				'is_oc_enabled'                         => 'yes' === $this->gateway->get_option( 'optimized_checkout_element' ),
+				'is_ap_enabled'                         => 'yes' === $this->gateway->get_option( 'adaptive_pricing' ),
+				'oc_layout'                             => $this->gateway->get_validated_option( 'optimized_checkout_layout' ),
+				'is_pmc_enabled'                        => 'yes' === $this->gateway->get_option( 'pmc_enabled' ),
 			]
 		);
 	}
@@ -558,6 +564,7 @@ class WC_REST_Stripe_Settings_Controller extends WC_Stripe_REST_Base_Controller 
 	private function update_oc_settings( WP_REST_Request $request ) {
 		$attributes = [
 			'is_oc_enabled' => 'optimized_checkout_element',
+			'is_ap_enabled' => 'adaptive_pricing',
 			'oc_layout'     => 'optimized_checkout_layout',
 		];
 		foreach ( $attributes as $request_key => $attribute ) {
@@ -567,7 +574,10 @@ class WC_REST_Stripe_Settings_Controller extends WC_Stripe_REST_Base_Controller 
 				continue;
 			}
 
-			$value         = 'is_oc_enabled' === $request_key ? ( $value ? 'yes' : 'no' ) : $value;
+			// Special handling for boolean settings except for oc_layout.
+			if ( 'oc_layout' !== $request_key ) {
+				$value = $value ? 'yes' : 'no';
+			}
 			$current_value = $this->gateway->get_option( $attribute );
 
 			$this->gateway->update_validated_option( $attribute, $value );
@@ -599,25 +609,7 @@ class WC_REST_Stripe_Settings_Controller extends WC_Stripe_REST_Base_Controller 
 			return;
 		}
 
-		if ( ! $is_upe_enabled ) {
-			$currently_enabled_payment_method_ids = WC_Stripe_Helper::get_legacy_enabled_payment_method_ids();
-			$payment_gateways                     = WC_Stripe_Helper::get_legacy_payment_methods();
-
-			foreach ( $payment_gateways as $gateway ) {
-				$gateway_id = str_replace( 'stripe_', '', $gateway->id );
-				if ( ! in_array( $gateway_id, $payment_method_ids_to_enable, true ) && in_array( $gateway_id, $currently_enabled_payment_method_ids, true ) ) {
-					$gateway->update_option( 'enabled', 'no' );
-				} elseif ( in_array( $gateway_id, $payment_method_ids_to_enable, true ) ) {
-					$gateway->update_option( 'enabled', 'yes' );
-				}
-			}
-
-			return;
-		}
-
-		if ( $this->gateway instanceof WC_Stripe_UPE_Payment_Gateway ) {
-			$this->gateway->update_enabled_payment_methods( $payment_method_ids_to_enable );
-		}
+		$this->gateway->update_enabled_payment_methods( $payment_method_ids_to_enable );
 	}
 
 	/**

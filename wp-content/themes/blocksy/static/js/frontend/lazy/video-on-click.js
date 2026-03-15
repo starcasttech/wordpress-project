@@ -5,7 +5,7 @@ import {
 	playVideo,
 	muteVideo,
 	maybePlayAutoplayedVideo,
-	subscribeForStateChanges,
+	subscribeForStateChanges
 } from '../helpers/video'
 
 import { isIosDevice } from '../helpers/is-ios-device'
@@ -21,18 +21,18 @@ const cachedFetch = (url) =>
 		? new Promise((resolve) => {
 				resolve(store[url])
 				store[url] = store[url].clone()
-		  })
+			})
 		: new Promise((resolve) =>
 				fetch(url).then((response) => {
 					resolve(response)
 					store[url] = response.clone()
 				})
-		  )
+			)
 
 export const fetchVideoBy = (mediaId, args = {}) => {
 	args = {
 		ignoreVideoOptions: false,
-		...args,
+		...args
 	}
 
 	let url =
@@ -66,7 +66,7 @@ const listenForStateChanges = (videoOrIframe, args = {}) => {
 
 		onReady: () => {},
 
-		...args,
+		...args
 	}
 
 	if (videoOrIframe.isListeningForStateChanges) {
@@ -130,7 +130,7 @@ const loadVideoOrIframeViaAjax = (el) => {
 					flexyInstance.options = {
 						...flexyInstance.options,
 						autoplay: false,
-						_autoplay: false,
+						_autoplay: false
 					}
 				}
 			},
@@ -140,12 +140,12 @@ const loadVideoOrIframeViaAjax = (el) => {
 					flexyInstance.options = {
 						...flexyInstance.options,
 						autoplay: parseInt(flexyContainer.dataset.autoplay),
-						_autoplay: parseInt(flexyContainer.dataset.autoplay),
+						_autoplay: parseInt(flexyContainer.dataset.autoplay)
 					}
 
 					flexyInstance.state = {
 						...flexyInstance.state,
-						lastTimeAnimated: new Date().getTime(),
+						lastTimeAnimated: new Date().getTime()
 					}
 				}
 
@@ -163,7 +163,7 @@ const loadVideoOrIframeViaAjax = (el) => {
 				}
 
 				playVideo(videoOrIframe)
-			},
+			}
 		})
 	})
 }
@@ -209,7 +209,7 @@ ctEvents.on('blocksy:frontend:flexy:slide-change', ({ instance, payload }) => {
 	}
 
 	processInitialAutoplayFor(currentSlide, {
-		performVisibilityCheck: false,
+		performVisibilityCheck: false
 	})
 })
 
@@ -224,7 +224,7 @@ ctEvents.on('blocksy:ajax:filters:done', () => {
 const processInitialAutoplayFor = (el, args = {}) => {
 	args = {
 		performVisibilityCheck: true,
-		...args,
+		...args
 	}
 
 	if (!el.matches('[data-state*="autoplay"]')) {
@@ -264,7 +264,7 @@ export const mount = (el, { event }) => {
 			;[
 				...document.querySelectorAll(
 					'.ct-media-container[data-media-id], .ct-dynamic-media[data-media-id]'
-				),
+				)
 			].map((el) => {
 				processInitialAutoplayFor(el)
 			})
@@ -294,11 +294,21 @@ export const mount = (el, { event }) => {
 					const videoOrIframe = el.querySelector('video,iframe')
 
 					pauseVideo(videoOrIframe, {
-						shouldRevert: true,
+						shouldRevert: true
 					})
 				})
 			}
 		}
+	}
+
+	/*
+	 * Case when video is already loaded
+	 * if it is not simplified player, we use native controls
+	 * and we don't need to handle click to play/pause
+	 */
+	const maybeVideo = el.querySelector('video')
+	if (maybeVideo && !el.closest('.ct-simplified-player')) {
+		return
 	}
 
 	const videoOrIframe = el.querySelector('video,iframe')

@@ -13,23 +13,11 @@ $extensions_options = apply_filters(
 	[]
 );
 
-$username = '';
-
-if (
-	wp_get_current_user()
-	&&
-	wp_get_current_user()->data
-	&&
-	isset(wp_get_current_user()->data->user_nicename)
-) {
-	$username = wp_get_current_user()->data->user_nicename;
-}
-
 $pro_title = [
 	blocksy_rand_md5() => [
 		'type' => 'ct-group-title',
 		'title' => '<div class="ct-onboarding-button">
-			<button class="button" data-username="' . $username . '">
+			<button class="button">
 			' . __('View Pro Features', 'blocksy') . '
 			</button>
 		</div>',

@@ -8,6 +8,13 @@
 		text-align: var(--horizontal-alignment);
 	}
 
+	[data-layout*='grid'] {
+		display: grid;
+		grid-template-columns: var(--grid-template-columns);
+		grid-column-gap: var(--grid-columns-gap, 30px);
+		grid-row-gap: var(--grid-columns-gap, 30px);
+	}
+
 	.hentry > *:not(:last-child) {
 		margin-block: 0 var(--card-element-spacing, 20px);
 	}

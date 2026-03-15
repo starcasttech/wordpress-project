@@ -94,7 +94,7 @@ class WC_Stripe_Settings_Controller {
 				echo '<span class="button button-disabled">' . esc_html( $no_refunds_button ) . wp_kses_post( wc_help_tip( $no_refunds_tooltip ) ) . '</span>';
 			}
 		} catch ( Exception $e ) {
-			WC_Stripe_Logger::log( 'Error getting intent from order: ' . $e->getMessage() );
+			WC_Stripe_Logger::error( 'Error getting intent from order: ' . $order->get_id(), [ 'error_message' => $e->getMessage() ] );
 		}
 	}
 
@@ -245,6 +245,7 @@ class WC_Stripe_Settings_Controller {
 			'is_amazon_pay_available'               => WC_Stripe_Feature_Flags::is_amazon_pay_available(),
 			'is_oc_available'                       => WC_Stripe_Feature_Flags::is_oc_available(),
 			'is_oc_enabled'                         => $is_oc_enabled,
+			'is_cs_available'                       => WC_Stripe_Feature_Flags::is_checkout_sessions_available(),
 			'oc_layout'                             => $this->get_gateway()->get_validated_option( 'optimized_checkout_layout' ),
 			'oauth_nonce'                           => wp_create_nonce( 'wc_stripe_get_oauth_url' ),
 			'is_sepa_tokens_for_ideal_enabled'      => 'yes' === $this->gateway->get_option( 'sepa_tokens_for_ideal', 'no' ),
@@ -285,18 +286,6 @@ class WC_Stripe_Settings_Controller {
 		$gateways_to_hide = [
 			// Hide all UPE payment methods.
 			WC_Stripe_UPE_Payment_Method::class,
-			// Hide all legacy payment methods.
-			WC_Gateway_Stripe_Alipay::class,
-			WC_Gateway_Stripe_Sepa::class,
-			WC_Gateway_Stripe_Giropay::class,
-			WC_Gateway_Stripe_Ideal::class,
-			WC_Gateway_Stripe_Bancontact::class,
-			WC_Gateway_Stripe_Eps::class,
-			WC_Gateway_Stripe_P24::class,
-			WC_Gateway_Stripe_Boleto::class,
-			WC_Gateway_Stripe_Oxxo::class,
-			WC_Gateway_Stripe_Sofort::class,
-			WC_Gateway_Stripe_Multibanco::class,
 		];
 
 		foreach ( WC()->payment_gateways->payment_gateways as $index => $payment_gateway ) {

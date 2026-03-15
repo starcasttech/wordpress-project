@@ -19,6 +19,7 @@ import ctEvents from 'ct-events'
 import bezierEasing from 'bezier-easing'
 
 import { useSpring } from 'react-spring'
+import { transformValueForRtl } from '../helpers/transform-value-for-rtl'
 
 export const PanelContext = createContext({
 	titlePrefix: '',
@@ -243,7 +244,7 @@ const PanelLevel = ({
 						})
 
 						panelSecondLevelAnimationApi.start({
-							x: '-50%',
+							x: `${transformValueForRtl(50)}%`,
 						})
 					},
 

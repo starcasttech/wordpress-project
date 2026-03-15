@@ -1,4 +1,6 @@
-@include media-breakpoint-down(md) {
+@use "../../1-helpers/functions";
+
+@include functions.media-breakpoint-down(md) {
 	[data-device='mobile'][data-transparent] {
 		position: absolute;
 		top: 0;
@@ -7,7 +9,7 @@
 	}
 }
 
-@include media-breakpoint-up(lg) {
+@include functions.media-breakpoint-up(lg) {
 	[data-device='desktop'][data-transparent] {
 		position: absolute;
 		top: 0;

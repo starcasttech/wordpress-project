@@ -87,7 +87,7 @@ export const getPaginationVariables = () => ({
 	[`${optionPrefix}_pagination_border_radius`]: {
 		selector: applyPrefixFor('.ct-pagination', prefix),
 		type: 'spacing',
-		variable: 'theme-border-radius',
+		variable: 'theme-button-border-radius',
 		emptyValue: 4,
 	},
 

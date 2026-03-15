@@ -1,4 +1,2 @@
-@import '../../1-helpers/functions';
-
-@import 'sidebar-position';
-@import 'sidebar-type';
+@use 'sidebar-position';
+@use 'sidebar-type';

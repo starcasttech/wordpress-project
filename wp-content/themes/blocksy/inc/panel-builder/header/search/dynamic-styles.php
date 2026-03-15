@@ -505,6 +505,21 @@ blocksy_output_background_css([
 	)
 ]);
 
+// Image border radius
+blocksy_output_spacing([
+	'css' => $css,
+	'tablet_css' => $tablet_css,
+	'mobile_css' => $mobile_css,
+	'selector' => blocksy_assemble_selector(
+		$root_selector[0] . ' #search-modal .ct-search-results'
+	),
+	'property' => 'search-image-radius',
+	'value' => blocksy_akg('search_thumb_radius', $atts,
+		blocksy_spacing_value()
+	),
+	'empty_value' => 2
+]);
+
 
 // Icon margin
 blocksy_output_spacing([

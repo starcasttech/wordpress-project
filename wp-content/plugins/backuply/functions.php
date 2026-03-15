@@ -832,45 +832,88 @@ function backuply_install_plugin_complete_actions($install_actions, $api, $plugi
 	return $install_actions;
 }
 
-function backuply_get_backups_info(){
-	
+/**
+ * Gets a list of backups along with their info data.
+ *
+ * @param int $offset Starting offset (must be >= 0).
+ * @param int $limit  Maximum number of backups to return.
+ *                    Use -1 for no limit (default).
+ *
+ * @return array List of backups with associated info data.
+ */
+function backuply_get_backups_info_data($offset = 0, $limit = -1){
+
 	// Get all Backups Information from the "backups_info" folder.
 	$all_backup_info_files = backuply_glob('backups_info');
 	$backup_files_location = backuply_glob('backups');
 	
-	$backup_infos = array();
+	$backup_infos = [];
 
 	if(empty($all_backup_info_files)){
-		return [];
+		return $backup_infos;
 	}
 
+	// Not using glob becasue it is 10 times slower than scandir
+	//$info_files = glob($all_backup_info_files .'/*[0-9].php');
 	$info_files = @scandir($all_backup_info_files);
-	
+
 	if(empty($info_files)){
 		return $backup_infos;
 	}
 	
+	$info_files = array_diff($info_files, ['.', '..', 'index.php', 'index.html', 'debug.php']);
+
+	// Sorting the files based on the time in the file name.
+	rsort($info_files, SORT_STRING);
+
 	foreach($info_files as $files){
+		
+		if($limit == 0){
+			break;
+		}
+		
+		if($offset > 0){
+			$offset--;
+			continue;
+		}
 
-		if($files != '.' && $files != '..'){
+		$check_for_file = basename($files, '.php');
+
+		$file = file($all_backup_info_files.'/'.$files);
+		unset($file[0]);
+		$all_info = json_decode(implode('', $file));
+
+		$backup_file_location = $backup_files_location.'/'.$check_for_file.'.tar.gz';
+		if(file_exists($backup_file_location) || isset($all_info->backup_location)){
+
+			//Store all the files information in an array
+			$backup_infos[] = $all_info;
 			
-			$i = 0;
-			$check_for_file = basename($files, '.php');
-
-			$file = file($all_backup_info_files."/".$files);
-			unset($file[0]);
-			$all_info = json_decode(implode('', $file));
-
-			$backup_file_location = $backup_files_location.'/'.$check_for_file.'.tar.gz';
-			if(file_exists($backup_file_location) || isset($all_info->backup_location)){
-
-				//Store all the files information in an array
-				$backup_infos[] = $all_info;
+			if($limit > 0){
+				$limit--;
 			}
 		}
 	}
 
-	return $backup_infos;
+	// Count to calculate pages for pagination, and can be done here only.
+	$backups_info = [
+		'total_backups' => count($info_files),
+		'backup_infos' => $backup_infos
+	];
+
+	return $backups_info;
+}
+
+// This is just a wrapper to backuply_get_backups_info_data
+// So that we do not have to change the function call on other places
+function backuply_get_backups_info(){
+	$infos = backuply_get_backups_info_data();
+	
+	if(empty($infos) || empty($infos['backup_infos'])){
+		return [];
+	}
+	
+	return $infos['backup_infos'];
 }
 
 function backuply_get_backup_info($backup_name){

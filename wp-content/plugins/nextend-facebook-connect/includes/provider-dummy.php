@@ -58,7 +58,7 @@ abstract class NextendSocialProviderDummy {
      * @return string
      */
     public function getDocURL() {
-        return $this->docUrl;
+        return trailingslashit($this->docUrl);
     }
 
     /**

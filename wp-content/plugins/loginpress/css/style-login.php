@@ -25,8 +25,9 @@ $loginpress_default_theme = true === $loginpress_preset && ( empty( $this->login
  * @since 1.0.0
  * @since 3.0.3
  */
-$loginpress_array  = (array) get_option( 'loginpress_customization' );
-$loginpress_preset = get_option( 'customize_presets_settings', $loginpress_default_theme );
+$loginpress_array   = (array) get_option( 'loginpress_customization' );
+$loginpress_preset  = get_option( 'customize_presets_settings', $loginpress_default_theme );
+$loginpress_setting = get_option( 'loginpress_setting' );
 
 /**
  * Check the key of customizer option and return it's value.
@@ -358,8 +359,8 @@ $loginpress_bg_video_size               = loginpress_get_option_key( 'background
 $loginpress_bg_video_position           = loginpress_get_option_key( 'video_obj_position', $loginpress_array );
 $loginpress_bg_video_muted              = loginpress_bg_option( 'background_video_muted', $loginpress_array );
 $loginpress_theme_tem                   = get_option( 'customize_presets_settings', true );
-$loginpress_theme_tem                   = 1 === $loginpress_theme_tem ? 'default1' : $loginpress_theme_tem;
-$loginpress_video_voice                 = ( 1 === $loginpress_bg_video_muted ) ? 'muted' : '';
+$loginpress_theme_tem                   = 'default1' === $loginpress_theme_tem ? 'default1' : $loginpress_theme_tem;
+$loginpress_video_voice                 = ( true === $loginpress_bg_video_muted ) ? 'muted' : '';
 $login_copy_right_display               = loginpress_get_option_key( 'login_copy_right_display', $loginpress_array );
 
 /**
@@ -431,6 +432,11 @@ input[type=checkbox]:checked::before{
 	display:inline-block;
 	margin: 0;
 }
+<?php if ( 'default1' !== $loginpress_theme_tem ) : ?>
+.loginpress-seprator{
+	display: none;
+}
+<?php endif; ?>
 #login::after{
 	<?php $loginpress_background_img = apply_filters( 'loginpress_login_after_background_image', $loginpress_background_img ); ?>
 	<?php if ( ( 'default6' === $loginpress_theme_tem || 'default10' === $loginpress_theme_tem ) && ! empty( $loginpress_background_img ) && $loginpress_display_bg ) : ?>
@@ -472,14 +478,6 @@ input[type=checkbox]:checked::before{
 		<?php if ( ! empty( $loginpress_login_form_radius ) ) : ?>
 		border-radius: <?php echo esc_attr( $loginpress_login_form_radius ) . 'px'; ?>;
 		<?php endif; ?>
-		<?php if ( ! empty( $loginpress_login_form_shadow ) && ! empty( $loginpress_login_form_opacity ) ) : ?>
-		box-shadow: <?php echo esc_attr( loginpress_box_shadow( $loginpress_login_form_shadow, $loginpress_login_form_opacity ) ); ?>;
-		<?php elseif ( isset( $loginpress_login_form_shadow ) && '0' === $loginpress_login_form_shadow ) : ?>
-			<?php if ( 'minimalist' !== $loginpress_theme_tem ) : ?>
-				box-shadow: none;
-				-webkit-box-shadow: 0 !important;
-			<?php endif; ?>
-		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php if ( 'default17' === $loginpress_theme_tem ) : ?>
@@ -497,6 +495,17 @@ input[type=checkbox]:checked::before{
 		<?php endif; ?>
 	<?php endif; ?>
 }
+<?php if ( 'minimalist' !== $loginpress_theme_tem ) : ?>
+#login{
+
+	<?php if ( ! empty( $loginpress_login_form_shadow ) && ! empty( $loginpress_login_form_opacity ) ) : ?>
+	box-shadow: <?php echo esc_attr( loginpress_box_shadow( $loginpress_login_form_shadow, $loginpress_login_form_opacity ) ); ?><?php echo esc_attr( loginpress_important() ); ?>;
+	<?php elseif ( 0 === $loginpress_login_form_shadow || 0 === $loginpress_login_form_opacity ) : ?>
+			box-shadow: none;
+			-webkit-box-shadow: 0 <?php echo esc_attr( loginpress_important() ); ?>;
+	<?php endif; ?>
+}
+<?php endif; ?>
 <?php if ( 'minimalist' === $loginpress_theme_tem ) : ?>
 	#loginform, html body.login .wishlistmember-loginform div#login form#loginform{
 		
@@ -510,7 +519,10 @@ input[type=checkbox]:checked::before{
 		border-radius: <?php echo esc_attr( $loginpress_login_form_radius ) . 'px'; ?>;
 		<?php endif; ?>
 		<?php if ( ! empty( $loginpress_login_form_shadow ) && ! empty( $loginpress_login_form_opacity ) ) : ?>
-		box-shadow: <?php echo esc_attr( loginpress_box_shadow( $loginpress_login_form_shadow, $loginpress_login_form_opacity ) ); ?>;
+		box-shadow: <?php echo esc_attr( loginpress_box_shadow( $loginpress_login_form_shadow, $loginpress_login_form_opacity ) ); ?><?php echo esc_attr( loginpress_important() ); ?>;
+		<?php elseif ( 0 === $loginpress_login_form_shadow || 0 === $loginpress_login_form_opacity ) : ?>
+			box-shadow: none;
+			-webkit-box-shadow: 0 <?php echo esc_attr( loginpress_important() ); ?>;
 		<?php endif; ?>
 	}
 <?php endif; ?>
@@ -1063,6 +1075,7 @@ body.login form.shake{
 	margin-bottom: 0;
 }
 <?php endif; ?>
+
 .login label {
 	<?php if ( ! empty( $loginpress_form_label_font_size ) && 'default2' !== $loginpress_preset ) : ?>
 	font-size: <?php echo esc_attr( $loginpress_form_label_font_size ) . 'px;'; ?>
@@ -1288,7 +1301,7 @@ body.login form.shake{
 	<?php endif; ?>
 }
 .login #backtoblog{
-	<?php if ( isset( $loginpress_back_display ) && '1' !== $loginpress_back_display ) : ?>
+	<?php if ( isset( $loginpress_back_display ) && true !== $loginpress_back_display ) : ?>
 	display: none;
 	<?php endif; ?>
 
@@ -1346,7 +1359,7 @@ body.login form.shake{
 }
 
 <?php if ( ! empty( $loginpress_custom_css ) ) : ?>
-	<?php echo wp_kses_post( $loginpress_custom_css ); ?>
+	<?php echo wp_strip_all_tags( $loginpress_custom_css ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 <?php endif; ?>
 
 .wp-core-ui .button-primary{
@@ -1641,11 +1654,6 @@ body.login #loginpress_video-background-wrapper{
 	<?php endif; ?>
 }
 }
-@media screen and (max-height: 700px) {
-	.loginpress-show-love{
-		display: none !important;
-	}
-}
 /* The only rule that matters */
 #loginpress_video-background {
 /*  making the video fullscreen  */
@@ -1917,7 +1925,6 @@ if ( version_compare( $GLOBALS['wp_version'], '5.9', '>=' ) && ! empty( get_avai
 	<?php
 }
 
-$loginpress_setting    = get_option( 'loginpress_setting' );
 $enable_reg_pass_field = isset( $loginpress_setting['enable_reg_pass_field'] ) ? $loginpress_setting['enable_reg_pass_field'] : 'off';
 if ( 'off' !== $enable_reg_pass_field ) {
 	?>
@@ -1985,4 +1992,38 @@ if ( 'off' !== $enable_reg_pass_field ) {
 			});
 		});
 	</script>
-<?php } ?>
+	<?php
+}
+// Password Strength - hidding allow weak password checkbox.
+$enable_password_strength = isset( $loginpress_setting['enable_pass_strength'] )
+	? $loginpress_setting['enable_pass_strength']
+	: 'off';
+
+if ( 'on' === $enable_password_strength ) {
+	$pass_strength_forms = isset( $loginpress_setting['enable_pass_strength_forms'] ) ? $loginpress_setting['enable_pass_strength_forms'] : array();
+	$wp_reset            = ! empty( $pass_strength_forms['reset'] );
+	$pass_strength       = isset( $loginpress_setting['pass_strength'] ) ? $loginpress_setting['pass_strength'] : array();
+	$requirements        = array(
+		'lower_upper_char_must',
+		'special_char_must',
+		'integer_no_must',
+	);
+
+	$enabled_count = 0;
+
+	foreach ( $requirements as $requirement ) {
+		if ( ! empty( $pass_strength[ $requirement ] ) && 'off' !== $pass_strength[ $requirement ] ) {
+			++$enabled_count;
+		}
+	}
+
+	if ( $wp_reset && $enabled_count >= 2 ) :
+		?>
+		<style>
+			.pw-weak {
+				display: none !important;
+			}
+		</style>
+	<?php endif;
+}
+?>

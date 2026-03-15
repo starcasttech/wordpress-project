@@ -49,8 +49,8 @@ const computeAvailableSpaceFor = (nav) => {
 		closestColumn === 'start' || closestColumn === 'end'
 			? 'side'
 			: closestColumn === 'middle'
-			? 'middle'
-			: 'secondary'
+				? 'middle'
+				: 'secondary'
 
 	let hasMiddle = baseContainer.querySelector('[data-column="middle"]')
 
@@ -82,12 +82,12 @@ const computeAvailableSpaceFor = (nav) => {
 				baseContainer.querySelector('[data-column="start"]')
 					? getItemWidthsFrom(
 							baseContainer.querySelector('[data-column="start"]')
-					  )
+						)
 					: 0,
 				baseContainer.querySelector('[data-column="end"]')
 					? getItemWidthsFrom(
 							baseContainer.querySelector('[data-column="end"]')
-					  )
+						)
 					: 0
 			) *
 				2
@@ -99,7 +99,7 @@ const computeAvailableSpaceFor = (nav) => {
 			(baseContainer.querySelector('[data-column="middle"]')
 				? getItemWidthsFrom(
 						baseContainer.querySelector('[data-column="middle"]')
-				  )
+					)
 				: 0)) /
 			2 -
 		getItemWidthsFrom(nav.closest('[data-column]'))
@@ -136,7 +136,7 @@ export const getItemsDistribution = (nav) => {
 
 	const moreItemWidth = getCacheFor(nav.__id).moreItemWidth
 
-	const itemsThatFit = getCacheFor(nav.__id)
+	const itemsWithWidths = getCacheFor(nav.__id)
 		.children.map((el, index) => {
 			return {
 				el,
@@ -156,15 +156,27 @@ export const getItemsDistribution = (nav) => {
 				},
 			]
 		}, [])
-		.filter((itemWithWidth) => {
-			return itemWithWidth.width + moreItemWidth < availableSpaceForItems
-		})
-		.map(({ el }) => el)
+
+	let itemsThatFit = itemsWithWidths.filter((itemWithWidth) => {
+		return itemWithWidth.width + moreItemWidth < availableSpaceForItems
+	})
+
+	// Special case: if no items fit, but the first item is smaller than the more item, show it
+	// This prevents showing only the "More" item with no siblings.
+	if (
+		itemsThatFit.length === 0 &&
+		itemsWithWidths.length > 0 &&
+		itemsWithWidths[0].width < moreItemWidth
+	) {
+		itemsThatFit = [itemsWithWidths[0]]
+	}
+
+	const elsThatFit = itemsThatFit.map(({ el }) => el)
 
 	return {
-		fit: itemsThatFit,
+		fit: elsThatFit,
 		notFit: getCacheFor(nav.__id).children.filter((el) => {
-			return !itemsThatFit.includes(el)
+			return !elsThatFit.includes(el)
 		}),
 	}
 }

@@ -12,7 +12,7 @@ import { normalizeCondition, matchValuesWithCondition } from 'match-conditions'
 import arrayMove from 'array-move'
 
 import { getValueFromInput } from '../helpers/get-value-from-input'
-import nanoid from 'nanoid'
+import { nanoid } from 'nanoid'
 
 import SelectThatAddsItems from './ct-layers/SelectThatAddsItems'
 import SingleItem from './ct-layers/SingleItem'
@@ -37,7 +37,7 @@ const valueWithUniqueIds = (value) =>
 				? {}
 				: {
 						__id: nanoid(),
-				  }),
+					}),
 		}))
 
 export const itemsThatAreNotAdded = (value, option) =>
@@ -89,7 +89,7 @@ const Layers = ({ value, option, onChange, values }) => {
 							__id: nanoid(),
 							enabled: item?.enabled || false,
 						})),
-			  ]
+				]
 	).filter((item) => !!option.settings[item.id])
 
 	let withoutDragDropContext = (

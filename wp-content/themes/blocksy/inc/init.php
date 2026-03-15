@@ -574,6 +574,7 @@ require get_template_directory() . '/inc/integrations/zion.php';
 require get_template_directory() . '/inc/integrations/generateblocks.php';
 require get_template_directory() . '/inc/integrations/qubely.php';
 require get_template_directory() . '/inc/integrations/tutorlms.php';
+require get_template_directory() . '/inc/integrations/eventkoi.php';
 require get_template_directory() . '/inc/integrations/beaver-themer.php';
 require get_template_directory() . '/inc/integrations/theme-builders.php';
 require get_template_directory() . '/inc/integrations/cartflows.php';
@@ -583,6 +584,7 @@ require get_template_directory() . '/inc/integrations/coauthors.php';
 require get_template_directory() . '/inc/integrations/disqus.php';
 require get_template_directory() . '/inc/integrations/secupress.php';
 require get_template_directory() . '/inc/integrations/wpc-variations-table.php';
+require get_template_directory() . '/inc/integrations/woocommerce-composite-products.php';
 
 if (function_exists('get_rocket_cdn_url')) {
 	require get_template_directory() . '/inc/integrations/wprocket.php';

@@ -106,7 +106,8 @@
 	margin-bottom: 0;
 
 	li {
-		flex: 0 0 var(--thumbs-width, 20%);
+		// flex: 0 0 var(--thumbs-width, 20%);
+		flex-shrink: 0;
 		width: var(--thumbs-width, 20%);
 		cursor: pointer;
 	}

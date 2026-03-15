@@ -61,7 +61,7 @@ function starcast_enqueue_google_maps() {
 
     wp_enqueue_script(
         'starcast-google-maps',
-        'https://maps.googleapis.com/maps/api/js?key=AIzaSyB7RDjR0beuN5o7Pb6cy98R8MY8cjiRRZA&callback=starcastInitCoverageMap',
+        'https://maps.googleapis.com/maps/api/js?key=' . (defined('STARCAST_GOOGLE_MAPS_API_KEY') ? STARCAST_GOOGLE_MAPS_API_KEY : '') . '&callback=starcastInitCoverageMap',
         array('starcast-pro-js'),
         null,
         true

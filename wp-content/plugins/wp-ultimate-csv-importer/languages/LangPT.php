@@ -93,6 +93,10 @@ class LangPT {
                         'MetaBoxFields' => 'Campos MetaBox',
                         'YoastSeoFields' => 'Yoast Seo Fields',
 'SlimSeoFields' => 'Slim SEO Fields',
+'EDDDownloadsFields' => 'EDD Downloads Fields',
+'EDDCustomersFields' => 'EDD Customers Fields',
+'EDDDiscountsFields' => 'EDD Discounts Fields',
+
 'ListeoFields' => 'Listeo Fields',
                         'WPMLFields' => 'Campos WPML',
                         'JetEngineFields' => 'Campos do Motor a Jato',

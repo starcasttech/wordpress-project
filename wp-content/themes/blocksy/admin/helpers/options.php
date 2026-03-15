@@ -61,6 +61,8 @@ function blocksy_collect_options(
 		 */
 		'limit_option_types' => false,
 		'include_container_types' => true,
+
+		'include_inner_options' => false
 	];
 
 	if (empty($options)) {
@@ -137,6 +139,22 @@ function blocksy_collect_options(
 				];
 			} else {
 				$result[$option_id] = &$option;
+			}
+
+			if (
+				$settings['include_inner_options']
+				&&
+				isset($option['inner-options'])
+			) {
+				blocksy_collect_options(
+					$result,
+					$option['inner-options'],
+					$settings,
+					array_merge(
+						$_recursion_data,
+						['level' => $_recursion_data['level'] + 1]
+					)
+				);
 			}
 		} else {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error

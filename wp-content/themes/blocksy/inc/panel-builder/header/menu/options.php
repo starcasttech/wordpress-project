@@ -447,6 +447,10 @@ $options = [
 						'setting' => [ 'transport' => 'postMessage' ],
 
 						'value' => [
+							'default' => [
+								'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT'),
+							],
+
 							'hover' => [
 								'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT'),
 							],
@@ -457,6 +461,12 @@ $options = [
 						],
 
 						'pickers' => [
+							[
+								'title' => __( 'Initial', 'blocksy' ),
+								'id' => 'default',
+								'condition' => [ 'header_menu_type' => 'type-3' ]
+							],
+
 							[
 								'title' => __( 'Hover', 'blocksy' ),
 								'id' => 'hover',
@@ -486,6 +496,10 @@ $options = [
 						'setting' => [ 'transport' => 'postMessage' ],
 
 						'value' => [
+							'default' => [
+								'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT'),
+							],
+
 							'hover' => [
 								'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT'),
 							],
@@ -496,6 +510,12 @@ $options = [
 						],
 
 						'pickers' => [
+							[
+								'title' => __( 'Initial', 'blocksy' ),
+								'id' => 'default',
+								'condition' => [ 'header_menu_type' => 'type-3' ]
+							],
+
 							[
 								'title' => __( 'Hover', 'blocksy' ),
 								'id' => 'hover',
@@ -524,6 +544,10 @@ $options = [
 						'setting' => [ 'transport' => 'postMessage' ],
 
 						'value' => [
+							'default' => [
+								'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT'),
+							],
+
 							'hover' => [
 								'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT'),
 							],
@@ -534,6 +558,12 @@ $options = [
 						],
 
 						'pickers' => [
+							[
+								'title' => __( 'Initial', 'blocksy' ),
+								'id' => 'default',
+								'condition' => [ 'header_menu_type' => 'type-3' ]
+							],
+
 							[
 								'title' => __( 'Hover', 'blocksy' ),
 								'id' => 'hover',

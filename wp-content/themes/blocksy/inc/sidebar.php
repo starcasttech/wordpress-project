@@ -177,6 +177,52 @@ if (! function_exists('blocksy_sidebar_position_unfiltered')) {
 			return 'none';
 		}
 
+		if (
+			class_exists('\EventKoi\Init')
+			&&
+			is_tax('event_cal')
+		) {
+			$page_structure_type = blocksy_get_theme_mod($prefix . '_structure', 'type-4');
+
+			if ('type-1' === $page_structure_type) {
+				return 'right';
+			}
+
+			if ('type-2' === $page_structure_type) {
+				return 'left';
+			}
+
+			return 'none';
+		}
+
+		if (class_exists('Visual_Portfolio')) {
+			$vp_settings = get_option('vp_general');
+
+			if (
+				(
+					isset($vp_settings['portfolio_archive_page'])
+					&&
+					intval($vp_settings['portfolio_archive_page']) === get_the_ID()
+				)
+				||
+				is_tax('portfolio_category')
+				||
+				is_tax('portfolio_tag')
+			) {				
+				$page_structure_type = blocksy_get_theme_mod($prefix . '_structure', 'type-4');
+
+				if ('type-1' === $page_structure_type) {
+					return 'right';
+				}
+
+				if ('type-2' === $page_structure_type) {
+					return 'left';
+				}
+
+				return 'none';
+			}
+		}
+
 		$blog_post_structure = blocksy_listing_page_structure([
 			'prefix' => $prefix
 		]);

@@ -85,10 +85,13 @@ class DUP_Zip_U
     {
         // TODO: Unzip using either shell unzip or ziparchive
         if ($useShellUnZip) {
-            $shellExecPath  = DUPX_Server::get_unzip_filepath();
-            $filenameString = implode(' ', $relativeFilesToExtract);
-            $command        = "{$shellExecPath} -o -qq \"{$archiveFilepath}\" {$filenameString} -d {$destinationDirectory} 2>&1";
-            $stderr         = shell_exec($command);
+            $shellExecPath   = escapeshellcmd(DUPX_Server::get_unzip_filepath());
+            $escapedFiles    = array_map('escapeshellarg', $relativeFilesToExtract);
+            $filenameString  = implode(' ', $escapedFiles);
+            $safeArchivePath = escapeshellarg($archiveFilepath);
+            $safeDestination = escapeshellarg($destinationDirectory);
+            $command         = "{$shellExecPath} -o -qq {$safeArchivePath} {$filenameString} -d {$safeDestination} 2>&1";
+            $stderr          = shell_exec($command);
             if ($stderr != '') {
                 $errorMessage = __("Error extracting {$archiveFilepath}): {$stderr}", 'duplicator');
                 throw new Exception($errorMessage);

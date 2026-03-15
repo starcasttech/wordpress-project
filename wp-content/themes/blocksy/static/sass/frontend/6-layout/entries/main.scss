@@ -1,10 +1,10 @@
-@import 'common';
-@import 'enhanced-grid';
+@use 'grid';
+@use 'enhanced-grid';
 
-@import 'simple-entries';
-@import 'classic-entries';
-@import 'gutenberg-entries';
+@use 'simple-entries';
+@use 'classic-entries';
+@use 'gutenberg-entries';
 
-@import 'entry-card';
-@import 'entry-excerpt';
-@import 'entry-thumbnail';
+@use 'entry-card';
+@use 'entry-excerpt';
+@use 'entry-thumbnail';

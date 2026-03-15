@@ -428,14 +428,20 @@ ctEvents.on(
 
 			// panel type
 			cart_panel_width: {
-				selector: '#woo-cart-panel',
+				selector: assembleSelector(
+					`${getRootSelectorFor({ itemId })[0]} #woo-cart-panel`
+				),
 				variable: 'side-panel-width',
 				responsive: true,
 				unit: '',
 			},
 
 			cart_panel_heading_font_color: {
-				selector: '#woo-cart-panel .ct-panel-actions',
+				selector: assembleSelector(
+					`${
+						getRootSelectorFor({ itemId })[0]
+					} #woo-cart-panel .ct-panel-actions`
+				),
 				variable: 'theme-text-color',
 				type: 'color:default',
 				responsive: true,
@@ -443,22 +449,35 @@ ctEvents.on(
 
 			cart_panel_font_color: [
 				{
-					selector:
-						'#woo-cart-panel .cart_list, #woo-cart-panel [class*="empty-message"]',
+					selector: assembleSelector(
+						`${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel .cart_list, ${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel [class*="empty-message"]`
+					),
 					variable: 'theme-text-color',
 					type: 'color:default',
 					responsive: true,
 				},
 
 				{
-					selector: '#woo-cart-panel .cart_list',
+					selector: assembleSelector(
+						`${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel .cart_list`
+					),
 					variable: 'theme-link-initial-color',
 					type: 'color:link_initial',
 					responsive: true,
 				},
 
 				{
-					selector: '#woo-cart-panel .cart_list',
+					selector: assembleSelector(
+						`${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel .cart_list`
+					),
 					variable: 'theme-link-hover-color',
 					type: 'color:link_hover',
 					responsive: true,
@@ -466,14 +485,20 @@ ctEvents.on(
 			],
 
 			cart_panel_total_font_color: {
-				selector: '#woo-cart-panel .total',
+				selector: assembleSelector(
+					`${
+						getRootSelectorFor({ itemId })[0]
+					} #woo-cart-panel .total`
+				),
 				variable: 'theme-text-color',
 				type: 'color:default',
 				responsive: true,
 			},
 
 			cart_panel_shadow: {
-				selector: '#woo-cart-panel',
+				selector: assembleSelector(
+					`${getRootSelectorFor({ itemId })[0]} #woo-cart-panel`
+				),
 				type: 'box-shadow',
 				variable: 'theme-box-shadow',
 				responsive: true,
@@ -481,26 +506,40 @@ ctEvents.on(
 
 			...handleBackgroundOptionFor({
 				id: 'cart_panel_background',
-				selector: '#woo-cart-panel .ct-panel-inner',
+				selector: assembleSelector(
+					`${
+						getRootSelectorFor({ itemId })[0]
+					} #woo-cart-panel .ct-panel-inner`
+				),
 				responsive: true,
 			}),
 
 			...handleBackgroundOptionFor({
 				id: 'cart_panel_backdrop',
-				selector: '#woo-cart-panel',
+				selector: assembleSelector(
+					`${getRootSelectorFor({ itemId })[0]} #woo-cart-panel`
+				),
 				responsive: true,
 			}),
 
 			cart_panel_close_button_color: [
 				{
-					selector: '#woo-cart-panel .ct-toggle-close',
+					selector: assembleSelector(
+						`${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel .ct-toggle-close`
+					),
 					variable: 'theme-icon-color',
 					type: 'color:default',
 					responsive: true,
 				},
 
 				{
-					selector: '#woo-cart-panel .ct-toggle-close:hover',
+					selector: assembleSelector(
+						`${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel .ct-toggle-close:hover`
+					),
 					variable: 'theme-icon-color',
 					type: 'color:hover',
 					responsive: true,
@@ -509,16 +548,22 @@ ctEvents.on(
 
 			cart_panel_close_button_border_color: [
 				{
-					selector:
-						'#woo-cart-panel .ct-toggle-close[data-type="type-2"]',
+					selector: assembleSelector(
+						`${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel .ct-toggle-close[data-type="type-2"]`
+					),
 					variable: 'toggle-button-border-color',
 					type: 'color:default',
 					responsive: true,
 				},
 
 				{
-					selector:
-						'#woo-cart-panel .ct-toggle-close[data-type="type-2"]:hover',
+					selector: assembleSelector(
+						`${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel .ct-toggle-close[data-type="type-2"]:hover`
+					),
 					variable: 'toggle-button-border-color',
 					type: 'color:hover',
 					responsive: true,
@@ -527,16 +572,22 @@ ctEvents.on(
 
 			cart_panel_close_button_shape_color: [
 				{
-					selector:
-						'#woo-cart-panel .ct-toggle-close[data-type="type-3"]',
+					selector: assembleSelector(
+						`${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel .ct-toggle-close[data-type="type-3"]`
+					),
 					variable: 'toggle-button-background',
 					type: 'color:default',
 					responsive: true,
 				},
 
 				{
-					selector:
-						'#woo-cart-panel .ct-toggle-close[data-type="type-3"]:hover',
+					selector: assembleSelector(
+						`${
+							getRootSelectorFor({ itemId })[0]
+						} #woo-cart-panel .ct-toggle-close[data-type="type-3"]:hover`
+					),
 					variable: 'toggle-button-background',
 					type: 'color:hover',
 					responsive: true,
@@ -544,19 +595,31 @@ ctEvents.on(
 			],
 
 			cart_panel_close_button_icon_size: {
-				selector: '#woo-cart-panel .ct-toggle-close',
+				selector: assembleSelector(
+					`${
+						getRootSelectorFor({ itemId })[0]
+					} #woo-cart-panel .ct-toggle-close`
+				),
 				variable: 'theme-icon-size',
 				unit: 'px',
 			},
 
 			cart_panel_close_button_border_radius: {
-				selector: '#woo-cart-panel .ct-toggle-close',
+				selector: assembleSelector(
+					`${
+						getRootSelectorFor({ itemId })[0]
+					} #woo-cart-panel .ct-toggle-close`
+				),
 				variable: 'toggle-button-radius',
 				unit: 'px',
 			},
 
 			mini_cart_image_radius: {
-				selector: '.woocommerce-mini-cart',
+				selector: assembleSelector(
+					`${
+						getRootSelectorFor({ itemId })[0]
+					} .woocommerce-mini-cart`
+				),
 				type: 'spacing',
 				variable: 'theme-border-radius',
 				emptyValue: 3,

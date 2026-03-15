@@ -1,3 +1,5 @@
+@use "../../1-helpers/functions";
+
 #offcanvas {
 	.ct-panel-content-inner {
 		// --margin: 20px 0;
@@ -17,13 +19,13 @@
 	}
 
 	[data-device="desktop"] {
-		@include media-breakpoint-down(md) {
+		@include functions.media-breakpoint-down(md) {
 			display: none;
 		}
 	}
 
 	[data-device="mobile"] {
-		@include media-breakpoint-up(lg) {
+		@include functions.media-breakpoint-up(lg) {
 			display: none;
 		}
 	}

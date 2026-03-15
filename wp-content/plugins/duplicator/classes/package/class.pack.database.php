@@ -158,6 +158,42 @@ class DUP_Database
      */
     const MYSQLDUMP_ALLOWED_SIZE_DIFFERENCE = 52428800;
 
+    /**
+     * Whitelist of valid mysqldump --compatible mode values.
+     */
+    const ALLOWED_COMPAT_MODES = array(
+        'mysql323',
+        'mysql40',
+        'postgresql',
+        'oracle',
+        'mssql',
+        'db2',
+        'maxdb',
+        'no_key_options',
+        'no_table_options',
+        'no_field_options',
+        'ansi'
+    );
+
+    /**
+     * Validates and sanitizes mysqldump compatibility mode values.
+     *
+     * @param string|array $compatValue The compatibility value(s) to validate
+     *
+     * @return string Comma-separated string of valid compatibility modes, or empty string if none valid
+     */
+    public static function sanitizeCompatibilityMode($compatValue)
+    {
+        if (is_array($compatValue)) {
+            $values = array_map('sanitize_text_field', $compatValue);
+        } else {
+            $values = array_map('trim', explode(',', sanitize_text_field($compatValue)));
+        }
+
+        $validated = array_intersect($values, self::ALLOWED_COMPAT_MODES);
+        return implode(',', $validated);
+    }
+
     //PUBLIC
     public $Type = 'MySQL';
     public $Size;
@@ -451,8 +487,14 @@ class DUP_Database
         $cmd .= ' --no-tablespaces';
 //Compatibility mode
         if ($mysqlcompat_on) {
-            DUP_Log::Info("COMPATIBLE: [{$this->Compatible}]");
-            $cmd .= " --compatible={$this->Compatible}";
+            $safeCompatible = self::sanitizeCompatibilityMode($this->Compatible);
+
+            if (!empty($safeCompatible)) {
+                DUP_Log::Info("COMPATIBLE: [{$safeCompatible}]");
+                $cmd .= " --compatible=" . escapeshellarg($safeCompatible);
+            } elseif (!empty($this->Compatible)) {
+                DUP_Log::Info("COMPATIBLE: Invalid value detected and skipped: [{$this->Compatible}]");
+            }
         }
 
         //Filter tables

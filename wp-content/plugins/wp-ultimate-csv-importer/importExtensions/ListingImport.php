@@ -30,7 +30,7 @@ class ListingImport {
 		$post_values =$helpers_instance->get_header_values($maps , $header_array , $value_array);
 
 		foreach ($post_values as $meta_key => $value) {
-			print_r($post_values);
+		//	print_r($post_values);
 				update_post_meta($post_id, $meta_key, $value);
 
 				if(is_plugin_active('geodirectory/geodirectory.php') ){

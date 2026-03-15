@@ -97,6 +97,10 @@ if (! function_exists('blocksy_display_posts_pagination')) {
 			return '';
 		}
 
+		// Load styles for pagination. WP Collocation mechanism will move styles
+		// to <head>.
+		wp_enqueue_style('ct-pagination-styles');
+
 		$button_output = '';
 
 		if (

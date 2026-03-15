@@ -6,11 +6,11 @@
  * Description: Receive payments using the South African Payfast payments provider.
  * Author: WooCommerce
  * Author URI: https://woocommerce.com/
- * Version: 1.7.4
+ * Version: 1.7.5
  * Requires at least: 6.7
- * Tested up to: 6.8
- * WC requires at least: 10.1
- * WC tested up to: 10.3
+ * Tested up to: 6.9
+ * WC requires at least: 10.3
+ * WC tested up to: 10.5
  * Requires PHP: 7.4
  * PHP tested up to: 8.4
  *
@@ -19,7 +19,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WC_GATEWAY_PAYFAST_VERSION', '1.7.4' ); // WRCS: DEFINED_VERSION.
+define( 'WC_GATEWAY_PAYFAST_VERSION', '1.7.5' ); // WRCS: DEFINED_VERSION.
 define( 'WC_GATEWAY_PAYFAST_URL', untrailingslashit( plugins_url( '/', __FILE__ ) ) );
 define( 'WC_GATEWAY_PAYFAST_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
@@ -34,7 +34,6 @@ function woocommerce_payfast_init() {
 	}
 
 	require_once plugin_basename( 'includes/class-wc-gateway-payfast.php' );
-	require_once plugin_basename( 'includes/class-wc-gateway-payfast-privacy.php' );
 	load_plugin_textdomain( 'woocommerce-gateway-payfast', false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) );
 	add_filter( 'woocommerce_payment_gateways', 'woocommerce_payfast_add_gateway' );
 }
@@ -124,6 +123,19 @@ function woocommerce_payfast_declare_feature_compatibility() {
 	}
 }
 add_action( 'before_woocommerce_init', 'woocommerce_payfast_declare_feature_compatibility' );
+
+/**
+ * Initialize the privacy class.
+ *
+ * Initializes the privacy class for privacy export tools.
+ *
+ * @since 1.7.5
+ * @return void
+ */
+function woocommerce_payfast_privacy_init() {
+		require_once plugin_basename( 'includes/class-wc-gateway-payfast-privacy.php' );
+}
+add_action( 'woocommerce_init', 'woocommerce_payfast_privacy_init' );
 
 /**
  * Display notice if WooCommerce is not installed.

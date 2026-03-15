@@ -1,3 +1,5 @@
+@use "variables";
+
 .ct-view-switch {
 	order: 2;
 	display: flex;
@@ -5,7 +7,7 @@
 	position: relative;
 	z-index: 2;
 	margin: 0;
-	height: $panel-bar-height;
+	height: variables.$panel-bar-height;
 	box-sizing: border-box;
 	border-top: 1px solid #ddd;
 	background: #f0f0f1;

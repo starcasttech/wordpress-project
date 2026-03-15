@@ -12,7 +12,7 @@
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 10.0.0
+ * @version 10.1.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -66,7 +66,7 @@ $image_ratio = blocksy_get_theme_mod('cart_page_image_ratio', '1/1');
 					<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 
 						<td class="product-thumbnail">
-							<?php 
+							<?php
 								echo apply_filters(
 									'woocommerce_cart_item_thumbnail',
 									blocksy_media([
@@ -280,7 +280,7 @@ $image_ratio = blocksy_get_theme_mod('cart_page_image_ratio', '1/1');
 <?php
 
 	do_action('blocksy:woocommerce:cart:before-cross-sells');
-	
+
 	if (apply_filters('blocksy:woocommerce:cart:has-cross-sells', true)) {
 		woocommerce_cross_sell_display(null, 4);
 	}

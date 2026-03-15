@@ -57,10 +57,12 @@ $html_atts = array_merge(
 <div <?php echo blocksy_attr_to_html($html_atts); ?>>
 	<?php do_action('blocksy:comments:top'); ?>
 
-	<?php if ( have_comments() ) : ?>
-		<h3 class="ct-comments-title">
+	<?php if ( have_comments() ) : 
+		$label_tag = blocksy_get_theme_mod($prefix . '_comments_heading_tag', 'h3');
+		?>
+		<<?php echo esc_html($label_tag); ?> class="ct-comments-title">
 			<?php comments_number( esc_html__( 'No comments yet', 'blocksy' ), __( 'One comment', 'blocksy' ), __( '% Comments', 'blocksy' ) ); ?>
-		</h3>
+		</<?php echo esc_html($label_tag); ?>>
 	<?php endif; // have_comments() ?>
 
 	<?php if ( $comments_position === 'above' ) comment_form(); ?>

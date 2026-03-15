@@ -19,7 +19,7 @@
 
 	[class*='entries'] {
 		@for $i from 2 through 12 {
-			article[data-reveal*='#{$i}'] {
+			[data-reveal*='#{$i}'] {
 				transition-delay: #{($i - 1) * 0.3}s;
 			}
 		}

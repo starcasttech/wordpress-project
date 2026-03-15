@@ -1225,6 +1225,7 @@ class WPvivid
         $data['schedule']=get_option('wpvivid_schedule_setting');
         $data['remote']['upload']=get_option('wpvivid_upload_setting');
         $data['remote']['history']=get_option('wpvivid_user_history');
+        $data['last_backup_report'] = get_option('wpvivid_backup_reports');
 
         $data['setting_addon'] = $data['setting'];
         $data['setting_addon']['wpvivid_staging_options']=array();
@@ -1232,7 +1233,6 @@ class WPvivid
         $data['menu_capability']=array();
         $data['white_label_setting']=array();
         $data['incremental_backup_setting']=array();
-        $data['last_backup_report']=array();
         $data['schedule_addon']=array();
         $data['time_zone']=false;
         $data['is_pro']=false;

@@ -1,3 +1,5 @@
+@use "../../1-helpers/functions";
+
 .demo_store {
 	font-size: 15px;
 	color: var(--theme-text-color);
@@ -14,7 +16,7 @@
 		content: "\e901";
 		margin-inline-end: 15px;
 
-		@include media-breakpoint-down (sm) {
+		@include functions.media-breakpoint-down (sm) {
 			display: none !important;
 		}
 	}

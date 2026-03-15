@@ -263,14 +263,33 @@ $button_html_atts = array_merge(
 		'aria-label' => __('Search button', 'blocksy')
 	],
 	isset($args['button_html_atts']) ? $args['button_html_atts'] : []
-)
+);
+
+$search_box_min_length = apply_filters('blocksy:search-form:min-length', 1);
 
 ?>
 
 
 <form role="search" method="get" class="ct-search-form" <?php echo blocksy_attr_to_html($html_atts); ?> action="<?php echo esc_url($home_url); ?>" aria-haspopup="listbox" <?php echo wp_kses_post($search_live_results_output) ?>>
 
-	<input type="search" <?php echo $class_output ?> placeholder="<?php echo $placeholder; ?>" value="<?php echo get_search_query(); ?>" name="s" autocomplete="off" title="<?php echo __('Search for...', 'blocksy') ?>" aria-label="<?php echo __('Search for...', 'blocksy') ?>">
+	<input
+		type="search" <?php echo $class_output ?>
+		placeholder="<?php echo $placeholder; ?>"
+		value="<?php echo get_search_query(); ?>"
+		name="s"
+		autocomplete="off"
+		title="<?php echo __('Search for...', 'blocksy') ?>"
+		aria-label="<?php echo __('Search for...', 'blocksy') ?>"
+		<?php
+		if (
+			isset($search_box_min_length)
+			&&
+			$search_box_min_length > 1
+		) {
+			echo 'data-min-length="' . esc_attr($search_box_min_length) . '"';
+		}
+		?>
+	>
 
 	<div class="ct-search-form-controls">
 		<?php if (
@@ -333,7 +352,15 @@ $button_html_atts = array_merge(
 
 
 		<?php
-			if ($has_live_results === 'yes') {
+			// Only output the nonce for logged-in users. This allows page cache
+			// for non-logged-in users to have a longer TTL since there's no
+			// user-specific nonce in the HTML. The REST API works without a
+			// nonce for public endpoints.
+			if (
+				$has_live_results === 'yes'
+				&&
+				is_user_logged_in()
+			) {
 				echo blocksy_html_tag(
 					'input',
 					[

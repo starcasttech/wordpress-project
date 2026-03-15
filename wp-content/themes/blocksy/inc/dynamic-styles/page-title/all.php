@@ -27,6 +27,11 @@ if (class_exists('Tribe__Events__Main')) {
 	$prefixes[] = 'tribe_events_archive';
 }
 
+if (class_exists('Visual_Portfolio')) {
+	$prefixes[] = 'vs_portfolio_single';
+	$prefixes[] = 'vs_portfolio_archive';
+}
+
 $supported_post_types = blocksy_manager()->post_types->get_supported_post_types();
 
 foreach ($supported_post_types as $cpt) {

@@ -9,7 +9,7 @@
 if (!defined('ABSPATH')) exit;
 
 define('GOSMTP_BASE', plugin_basename(GOSMTP_FILE));
-define('GOSMTP_VERSION', '1.1.6');
+define('GOSMTP_VERSION', '1.1.9');
 define('GOSMTP_DIR', dirname(GOSMTP_FILE));
 define('GOSMTP_SLUG', 'gosmtp');
 define('GOSMTP_URL', plugins_url('', GOSMTP_FILE));

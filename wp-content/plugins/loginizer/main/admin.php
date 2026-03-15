@@ -460,7 +460,7 @@ function loginizer_page_footer(){
 	</script>
 	
 	<hr />
-	<a href="http://loginizer.com" target="_blank">Loginizer</a> '.__('v'.LOGINIZER_VERSION.'. You can report any bugs ','loginizer').'<a href="http://wordpress.org/support/plugin/loginizer" target="_blank">'.__('here','loginizer').'</a>.';
+	<a href="http://loginizer.com" target="_blank">Loginizer</a> v'.LOGINIZER_VERSION.'. '.__('You can report any bugs ','loginizer').'<a href="http://wordpress.org/support/plugin/loginizer" target="_blank">'.__('here','loginizer').'</a>.';
 	
 	}
 	
@@ -549,9 +549,17 @@ function loginizer_admin_menu() {
 		add_submenu_page('loginizer', __('Security Settings', 'loginizer'), __('Rename Login', 'loginizer'), 'activate_plugins', 'loginizer', 'loginizer_security_settings');
 		
 	}
-	
+		
 	// Brute Force
 	add_submenu_page('loginizer', __('Brute Force Settings', 'loginizer'), __('Brute Force', 'loginizer'), 'activate_plugins', 'loginizer_brute_force', 'loginizer_brute_force_settings');
+
+	if(defined('LOGINIZER_PREMIUM')){
+		// WAF Security Firewall
+		$expiry_date = strtotime('2026-03-01');
+		$tag_new = time() < $expiry_date ? '<span style="display: inline-block; margin-left: 10px; padding: 0px 5px; color: #fff; background-color: #d63638; border-radius: 2px;">'.__('New', 'loginizer').'</span>' : '';
+
+		add_submenu_page('loginizer', __('Country Block', 'loginizer'), __('Country Block', 'loginizer').' '.$tag_new, 'activate_plugins', 'loginizer_firewall', 'loginizer_firewall_settings');
+	}
 	
 	// PasswordLess
 	add_submenu_page('loginizer', __($loginizer['prefix'].'PasswordLess Settings', 'loginizer'), __('PasswordLess', 'loginizer'), 'activate_plugins', 'loginizer_passwordless', 'loginizer_passwordless_settings');
@@ -565,19 +573,19 @@ function loginizer_admin_menu() {
 	}
 	
 	// reCaptcha
-	add_submenu_page('loginizer', __($loginizer['prefix'].'reCAPTCHA Settings', 'loginizer'), __('reCAPTCHA', 'loginizer'), 'activate_plugins', 'loginizer_recaptcha', 'loginizer_recaptcha_settings');
+	add_submenu_page('loginizer', $loginizer['prefix'].__('reCAPTCHA Settings', 'loginizer'), __('reCAPTCHA', 'loginizer'), 'activate_plugins', 'loginizer_recaptcha', 'loginizer_recaptcha_settings');
 	
 	// Temporary Login
-	add_submenu_page('loginizer', __($loginizer['prefix'].'SSO', 'loginizer'), __('Single Sign On', 'loginizer'). ((time() < strtotime('30 November 2023')) ? ' <span style="color:yellow;">Update</span>' : ''), 'activate_plugins', 'loginizer_sso', 'loginizer_sso_settings');
+	add_submenu_page('loginizer', $loginizer['prefix'].__('SSO', 'loginizer'), __('Single Sign On', 'loginizer'). ((time() < strtotime('30 November 2023')) ? ' <span style="color:yellow;">Update</span>' : ''), 'activate_plugins', 'loginizer_sso', 'loginizer_sso_settings');
 	
 	// Social Login
-	$hook_name =  add_submenu_page('loginizer', __($loginizer['prefix'].'social_login', 'loginizer'), __('Social Login', 'loginizer') . (defined('LOGINIZER_PREMIUM') && (time() < strtotime('30 June 2025')) ? ' <span style="color:yellow;font-size:12px;">Updated</span>' : ''), 'activate_plugins', 'loginizer_social_login', 'loginizer_social_login_settings');
+	$hook_name =  add_submenu_page('loginizer', $loginizer['prefix']. __('Social Login', 'loginizer'), __('Social Login', 'loginizer') . (defined('LOGINIZER_PREMIUM') && (time() < strtotime('30 June 2025')) ? ' <span style="color:yellow;font-size:12px;">Updated</span>' : ''), 'activate_plugins', 'loginizer_social_login', 'loginizer_social_login_settings');
 	
 	// Security Settings
 	if(!defined('SITEPAD')){
 	
 		// Security Settings
-		add_submenu_page('loginizer', __($loginizer['prefix'].'Security Settings', 'loginizer'), __('Security Settings', 'loginizer'), 'activate_plugins', 'loginizer_security', 'loginizer_security_settings');
+		add_submenu_page('loginizer', $loginizer['prefix'].__('Security Settings', 'loginizer'), __('Security Settings', 'loginizer'), 'activate_plugins', 'loginizer_security', 'loginizer_security_settings');
 		
 		// File Checksums
 		add_submenu_page('loginizer', __('Loginizer File Checksums', 'loginizer'), __('File Checksums', 'loginizer'), 'activate_plugins', 'loginizer_checksums', 'loginizer_checksums_settings');
@@ -762,6 +770,11 @@ function loginizer_social_login_settings(){
 	include_once LOGINIZER_DIR . '/main/settings/social_login.php';
 	
 	loginizer_social_login();
+}
+
+function loginizer_firewall_settings(){
+	include_once LOGINIZER_PRO_DIR . 'main/settings/waf.php';
+	loginizer_pro_firewall();
 }
 
 // Hides the interim login poup after successful login.

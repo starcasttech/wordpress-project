@@ -1,11 +1,13 @@
+@use "../../../1-helpers/functions";
+
 .woocommerce-Addresses {
 	display: grid;
 
-	@include media-breakpoint-down (sm) {
+	@include functions.media-breakpoint-down (sm) {
 		grid-row-gap: 2em;
 	}
 
-	@include media-breakpoint-up (md) {
+	@include functions.media-breakpoint-up (md) {
 		grid-template-columns: repeat(2, 1fr);
 		grid-column-gap: 30px;
 	}

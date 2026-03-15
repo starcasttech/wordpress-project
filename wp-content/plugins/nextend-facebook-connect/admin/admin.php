@@ -115,9 +115,6 @@ class NextendSocialLoginAdmin {
     public static function admin_init() {
 
         if (current_user_can(NextendSocialLogin::getRequiredCapability())) {
-            if (!defined('NSL_PRO_PATH')) {
-                require_once(dirname(__FILE__) . '/notice.php');
-            }
 
             if (!isset($_GET['page']) || $_GET['page'] != 'nextend-social-login' || !isset($_GET['view']) || $_GET['view'] != 'fix-redirect-uri') {
                 add_action('admin_notices', 'NextendSocialLoginAdmin::show_oauth_uri_notice');
@@ -231,11 +228,6 @@ class NextendSocialLoginAdmin {
             ), 10, 2);
 
         };
-
-        add_action('nsl_getting_started_warnings', array(
-            'NextendSocialLoginAdmin',
-            'show_getting_started_warning'
-        ), 100, 2);
     }
 
     public static function save_form_data() {
@@ -786,9 +778,6 @@ class NextendSocialLoginAdmin {
         return $post_states;
     }
 
-    public static function show_WPML_warning() {
-        printf(__('<strong><u>Warning</u></strong>: You are using <b>%1$s</b>! Depending on your %1$s configuration the Redirect URI can be different. For more information please check our %2$s %1$s compatibility tutorial%3$s!', 'nextend-facebook-connect'), 'WPML', '<a href="https://social-login.nextendweb.com/documentation/for-developers/guides/how-to-make-nextend-social-login-compatible-with-wpml/" target="_blank">', '</a>');
-    }
 
     /**
      * @param array                 $redirectUrls
@@ -1016,28 +1005,6 @@ class NextendSocialLoginAdmin {
             } else {
                 add_filter('wpml_get_language_from_url', 'NextendSocialLoginAdmin::get_default_WPML_language_code', 1000000000);
             }
-        }
-    }
-
-    /**
-     * @param NextendSocialProviderDummy $provider
-     * @param string                     $lastUpdated
-     */
-    public static function show_getting_started_warning($provider, $lastUpdated) {
-        if ($provider && $lastUpdated) {
-
-            $lastUpdatedDate = date_format(date_create_from_format('Y-m-d', $lastUpdated), get_option('date_format'));
-
-            $supportURL         = 'https://social-login.nextendweb.com/support/';
-            $version            = defined('NSL_PRO_PATH') ? 'Pro-Addon' : 'Free';
-            $args               = array(
-                'topic'    => 'Wrong-Steps',
-                'provider' => $provider->getLabel(),
-                'version'  => $version
-            );
-            $supportUrlWithArgs = add_query_arg($args, $supportURL);
-
-            printf(__('<p><strong><u>Warning</u></strong>: Providers change the App setup process quite often, which means some steps below might not be accurate. If you see a significant difference in the written instructions and what you see at the provider, check the guide in the %1$sonline documentation%2$s first, just in case if we are already aware of the changes, hence updated the guide. Otherwise feel free to %3$sreport the changes%4$s, so we can check and update the instructions.<br><strong>Last updated:</strong> %5$s.</p>', 'nextend-facebook-connect'), '<a href="' . $provider->getDocURL() . '" target="_blank">', '</a>', '<a href="' . $supportUrlWithArgs . '" target="_blank">', '</a>', $lastUpdatedDate);
         }
     }
 }

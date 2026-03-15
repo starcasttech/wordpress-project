@@ -134,7 +134,7 @@ if ( ! class_exists( 'Remote_Dashboard_Notifications_Client' ) ) {
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'awesome-support' ), '3.2.5' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'loginpress' ), '3.2.5' );
 		}
 
 		/**
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Remote_Dashboard_Notifications_Client' ) ) {
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'awesome-support' ), '3.2.5' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'loginpress' ), '3.2.5' );
 		}
 
 		/**
@@ -358,7 +358,7 @@ if ( ! class_exists( 'Remote_Dashboard_Notifications_Client' ) ) {
 		protected function create_admin_notice( $contents, $class, $dismiss ) {
 			?>
 			<div class="<?php echo esc_attr( $class ); ?>">
-				<a href="<?php echo esc_url( $dismiss ); ?>" id="rn-dismiss" class="rn-dismiss-btn" title="<?php esc_attr_e( 'Dismiss notification', 'remote-notifications' ); ?>">&times;</a>
+				<a href="<?php echo esc_url( $dismiss ); ?>" id="rn-dismiss" class="rn-dismiss-btn" title="<?php esc_attr_e( 'Dismiss notification', 'loginpress' ); ?>">&times;</a>
 				<p><?php echo wp_kses_post( html_entity_decode( $contents ) ); ?></p>
 			</div>
 			<?php

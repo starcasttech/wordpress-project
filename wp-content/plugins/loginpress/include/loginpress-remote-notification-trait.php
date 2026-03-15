@@ -202,20 +202,20 @@ if ( ! trait_exists( 'LoginPress_Remote_Notification_Trait' ) ) {
 			if ( 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
 				$response_code = wp_remote_retrieve_response_code( $response );
 				// translators: Invalid code.
-				$message = sprintf( esc_html__( 'The server response was invalid (code %s)', 'remote-notifications' ), $response_code ?: 'unknown' );
+				$message = sprintf( esc_html__( 'The server response was invalid (code %s)', 'loginpress' ), $response_code ?: 'unknown' );
 				return new WP_Error( 'invalid_response', $message );
 			}
 
 			$body = wp_remote_retrieve_body( $response );
 
 			if ( empty( $body ) ) {
-				return new WP_Error( 'empty_response', esc_html__( 'The server response is empty', 'remote-notifications' ) );
+				return new WP_Error( 'empty_response', esc_html__( 'The server response is empty', 'loginpress' ) );
 			}
 
 			$body = json_decode( $body );
 
 			if ( is_null( $body ) ) {
-				return new WP_Error( 'json_decode_error', esc_html__( 'Cannot decode the response content', 'remote-notifications' ) );
+				return new WP_Error( 'json_decode_error', esc_html__( 'Cannot decode the response content', 'loginpress' ) );
 			}
 
 			set_transient( 'rn_last_notification_' . $notification['notice_id'], $body, $notification['cache_lifetime'] * 60 * 60 );

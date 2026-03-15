@@ -66,6 +66,8 @@ class DUP_Archive
     private $listFileObj = null;
     /** @var DUP_Archive_File_List */
     private $listDirObj = null;
+    /** @var string|null */
+    private $wpContentDirNormalizePath = null;
 
     /**
      * Class constructor
@@ -92,7 +94,7 @@ class DUP_Archive
         $this->wpCoreExactPaths[] = $paths['muplugins'];
         $this->wpCoreExactPaths[] = $paths['themes'];
 
-        $this->relativeFiltersDir = array(DUP_Settings::getSsdirTmpPath(), 'backups-dup-pro');
+        $this->relativeFiltersDir = array(DUP_Settings::getSsdirTmpPath(), 'backups-dup-pro', 'duplicator-backups');
     }
 
     /**
@@ -382,6 +384,7 @@ class DUP_Archive
             $wp_root . '/.opcache',
             //WP-CONTENT
             $wp_content . '/backups-dup-pro',
+            $wp_content . '/duplicator-backups',
             $wp_content . '/ai1wm-backups',
             $wp_content . '/backupwordpress',
             $wp_content . '/content/cache',

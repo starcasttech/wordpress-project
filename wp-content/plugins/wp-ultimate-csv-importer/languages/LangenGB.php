@@ -96,6 +96,10 @@ class LangEN_GB {
                         'MetaBoxFields' => 'Meta Box Fields',
                         'YoastSeoFields' => 'Yoast Seo Fields',
 'SlimSeoFields' => 'Slim SEO Fields',
+'EDDDownloadsFields' => 'EDD Downloads Fields',
+'EDDCustomersFields' => 'EDD Customers Fields',
+'EDDDiscountsFields' => 'EDD Discounts Fields',
+
 'ListeoFields' => 'Listeo Fields',
                         'WPMLFields' => 'WPML Fields',
                         'JetEngineFields' => 'Jet Engine Fields',

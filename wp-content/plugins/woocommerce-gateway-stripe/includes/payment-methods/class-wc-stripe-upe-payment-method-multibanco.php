@@ -14,13 +14,6 @@ class WC_Stripe_UPE_Payment_Method_Multibanco extends WC_Stripe_UPE_Payment_Meth
 	const STRIPE_ID = WC_Stripe_Payment_Methods::MULTIBANCO;
 
 	/**
-	 * Legacy payment method class reference.
-	 *
-	 * @deprecated 10.2.0 This constant is deprecated and will be removed in future versions.
-	 */
-	const LPM_GATEWAY_CLASS = WC_Gateway_Stripe_Multibanco::class;
-
-	/**
 	 * Constructor for Multibanco payment method
 	 */
 	public function __construct() {
@@ -63,8 +56,12 @@ class WC_Stripe_UPE_Payment_Method_Multibanco extends WC_Stripe_UPE_Payment_Meth
 	 * @param WC_Order $order
 	 * @param bool     $sent_to_admin
 	 * @param bool     $plain_text
+	 * @return void
 	 */
 	public function email_instructions( $order, $sent_to_admin, $plain_text = false ) {
+		if ( ! $order || ! is_a( $order, 'WC_Order' ) ) {
+			return;
+		}
 		$payment_method = $order->get_payment_method();
 		if ( ! $sent_to_admin && 'stripe_multibanco' === $payment_method && $order->has_status( OrderStatus::ON_HOLD ) ) {
 			$this->get_instructions( $order, $plain_text );

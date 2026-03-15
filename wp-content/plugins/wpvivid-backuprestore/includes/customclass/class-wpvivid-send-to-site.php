@@ -627,8 +627,18 @@ class WPvivid_Send_to_site extends WPvivid_Remote
                 $wpvivid_plugin->wpvivid_log->WriteLog('start upload.','notice');
                 $dir=WPvivid_Setting::get_backupdir();
 
-                $file_path=WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$dir.DIRECTORY_SEPARATOR.str_replace('wpvivid','wpvivid_temp',$params['name']);
-
+                $safe_name = basename($params['name']);
+                $safe_name = preg_replace('/[^a-zA-Z0-9._-]/', '', $safe_name);
+                $allowed_extensions = array('zip', 'gz', 'tar', 'sql');
+                $file_ext = strtolower(pathinfo($safe_name, PATHINFO_EXTENSION));
+                if (!in_array($file_ext, $allowed_extensions, true))
+                {
+                    $ret['result'] = WPVIVID_FAILED;
+                    $ret['error'] = 'Invalid file type - only backup files allowed.';
+                    echo wp_json_encode($ret);
+                    die();
+                }
+                $file_path=WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$dir.DIRECTORY_SEPARATOR.str_replace('wpvivid', 'wpvivid_temp', $safe_name);
                 if(!file_exists($file_path))
                 {
                     $handle=fopen($file_path,'w');
@@ -663,8 +673,7 @@ class WPvivid_Send_to_site extends WPvivid_Remote
                     if (md5_file($file_path) == $params['md5'])
                     {
                         $wpvivid_plugin->wpvivid_log->WriteLog('rename temp file:'.$file_path.' to new name:'.WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$dir.DIRECTORY_SEPARATOR.$params['name'],'notice');
-                        rename($file_path,WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$dir.DIRECTORY_SEPARATOR.$params['name']);
-
+                        rename($file_path,WP_CONTENT_DIR.DIRECTORY_SEPARATOR.$dir.DIRECTORY_SEPARATOR.$safe_name);
                         $ret['result']=WPVIVID_SUCCESS;
                         $ret['op']='finished';
                     } else {
@@ -894,8 +903,18 @@ class WPvivid_Send_to_site extends WPvivid_Remote
                 }
 
                 $dir = WPvivid_Setting::get_backupdir();
-                $file_path = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . str_replace('wpvivid', 'wpvivid_temp', $params['name']);
-
+                $safe_name = basename($params['name']);
+                $safe_name = preg_replace('/[^a-zA-Z0-9._-]/', '', $safe_name);
+                $allowed_extensions = array('zip', 'gz', 'tar', 'sql');
+                $file_ext = strtolower(pathinfo($safe_name, PATHINFO_EXTENSION));
+                if (!in_array($file_ext, $allowed_extensions, true))
+                {
+                    $ret['result'] = WPVIVID_FAILED;
+                    $ret['error'] = 'Invalid file type - only backup files allowed.';
+                    echo wp_json_encode($ret);
+                    die();
+                }
+                $file_path = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . str_replace('wpvivid', 'wpvivid_temp', $safe_name);
                 $rename = true;
 
                 if (!file_exists($file_path))
@@ -919,7 +938,7 @@ class WPvivid_Send_to_site extends WPvivid_Remote
                 if (filesize($file_path) >= $params['file_size']) {
                     if (md5_file($file_path) == $params['md5']) {
                         if ($rename)
-                            rename($file_path, WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $params['name']);
+                            rename($file_path, WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $safe_name);
                         $ret['result'] = WPVIVID_SUCCESS;
                         $ret['file_status']['status'] = 'finished';
                     } else {

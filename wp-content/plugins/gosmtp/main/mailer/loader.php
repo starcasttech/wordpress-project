@@ -78,8 +78,57 @@ class Loader{
 			
 			$options[$key] = $val;
 		}
+
+		$conn_id = isset($_REQUEST['conn_id']) ? sanitize_text_field(wp_unslash($_REQUEST['conn_id'])) : '';
+
+		$saved_options = get_option('gosmtp_options', []);
 		
-		return $options;	
+		// Mailer and connection id should not be empty
+		if(empty($saved_options['mailer']) || empty($saved_options['mailer'][$conn_id])){
+			return $options; 
+		}
+
+		$mailer_data = $saved_options['mailer'][$conn_id];
+		$mailer_type = !empty($mailer_data['mail_type']) ? $mailer_data['mail_type'] : '';
+		
+		// Client id and Client secret only present in Outlook, Gmail and Zoho mailer
+		if(!in_array($mailer_type, ['outlook', 'gmail', 'zoho'])){
+			return $options;
+		}
+		
+		$credential_keys = ['client_id', 'client_secret'];
+		$cred_change = false;
+		
+		// Map seperate keys for each mailer
+		$map = [
+			'outlook' => ['auth_token', 'access_token', 'refresh_token', 'expire_stamp'],
+			'gmail' => ['auth_token', 'access_token', 'refresh_token', 'expire_stamp', 'expires_in', 'version'],
+			'zoho' => ['authorize', 'access_token', 'refresh_token', 'account_id']
+		];
+
+		$token_keys = isset($map[$mailer_type]) ? $map[$mailer_type] : [];
+
+		foreach($credential_keys as $key){
+			$new_val = isset($options[$key]) ? trim((string) $options[$key]) : '';
+			$old_val = isset($mailer_data[$key]) ? trim((string) $mailer_data[$key]) : '';
+			
+			// Check if Client Id or Client Secret is changed
+			if($new_val !== $old_val){
+				$cred_change = true;
+				break;
+			}
+		}
+		
+		// If credentials are not changed add the previous tokens
+		if(!$cred_change){
+			foreach($token_keys as $token){
+				if(isset($mailer_data[$token])){
+					$options[$token] = $mailer_data[$token];
+				}
+			}
+		}
+		
+		return $options;
 	}
 	
 	public function delete_option($key, $mailer = ''){

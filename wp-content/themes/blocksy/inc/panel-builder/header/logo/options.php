@@ -165,6 +165,13 @@ $options = [
 							'value' => get_option('blogname'),
 						],
 
+						'has_site_title_link' => [
+							'label' => __( 'Site Title Link', 'blocksy' ),
+							'type' => 'ct-switch',
+							'value' => 'yes',
+							'setting' => [ 'transport' => 'postMessage' ],
+						],
+
 						'blogname_visibility' => [
 							'label' => __( 'Site Title Visibility', 'blocksy' ),
 							'type' => 'ct-visibility',
@@ -232,6 +239,27 @@ $options = [
 				],
 
 				blocksy_rand_md5() => [
+					'type' => 'ct-divider',
+				],
+
+				blocksy_rand_md5() => [
+					'type' => 'ct-condition',
+					'condition' => [
+						'custom_logo:truthy' => 'yes',
+					],
+					'options' => [
+
+						'has_logo_image_link' => [
+							'label' => __( 'Logo Image Link', 'blocksy' ),
+							'type' => 'ct-switch',
+							'value' => 'yes',
+							'setting' => [ 'transport' => 'postMessage' ],
+						],
+
+					],
+				],
+
+				blocksy_rand_md5() => [
 					'type' => 'ct-condition',
 					'condition' => [
 						'has_svg_logo' => 'yes'
@@ -239,10 +267,10 @@ $options = [
 					'computed_fields' => ['has_svg_logo'],
 					'options' => [
 						'inline_svg_logos' => [
-							'label' => __('Inline SVG File', 'blocksy'),
+							'label' => __('Logo Inline SVG File', 'blocksy'),
 							'type' => 'ct-switch',
 							'value' => 'no',
-							'divider' => 'top:full',
+							// 'divider' => 'top:full',
 						]
 					]
 				],
@@ -253,6 +281,7 @@ $options = [
 						'custom_logo:truthy' => 'yes',
 					],
 					'options' => [
+
 						blocksy_rand_md5() => [
 							'type' => 'ct-condition',
 							'condition' => [
@@ -286,14 +315,17 @@ $options = [
 							],
 						],
 
+						blocksy_rand_md5() => [
+							'type' => 'ct-divider',
+						],
 					],
 				],
 			],
 
 			$panel_type === 'header' ? [
-				blocksy_rand_md5() => [
-					'type' => 'ct-divider',
-				],
+				// blocksy_rand_md5() => [
+				// 	'type' => 'ct-divider',
+				// ],
 
 				'header_logo_horizontal_alignment' => [
 					'type' => 'ct-radio',
@@ -313,9 +345,9 @@ $options = [
 			] : [],
 
 			$panel_type === 'footer' ? [
-				blocksy_rand_md5() => [
-					'type' => 'ct-divider',
-				],
+				// blocksy_rand_md5() => [
+				// 	'type' => 'ct-divider',
+				// ],
 
 				'footer_logo_horizontal_alignment' => [
 					'type' => 'ct-radio',
@@ -475,7 +507,8 @@ $options = [
 									[
 										'title' => __( 'Hover', 'blocksy' ),
 										'id' => 'hover',
-										'inherit' => 'var(--theme-link-hover-color)'
+										'inherit' => 'var(--theme-link-hover-color)',
+										'condition' => [ 'has_site_title_link' => 'yes' ]
 									],
 								],
 							],
@@ -506,6 +539,7 @@ $options = [
 									[
 										'title' => __( 'Hover', 'blocksy' ),
 										'id' => 'hover',
+										'condition' => [ 'has_site_title_link' => 'yes' ]
 									],
 								],
 							],
@@ -536,6 +570,7 @@ $options = [
 									[
 										'title' => __( 'Hover', 'blocksy' ),
 										'id' => 'hover',
+										'condition' => [ 'has_site_title_link' => 'yes' ]
 									],
 								],
 							],

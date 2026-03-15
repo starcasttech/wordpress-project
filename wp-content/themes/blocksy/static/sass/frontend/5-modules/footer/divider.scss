@@ -1,3 +1,5 @@
+@use "../../1-helpers/functions";
+
 .ct-footer [data-row] {
 	border-top: var(--theme-border-top);
 	border-bottom: var(--theme-border-bottom);
@@ -11,7 +13,7 @@
 
 // columns divider
 .ct-footer [data-column] {
-	@include media-breakpoint-up (lg) {
+	@include functions.media-breakpoint-up (lg) {
 		position: relative;
 
 		&:not(:last-child):after {
@@ -39,13 +41,13 @@
 }
 
 [data-columns-divider*="md"]:after {
-	@include media-breakpoint-only (md) {
+	@include functions.media-breakpoint-only (md) {
 		content: '';
 	}
 }
 
 [data-columns-divider*="sm"]:after {
-	@include media-breakpoint-down (sm) {
+	@include functions.media-breakpoint-down (sm) {
 		content: '';
 	}
 }

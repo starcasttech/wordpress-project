@@ -254,7 +254,8 @@ border-top: 1px solid var(--gosmtp-gray-shade);
 }
 
 /* Mailer styles */
-.gosmtp-mailer-input{
+.gosmtp-mailer-input, 
+.gosmtp-notification-input{
 display: inline-flex;
 align-items:center;
 margin-right: 20px;
@@ -284,7 +285,8 @@ opacity:0 !important;
 opacity:0 !important;
 }
 
-.gosmtp-mailer-input .label{
+.gosmtp-mailer-input .label, 
+.gosmtp-notification-input .label{
 display: none;
 background: #555;
 color:white;
@@ -296,7 +298,8 @@ border-radius: 6px;
 top:-40px;
 }
 
-.gosmtp-mailer-input .label::after {
+.gosmtp-mailer-input .label::after, 
+.gosmtp-notification-input .label::after{
 content: "";
 position: absolute;
 top: 100%;
@@ -307,13 +310,15 @@ border-style: solid;
 border-color: #555 transparent transparent transparent;
 }
 
-.mailer_container{
+.mailer_container, 
+.gosmtp-pro-email-notification-container{
 display: flex;
 max-width: 100%;
 flex-wrap: wrap;
 }
 
-.mailer_label{
+.mailer_label, 
+.service_label{
 width: 100%;
 height: 70px;
 border:1px solid #cecece;
@@ -322,7 +327,8 @@ align-items:center;
 justify-content:center;
 }
 
-.gosmtp-mailer-input img{
+.gosmtp-mailer-input img, 
+.gosmtp-notification-input img{
 background:white;
 padding:18px;
 box-sizing: border-box;
@@ -330,16 +336,20 @@ max-width:100%;
 max-height:100%;
 }
 
-.gosmtp-mailer-input:hover label{
+.gosmtp-mailer-input:hover label, 
+.gosmtp-notification-input:hover label{
 display: block;
 }
 
 .gosmtp-mailer-input:not(.pro):hover .mailer_label,
-.gosmtp-mailer-input:not(.pro) .mail_active{
+.gosmtp-mailer-input:not(.pro) .mail_active,
+.gosmtp-notification-input:not(.pro):hover .service_label,
+.gosmtp-notification-input:not(.pro) .service_active{
 outline: 2px solid #4f53ff !important;
 }
 
-.mailer_check{
+.mailer_check,
+.service_check{
 visibility: hidden;
 position: absolute;
 }
@@ -970,7 +980,8 @@ animation: spin 2s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
 100% { transform: rotate(360deg); }
 }
 
-.gosmtp-mailer-input.pro .mailer_label::before{
+.gosmtp-mailer-input.pro .mailer_label::before,
+.gosmtp-notification-input.pro .service_label::before{
 width: 70px;
 height: 15px;
 content: 'Premium';
@@ -987,15 +998,18 @@ top: -2px;
 z-index: 5;
 }
 
-.gosmtp-mailer-input.pro .lock_icon{
+.gosmtp-mailer-input.pro .lock_icon,
+.gosmtp-notification-input.pro .lock_icon{
 display: none; 
 }
 
-.gosmtp-mailer-input.pro .lock_icon span{
+.gosmtp-mailer-input.pro .lock_icon span,
+.gosmtp-notification-input.pro .lock_icon span{
 font-size: 25px;
 }
 
-.gosmtp-mailer-input.pro .mailer_label:hover .lock_icon{
+.gosmtp-mailer-input.pro .mailer_label:hover .lock_icon,
+.gosmtp-notification-input.pro .service_label:hover .lock_icon{
 display: flex;
 justify-content: center;
 align-items: center;
@@ -1224,6 +1238,10 @@ padding: 4px 10px;
 font-size: 12px;
 margin: 3px 3px 3px 0px;
 text-transform: capitalize;
+}
+
+.gosmtp-container-val .filter-close{
+margin-left: 5px;
 }
 
 /*export css*/

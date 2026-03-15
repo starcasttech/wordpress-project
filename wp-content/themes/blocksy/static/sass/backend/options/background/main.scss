@@ -1,7 +1,7 @@
-@import 'background-preview';
+@use 'background-preview';
 
-@import 'gradient';
-@import 'image-pattern';
+@use 'gradient';
+@use 'image-pattern';
 
 
 .ct-background-modal {

@@ -1,4 +1,5 @@
-<?php
+<?php // phpcs:ignore
+
 /**
  * LoginPress Custom JS Script
  *
@@ -33,17 +34,24 @@ $loginpress_autorm    = isset( $loginpress_setting['auto_remember_me'] ) ? $logi
 $loginpress_capslock  = __( 'Caps Lock is on', 'loginpress' );
 $loginpress_custom_js = loginpress_custom_js( 'loginpress_custom_js' );
 
-if ( ! empty( $loginpress_custom_js ) ) { ?>
-	<script>
-		<?php
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom JS from admin settings, intentionally unescaped.
-		echo $loginpress_custom_js;
+if ( ! empty( $loginpress_custom_js ) ) : ?>
+	<?php
+	// WordPress 5.7+ function that properly handles script tag escaping.
+	if ( function_exists( 'wp_get_inline_script_tag' ) ) {
+		echo wp_get_inline_script_tag( $loginpress_custom_js ); // phpcs:ignore
+	} else {
 		?>
-	</script>
-<?php } ?>
-
+		<script>
+		<?php
+			// Remove HTML tags to prevent XSS while preserving JavaScript syntax.
+			echo wp_strip_all_tags( $loginpress_custom_js ); // phpcs:ignore
+		?>
+		</script>
+		<?php
+	}
+	?>
+<?php endif; ?>
 <script>
-
 	document.addEventListener( 'DOMContentLoaded', function() {
 
 		if (navigator.userAgent.indexOf("Firefox") != -1) {

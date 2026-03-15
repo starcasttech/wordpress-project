@@ -116,6 +116,52 @@ if (blocksy_some_device($headerRowWidth, 'boxed')) {
 		'responsive' => true,
 		'forced_background_image' => true
 	]);
+
+	blocksy_output_spacing([
+		'css' => $css,
+		'tablet_css' => $tablet_css,
+		'mobile_css' => $mobile_css,
+		'selector' => blocksy_assemble_selector($root_selector),
+		'property' => 'row-padding',
+		'value' => blocksy_akg(
+			'header_row_padding',
+			$atts,
+			[
+				'desktop' => blocksy_spacing_value([
+					'top' => 'auto',
+					'left' => '35px',
+					'right' => '35px',
+					'bottom' => 'auto',
+				]),
+				'tablet' => blocksy_spacing_value([
+					'top' => 'auto',
+					'left' => '4vw',
+					'right' => '4vw',
+					'bottom' => 'auto',
+				]),
+				'mobile'=> blocksy_spacing_value([
+					'top' => 'auto',
+					'left' => '5vw',
+					'right' => '5vw',
+					'bottom' => 'auto',
+				]),
+				'__changed' => ['tablet', 'mobile']
+			]
+		)
+	]);
+
+	blocksy_output_spacing([
+		'css' => $css,
+		'tablet_css' => $tablet_css,
+		'mobile_css' => $mobile_css,
+		'selector' => blocksy_assemble_selector($root_selector),
+		'property' => 'row-border-radius',
+		'value' => blocksy_akg(
+			'header_row_border_radius',
+			$atts,
+			blocksy_spacing_value()
+		)
+	]);
 }
 
 // Top Border
@@ -779,16 +825,3 @@ if (
 		]);
 	}
 }
-
-blocksy_output_spacing([
-	'css' => $css,
-	'tablet_css' => $tablet_css,
-	'mobile_css' => $mobile_css,
-	'selector' => blocksy_assemble_selector($root_selector),
-	'property' => 'row-border-radius',
-	'value' => blocksy_akg(
-		'header_row_border_radius',
-		$atts,
-		blocksy_spacing_value()
-	)
-]);

@@ -180,7 +180,7 @@ if ( ! trait_exists( 'LoginPress_Customizer_Messages' ) ) {
 			$wp_customize->add_setting(
 				'loginpress_customization[footer_display_text]',
 				array(
-					'default'           => false,
+					'default'           => true,
 					'type'              => 'option',
 					'capability'        => 'manage_options',
 					'transport'         => 'postMessage',
@@ -797,9 +797,10 @@ if ( ! trait_exists( 'LoginPress_Customizer_Messages' ) ) {
 			$wp_customize->add_setting(
 				'loginpress_customization[loginpress_custom_js]',
 				array(
-					'type'       => 'option',
-					'capability' => 'manage_options',
-					'transport'  => 'postMessage',
+					'type'              => 'option',
+					'capability'        => 'manage_options',
+					'transport'         => 'postMessage',
+					'sanitize_callback' => 'wp_strip_all_tags',
 				)
 			);
 

@@ -24,12 +24,15 @@ function gosmtp_page_header($title = 'GoSMTP'){
 			<tr>
 				<td valign="top">
 					<h1>'.esc_html($title).'</h1>
-				</td>
-				'.($promos ? '
-				<td align="right"><a target="_blank" class="button button-primary" href="https://wordpress.org/support/view/plugin-reviews/gosmtp">Review GoSMTP</a></td>' : '').'
-				<td align="right" width="40"><a target="_blank" href="https://twitter.com/gosmtp"><img src="'.GOSMTP_URL.'/images/twitter.png" /></a></td>
-				<td align="right" width="40"><a target="_blank" href="https://www.facebook.com/gosmtp/"><img src="'.GOSMTP_URL.'/images/facebook.png" /></a></td>
-			</tr>
+				</td>';
+				
+				if(!defined('SITEPAD')){
+					echo ($promos ? '
+					<td align="right"><a target="_blank" class="button button-primary" href="https://wordpress.org/support/view/plugin-reviews/gosmtp">Review GoSMTP</a></td>' : '').'
+					<td align="right" width="40"><a target="_blank" href="https://twitter.com/gosmtp"><img src="'.GOSMTP_URL.'/images/twitter.png" /></a></td>
+					<td align="right" width="40"><a target="_blank" href="https://www.facebook.com/gosmtp/"><img src="'.GOSMTP_URL.'/images/facebook.png" /></a></td>';
+				}				
+			echo '</tr>
 		</table>
 	</h2>
 	'.gosmtp_show_notices().'
@@ -280,7 +283,12 @@ function gosmtp_settings_page(){
 			$msg['success'] = 1;
 		}
 	}
-	
+
+	// Save Notification Settings
+	if(defined('GOSMTP_PRO_VERSION') && isset($_REQUEST['save_notification_settings'])){
+		do_action('gosmtp_pro_save_notification_settings');
+	}
+
 	// SMTP Settings
 	if(isset($_REQUEST['save_settings'])){
 
@@ -373,6 +381,9 @@ function gosmtp_settings_page(){
 		$smtp_options['mailer'] = [];
 		$smtp_options['mailer'][0]['mail_type'] = 'mail';
 	} 
+	
+	// Used to show error / success message for the settings
+	settings_errors();
 
 	echo '<div class="wrap">';
 	

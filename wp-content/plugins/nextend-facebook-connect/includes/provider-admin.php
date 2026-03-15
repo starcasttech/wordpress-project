@@ -389,6 +389,19 @@ class NextendSocialProviderAdmin {
 
         return $siteUrlPath ? str_replace($siteUrlPath, "", $siteUrl) : $siteUrl;
     }
+
+    public function renderGettingStartedHead() {
+        include(self::$globalPath . '/templates-provider/getting-started-head.php');
+    }
+
+
+    public function renderGettingStartedFooter() {
+        include(self::$globalPath . '/templates-provider/getting-started-footer.php');
+    }
+
+    public function renderFixRedirectUriHead() {
+        include(self::$globalPath . '/templates-provider/fix-redirect-uri-provider-head.php');
+    }
 }
 
 NextendSocialProviderAdmin::$globalPath = NSL_PATH . '/admin';

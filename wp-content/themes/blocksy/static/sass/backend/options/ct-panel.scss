@@ -11,22 +11,28 @@
 			inset-inline-start: -12px;
 			width: calc(100% + 24px);
 			height: 42px;
+			transition: background 0.15s ease-in-out;
 		}
 
 		&:hover {
 			&:before {
 				background: rgba(255, 255, 255, 0.7);
 			}
+
+			> header,
+			> section button {
+				color: var(--ui-accent-color);
+			}
 		}
 
-		header > label {
-			cursor: pointer;
+		> header {
+			color: #50575e;
+			transition: color 0.15 ease-in-out;
 		}
 
 		.ct-customizer-panel-option {
-
 			button {
-				opacity: 0.7;
+				opacity: 1;
 				pointer-events: auto;
 				transform: translate3d(0, 0, 0);
 				transition: opacity 0.2s ease 0.2s, transform 0.2s ease 0.2s;
@@ -56,12 +62,14 @@
 		height: 20px;
 		top: calc(50% - 10px);
 		inset-inline-end: -24px;
+		color: #50575e;
 		padding: 0;
 		cursor: pointer;
 		border: none;
 		opacity: 0;
 		pointer-events: none;
 		background: transparent;
+		transition: color 0.15 ease-in-out;
 
 		&:after {
 			font-family: dashicons;
@@ -69,7 +77,7 @@
 			width: 12px;
 			height: 12px;
 			font-size: 12px;
-			color: inherit;
+			// color: inherit;
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
 		}
@@ -126,11 +134,11 @@
 }
 
 // panel actions
-.wp-core-ui {
-	.customize-panel-back:focus,
-	.customize-panel-back:hover,
-	.customize-section-back:focus,
-	.customize-section-back:hover {
+.customize-panel-back,
+.customize-section-back {
+	color: #3c434a;
+
+	&:is(:focus, :hover) {
 		color: var(--ui-accent-color);
 	}
 }
@@ -210,10 +218,8 @@
 	position: relative;
 }
 
-
-
 // temp notice for this case - https://themes.trac.wordpress.org/ticket/181031#comment:13
-// to remove later maybe 
+// to remove later maybe
 .ct-customizer-panel-container {
 	display: flex;
 	align-items: center;
@@ -225,9 +231,7 @@
 		position: initial;
 	}
 
-
-	[data-tooltip-reveal="top:full"] {
-
+	[data-tooltip-reveal='top:full'] {
 		.ct-tooltip {
 			text-align: initial;
 			white-space: initial;
@@ -257,8 +261,8 @@
 				transform: translateY(calc(-100% - 11px));
 
 				transition: opacity 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955),
-							transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955),
-							visibility 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+					transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955),
+					visibility 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 			}
 		}
 

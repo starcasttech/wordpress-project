@@ -1,10 +1,10 @@
 === WP Import – Ultimate CSV XML Importer for WordPress ===
-Contributors: smackcoders, riswanasmack, premairuthayarajan
+Contributors: smackcoders, premairuthayarajan
 Donate link: https://www.smackcoders.com/contact-us.html
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 7.36
-Version: 7.36
+Stable tag: 7.39
+Version: 7.39
 Requires PHP: 7.4
 Author URI: https://www.smackcoders.com/wp-ultimate-csv-importer-pro.html
 Tags: wp import, import export, csv importer, wordpress csv import, csv, wordpress xml import, xml, all import, import all, export woocommerce products, product export, product import, woocommerce product import, wordpress csv importer, xml import, importer, migrate, datafeed, wordpress importer
@@ -17,6 +17,10 @@ Powerful WP import export plugin to bulk import and export posts, pages, custom 
 **WP Ultimate CSV Importer** is your all-in-one **WP import export** solution to easily upload, insert, and manage WordPress content in bulk. Whether you’re working with WooCommerce products or orders, ACF custom fields, JetEngine, Yoast SEO, users, comments, or other custom post types, it offers a flexible and easier way to import & export CSV, XML, or Excel files, saving you hours of manual effort.
 
 To enable exporting feature, you'll need the [WP Ultimate Exporter add-on](https://wordpress.org/plugins/wp-ultimate-exporter). Once you install and activate the Importer plugin, you’ll be prompted to add the Exporter( and other available add-ons) via the plugin dashboard or when you visit the Export page.
+
+**What’s New in Version 7.39**
+
+Version 7.39 is a valuable update for SureCart users, introducing import and export support for SureCart modules in WP Ultimate CSV Importer Free. You can now import SureCart Products, Orders, Coupons, and Customers using CSV files. In addition, you can export SureCart Products, Coupons, and Customers. This update helps you manage and migrate your store data directly within WordPress.
 
 **Try Before You Install**
 
@@ -97,35 +101,6 @@ Watch the video tutorial below related to how to migrate and one click import da
 
 [youtube https://www.youtube.com/watch?v=NiBx2fqX1kc&pp=0gcJCcEJAYcqIYzv]
 
-= Slim SEO Import & Export Support =
-
-Managing SEO during migrations or other updates becomes much easier with the new Slim SEO import/export support. Instead of manually re-entering metadata, you can now move all Slim SEO fields in a single import process. Save time and prevent SEO mistakes.
-
-* Preserve your SEO rankings during site moves or rebuilds
-
-* Bulk import Slim SEO metadata via CSV, Excel or other files and optimize your pages or posts in minutes
-
-* Bulk export Slim SEO meta data in minutes to your Google Sheets, or other files
-
-* Avoid manual data entry that often leads to missing or inconsistent SEO fields
-
-Slim SEO Free is fully supported, and Slim SEO Pro compatibility is available in our Pro version.
-
-= Events Calendar Import & Export Support =
-
-Updating or migrating large sets of events is now much more efficient. With full Events Calendar support, you can easily import new events or move your entire events library between websites in minutes.
-
-How this benefits you:
-
-* Quickly migrate event data without manual recreation
-
-* Save hours when importing dates, venues, or organizers in bulk
-
-* Keep event schedules consistent across multiple sites or environments
-
-* Avoid data loss with reliable, structured export and re-import
-
-* Manage large event datasets easily, even with recurring or complex schedules
 
 = Popular Plugins Integration =
 
@@ -141,6 +116,7 @@ Here are the list of plugins, we've added import and export compatibility with W
 * WooCommerce ~ Products, Coupons, Orders, Reviews, Customers, and Refunds. WooCommerce products are imported with categories, tags, gallery images, and attributes  
 * WooCommerce Product Bundles Plugin
 * WooCommerce Billing & Shipping Information  
+* SureCart
 * WordPress SEO Plugins: AIOSEO (free & pro), RankMath SEO FREE, SEOPress (free & pro), Yoast SEO
 * WPML (posts & pages)
 * Polylang Free
@@ -168,6 +144,7 @@ Here are the list of plugins, we've added import and export compatibility with W
 * PPOM (Personalized Product Option Manager) fields
 * Slim SEO
 * Events Calendar
+* Easy Digital Downloads
 * And more...
 
 Find more integrations in our [Importer Pro third-party supported plugins documentation](https://www.smackcoders.com/documentation/wp-ultimate-csv-importer-pro/how-to-import-csv#6-toc-title?utmsource=web&utmcampaign=readme&utmmedium=wporg).
@@ -236,6 +213,7 @@ Upgrade to the Pro version to unlock more powerful features such as:
 * **Multilingual Compatibility:** Fully compatible with WPML, Polylang, and qTranslate X.
 * **WooCommerce Import:** Import products, variations, orders, and custom WooCommerce fields.
 * **Yoast SEO PRO Integration:** Import SEO metadata like titles, descriptions, and focus keywords.
+* **Easy Digital Downloads Orders Import Export** Upgrade to PRO to import and export Easy Digital Downloads Orders module records.
 * **Scheduled Imports:** Automate imports via ftp/sftp/google sheets by scheduling them to run in the background.
 * **Data Update Support:** Bulk update existing WordPress content without creating duplicates.
 * **Advanced Export Options:** Export content using more advanced filters, post types, and WP_Query for flexible data control.
@@ -360,16 +338,23 @@ Yes, you can. The plugin supports ACF fields such as Basic, Choices, jQuery, and
 Yes. You can import unlimited records using smart chunk processing. Whether you’re doing an excel import, or CSV/XML import with heavy product catalogs, or syncing an external datafeed, the plugin handles large-scale wp import tasks efficiently.
 
 = Is there a limit to the number of rows i can import? =
+
 No, you can import unlimited rows with this plugin. It can handle even the largest datasets effortlessly. However, very large file imports may depend on your server's PHP settings (like maximum file size or execution time). Please check with your hosting provider for details.
 
 = Can i get sample files for testing the CSV Importer plugin? =
+
 Yes! Download free sample CSV and XML files specifically designed for testing the import functionality with the Ultimate CSV Importer plugin: [Link to Sample CSV and XML Files](https://www.smackcoders.com/blog/wordpress-ultimate-csv-importer-csv-sample-files-and-updates.html?utmsource=web&utmcampaign=readme&utmmedium=wporg)
+
+= What Easy Digital Downloads (EDD) plugin data can I import and export? =
+
+You can import and export Easy Digital Downloads (EDD) Downloads (products), Customers, and Discounts using WP Ultimate CSV Importer.
 
 = Does it support image import from URLs and media SEO? =
 
 Yes. The plugin can import images from local paths or external sources (e.g., Google Images, Dropbox). Images are added to the WordPress media library and linked to posts/products. You can also assign alt text and image titles to improve SEO during wp import.
 
 = How to Import Images from External URLs to WordPress Media? =
+
 Enable the **"Download Post-Content External Images to Media"** option in the **Manage Media Uploads** section. This allows you to import images from sources like **Google Images**, **Pexels**, and **Dropbox**, downloads them directly into your media library. 
 [See the documentation for more details](https://www.smackcoders.com/documentation/wp-ultimate-csv-importer-pro/import-images-into-wordpress?utmsource=web&utmcampaign=readme&utmmedium=wporg).
 
@@ -400,6 +385,7 @@ Possible causes include:
 For more troubleshooting tips, refer to the [WP Ultimate CSV Importer troubleshooting guide](https://www.smackcoders.com/documentation/wp-ultimate-csv-importer-pro/troubleshooting-guide?utmsource=web&utmcampaign=readme&utmmedium=wporg).
 
 = Can I update existing content without duplicates using this plugin? =
+
 Updating existing WordPress content feature is available only in our Pro version. For advanced feature like this including schedule data imports and exports, you can upgrade to the Pro version. Visit our website to learn more about the [WP Ultimate CSV Importer Pro features](https://www.smackcoders.com/wp-ultimate-csv-importer-pro.html?utmsource=web&utmcampaign=readme&utmmedium=wporg).
 
 To update existing content without duplicate, configure the option 'Do you want to handle duplicates' and select one unique identifier in the import configuration section before run the import.
@@ -413,6 +399,7 @@ The plugin supports custom post types (like events, products, portfolios) and hi
 Use the import feature to add or update WordPress users via CSV or XML. You can map usernames, emails, roles, passwords, and even custom metadata fields. Configure import settings and then Import them.
 
 = How Can I Migrate Data from One Site to Another? =
+
 To migrate content from one site to another:
 
 1. Export your data from the source site as a ZIP bundle using the Migrate option. To know how to do this, refer to our [Migrate & One Click Import Options documentation] (https://www.smackcoders.com/documentation/wp-ultimate-csv-importer-pro/migrate-wordpress-and-woocommerce-data?utmsource=web&utmcampaign=readme&utmmedium=wporg).
@@ -431,6 +418,8 @@ Yes, you can import and export your JetEngine CCTs using WP Ultimate CSV Importe
 
 Yes, you can. But for any data, you may need to upgrade to pro version. However, in free, we have added compatibility for many post types to export with smart filters. For exporting, you must need to install our free export add-on.
 
+= Can I migrate my SureCart store to another WordPress site? =
+Yes. You can export SureCart Products, Coupons, and Customers from one site and import them into another WordPress site using CSV, XML, or Excel files.
 
 == Installation ==
 
@@ -446,8 +435,19 @@ This method ensures a hassle-free setup directly from your WordPress dashboard.
 
 
 == Changelog ==
+
+= 7.39 =
+Added: Support for SureCart modules import export
+
+= 7.38 =
+Fixed: Minor bugs
+Fixed: Gemini API issue
+
+= 7.37 =
+Added: Easy Digital Downloads support for importing and exporting Downloads, Customers, and Discounts.
+
 = 7.36 =
-Fixed: Resolved an SSRF vulnerability by strengthening URL validation after redirects.
+Fixed: Security fix strengthening URL validation after redirects.
 
 = 7.35 = 
 Added: Compatibility with WordPress 6.9.
@@ -457,7 +457,7 @@ Added: Support for the Listeo theme, including import of profile meta fields suc
 Added: Support for importing and exporting Events Calendar data
 Improved: General performance and stability enhancements
 Fixed: Bugs reported
-Security: Resolved a critical PHP Object Injection vulnerability affecting the Single CSV Import feature
+Security: Resolved an issue affecting the Single CSV Import feature
 
 = 7.33.1 =
 Security: Added capability check to the showSettings to restrict access to authorized users.
@@ -480,11 +480,11 @@ Improvements: Minor upload validation.
 = 7.29 =
 
 Security: Added capability check to the oneClickUpload feature to restrict access to authorized users.
-Updated: write_to_customfile() to no longer write arbitrary PHP code to a file, preventing potential Remote Code Execution (RCE) vulnerabilities.
+Updated: write_to_customfile() to no longer write arbitrary PHP code to a file.
 
 = 7.28 =
 
-Security: Use wp_verify_nonce for nonce validation 
+Security fix: Use wp_verify_nonce for nonce validation 
 Security fix: Add capability checks to FTP credential access 
 Added: Single page import & export for elementor page builder
 Added: Auto-detect field separator (comma, semicolon, tab) Implemented
@@ -542,14 +542,14 @@ Added: Global styles support – Transfer design presets like color schemes and 
 Added: Full templates import/export – Migrate complete page layouts or full templates in block themes
 
 = 7.20.1 =
-Fixed: Security Fix - Arbitrary File Upload issue reported by Wordfence
+Fixed: Arbitrary File Upload issue
 
 = 7.20 =
 Added: Introducing migrate and one-click import feature for seamless data transfer
 Fixed: Minor bugs
 
 = 7.19.1 =
-Fixed: Security Fix - Arbitrary File Upload issue reported by Wordfence
+Fixed: Arbitrary File Upload issue
 
 = 7.19 =
 Added: Advanced filtering options with support for multiple conditions
@@ -689,7 +689,7 @@ Fixed: Term & Taxonomies Hierarchy import issue
 
 = 7.10.20 =
  
- Fixed: Security vulnerability issue.
+ Fixed: Security issue.
  Fixed: PHP Deprecated issue with optional parameters $unikeyvalue, $unikeyname, $linenumber.
  Fixed: Import back button from mapping section skips previous stage.
  Fixed: Plugin language loads from the site language not admin language
@@ -966,9 +966,13 @@ Fixed: Term & Taxonomies Hierarchy import issue
 
 == Upgrade Notice ==
 
-= 7.36 =
+= 7.39 =
 
-Upgrade now to fix an SSRF vulnerability and improve URL validation.
+This update introduces SureCart plugin compatibility. You can now import and export SureCart Products, Orders, Coupons, and Customers. Update now to expand your eCommerce data management capabilities.
+
+
+
+
 
 
 

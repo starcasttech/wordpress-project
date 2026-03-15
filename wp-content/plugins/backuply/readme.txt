@@ -4,7 +4,7 @@ Tags: backup, restore, database backup, cloud backup, wordpress backup, migratio
 Requires at least: 4.7
 Tested up to: 6.9
 Requires PHP: 5.5
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -84,6 +84,13 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box searc
 7. **Backup Process** easy to understand backup progress.
 
 == Changelog ==
+
+= 1.5.2 (26th February 2026) =
+* [Improvement] Backup history is now sorted based on time, with recent backups at the top.
+* [Improvement] Backup history now includes pagination, displaying 20 backups per page.
+* [Bug-Fix] On backup database connection was not closing after usage, which cause issue for a user, this has been fixed.
+* [Task] .htaccess file has been excluded from restoration, it causes issue if environment of the server changes.
+* [Task] Adding Cache burst in case where backup requests were hitting Cloudflare cache.
 
 = 1.5.1 (14th November 2025) =
 * [Bug-Fix] Backups could get stuck when certain special characters were present in file names.

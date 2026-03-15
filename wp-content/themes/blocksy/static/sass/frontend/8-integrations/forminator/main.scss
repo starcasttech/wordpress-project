@@ -1,7 +1,7 @@
-@import 'pagination-steps';
-@import 'pagination-footer';
-@import 'response-message';
-@import 'calendar';
+@use 'pagination-steps';
+@use 'pagination-footer';
+@use 'response-message';
+@use 'calendar';
 
 .forminator-ui[data-design="none"] {
 	

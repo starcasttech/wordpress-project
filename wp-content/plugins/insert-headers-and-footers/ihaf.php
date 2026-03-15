@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WPCode Lite
  * Plugin URI: https://www.wpcode.com/
- * Version: 2.3.2.1
+ * Version: 2.3.4
  * Requires at least: 5.0
  * Requires PHP: 7.0
  * Tested up to: 6.9
@@ -363,6 +363,8 @@ class WPCode {
 		require_once WPCODE_PLUGIN_PATH . 'includes/class-wpcode-admin-bar-info.php';
 		// Preview frame handler for live CSS preview.
 		require_once WPCODE_PLUGIN_PATH . 'includes/admin/class-wpcode-preview-frame.php';
+		// Abilities API Integration (WordPress 6.9+).
+		require_once WPCODE_PLUGIN_PATH . 'includes/class-wpcode-abilities-api.php';
 
 		if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 			require_once WPCODE_PLUGIN_PATH . 'includes/icons.php'; // This is not needed in the frontend atm.

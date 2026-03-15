@@ -89,7 +89,7 @@ class EntityIdPicker {
 
 	private function get_all_taxonomies($maybe_input, $args = []) {
 		$args = wp_parse_args($args, [
-			'limit' => 10
+			'limit' => 20
 		]);
 
 		$cpts = blocksy_manager()->post_types->get_supported_post_types();

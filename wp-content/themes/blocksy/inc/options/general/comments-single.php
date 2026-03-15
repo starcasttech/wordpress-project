@@ -52,13 +52,62 @@ $options = [
 						]),
 					],
 
+					$prefix . 'comments_heading_tag' => [
+						'label' => __('Module Title Tag', 'blocksy'),
+						'type' => 'ct-select',
+						'value' => 'h3',
+						'view' => 'text',
+						'design' => 'inline',
+						'divider' => 'top:full',
+						'sync' => blocksy_sync_whole_page([
+							'prefix' => $prefix,
+						]),
+						'choices' => blocksy_ordered_keys(
+							[
+								'h1' => 'H1',
+								'h2' => 'H2',
+								'h3' => 'H3',
+								'h4' => 'H4',
+								'h5' => 'H5',
+								'h6' => 'H6',
+								// 'p' => 'p',
+								// 'span' => 'span',
+							]
+						),
+					],
+
+
+					$prefix . 'comments_author_heading_tag' => [
+						'label' => __('Author Name Tag', 'blocksy'),
+						'type' => 'ct-select',
+						'value' => 'h4',
+						'view' => 'text',
+						'design' => 'inline',
+						// 'divider' => 'top',
+						'sync' => blocksy_sync_whole_page([
+							'prefix' => $prefix,
+						]),
+						'choices' => blocksy_ordered_keys(
+							[
+								'h1' => 'H1',
+								'h2' => 'H2',
+								'h3' => 'H3',
+								'h4' => 'H4',
+								'h5' => 'H5',
+								'h6' => 'H6',
+								// 'p' => 'p',
+								// 'span' => 'span',
+							]
+						),
+					],
+
 					$prefix . 'comments_position' => [
 						'label' => __('Comment Form Position', 'blocksy'),
 						'type' => 'ct-radio',
 						'value' => 'below',
 						'view' => 'text',
 						'design' => 'block',
-						'divider' => 'top',
+						'divider' => 'top:full',
 						'choices' => [
 							'below' => __('Below List', 'blocksy'),
 							'above' => __('Above List', 'blocksy'),

@@ -46,6 +46,14 @@ abstract class NextendSocialOauth2 extends NextendSocialAuth {
         $this->client_id = $client_id;
     }
 
+
+    /**
+     * @return string
+     */
+    public function getClientId() {
+        return $this->client_id;
+    }
+
     /**
      * @param string $client_secret
      */

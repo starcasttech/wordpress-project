@@ -29,6 +29,11 @@
     font-size: 13px;
 }
 
+#nsl-admin ul .nsl-list-disc {
+    list-style: disc;
+    padding-left: 40px;
+}
+
 #nsl-admin .form-table th em {
     font-weight: normal;
 }
@@ -507,4 +512,8 @@ input[type="radio"]:checked ~ img {
 
 .nsl-admin-setting-disabled input[type=text] {
     display: none;
+}
+
+#nsl-admin-getting-started-button {
+    margin-top: 1em;
 }

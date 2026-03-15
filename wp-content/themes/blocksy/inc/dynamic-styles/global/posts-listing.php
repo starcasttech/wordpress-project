@@ -589,7 +589,7 @@ foreach (blocksy_get_theme_mod($prefix . '_archive_order', []) as $layer) {
 		'title' => '[data-archive="default"] .card-content .entry-title',
 		'featured_image' => '[data-archive="default"] .card-content .ct-media-container',
 		'excerpt' => '[data-archive="default"] .card-content .entry-excerpt',
-		'read_more' => '[data-archive="default"] .card-content .entry-button',
+		'read_more' => '[data-archive="default"] .card-content :is(.entry-button, .entry-button-container)',
 		'overall_score' => '[data-archive="default"] .card-content .ct-overall-score-layer',
 	];
 

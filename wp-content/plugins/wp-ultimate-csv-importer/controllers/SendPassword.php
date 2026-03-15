@@ -85,10 +85,7 @@ class SendPassword {
 		// Fetch settings safely
 		$result['setting'] = get_option( 'openAI_settings' );
 
-		// Return as proper JSON response
-		wp_send_json_success( $result );
-
-		// End execution safely
+		echo wp_json_encode($result);
 		wp_die();
 
 	}
@@ -101,23 +98,29 @@ class SendPassword {
 	public function showOptions() {
 		check_ajax_referer('smack-ultimate-csv-importer', 'securekey');
 
+		$prefixValue = isset($_POST['prefixValue']) ? sanitize_text_field($_POST['prefixValue']) : '';
+
+		if ($prefixValue === 'delete') {
+			delete_option('openAI_settings');
+			$result['success'] = true;
+			echo wp_json_encode($result);
+			wp_die();
+		}
+
 		$json = isset($_POST['data']) ? wp_unslash($_POST['data']) : '';
+		$data = json_decode($json, true);
 
-  		// Decode JSON
-    	$data = json_decode($json, true);
-
-    	// Sanitize the value
-    	$apikey = isset($data['apikey']) ? sanitize_text_field($data['apikey']) : '';
-		update_option('openAI_settings', $apikey);
-
-		if(!empty($apikey )){
-			update_option('openAI_settings', $apikey);
+		if (is_array($data)) {
+			$settings = [
+				'ai' => isset($data['ai']) ? sanitize_text_field($data['ai']) : 'chatgpt',
+				'apikey' => isset($data['apikey']) ? sanitize_text_field($data['apikey']) : '',
+				'model' => isset($data['model']) ? sanitize_text_field($data['model']) : '',
+				'enabled' => isset($data['enabled']) ? (bool)$data['enabled'] : false,
+			];
+			
+			update_option('openAI_settings', json_encode($settings));
 		}
-		if(!empty($apikey )){
-			if($apikey == 'delete'){
-				delete_option('openAI_settings');
-			}
-		}
+
 		$ucisettings = get_option('sm_uci_pro_settings');
 		foreach ($ucisettings as $key => $val) {
 			$settings[$key] = json_decode($val);

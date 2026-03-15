@@ -354,7 +354,8 @@ abstract class WPCode_Auto_Insert_Type {
 		}
 
 		foreach ( $terms as $term ) {
-			$this->locations_terms[ $term->slug ] = $term;
+			$term_slug                           = $term->slug ?? '';
+			$this->locations_terms[ $term_slug ] = $term;
 		}
 	}
 
@@ -369,7 +370,7 @@ abstract class WPCode_Auto_Insert_Type {
 	public function include_term_in_post( $clauses ) {
 		global $wpdb;
 
-		$clauses['fields']  .= ", {$wpdb->term_relationships}.term_taxonomy_id";
+		$clauses['fields'] .= ", {$wpdb->term_relationships}.term_taxonomy_id";
 		$clauses['groupby'] = '';
 
 		return $clauses;

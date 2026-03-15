@@ -1,5 +1,5 @@
-@import '1-helpers/functions';
-@import '1-helpers/variables';
+@use '1-helpers/functions';
+@use '1-helpers/variables';
 
 .rtl {
 	
@@ -20,17 +20,6 @@
 	// entry button
 	.entry-button svg {
 		transform: rotate(180deg);
-	}
-
-	// trending block
-	.ct-trending-block {
-		.ct-arrow-left:before {
-			transform: rotate(135deg);
-		}
-
-		.ct-arrow-right:before {
-			transform: rotate(-45deg);
-		}
 	}
 
 	// posts nav
@@ -74,11 +63,16 @@
 		float: left;
 	}
 
-	// WooCommerce
-	// .flexy-items,
-	// .flexy-pills [data-flexy] {
-	// 	direction: ltr;
-	// }
+	// slider arrows
+	.ct-slider-arrows {
+		.ct-arrow-prev svg {
+			transform: rotate(-180deg);
+		}
+
+		.ct-arrow-next svg {
+			transform: rotate(-180deg);
+		}
+	}
 
 	// reviews
 	.star-rating {
@@ -87,14 +81,14 @@
 
 	.woocommerce-Reviews {
 		.star-rating {
-			@include media-breakpoint-up(sm) {
+			@include functions.media-breakpoint-up(sm) {
 				float: left;
 			}
 		}
 	}
 
 	// shop table
-	@include media-breakpoint-up(md) {
+	@include functions.media-breakpoint-up(md) {
 		.form-row-first {
 			float: right;
 		}

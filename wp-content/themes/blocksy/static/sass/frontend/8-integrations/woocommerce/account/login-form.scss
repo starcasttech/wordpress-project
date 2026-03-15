@@ -1,3 +1,5 @@
+@use "../../../1-helpers/functions";
+
 .ct-woo-unauthorized {
 	> h2 {
 		display: none;
@@ -38,7 +40,7 @@
 	.col2-set {
 		display: grid;
 
-		@include media-breakpoint-up (md) {
+		@include functions.media-breakpoint-up (md) {
 			grid-template-columns: 1fr 1fr;
 		}
 
@@ -49,7 +51,7 @@
 		}
 
 		> * {
-			@include media-breakpoint-down (sm) {
+			@include functions.media-breakpoint-down (sm) {
 				&:first-child {
 					padding-bottom: 30px;
 					border-bottom: 1px dashed var(--theme-border-color);
@@ -60,7 +62,7 @@
 				}
 			}
 
-			@include media-breakpoint-up (md) {
+			@include functions.media-breakpoint-up (md) {
 				&:first-child {
 					padding-inline-end: 40px;
 					border-inline-end: 1px dashed var(--theme-border-color);

@@ -8,10 +8,10 @@
  * Author URI: https://ozow.com/
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
- * Version: 1.3.2
+ * Version: 1.3.3
  * Requires at least: 6.6
- * Tested up to: 6.8.2
- * WC tested up to: 10.1.2
+ * Tested up to: 6.9.1
+ * WC tested up to: 10.5.1
  * WC requires at least: 7.2
  * Requires PHP: 7.4 or later
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WC_GATEWAY_OZOW_VERSION', '1.3.2' ); // WRCS: DEFINED_VERSION.
+define( 'WC_GATEWAY_OZOW_VERSION', '1.3.3' ); // WRCS: DEFINED_VERSION.
 define( 'WC_GATEWAY_OZOW_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
 define( 'WC_GATEWAY_OZOW_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 

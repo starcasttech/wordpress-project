@@ -56,6 +56,9 @@ $dropdown_items_type = blocksy_default_akg('dropdown_items_type', $atts, 'simple
 $dropdown_output = 'data-dropdown="' . $dropdown_animation . ':' . $dropdown_items_type . '"';
 
 $menu = blocksy_default_akg('menu', $atts, 'blocksy_location');
+if (! wp_get_nav_menu_object($menu) && $menu !== 'blocksy_location') {
+	$menu = 'blocksy_location';
+}
 
 $menu_object = null;
 

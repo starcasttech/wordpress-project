@@ -3,6 +3,10 @@
 add_action(
 	'ss_after_extract_and_replace_urls_in_html',
 	function ($html_content, $url_extractor) {
+		if ($html_content instanceof \DOMDocument) {
+			$html_content = $html_content->saveHTML();
+		}
+
 		$pattern = '/<script[^>]*id=[\'"]ct-scripts-js-extra[\'"][^>]*>(.*?)<\/script>/is';
 
 		$blocksy_scripts = [];

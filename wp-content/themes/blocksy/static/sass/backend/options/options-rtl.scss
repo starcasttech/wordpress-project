@@ -18,6 +18,10 @@ body.rtl {
 		transform: translate3d(0, 0, 0);
 	}
 
+	.ct-panel-open {
+		transform: translateX(100%) !important;
+	}
+
 	.customize-panel-actions button {
 		&:before {
 			content: '\f345';
@@ -29,7 +33,7 @@ body.rtl {
 	.ct-option-switch {
 
 		&.ct-active span {
-			transform: translate3d(-18px, 0, 0);
+			transform: translate3d(-12px, 0, 0);
 		}
 	}
 

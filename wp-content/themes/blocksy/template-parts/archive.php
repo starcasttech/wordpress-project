@@ -7,8 +7,6 @@
  * @package Blocksy
  */
 
-$prefix = blocksy_manager()->screen->get_prefix();
-
 $maybe_custom_output = apply_filters(
 	'blocksy:posts-listing:canvas:custom-output',
 	null

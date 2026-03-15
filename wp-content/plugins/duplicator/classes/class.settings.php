@@ -406,4 +406,24 @@ class DUP_Settings
     {
         return self::getSsdirPath() . '/installer';
     }
+
+    /**
+     * Get the logs directory path
+     *
+     * @return string The logs directory path
+     */
+    public static function getSsdirLogsPath()
+    {
+        return self::getSsdirPath() . '/' . DUPLICATOR_LOGS_DIR_NAME;
+    }
+
+    /**
+     * Get the logs directory URL
+     *
+     * @return string The logs directory URL
+     */
+    public static function getSsdirLogsUrl()
+    {
+        return self::getSsdirUrl() . '/' . DUPLICATOR_LOGS_DIR_NAME;
+    }
 }

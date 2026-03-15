@@ -1,5 +1,5 @@
 // Loads CSS inside admin area
-@import 'options/main';
-@import 'admin/main';
+@use 'options/main';
+@use 'admin/main' as main2;
 
-@import 'options/modal/main';
+@use 'options/modal/main' as main3;

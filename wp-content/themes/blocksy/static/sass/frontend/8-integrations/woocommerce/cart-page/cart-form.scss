@@ -1,18 +1,20 @@
+@use "../../../1-helpers/functions";
+
 .ct-woocommerce-cart-form {
 	display: grid;
 	gap: 40px;
 
-	@include media-breakpoint-down (md) {
+	@include functions.media-breakpoint-down (md) {
 		grid-template-columns: minmax(0, 1fr);
 	}
 
-	@include media-breakpoint-up (lg) {
+	@include functions.media-breakpoint-up (lg) {
 		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
 	}
 
 	.woocommerce-cart-form table {
 		
-		@include media-breakpoint-up (md) {
+		@include functions.media-breakpoint-up (md) {
 
 			&:first-child {
 				margin-top: 7px;

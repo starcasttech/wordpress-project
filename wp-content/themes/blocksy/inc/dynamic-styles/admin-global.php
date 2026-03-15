@@ -64,6 +64,35 @@ if (
 	// Allow styles in customizer for the widget area blocks
 	$wp_customize
 ) {
+	if (get_current_screen()->base === 'widgets') {
+		$background_source = blocksy_get_theme_mod(
+			'site_background',
+			blocksy_background_default_value([
+				'backgroundColor' => [
+					'default' => [
+						'color' => 'var(--theme-palette-color-7)'
+					],
+				],
+			])
+		);
+
+		$background_source = blocksy_expand_responsive_value($background_source);
+
+		$background_source['desktop']['background_image'] = [
+			'attachment_id' => null,
+			'x' => 0,
+			'y' => 0
+		];
+
+		blocksy_output_background_css([
+			'selector' => '.wp-block-widget-area__inner-blocks',
+			'css' => $css,
+			'value' => $background_source['desktop'],
+			'responsive' => false,
+			'important' => true
+		]);
+	}
+
 	if (get_current_screen()->base === 'post') {
 		blocksy_theme_get_dynamic_styles([
 			'name' => 'admin/editor',

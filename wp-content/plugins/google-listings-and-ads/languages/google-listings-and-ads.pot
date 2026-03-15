@@ -1,15 +1,15 @@
-# Copyright (C) 2025 WooCommerce
+# Copyright (C) 2026 WooCommerce
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google for WooCommerce 3.5.1\n"
+"Project-Id-Version: Google for WooCommerce 3.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-listings-and-ads\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-10T06:32:08+00:00\n"
+"POT-Creation-Date: 2026-01-29T02:59:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: google-listings-and-ads\n"
@@ -472,25 +472,25 @@ msgstr ""
 msgid "An unknown error occurred in the Shopping Content Service."
 msgstr ""
 
-#: src/API/Google/Merchant.php:98
-msgid "Unable to claim website."
-msgstr ""
-
-#: src/API/Google/Merchant.php:100
+#: src/API/Google/Merchant.php:99
 msgid "Website already claimed, use overwrite to complete the process."
 msgstr ""
 
+#: src/API/Google/Merchant.php:105
+msgid "Unable to claim website."
+msgstr ""
+
 #. translators: %s Error message
-#: src/API/Google/Merchant.php:200
+#: src/API/Google/Merchant.php:255
 msgid "Unable to retrieve Merchant Center account: %s"
 msgstr ""
 
-#: src/API/Google/Merchant.php:251
+#: src/API/Google/Merchant.php:306
 msgid "Unable to retrieve Merchant Center account status."
 msgstr ""
 
 #. translators: %s Error message
-#: src/API/Google/Merchant.php:301
+#: src/API/Google/Merchant.php:356
 msgid "Unable to update Merchant Center account: %s"
 msgstr ""
 
@@ -514,89 +514,84 @@ msgstr ""
 msgid "Unable to retrieve report data."
 msgstr ""
 
-#: src/API/Google/Middleware.php:75
+#: src/API/Google/Middleware.php:77
 msgid "Error retrieving accounts"
 msgstr ""
 
-#: src/API/Google/Middleware.php:92
-#: src/API/Google/Middleware.php:294
+#: src/API/Google/Middleware.php:94
+#: src/API/Google/Middleware.php:312
 msgid "Unable to log accepted TOS"
 msgstr ""
 
-#: src/API/Google/Middleware.php:97
+#: src/API/Google/Middleware.php:99
 #: src/API/Google/SiteVerification.php:59
 #: src/MerchantCenter/AccountService.php:462
 msgid "Invalid site URL."
 msgstr ""
 
-#: src/API/Google/Middleware.php:153
-#: src/API/Google/Middleware.php:334
+#: src/API/Google/Middleware.php:164
+#: src/API/Google/Middleware.php:352
 msgid "Invalid response when creating account"
 msgstr ""
 
-#: src/API/Google/Middleware.php:156
-#: src/API/Google/Middleware.php:340
+#: src/API/Google/Middleware.php:167
+#: src/API/Google/Middleware.php:358
 msgid "Error creating account"
 msgstr ""
 
-#: src/API/Google/Middleware.php:217
+#: src/API/Google/Middleware.php:235
 msgid "Invalid response when linking merchant to MCA"
 msgstr ""
 
-#: src/API/Google/Middleware.php:223
+#: src/API/Google/Middleware.php:241
 msgid "Error linking merchant to MCA"
 msgstr ""
 
-#: src/API/Google/Middleware.php:262
+#: src/API/Google/Middleware.php:280
 msgid "Invalid response when claiming website"
 msgstr ""
 
-#: src/API/Google/Middleware.php:269
+#: src/API/Google/Middleware.php:287
 msgid "Error claiming website"
 msgstr ""
 
-#: src/API/Google/Middleware.php:288
+#: src/API/Google/Middleware.php:306
 msgid "Store country is not supported"
 msgstr ""
 
-#: src/API/Google/Middleware.php:384
+#: src/API/Google/Middleware.php:402
 msgid "Invalid response when linking account"
 msgstr ""
 
-#: src/API/Google/Middleware.php:390
+#: src/API/Google/Middleware.php:408
 msgid "Error linking account"
 msgstr ""
 
-#: src/API/Google/Middleware.php:551
+#: src/API/Google/Middleware.php:569
 msgid "Merchant ID must be set before updating in SDI."
 msgstr ""
 
-#: src/API/Google/Middleware.php:574
+#: src/API/Google/Middleware.php:592
 msgid "Invalid response when updating merchant account in Google Partner APP."
 msgstr ""
 
-#: src/API/Google/Middleware.php:582
+#: src/API/Google/Middleware.php:600
 msgid "Error updating merchant account in Google Partner APP."
 msgstr ""
 
-#. translators: 1: current date in the format Y-m-d
-#: src/API/Google/Middleware.php:607
-msgid "Account %1$s"
-msgstr ""
-
-#: src/API/Google/Middleware.php:684
+#: src/API/Google/Middleware.php:698
 msgid "Invalid response authenticating partner app."
 msgstr ""
 
-#: src/API/Google/Middleware.php:694
+#: src/API/Google/Middleware.php:708
 msgid "Error authenticating Google Partner APP."
 msgstr ""
 
-#: src/API/Google/Middleware.php:729
+#: src/API/Google/Middleware.php:743
 msgid "Invalid response when fetching incentive credits."
 msgstr ""
 
-#: src/API/Google/Middleware.php:770
+#: src/API/Google/Middleware.php:784
 msgid "Error fetching incentive credits."
 msgstr ""
 
@@ -1769,6 +1764,11 @@ msgstr ""
 #. translators: 1 top level domain name.
 #: src/Exception/InvalidDomainName.php:28
 msgid "Unable to create an account, the domain name \"%s\" must end with a valid top-level domain name."
+msgstr ""
+
+#. translators: %s: The homepage URL.
+#: src/Exception/InvalidDomainName.php:43
+msgid "Unable to create an account. The homepage URL \"%s\" is not valid."
 msgstr ""
 
 #. translators: 1 is the required component, 2 is the minimum required version, 3 is the version in use on the site
@@ -4365,26 +4365,26 @@ msgstr ""
 msgid "Budget recommendation"
 msgstr ""
 
-#: js/build/dashboard.js:1
+#. translators: %d: number of countries, with minimum value of 1.
+#: js/build/dashboard.js:4
+msgid " + %d more"
+msgstr ""
+
+#: js/build/dashboard.js:4
 #: js/build/reports.js:4
 msgid "Program"
 msgstr ""
 
-#: js/build/dashboard.js:1
+#: js/build/dashboard.js:4
 msgid "Country"
 msgstr ""
 
-#: js/build/dashboard.js:1
+#: js/build/dashboard.js:4
 msgid "Daily budget"
 msgstr ""
 
-#: js/build/dashboard.js:1
-msgid "Enabled"
-msgstr ""
-
-#. translators: %d: number of countries, with minimum value of 1.
 #: js/build/dashboard.js:4
-msgid " + %d more"
+msgid "Enabled"
 msgstr ""
 
 #: js/build/dashboard.js:4

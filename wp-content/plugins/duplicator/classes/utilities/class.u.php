@@ -603,6 +603,10 @@ class DUP_Util
         SnapIO::dirWriteCheckOrMkdir(DUP_Settings::getSsdirTmpPath(), 'u+rwx');
         SnapIO::createSilenceIndex(DUP_Settings::getSsdirTmpPath());
 
+        // Logs directory
+        SnapIO::dirWriteCheckOrMkdir(DUP_Settings::getSsdirLogsPath(), 'u+rwx');
+        SnapIO::createSilenceIndex(DUP_Settings::getSsdirLogsPath());
+
         //--------------------------------
         //FILE CREATION & HARDEN PROCESS
         //index.php, .htaccess, robots.txt

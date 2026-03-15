@@ -588,10 +588,10 @@ const GenericOptionType = ({
 
 					{isOptionResponsiveFor(option) &&
 						!isOptionEnabledFor(device, option.responsive) && (
-							<div className="ct-disabled-notification">
+							<div className="ct-notification" data-type="background:yellow">
 								{option.disabledDeviceMessage ||
 									__(
-										"Option can't be edited for current device",
+										"This option can't be edited for current device",
 										'blocksy'
 									)}
 							</div>

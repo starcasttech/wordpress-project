@@ -481,7 +481,17 @@ if (! function_exists('blocksy_post_meta')) {
 						);
 				?></li><?php }
 
-				if ($single_meta['id'] === 'comments' && get_comments_number() > 0) {
+				$show_empty_state = blocksy_akg('show_empty_state', $single_meta, 'no');
+
+				if (
+					$single_meta['id'] === 'comments'
+					&&
+					(
+						get_comments_number() > 0
+						||
+						$show_empty_state === 'yes'
+					)
+				) {
 					?><li class="meta-comments"><?php
 					if ($args['meta_type'] === 'icons' || $args['force_icons']) {
 						$icon = '<svg width="13" height="13" viewBox="0 0 15 15"><path d="M13.7,14.8L10.9,12H2.2C1,12,0,11,0,9.8l0-7.5C0,1,1,0,2.2,0l10.5,0C14,0,15,1,15,2.2v12c0,0.3-0.2,0.6-0.5,0.7c-0.1,0-0.2,0.1-0.3,0.1C14.1,15,13.9,14.9,13.7,14.8zM2.2,1.5c-0.4,0-0.8,0.3-0.8,0.8v7.5c0,0.4,0.3,0.8,0.8,0.8h9c0.2,0,0.4,0.1,0.5,0.2l1.7,1.7V2.2c0-0.4-0.3-0.8-0.8-0.8H2.2z"/></svg>';
@@ -499,16 +509,28 @@ if (! function_exists('blocksy_post_meta')) {
 					}
 
 				?><a href="<?php echo esc_attr(get_permalink()); ?>#comments"><?php
+
+						$empty_state_message = '';
 						// translators: text for one review
 						$singular_text = __('1 Comment', 'blocksy');
 						// translators: % refers to the number of comments, when more than 1
 						$plural_text = __('% Comments', 'blocksy');
+						
+						if ($show_empty_state === 'yes') {
+							// translators: text for no reviews
+							$empty_state_message = __('No Comments', 'blocksy');
+						}
 
 						if ( get_post_type() === 'product' ) {
 							// translators: text for one review
 							$singular_text = __('1 Review', 'blocksy');
 							// translators: % refers to the number of reviews, when more than 1
 							$plural_text = __('% Reviews', 'blocksy');
+
+							if ($show_empty_state === 'yes') {
+								// translators: text for no reviews
+								$empty_state_message = __('No Reviews', 'blocksy');
+							}
 						}
 
 						if ($args['meta_type'] === 'icons' && !$args['force_icons']) {
@@ -517,7 +539,7 @@ if (! function_exists('blocksy_post_meta')) {
 						}
 
 						echo wp_kses_post(get_comments_number_text(
-							'',
+							$empty_state_message,
 							$singular_text,
 							$plural_text
 						));

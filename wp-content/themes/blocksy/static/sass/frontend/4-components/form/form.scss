@@ -1,6 +1,7 @@
 select,
 textarea,
 input:is([type='url'], [type='tel'], [type='text'], [type='time'], [type='date'], [type='datetime'], [type='datetime-local'], [type='email'], [type='number'], [type='search'], [type='password']),
+.ct-pseudo-input,
 fieldset .wc-stripe-elements-field,
 .ff-inherit-theme-style .ff-el-form-control:not([size]):not([multiple]) {
 	appearance: none;

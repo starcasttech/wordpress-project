@@ -1,10 +1,10 @@
-=== Gutenberg Blocks with AI by Kadence WP – Page Builder Features ===
+=== Kadence Blocks — Page Builder Toolkit for Gutenberg Editor ===
 Contributors: britner, oakesjosh, woodardmc, ghernkadence
 Tags: gutenberg, blocks, page builder, editor, gutenberg blocks
 Donate link: https://www.kadencewp.com/about-us/
 Requires at least: 6.6
-Tested up to: 6.9
-Stable tag: 3.5.29
+Tested up to: 6.9.1
+Stable tag: 3.6.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -173,9 +173,87 @@ Please report security bugs found in the source code of the Kadence Blocks plugi
 Please report security bugs found in the Kadence Blocks plugin's source code through the Patchstack Vulnerability Disclosure Program https://patchstack.com/database/vdp/kadence-blocks. The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 == Changelog ==
+
+= 3.6.5 =
+Release Date: 25rd February 2026
+* Fix: Kadence Performance Optimizer Database Index Size Error
+* Fix: Text (Adv) Block: Content misaligned when 400% zoom is applied.
+* Fix: Text (Adv) Block: Dynamic content announced incorrectly
+* Fix: Text (Adv) Block: Animation does not respect prefers-reduced-motion.
+* Fix: Animate on Scroll: Animation does not respect prefers-reduced-motion.
+* Fix: Table (Adv) Block - Table Cells do not have closing HTML Tags in Raw HTML .
+* Fix: Gallery(Adv) carousel not working inside Ultimate Menu custom content (via Elements).
+* Fix: Height issues on Sticky Header
+
+= 3.6.4 =
+Release Date: 23rd February 2026
+* Fix: Updating permissions on image rest endpoints.
+
+= 3.6.3 =
+Release Date: 11th February 2026
+* Fix: The "Make Parent of Current Menu Item Active" Setting is always active | Navigation (Adv)
+* Fix: Row Layout Custom CSS formatting breaks when exporting/importing Advanced Header Blocks
+* Fix: Modal content is not showing WP patterns when aligned to left or right
+* Add: Aria-label options for the Table(Adv) block
+* Update: Show More: Button is not keyboard operable
+* Update: Show More: Hidden content accessible via keyboard
+* Update: Show More: Hidden elements are exposed to screen readers 
+* Update: Countdown: Missing Pause button for Animated element longer than 5 seconds
+* Fix: Countdown: Status message not announced by screen readers
+* Fix: Countdown missing timer role 
+* Fix: Navigation Submenu hides right away when spacing is added
+* Add: Overlay Color settings to Nav Link Images
+
+= 3.6.2 =
+Release Date: 5th February 2026
+* Fix: Correct Authorization for Media Upload for some user roles
+* Fix: Don't run optimizer when in WP CLI
+
+= 3.6.1 =
+Release Date: 29th January 2026
+* Fix: Issue with icon block in shop kit product tabs
+* Fix: Table(Adv) background/headings not working when inside of Row/Section
+* Fix: Design Library sometimes not showing preview
+* Fix: Wrong Text Domain in class-kadence-header-cpt.php
+* Fix: Add null checks for contentTab in kt-tabs.js
+* Fix: Issue with WPML and ACF image translation syncing
+* Fix: Links in Advanced Heading and Buttons Block Not Translatable
+* Fix: Kadence Blocks preventing Appearance > Widgets from loading.
+
+= 3.6.0 =
+Release Date: 22nd January 2026
+* New: Performance optimizer extension. Enable it in the Kadence blocks settings in the gutenberg editor.
+* Fix: Permission checks on Block Patterns API
+
+= 3.5.32 =
+Release Date: 15th January 2026
+* Update: Begin sunsetting classic form block - hide in block appender, classic form blocks still usable
+* Fix: “Slide In From” setting in the Off Canvas panel not applying on mobile.
+* Fix: Mobile Collapse Order not working when using Reverse
+* Fix: Box shadow preset is missing for infobox block
+* Fix: Spacing appears in Text (Adv) Block only when background color is chosen via swatch
+* Fix: Kadence Blocks custom colors not available while editing Patterns.
+* Fix: Lightbox not working on Slider, Carousel and Fluid Carousel
+* Fix: Gallery (Adv) slider: arrow and dot controls ignored on frontend
+
+= 3.5.31 =
+Release Date: 9th January 2026
+* Fix: issue with adv highlight padding
+
+= 3.5.30 =
+Release Date: 8th January 2026
+* Add: Classic adv form transform tool to new form block.
+* Add: An inline image format for the Heading (adv) block.
+* Fix: Issue with some sliders including gallery (adv) not working when inside other loop blocks
+* Fix: Testimonial Block Left Padding Issue
+* Fix: progress bar issue in Safari
+* Fix: theme extended color palette not showing correctly in the editor in some places.
+* Fix: Issue with padding on icons in text block
+* Fix: Button (Adv) outline style text color settings not working in Kadence Theme when visited
+
 = 3.5.29 =
 Release Date: 3rd December 2025
-* Fix: Editor errors when using WordPress 6.9.
+* Update: Improve compatibility with WordPress 6.9.
 
 = 3.5.28 =
 Release Date: 2nd December 2025
@@ -216,7 +294,7 @@ Release Date: 9th October 2025
 = 3.5.22 =
 Release Date: 25th September 2025
 * Fix: Removed default navigation submenu box shadow when disabled.
-* Update: When prefers-reduced-motion is enabled, Countup block now only shows the end value. 
+* Update: When prefers-reduced-motion is enabled, Countup block now only shows the end value.
 * Update: Gallery tiles layout outer div updated to ul to match inner markup.
 
 = 3.5.21 =
@@ -246,7 +324,7 @@ Release Date: 19th August 2025
 = 3.5.17 =
 Release Date: 14th August 2025
 * Add: Option to reveal icons for buttons on hover.
-* Add: Mosaic gallery support for pro features. 
+* Add: Mosaic gallery support for pro features.
 * Add: Custom option for autofill value on advanced form input fields.
 * Add: Pause button option for sliders with autoplay
 * Update: Slides in sliders are now semantic list items
@@ -278,7 +356,7 @@ Release Date: 28th July 2025
 
 = 3.5.15 =
 Release Date: 23rd July 2025
-* Fix: Mosaic gallery custom link in editor. 
+* Fix: Mosaic gallery custom link in editor.
 * Fix: Block defaults not applying to new blocks.
 * Fix: Add link support to advanced text block in some templates.
 
@@ -300,7 +378,7 @@ Release Date: 15th July 2025
 
 = 3.5.12 =
 Release Date: 2nd July 2025
-* Update: Header block off canvas trigger focus styles. 
+* Update: Header block off canvas trigger focus styles.
 * Fix: Icon List default bottom margin.
 * Fix: Count Up block responsive font, number size, line height preview in editor.
 * Fix: Content for Testimonial block when copy/paste styles.

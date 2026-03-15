@@ -11,6 +11,7 @@ class WooVariationImagesImportExport {
 			"woocommerce_product_export_{$this->export_type}_default_columns",
 			[$this, 'export_column_name']
 		);
+
 		add_filter(
 			'woocommerce_product_export_column_names',
 			[$this, 'export_column_name']
@@ -25,11 +26,13 @@ class WooVariationImagesImportExport {
 		add_filter(
 			'woocommerce_csv_product_import_mapping_options',
 			[$this, 'export_column_name']
-	   	);
+		);
+
 		add_filter(
 			'woocommerce_csv_product_import_mapping_default_columns',
 			[$this, 'default_import_column_name']
-	   	);
+		);
+
 		add_action(
 			'woocommerce_product_import_inserted_product_object',
 			[$this, 'process_wc_import'],
@@ -118,5 +121,4 @@ class WooVariationImagesImportExport {
 		);
 	}
 }
-
 

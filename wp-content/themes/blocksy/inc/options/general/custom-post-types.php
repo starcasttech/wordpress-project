@@ -70,6 +70,46 @@ if (function_exists('tutor_course_enrolled_lead_info')) {
 	];
 }
 
+if (class_exists('\EventKoi\Init')) {
+	$options[blocksy_rand_md5()] = [
+		'type' => 'ct-group-title',
+		'title' => __( 'EventKoi', 'blocksy' ),
+		'priority' => 2.5,
+	];
+
+	$options['post_type_archive_eventkoi'] = [
+		'title' => __('Event Archive', 'blocksy'),
+		'container' => ['priority' => 2.5],
+		'options' => blocksy_get_options('integrations/eventkoi-archive', []),
+	];
+
+	$options['post_type_single_eventkoi'] = [
+		'title' => __('Event Single', 'blocksy'),
+		'container' => ['priority' => 2.5],
+		'options' => blocksy_get_options('integrations/eventkoi-single', []),
+	];
+}
+
+if (class_exists('Visual_Portfolio')) {
+	$options[blocksy_rand_md5()] = [
+		'type' => 'ct-group-title',
+		'title' => __( 'Visual Portfolio', 'blocksy' ),
+		'priority' => 2.5,
+	];
+
+	$options['post_type_archive_vs_portfolio'] = [
+		'title' => __('Visual Portfolio Archive', 'blocksy'),
+		'container' => ['priority' => 2.5],
+		'options' => blocksy_get_options('integrations/visual-portfolio-archive', []),
+	];
+
+	$options['post_type_single_vs_portfolio'] = [
+		'title' => __('Visual Portfolio Single', 'blocksy'),
+		'container' => ['priority' => 2.5],
+		'options' => blocksy_get_options('integrations/visual-portfolio-single', []),
+	];
+}
+
 if (class_exists('Tribe__Events__Main')) {
 	$options[blocksy_rand_md5()] = [
 		'type' => 'ct-group-title',

@@ -17,33 +17,21 @@ class Blocksy_Translations_Manager {
 		add_action(
 			'init',
 			function () {
+				// Only need to register customizer keys for polylang. WPML will
+				// auto-discover all strings from the customizer without registering
+				// them in the wpml-config.xml file.
 				if (! class_exists('PLL_Translate_Option')) {
 					return;
 				}
 
 				$prefixes = blocksy_manager()->screen->get_single_prefixes();
 
+				$theme_mods_keys = $this->get_theme_mods_keys();
+
 				$all_keys = [];
 
-				foreach ($prefixes as $prefix) {
-					if (
-						$prefix === 'single_blog_post'
-						||
-						$prefix === 'single_page'
-					) {
-						continue;
-					}
-
-					$related_label = blocksy_get_theme_mod(
-						$prefix . '_related_label',
-						'__empty__'
-					);
-
-					if ($related_label === '__empty__') {
-						continue;
-					}
-
-					$all_keys[$prefix . '_related_label'] = 1;
+				foreach ($theme_mods_keys as $single_key) {
+					$all_keys[$single_key] = 1;
 				}
 
 				if (empty($all_keys)) {
@@ -51,7 +39,9 @@ class Blocksy_Translations_Manager {
 				}
 
 				new PLL_Translate_Option('theme_mods_blocksy', $all_keys);
-				new PLL_Translate_Option('theme_mods_blocksy-child', $all_keys);
+				if (is_child_theme()) {
+					new PLL_Translate_Option('theme_mods_' . basename(get_stylesheet_directory()), $all_keys);
+				}
 
 				blocksy_manager()->db->wipe_cache();
 			}
@@ -102,12 +92,16 @@ class Blocksy_Translations_Manager {
 			}
 		}
 
-		foreach (
-			array_merge(
-				['blog', 'single_blog_post', 'single_page'],
-				$all_cpt_single_keys
-			) as $prefix
-			) {
+		$prefixes_with_hero = array_merge(
+			[
+				'blog',
+				'single_blog_post',
+				'single_page',
+			],
+			$all_cpt_single_keys
+		);
+
+		foreach ($prefixes_with_hero as $prefix) {
 			$hero_elements = blocksy_get_theme_mod($prefix . '_hero_elements', null);
 
 			if (! $hero_elements) {
@@ -188,6 +182,12 @@ class Blocksy_Translations_Manager {
 			return;
 		}
 
+		// We need to check if Polylang is active, because it also registers strings
+		// and we don't want to register them twice.
+		if (function_exists('pll_register_string')) {
+			return;
+		}
+
 		$builder_keys = $this->get_all_translation_keys();
 
 		foreach ($builder_keys as $single_key) {
@@ -202,6 +202,98 @@ class Blocksy_Translations_Manager {
 				$single_key['value']
 			);
 		}
+	}
+
+	private function get_theme_mods_keys() {
+		$keys = [
+			"blog_load_more_label",
+			"woo_load_more_label",
+			"single_blog_post_related_label",
+			"trending_block_label",
+			"cookie_consent_content",
+			"cookie_consent_button_text",
+			"cookie_consent_decline_button_text",
+			"forms_cookie_consent_content",
+			"facebook",
+			"twitter",
+			"instagram",
+			"pinterest",
+			"dribbble",
+			"behance",
+			"unsplash",
+			"five-hundred-px",
+			"linkedin",
+			"wordpress",
+			"parler",
+			"mastodon",
+			"medium",
+			"slack",
+			"codepen",
+			"reddit",
+			"twitch",
+			"tiktok",
+			"snapchat",
+			"spotify",
+			"soundcloud",
+			"apple_podcast",
+			"patreon",
+			"alignable",
+			"skype",
+			"github",
+			"gitlab",
+			"youtube",
+			"vimeo",
+			"dtube",
+			"facebook_group",
+			"discord",
+			"tripadvisor",
+			"foursquare",
+			"yelp",
+			"vk",
+			"ok",
+			"rss",
+			"xing",
+			"whatsapp",
+			"viber",
+			"telegram",
+			"line",
+			"weibo",
+			"tumblr",
+			"qq",
+			"wechat",
+			"strava",
+			"flickr",
+			"phone",
+			"email",
+			"free_not_enought_message",
+			"free_enought_message",
+			"breadcrumb_home_text",
+			"woo_reserved_timer_message"
+		];
+
+		$prefixes = blocksy_manager()->screen->get_single_prefixes();
+
+		foreach ($prefixes as $prefix) {
+			$related_label = blocksy_get_theme_mod(
+				$prefix . '_related_label',
+				'__empty__'
+			);
+
+			if ($related_label !== '__empty__') {
+				$keys[] = $prefix . '_related_label';
+			}
+
+			$share_box_title = blocksy_get_theme_mod(
+				$prefix . '_share_box_title',
+				'__empty__'
+			);
+
+			if ($share_box_title !== '__empty__') {
+				$keys[] = $prefix . '_share_box_title';
+			}
+		}
+
+		return $keys;
 	}
 }
 
@@ -413,4 +505,8 @@ function blocksy_safe_sprintf($format, ...$args) {
 	}
 
 	return $result;
+}
+
+function blocksy_safe_sprintf_e($format, ...$args) {
+	echo blocksy_safe_sprintf($format, ...$args);
 }

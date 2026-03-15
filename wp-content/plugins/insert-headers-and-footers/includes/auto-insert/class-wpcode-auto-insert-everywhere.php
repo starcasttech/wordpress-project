@@ -107,7 +107,7 @@ class WPCode_Auto_Insert_Everywhere extends WPCode_Auto_Insert_Type {
 
 		// Merge all the code into 1, so we can track on which line the error occurs, if any.
 		foreach ( $snippets as $snippet ) {
-			// Use the WPCode_Snippet_Execute_Type filters here for compatibility with class even thought we're skipping it for these particular locations.
+			// Use the WPCode_Snippet_Execute_Type filters here for compatibility with class even though we're skipping it for these particular locations.
 			$snippet_code = apply_filters( 'wpcode_snippet_output_php', $snippet->get_code(), $snippet );
 			$snippet_code = apply_filters( 'wpcode_snippet_output', $snippet_code, $snippet );
 			// Let's see how many lines the code has.

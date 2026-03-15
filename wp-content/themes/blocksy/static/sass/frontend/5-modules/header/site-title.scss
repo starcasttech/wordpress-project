@@ -1,3 +1,5 @@
+@use "../../1-helpers/functions";
+
 .site-branding {
 	display: flex;
 	text-align: var(--horizontal-alignment);
@@ -10,6 +12,10 @@
 .site-title {
 	display: block;
 	margin-bottom: 0;
+
+	&:not(:has(> a)) {
+		color: var(--theme-link-initial-color);
+	}
 }
 
 .site-description {
@@ -23,7 +29,7 @@
 
 .ct-header .site-description {
 	
-	@include media-breakpoint-up(lg) {
+	@include functions.media-breakpoint-up(lg) {
 		white-space: nowrap;
 	}
 }

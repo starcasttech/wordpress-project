@@ -143,7 +143,7 @@ const maybeMakeCacheForAllNavs = (nav) => {
 							...getNavRootEl(nav).querySelector(
 								'.more-items-container .sub-menu'
 							).children,
-					  ]
+						]
 					: []),
 			],
 			itemsWidth: computeItemsWidth(nav),

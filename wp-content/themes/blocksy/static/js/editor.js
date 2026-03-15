@@ -106,6 +106,8 @@ const BlocksyOptions = ({ name, value, options, onChange, isActive }) => {
 	const parentContainerRef = useRef()
 	const [values, setValues] = useState(null)
 
+	const [controller, setController] = useState(null)
+
 	useEffect(() => {
 		document.body.classList[isActive ? 'add' : 'remove'](
 			'blocksy-sidebar-active'
@@ -127,11 +129,23 @@ const BlocksyOptions = ({ name, value, options, onChange, isActive }) => {
 		setValues(futureValue)
 	}
 
-	useEffect(() => {
-		ctEvents.on('ct:metabox:options:trigger-change', handleChange)
+	const listenToChange = () => {
+		const controller = new AbortController()
 
+		setController(controller)
+
+		ctEvents.on('ct:metabox:options:trigger-change', handleChange, {
+			signal: controller.signal,
+		})
+	}
+
+	useEffect(() => {
 		return () => {
-			ctEvents.off('ct:metabox:options:trigger-change', handleChange)
+			if (controller) {
+				controller.abort()
+			}
+
+			setController(null)
 		}
 	}, [])
 

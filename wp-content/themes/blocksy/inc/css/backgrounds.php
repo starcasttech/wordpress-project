@@ -411,7 +411,7 @@ if (! function_exists('blocksy_output_single_background_css')) {
 
 if (! function_exists('blocksy_background_default_value')) {
 	function blocksy_background_default_value($values = []) {
-		if (isset($values[array_keys($values)[0]]['color'])) {
+		if (! empty($values) && isset($values[array_keys($values)[0]]['color'])) {
 			$values = [
 				'backgroundColor' => [
 					'default' => $values[array_keys($values)[0]]

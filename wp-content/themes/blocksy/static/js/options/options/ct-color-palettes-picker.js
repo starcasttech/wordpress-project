@@ -21,6 +21,8 @@ import bezierEasing from 'bezier-easing'
 import Overlay from '../../customizer/components/Overlay'
 
 import { Dropdown } from '@wordpress/components'
+import storeName, { getStore } from './color-palettes/store'
+import { useSelect, useDispatch } from '@wordpress/data'
 
 export const ColorPalettesContext = createContext({
 	isEditingPalettes: false,
@@ -71,52 +73,34 @@ const ColorPalettes = ({ option, value, onChange }) => {
 
 ColorPalettes.MetaWrapper = ({ getActualOption }) => {
 	const [isEditingPalettes, setIsEditingPalettes] = useState(false)
-	const [customPalettes, setCustomPalettes] = useState([])
+
+	// Initialize the store lazily
+	const store = getStore()
+
+	const { fetchCustomPalettes, syncCustomPalettes } = store
+		? useDispatch(storeName)
+		: { fetchCustomPalettes: () => {}, syncCustomPalettes: () => {} }
+
+	const { customPalettes } = store
+		? useSelect((select) => {
+				const s = select(storeName)
+				return {
+					customPalettes: s.getCustomPalettes(),
+				}
+		  }, [])
+		: { customPalettes: [] }
 
 	useEffect(() => {
-		fetch(
-			`${window.ajaxurl}?action=blocksy_get_custom_palettes`,
-
-			{
-				method: 'POST',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({}),
-			}
-		)
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.data.palettes) {
-					setCustomPalettes(data.data.palettes)
-				}
-			})
-	}, [])
+		if (store && fetchCustomPalettes) {
+			fetchCustomPalettes()
+		}
+	}, [store])
 
 	return (
 		<ColorPalettesContext.Provider
 			value={{
 				customPalettes,
-				setCustomPalettes: (palettes) => {
-					setCustomPalettes(palettes)
-					fetch(
-						`${window.ajaxurl}?action=blocksy_sync_custom_palettes`,
-
-						{
-							method: 'POST',
-							headers: {
-								Accept: 'application/json',
-								'Content-Type': 'application/json',
-							},
-							body: JSON.stringify({
-								palettes,
-							}),
-						}
-					)
-						.then((response) => response.json())
-						.then((data) => {})
-				},
+				setCustomPalettes: syncCustomPalettes,
 				isEditingPalettes,
 				setIsEditingPalettes,
 			}}>

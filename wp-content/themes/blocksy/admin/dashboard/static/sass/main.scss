@@ -1,17 +1,17 @@
-@import 'general';
+@use 'general';
 
 
 // components
-@import 'header';
-@import 'section';
-@import 'button';
-@import 'navigation';
-@import 'support-container';
-@import 'downloads-container';
+@use 'header';
+@use 'section';
+@use 'button';
+@use 'navigation';
+@use 'support-container';
+@use 'downloads-container';
 
 
 // screens
-@import 'home-screen';
-@import 'changelog-screen';
-@import 'recommended-plugins-screen';
-@import 'pro-onboarding-screen/main';
+@use 'home-screen';
+@use 'changelog-screen';
+@use 'recommended-plugins-screen';
+@use 'pro-onboarding-screen/main';

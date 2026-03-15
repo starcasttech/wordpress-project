@@ -177,33 +177,46 @@ export const mountDynamicChunks = () => {
 			return
 		}
 
-		if (!chunk.trigger) {
-			loadChunkWithPayload(chunk, null)
-			return
+		let triggers = []
+
+		if (chunk.trigger) {
+			triggers = Array.isArray(chunk.trigger)
+				? chunk.trigger
+				: [chunk.trigger]
 		}
 
-		;(Array.isArray(chunk.trigger) ? chunk.trigger : [chunk.trigger]).map(
-			(trigger) => {
-				trigger = trigger.trigger
-					? trigger
-					: {
-							trigger,
-							selector: chunk.selector,
-					  }
+		triggers = triggers.map((trigger) => {
+			return trigger.trigger
+				? trigger
+				: {
+						trigger,
+						selector: chunk.selector,
+				  }
+		})
 
-				if (trigger.trigger === 'intersection-observer') {
-					addChunkToIntersectionObserver(chunk)
-					return
-				}
+		const shouldDoInitialMount =
+			// If no triggers, do just initial mount
+			triggers.length === 0 ||
+			// Or if we have initial mount trigger. Other triggers will still work.
+			triggers.find((t) => t.trigger === 'initial-mount')
 
-				handleTrigger(
-					trigger,
-					chunk,
-					loadChunkWithPayload,
-					loadedChunks
-				)
+		if (shouldDoInitialMount) {
+			loadChunkWithPayload(chunk, null)
+		}
+
+		triggers.map((trigger) => {
+            // It's a special trigger. Do nothing here.
+			if (trigger.trigger === 'initial-mount') {
+				return
 			}
-		)
+
+			if (trigger.trigger === 'intersection-observer') {
+				addChunkToIntersectionObserver(chunk)
+				return
+			}
+
+			handleTrigger(trigger, chunk, loadChunkWithPayload, loadedChunks)
+		})
 	})
 }
 

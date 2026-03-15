@@ -1,5 +1,5 @@
 // Loads CSS only in post/page editor
-@import 'blocks/main-top-level';
+@use 'blocks/main-top-level';
 
-@import 'meta-boxes/main';
-@import 'options-panel/main';
+@use 'meta-boxes/main';
+@use 'options-panel/main' as main2;

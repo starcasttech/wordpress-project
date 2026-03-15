@@ -215,7 +215,7 @@ class AdminNotices
                     esc_html__('Remove Installation Files Now!', 'duplicator')
                 );
                 printf(
-                    "2. <a href='https://wordpress.org/support/plugin/duplicator/reviews/?filter=5' target='wporg'>%s</a> <br/> ",
+                    "2. <a href='https://wordpress.org/support/plugin/duplicator/reviews/#new-post' target='wporg'>%s</a> <br/> ",
                     esc_html__('Optionally, Review Duplicator at WordPress.org...', 'duplicator')
                 );
                 echo "<div class='pass-msg'>" . esc_html($msg2) . "</div>";
@@ -417,7 +417,7 @@ class AdminNotices
                     </p>
                     <p class="duplicator-message-actions">
                         <a
-                            href="https://wordpress.org/support/plugin/duplicator/reviews/?filter=5/#new-post"
+                            href="https://wordpress.org/support/plugin/duplicator/reviews/#new-post"
                             target="_blank" class="button button-primary duplicator-notice-rate-now"
                         >
                             <?php esc_html_e("Sure! I'd love to help", 'duplicator'); ?>

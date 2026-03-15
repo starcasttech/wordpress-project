@@ -16,7 +16,6 @@ import {
 } from './helpers'
 import { FixedSizeList as List } from 'react-window'
 import WebFontLoader from 'webfontloader'
-import AutoSizer from 'react-virtualized-auto-sizer'
 
 import { __ } from 'ct-i18n'
 

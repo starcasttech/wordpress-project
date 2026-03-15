@@ -117,7 +117,8 @@ class WPCode_Generator {
 			}
 			$instance = new $generator_class();
 
-			$this->types[ $instance->name ] = $instance;
+			$instance_name                 = $instance->name ?? '';
+			$this->types[ $instance_name ] = $instance;
 		}
 		// Sort by displayed title.
 		uasort(

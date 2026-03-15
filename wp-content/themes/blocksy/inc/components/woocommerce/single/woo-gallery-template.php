@@ -109,6 +109,10 @@ $gallery_images = apply_filters(
 
 $ratio = '3/4';
 $single_ratio = blocksy_get_theme_mod('product_gallery_ratio', '3/4');
+$single_thumbs_ratio = blocksy_get_theme_mod(
+	'product_gallery_thumbs_ratio',
+	'1/1'
+);
 $has_lazy_load_single_product_image = blocksy_get_theme_mod(
 	'has_lazy_load_single_product_image',
 	'yes'
@@ -255,6 +259,7 @@ if (! $maybe_custom_content && count($gallery_images) > 1) {
 			'images' => $gallery_images,
 			'size' => 'woocommerce_single',
 			'pills_images' => $is_single ? $gallery_images : null,
+			'pills_images_ratio' => $is_single ? $single_thumbs_ratio : '1/1',
 			'images_ratio' => $is_single ? $single_ratio : $default_ratio,
 			'lazyload' => $has_lazy_load_single_product_image
 		]
@@ -295,5 +300,4 @@ if (! empty($result_html)) {
 		$gallery_images[0]
 	);
 }
-
 

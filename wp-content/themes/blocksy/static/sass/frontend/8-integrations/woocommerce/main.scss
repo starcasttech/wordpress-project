@@ -1,45 +1,43 @@
-@import '../../1-helpers/functions';
-
-@import 'fonts';
-@import 'general';
-@import 'listing-top';
-@import 'badges';
-@import 'shop-table';
-@import 'shipping';
-@import 'buttons';
-@import 'select2';
-@import 'form-row';
-@import 'store-notice';
-@import 'order-review';
-@import 'dynamic-counter';
-@import 'brands';
+@use 'fonts';
+@use 'general';
+@use 'listing-top';
+@use 'badges';
+@use 'shop-table';
+@use 'shipping';
+@use 'buttons';
+@use 'select2';
+@use 'form-row';
+@use 'store-notice';
+@use 'order-review';
+@use 'dynamic-counter';
+@use 'brands';
 
 // header items
-@import 'cart-header-element';
+@use 'cart-header-element';
 
 // misc
-@import 'misc/main';
+@use 'misc/main';
 
 // entries
-@import 'entries/main';
+@use 'entries/main' as main2;
 
 // product page
-@import 'product-page/main';
+@use 'product-page/main' as main3;
 
 // cart page
-@import 'cart-page/main';
+@use 'cart-page/main' as main4;
 
 // checkout page
-@import 'checkout-page/main';
+@use 'checkout-page/main' as main5;
 
 // account page
-@import 'account/main';
+@use 'account/main' as main6;
 
 // blocks
-@import 'blocks/main';
+@use 'blocks/main' as main7;
 
 // widgets
-@import 'widgets/main';
+@use 'widgets/main' as main8;
 
 // integrations
-@import 'integrations/main';
+@use 'integrations/main' as main9;

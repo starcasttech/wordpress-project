@@ -45,12 +45,12 @@ const Condition = ({
 					? (Array.isArray(conditionOption.perform_replace)
 							? conditionOption.perform_replace
 							: [conditionOption.perform_replace]
-					  ).reduce((res, singleReplace) => {
+						).reduce((res, singleReplace) => {
 							return {
 								...res,
 								...conditionOption.perform_replace.condition,
 							}
-					  }, {})
+						}, {})
 					: {}),
 			}
 
@@ -157,14 +157,20 @@ const Condition = ({
 
 					const hasSvg = ids.some((id) => {
 						const attachmentIds = [
+							...(wp &&
+							wp.customize &&
+							wp.customize('custom_logo')
+								? [wp.customize('custom_logo')()]
+								: []),
+
 							...new Set(
 								typeof valueForCondition[id] === 'number'
 									? [valueForCondition[id]]
 									: Object.values(
 											valueForCondition[id] || {}
-									  ).filter(
+										).filter(
 											(value) => typeof value === 'number'
-									  )
+										)
 							),
 						]
 
@@ -172,11 +178,6 @@ const Condition = ({
 							const attachment = wp.media
 								.attachment(attachmentId)
 								.toJSON()
-
-							console.log(
-								attachment,
-								attachment?.url?.match(/\.svg$/)
-							)
 
 							if (attachment && attachment.url) {
 								return attachment.url.match(/\.svg$/)

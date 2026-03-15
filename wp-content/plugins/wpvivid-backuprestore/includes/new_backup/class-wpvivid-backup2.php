@@ -10,6 +10,7 @@ class WPvivid_Backup_2
     public $end_shutdown_function;
     public $current_task_id;
     public $task;
+    public $last_heartbeat = 0;
     public function __construct()
     {
         include_once WPVIVID_PLUGIN_DIR . '/includes/new_backup/class-wpvivid-backup-task_2.php';
@@ -661,6 +662,27 @@ class WPvivid_Backup_2
 
         global $wpvivid_plugin;
         $this->task->check_cancel_backup();
+
+        $now = time();
+        if ($now - $this->last_heartbeat >= 15)
+        {
+            $this->last_heartbeat = $now;
+
+            try
+            {
+                if (is_object($this->task) && method_exists($this->task, 'update_backup_task_status')) {
+                    $this->task->update_backup_task_status(false, 'running', true);
+                }
+                else
+                {
+                    WPvivid_taskmanager::update_backup_task_status($this->current_task_id, false, 'running', true);
+                }
+            }
+            catch (Exception $e)
+            {
+                $wpvivid_plugin->wpvivid_log->WriteLog('update backup task status throw exception.','notice');
+            }
+        }
 
         $message='Uploading '.$current_name.' Total size: '.size_format($current_size,2).' Uploaded: '.size_format($offset,2).' speed:'.$v.'kb/s';
         $wpvivid_plugin->wpvivid_log->WriteLog($message,'notice');

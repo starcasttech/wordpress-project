@@ -1,4 +1,4 @@
-@import '../../../../../static/sass/frontend/4-components/star-rating';
+@use '../../../../../static/sass/frontend/4-components/star-rating';
 
 // dynamic data
 .ct-dynamic-data {
@@ -36,6 +36,13 @@
 		.ct-media-container {
 			max-width: var(--product-brand-logo-size, 60px);
 		}
+	}
+
+	// special case with image
+	// https://creativethemes.slack.com/archives/GTG15AXAQ/p1768379287167299
+	img {
+		max-width: 100%;
+    	vertical-align: bottom;
 	}
 }
 

@@ -150,10 +150,9 @@ $customizer-width: 320px;
 					content: '';
 					width: 5px;
 					height: 4px;
-					border: 1px solid currentColor;
-					border-top: none;
-					border-right: none;
-					margin-right: 7px;
+					border-inline-start: 1px solid currentColor;
+					border-bottom: 1px solid currentColor;
+					margin-inline-end: 7px;
 				}
 			}
 		}

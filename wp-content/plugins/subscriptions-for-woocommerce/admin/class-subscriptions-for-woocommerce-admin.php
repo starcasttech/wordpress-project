@@ -361,7 +361,7 @@ class Subscriptions_For_Woocommerce_Admin {
 				'checked' => ( 'on' === get_option( 'wps_sfw_enable_plugin', '' ) ? 'on' : 'off' ),
 			),
 			array(
-				'title' => __( 'Add to cart text', 'subscriptions-for-woocommerce' ),
+				'title' => __( 'Add To Cart Text', 'subscriptions-for-woocommerce' ),
 				'type'  => 'text',
 				'description'  => __( 'Use this option to change add to cart button text.', 'subscriptions-for-woocommerce' ),
 				'id'    => 'wps_sfw_add_to_cart_text',
@@ -370,7 +370,7 @@ class Subscriptions_For_Woocommerce_Admin {
 				'placeholder' => __( 'Add to cart button text', 'subscriptions-for-woocommerce' ),
 			),
 			array(
-				'title' => __( 'Place order text', 'subscriptions-for-woocommerce' ),
+				'title' => __( 'Place Order Text', 'subscriptions-for-woocommerce' ),
 				'type'  => 'text',
 				'description'  => __( 'Use this option to change place order button text.', 'subscriptions-for-woocommerce' ),
 				'id'    => 'wps_sfw_place_order_button_text',
@@ -379,7 +379,7 @@ class Subscriptions_For_Woocommerce_Admin {
 				'placeholder' => __( 'Place order button text', 'subscriptions-for-woocommerce' ),
 			),
 			array(
-				'title' => __( 'Allow Customer to cancel Subscription', 'subscriptions-for-woocommerce' ),
+				'title' => __( 'Allow Customer To Cancel Subscription', 'subscriptions-for-woocommerce' ),
 				'type'  => 'checkbox',
 				'description'  => __( 'Enable this option to allow the customer to cancel the subscription.', 'subscriptions-for-woocommerce' ),
 				'id'    => 'wps_sfw_cancel_subscription_for_customer',
@@ -447,7 +447,7 @@ class Subscriptions_For_Woocommerce_Admin {
 				),
 			),
 			array(
-				'title' => __( 'API secret key', 'subscriptions-for-woocommerce' ),
+				'title' => __( 'API Secret Key', 'subscriptions-for-woocommerce' ),
 				'type'  => 'text',
 				'description'  => __( 'API secret key.', 'subscriptions-for-woocommerce' ),
 				'id'    => 'wsp_api_secret_key',
@@ -830,7 +830,8 @@ class Subscriptions_For_Woocommerce_Admin {
 	 */
 	public function wps_sfw_admin_cancel_susbcription() {
 
-		if ( isset( $_GET['wps_subscription_status_admin'] ) && isset( $_GET['wps_subscription_id'] ) && isset( $_GET['_wpnonce'] ) && ! empty( $_GET['_wpnonce'] ) ) {
+		if ( isset( $_GET['wps_subscription_status_admin'] ) && isset( $_GET['wps_subscription_id'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['wps_sfw_cancel_nonce'] ) ), $_GET['wps_subscription_id'] . $_GET['wps_subscription_status_admin'] )  && current_user_can( 'manage_woocommerce' ) ) {
+
 			$wps_status   = sanitize_text_field( wp_unslash( $_GET['wps_subscription_status_admin'] ) );
 			$wps_subscription_id = sanitize_text_field( wp_unslash( $_GET['wps_subscription_id'] ) );
 			if ( wps_sfw_check_valid_subscription( $wps_subscription_id ) ) {
@@ -1266,16 +1267,16 @@ class Subscriptions_For_Woocommerce_Admin {
 			),
 
 			array(
-				'title' => __( 'Add to cart text For Subscription Box', 'subscriptions-for-woocommerce' ),
+				'title' => __( 'Add To Cart Text For Subscription Box', 'subscriptions-for-woocommerce' ),
 				'type'  => 'text',
 				'description'  => __( 'Use this option to change add to cart button text For Subscription Box Product.', 'subscriptions-for-woocommerce' ),
 				'id'    => 'wps_sfw_subscription_box_add_to_cart_text',
 				'value' => get_option( 'wps_sfw_subscription_box_add_to_cart_text', '' ),
 				'class' => 'sfw-text-class',
-				'placeholder' => __( 'Subsscription Box Add to cart button text', 'subscriptions-for-woocommerce' ),
+				'placeholder' => __( 'Subscription Box Add to cart button text', 'subscriptions-for-woocommerce' ),
 			),
 			array(
-				'title' => __( 'Place order text For Subscription Box', 'subscriptions-for-woocommerce' ),
+				'title' => __( 'Place Order Text For Subscription Box', 'subscriptions-for-woocommerce' ),
 				'type'  => 'text',
 				'description'  => __( 'Use this option to change place order button text For Subscription Box Product.', 'subscriptions-for-woocommerce' ),
 				'id'    => 'wps_sfw_subscription_box_place_order_button_text',
@@ -1822,7 +1823,7 @@ class Subscriptions_For_Woocommerce_Admin {
 	 */
 	public function wps_sfw_admin_reactivate_onhold_susbcription() {
 
-		if ( isset( $_GET['wps_subscription_status_admin_reactivate'] ) && isset( $_GET['wps_subscription_id'] ) && isset( $_GET['_wpnonce'] ) && ! empty( $_GET['_wpnonce'] ) ) {
+		if ( isset( $_GET['wps_subscription_status_admin_reactivate'] ) && isset( $_GET['wps_subscription_id'] ) &&  wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['wps_sfw_pause_nonce'] ) ), $_GET['wps_subscription_id'] . $_GET['wps_subscription_status_admin_reactivate']  ) && current_user_can( 'manage_woocommerce' ) ) {
 			$wps_status   = sanitize_text_field( wp_unslash( $_GET['wps_subscription_status_admin_reactivate'] ) );
 			$wps_subscription_id = sanitize_text_field( wp_unslash( $_GET['wps_subscription_id'] ) );
 			if ( wps_sfw_check_valid_subscription( $wps_subscription_id ) ) {
@@ -1878,6 +1879,58 @@ class Subscriptions_For_Woocommerce_Admin {
 			echo '<span class="status-disabled">' . esc_html__( 'No', 'subscriptions-for-woocommerce' ) . '</span>';
 		}
 		echo '</td>';
+	}
+
+	/**
+	 * Add 'Contains Subscription' column on orders page.
+	 *
+	 * @param mixed $columns columns.
+	 * @since 3.5.0
+	 */
+	public function wps_sfw_add_contains_subscription_column( $columns ) {
+		
+		$new_columns = array();
+
+		foreach ( $columns as $key => $label ) {
+
+			$new_columns[ $key ] = $label;
+
+			// Add column AFTER order status
+			if ( 'order_status' === $key ) {
+				$new_columns['wps_sfw_contains_subscription'] =
+					'<span class="dashicons dashicons-controls-repeat tips" data-tip="' .
+					esc_attr__( 'Subscription Relationship', 'subscriptions-for-woocommerce' ) .
+					'"></span>';
+			}
+		}
+
+		return $new_columns;
+	}
+
+	/**
+	 * Add content for 'Contains Subscription' column on orders page.
+	 *
+	 * @param mixed $column column.
+	 * @param mixed $post_id post ID.
+	 * @since 3.5.0
+	 */
+	public function wps_sfw_add_contains_subscription_column_content( $column, $post_id ) {
+		if ( 'wps_sfw_contains_subscription' === $column ) {
+			$wps_subscription_id = wps_sfw_get_meta_data( $post_id, 'wps_subscription_id', true );
+			$wps_sfw_order_has_subscription = wps_sfw_get_meta_data( $post_id, 'wps_sfw_order_has_subscription', true );
+			$wps_sfw_renewal_order = wps_sfw_get_meta_data( $post_id, 'wps_sfw_renewal_order', true );
+			$wps_sfw_subscription = wps_sfw_get_meta_data( $post_id, 'wps_sfw_subscription', true );
+			if( $wps_subscription_id && 'yes' == $wps_sfw_order_has_subscription ) {
+				echo '<span class="dashicons dashicons-controls-repeat tips" data-tip="' . esc_attr__( 'Parent Order', 'subscriptions-for-woocommerce' ) . '"></span>';
+				
+			} elseif( 'yes' == $wps_sfw_renewal_order && $wps_sfw_subscription ) {
+				// echo esc_html__( 'Renewal', 'subscriptions-for-woocommerce' );
+				echo '<span class="dashicons dashicons-backup tips" data-tip="' . esc_attr__( 'Renewal Order', 'subscriptions-for-woocommerce' ) . '"></span>';
+			} else {
+				echo '-';
+			}
+			
+		}
 	}
 }
 

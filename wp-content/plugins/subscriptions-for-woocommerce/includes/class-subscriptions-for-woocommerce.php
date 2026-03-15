@@ -80,7 +80,7 @@ class Subscriptions_For_Woocommerce {
 			$this->version = SUBSCRIPTIONS_FOR_WOOCOMMERCE_VERSION;
 		} else {
 
-			$this->version = '1.9.0';
+			$this->version = '1.9.3';
 		}
 
 		$this->plugin_name = 'subscriptions-for-woocommerce';
@@ -245,8 +245,8 @@ class Subscriptions_For_Woocommerce {
 
 			$this->loader->add_action( 'woocommerce_process_product_meta', $sfw_plugin_admin, 'wps_sfw_save_custom_product_fields_data_for_subscription', 10, 2 );
 
-			$this->loader->add_action( 'init', $sfw_plugin_admin, 'wps_sfw_admin_cancel_susbcription', 99 );
-			$this->loader->add_action( 'init', $sfw_plugin_admin, 'wps_sfw_admin_reactivate_onhold_susbcription', 99 );
+			$this->loader->add_action( 'admin_init', $sfw_plugin_admin, 'wps_sfw_admin_cancel_susbcription', 99 );
+			$this->loader->add_action( 'admin_init', $sfw_plugin_admin, 'wps_sfw_admin_reactivate_onhold_susbcription', 99 );
 
 			// WPLM Translation.
 			$this->loader->add_filter( 'wcml_js_lock_fields_ids', $sfw_plugin_admin, 'wps_sfw_add_lock_custom_fields_ids' );
@@ -259,6 +259,12 @@ class Subscriptions_For_Woocommerce {
 			$this->loader->add_filter( 'woocommerce_product_data_tabs', $sfw_plugin_admin, 'wps_sfw_custom_product_tab_for_subscription_box' );
 			$this->loader->add_action( 'woocommerce_product_data_panels', $sfw_plugin_admin, 'wps_sfw_custom_product_fields_for_subscription_box' );
 			$this->loader->add_action( 'woocommerce_process_product_meta', $sfw_plugin_admin, 'wps_sfw_save_subscription_box_data_for_subscription', 999, 2 );
+
+
+			$this->loader->add_filter( 'manage_edit-shop_order_columns', $sfw_plugin_admin , 'wps_sfw_add_contains_subscription_column' );
+			$this->loader->add_filter( 'woocommerce_shop_order_list_table_columns', $sfw_plugin_admin, 'wps_sfw_add_contains_subscription_column' );
+			$this->loader->add_action( 'manage_shop_order_posts_custom_column', $sfw_plugin_admin, 'wps_sfw_add_contains_subscription_column_content', 10, 2 );
+			$this->loader->add_action( 'woocommerce_shop_order_list_table_custom_column', $sfw_plugin_admin, 'wps_sfw_add_contains_subscription_column_content', 10, 2 );
 		}
 
 		/*cron for notification*/
@@ -485,7 +491,7 @@ class Subscriptions_For_Woocommerce {
 			'file_path'        => SUBSCRIPTIONS_FOR_WOOCOMMERCE_DIR_PATH,
 		);
 		$sfw_default_tabs['subscriptions-for-woocommerce-general'] = array(
-			'title'       => esc_html__( 'General Setting', 'subscriptions-for-woocommerce' ),
+			'title'       => esc_html__( 'General Settings', 'subscriptions-for-woocommerce' ),
 			'name'        => 'subscriptions-for-woocommerce-general',
 			'file_path'        => SUBSCRIPTIONS_FOR_WOOCOMMERCE_DIR_PATH,
 		);

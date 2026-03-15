@@ -1,3 +1,5 @@
+@use "variables";
+
 [class*="ct-builder-column"] {
 	display: flex;
 	margin: 0;
@@ -57,7 +59,7 @@
 
 .ct-builder-dragging {
 	.ct-builder-column-middle {
-		min-width: #{$builder-item-width + $builder-items-spacing * 2};
+		min-width: #{variables.$builder-item-width + variables.$builder-items-spacing * 2};
 		border-right-width: 1px;
 		transition: min-width 0.2s ease;
 	}

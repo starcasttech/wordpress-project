@@ -240,7 +240,6 @@ class Blocksy_Header_Builder_Elements {
 			$search_form_args['search_through_taxonomy'] = blocksy_akg('search_through_taxonomy', $atts, 'no');
 		}
 
-
 		?>
 
 		<div id="search-modal" class="ct-panel" data-behaviour="modal" role="dialog" aria-label="<?php echo __('Search modal', 'blocksy') ?>" inert>

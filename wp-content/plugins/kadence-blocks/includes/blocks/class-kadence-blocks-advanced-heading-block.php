@@ -294,7 +294,7 @@ class Kadence_Blocks_Advancedheading_Block extends Kadence_Blocks_Abstract_Block
 			$css->set_selector( '.wp-block-kadence-advancedheading.kt-adv-heading' . $unique_id . '[data-kb-block="kb-adv-heading' . $unique_id . '"] .kb-adv-heading-icon' );
 			$css->render_color_output( $attributes, 'iconColor', 'color' );
 			$css->render_responsive_range( $attributes, 'iconSize', 'font-size', 'iconSizeUnit' );
-			$css->render_measure_output( $attributes, 'iconPadding', 'margin', array( 'unit_key' => 'iconPaddingUnit' ) );
+			$css->render_measure_output( $attributes, 'iconPadding', 'padding', array( 'unit_key' => 'iconPaddingUnit' ) );
 			if ( isset( $attributes['lineHeight'] ) ) {
 				$css->add_property( 'line-height', $attributes['lineHeight'] . ( empty( $attributes['lineType'] ) ? 'px' : $attributes['lineType'] ) );
 			}
@@ -379,6 +379,68 @@ class Kadence_Blocks_Advancedheading_Block extends Kadence_Blocks_Abstract_Block
 			'mobile_key'  => 'markMobilePadding',
 		);
 		$css->render_measure_output( $attributes, 'markPadding', 'padding', $mark_padding_args );
+
+		// Inline Image.
+		$css->set_selector( '.wp-block-kadence-advancedheading.kt-adv-heading' . $unique_id . ' img.kb-inline-image, .wp-block-kadence-advancedheading.kt-adv-heading' . $unique_id . '[data-kb-block="kb-adv-heading' . $unique_id . '"] img.kb-inline-image' );
+		// Ensure default value if inlineImageWidth desktop value is not set or empty.
+		if ( empty( $attributes['inlineImageWidth'] ) || ! is_array( $attributes['inlineImageWidth'] ) || ! isset( $attributes['inlineImageWidth'][0] ) || ! is_numeric( $attributes['inlineImageWidth'][0] ) ) {
+			$css->add_property( 'width', '150px' );
+			$css->add_property( 'display', 'inline-block' );
+		}
+		// Render responsive range will handle desktop, tablet, and mobile if values are set.
+		$css->render_responsive_range( $attributes, 'inlineImageWidth', 'width' );
+		if ( ! empty( $attributes['inlineImageVerticalAlign'] ) ) {
+			$css->add_property( 'vertical-align', $attributes['inlineImageVerticalAlign'] );
+		}
+		// Add aspect-ratio if useRatio is enabled.
+		if ( ! empty( $attributes['useRatio'] ) && ! empty( $attributes['ratio'] ) ) {
+			$aspect_ratio = '';
+			switch ( $attributes['ratio'] ) {
+				case 'land43':
+					$aspect_ratio = '4 / 3';
+					break;
+				case 'land32':
+					$aspect_ratio = '3 / 2';
+					break;
+				case 'land169':
+					$aspect_ratio = '16 / 9';
+					break;
+				case 'land21':
+					$aspect_ratio = '2 / 1';
+					break;
+				case 'land31':
+					$aspect_ratio = '3 / 1';
+					break;
+				case 'land41':
+					$aspect_ratio = '4 / 1';
+					break;
+				case 'port34':
+					$aspect_ratio = '3 / 4';
+					break;
+				case 'port23':
+					$aspect_ratio = '2 / 3';
+					break;
+				case 'port916':
+					$aspect_ratio = '9 / 16';
+					break;
+				case 'square':
+					$aspect_ratio = '1 / 1';
+					break;
+			}
+			if ( ! empty( $aspect_ratio ) ) {
+				$css->add_property( 'aspect-ratio', $aspect_ratio );
+				$css->add_property( 'object-fit', 'cover' );
+			}
+		}
+		$css->render_border_styles( $attributes, 'inlineImageBorderStyles' );
+		$css->render_border_radius( $attributes, 'inlineImageBorderRadius', ( ! empty( $attributes['inlineImageBorderRadiusUnit'] ) ? $attributes['inlineImageBorderRadiusUnit'] : 'px' ) );
+		$css->set_media_state( 'tablet' );
+		$css->render_border_radius( $attributes, 'tabletInlineImageBorderRadius', ( ! empty( $attributes['inlineImageBorderRadiusUnit'] ) ? $attributes['inlineImageBorderRadiusUnit'] : 'px' ) );
+		$css->set_media_state( 'desktop' );
+
+		$css->set_media_state( 'mobile' );
+		$css->render_border_radius( $attributes, 'mobileInlineImageBorderRadius', ( ! empty( $attributes['inlineImageBorderRadiusUnit'] ) ? $attributes['inlineImageBorderRadiusUnit'] : 'px' ) );
+		$css->set_media_state( 'desktop' );
 		// Link.
 		if ( ! empty( $attributes['linkColor'] ) ) {
 			$css->set_selector( '.wp-block-kadence-advancedheading.kt-adv-heading' . $unique_id . '[data-kb-block="kb-adv-heading' . $unique_id . '"] a, .kt-adv-heading-link' . $unique_id . ', .kt-adv-heading-link' . $unique_id . ' .kt-adv-heading' . $unique_id . '[data-kb-block="kb-adv-heading' . $unique_id . '"]' );
@@ -576,11 +638,30 @@ class Kadence_Blocks_Advancedheading_Block extends Kadence_Blocks_Abstract_Block
 			return;
 		}
 		wp_register_style( 'kadence-blocks-' . $this->block_name, false );
-		$heading_css = '.wp-block-kadence-advancedheading mark{background:transparent;border-style:solid;border-width:0}.wp-block-kadence-advancedheading mark.kt-highlight{color:#f76a0c;}.kb-adv-heading-icon{display: inline-flex;justify-content: center;align-items: center;} .is-layout-constrained > .kb-advanced-heading-link {display: block;}';
+		$heading_css = <<<'CSS'
+			.wp-block-kadence-advancedheading mark{background:transparent;border-style:solid;border-width:0}
+			.wp-block-kadence-advancedheading mark.kt-highlight{color:#f76a0c;}
+			.kb-adv-heading-icon{display: inline-flex;justify-content: center;align-items: center;}
+			.is-layout-constrained > .kb-advanced-heading-link {display: block;}
+		CSS;
+
+		// Style to prevent padding conflict with WordPress core style for headings and paragraphs.
+		// Reference: https://stellarwp.atlassian.net/browse/KAD-5283
+		$heading_css .= '.wp-block-kadence-advancedheading.has-background{padding: 0;}';
+
 		// Short term fix for an issue with heading wrapping.
 		if ( class_exists( '\Kadence\Theme' ) ) {
-			$heading_css .= '.single-content .kadence-advanced-heading-wrapper h1, .single-content .kadence-advanced-heading-wrapper h2, .single-content .kadence-advanced-heading-wrapper h3, .single-content .kadence-advanced-heading-wrapper h4, .single-content .kadence-advanced-heading-wrapper h5, .single-content .kadence-advanced-heading-wrapper h6 {margin: 1.5em 0 .5em;}.single-content .kadence-advanced-heading-wrapper+* { margin-top:0;}';
+			$heading_css .= <<<'CSS'
+				.single-content .kadence-advanced-heading-wrapper h1,
+				.single-content .kadence-advanced-heading-wrapper h2,
+				.single-content .kadence-advanced-heading-wrapper h3,
+				.single-content .kadence-advanced-heading-wrapper h4,
+				.single-content .kadence-advanced-heading-wrapper h5,
+				.single-content .kadence-advanced-heading-wrapper h6 {margin: 1.5em 0 .5em;}
+				.single-content .kadence-advanced-heading-wrapper+* { margin-top:0;}
+			CSS;
 		}
+
 		// Add screen reader text styles
 		$heading_css .= '.kb-screen-reader-text{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);}';
 		wp_add_inline_style( 'kadence-blocks-' . $this->block_name, $heading_css );

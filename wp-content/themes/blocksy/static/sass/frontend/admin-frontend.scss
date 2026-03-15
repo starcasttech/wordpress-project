@@ -1,6 +1,7 @@
 .blocksy-hook-indicator,
 .ct-customizer-shortcut {
-	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 }
 
 // hooks locations
@@ -16,7 +17,7 @@
 	text-align: left;
 
 	// background: rgba(255, 205, 5, 0.4);
-	background: #FFEBAC;
+	background: #ffebac;
 	border-radius: 3px;
 	border: 1px dashed #eabc4b;
 
@@ -39,7 +40,7 @@
 
 		&:before {
 			font-family: dashicons;
-			content: "\f464";
+			content: '\f464';
 			font-size: 17px;
 			line-height: 17px;
 			cursor: pointer;
@@ -51,22 +52,21 @@
 	}
 }
 
-
 // indicator spacing
 .blocksy-hook-indicator {
 	margin: 15px var(--hook-side-margin, 0);
 
-	&[data-type*="full"] {
+	&[data-type*='full'] {
 		--hook-side-margin: 15px;
 	}
 
-	&:not([data-type*="top-margin"]) {
+	&:not([data-type*='top-margin']) {
 		&:first-child {
 			margin-top: 0;
 		}
 	}
 
-	&:not([data-type*="bottom-margin"]) {
+	&:not([data-type*='bottom-margin']) {
 		&:last-child {
 			margin-bottom: 0;
 		}
@@ -74,12 +74,10 @@
 }
 
 .ct-container {
-
-	.blocksy-hook-indicator[data-type*="full"] {
+	.blocksy-hook-indicator[data-type*='full'] {
 		--hook-side-margin: 0;
 	}
 }
-
 
 // customizer utilities
 body [data-customize-hide] {
@@ -225,14 +223,15 @@ $drop-size: 22px;
 	opacity: 0.25 !important;
 }
 
+
 // admin bar shift when overlay opens
 [data-panel] #wpadminbar {
 	padding-inline-end: var(--scrollbar-width, 0px);
 }
 
+
 // search live results helper
 .ct-search-form {
-
 	&:not([data-live-results*='thumbs']) .ct-media-container {
 		display: none;
 	}
@@ -245,3 +244,130 @@ $drop-size: 22px;
 		display: none;
 	}
 }
+
+
+// content blocks
+#wp-admin-bar-blocksy_preview_hooks .ct-hidden {
+	display: none;
+}
+
+#wp-admin-bar-blocksy_preview_hooks {
+
+	#wp-admin-bar-blocksy_preview_hooks_theme:not(:first-child) {
+		border-block-start: 1px solid #464b50;
+		margin-block-start: 6px;
+	}
+
+	.ab-item {
+		&:has(.ct-scroll-to) {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.ct-scroll-to {
+			display: flex;
+			cursor: pointer;
+			line-height: 1;
+			padding: 4px;
+			margin-inline-start: auto;
+			border-radius: 3px;
+			background-color: rgba(255, 255, 255, 0.1);
+
+			&:hover {
+				color: #fff;
+				// background-color: rgba(255, 255, 255, 0.2);
+				background-color: #72aee6;
+			}
+		}
+	}
+}
+
+[data-block*='highlight'] {
+	border-radius: 1px;
+	outline: 2px solid var(--theme-palette-color-2);
+	outline-offset: 7px;
+}
+
+
+// filters table regeneration notice
+.ct-filter-widget-admin-notice {
+	--box-padding: 20px;
+	--box-text-color: #58534d;
+	--box-accent-color: #fddf67;
+
+	font-size: 14px;
+	color: var(--box-text-color);
+	border-radius: 5px;
+	background: var(--box-accent-color);
+
+
+	.ct-notice-heading {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		font-size: 14px;
+		font-weight: 600;
+		color: #9f6000;
+		padding: 18px var(--box-padding);
+	}
+
+
+	.ct-notice-content {
+		background: #fff;
+		border-radius: 4px;
+		margin: 0 2px 2px 2px;
+		padding: calc(var(--box-padding) + 5px) var(--box-padding);
+	}
+
+
+	.ct-notice-text {
+		margin-top: var(--box-padding);
+	}
+
+
+	.ct-notice-progress-bar-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 8px;
+		font-size: 13px;
+	}
+
+	.ct-notice-progress-bar {
+		height: 5px;
+		border-radius: 3px;
+		background: rgba(0, 0, 0, 0.05);
+
+		span {
+			display: block;
+			height: 100%;
+			border-radius: 3px;
+			background: var(--box-accent-color);
+			transition: width 0.2s ease;
+		}
+	}
+
+	.ct-notice-buttons-group {
+		margin-top: calc(var(--box-padding) + 5px);
+		margin-inline: calc(var(--box-padding) * -1);
+		padding: calc(var(--box-padding) + 5px) var(--box-padding) 0 var(--box-padding);
+		border-top: 1px solid var(--box-accent-color);
+
+		a {
+			display: flex;
+			align-items: center;
+			gap: 7px;
+			text-decoration: underline;
+
+			--theme-link-initial-color: var(--box-text-color);
+			--theme-link-hover-color: #9f6000;
+
+			&:not(:last-child) {
+				margin-bottom: 3px;
+			}
+		}
+	}
+}
+
+

@@ -1,9 +1,11 @@
+@use "variables";
+
 // modal animations
 [data-panel*='in'] [data-behaviour='modal'].active,
 [data-panel*='out'] [data-behaviour='modal'] {
-	
+
 	.ct-panel-content {
-		animation-duration: $transition-duration;
+		animation-duration: variables.$transition-duration;
 		animation-fill-mode: both;
 	}
 }

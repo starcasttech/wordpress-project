@@ -91,6 +91,10 @@ class LangEN_CA {
                         'MetaBoxFields' => 'Meta Box Fields',
                         'YoastSeoFields' => 'Yoast Seo Fields',
 'SlimSeoFields' => 'Slim SEO Fields',
+'EDDDownloadsFields' => 'EDD Downloads Fields',
+'EDDCustomersFields' => 'EDD Customers Fields',
+'EDDDiscountsFields' => 'EDD Discounts Fields',
+
 'ListeoFields' => 'Listeo Fields',
                         'JetEngineFields' => 'Jet Engine Fields',
                         'JetEngineRFFields' => 'Jet Engine Repeater Fields',

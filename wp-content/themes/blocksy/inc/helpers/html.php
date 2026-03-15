@@ -54,6 +54,11 @@ if (! function_exists('blocksy_attr_to_html')) {
 	}
 }
 
+function blocksy_attr_to_html_e(array $attr_array) {
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo blocksy_attr_to_html($attr_array);
+}
+
 /**
  * Generate html tag
  *
@@ -92,4 +97,9 @@ if (! function_exists('blocksy_html_tag')) {
 
 		return $html;
 	}
+}
+
+function blocksy_html_tag_e($tag, $attr = [], $end = false) {
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo blocksy_html_tag($tag, $attr, $end);
 }

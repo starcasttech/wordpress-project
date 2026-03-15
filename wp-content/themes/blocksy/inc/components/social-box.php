@@ -10,6 +10,7 @@ if (! function_exists('blocksy_social_icons')) {
 				'size' => 'custom',
 				'fill' => false,
 				'label_attr' => [],
+				'root_attr' => [],
 				'label_visibility' => [
 				  'desktop' => false,
 				  'tablet' => false,
@@ -40,7 +41,7 @@ if (! function_exists('blocksy_social_icons')) {
 		}
 
 		return blocksy_get_social_box([
-			'attr' => $attr,
+			'attr' => array_merge($attr, $args['root_attr']),
 			'socials' => $socials_descriptor,
 			'label_attr' => $args['label_attr'],
 			'label_visibility' => $args['label_visibility'],

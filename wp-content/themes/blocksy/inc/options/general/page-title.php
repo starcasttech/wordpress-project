@@ -43,6 +43,14 @@ if (! isset($is_tutorlms)) {
 	$is_tutorlms = false;
 }
 
+if (! isset($is_eventkoi)) {
+	$is_eventkoi = false;
+}
+
+if (! isset($is_vs_portfolio)) {
+	$is_vs_portfolio = false;
+}
+
 if (! isset($is_tribe_events)) {
 	$is_tribe_events = false;
 }
@@ -128,7 +136,15 @@ $default_hero_elements[] = array_merge([
 	] : []
 ));
 
-if (! $is_tutorlms && ! $is_tribe_events) {
+if (
+	! $is_tutorlms
+	&& 
+	! $is_tribe_events
+	&& 
+	! $is_eventkoi
+	&&
+	! $is_vs_portfolio
+) {
 	$default_hero_elements[] = [
 		'id' => 'custom_description',
 		'enabled' => $prefix !== 'product_',
@@ -142,8 +158,20 @@ if (! $is_tutorlms && ! $is_tribe_events) {
 
 if (
 	(
-		$is_single || $is_author
-	) && !$is_bbpress && !$is_tutorlms && !$is_tribe_events
+		$is_single
+		||
+		$is_author
+	)
+	&&
+	!$is_bbpress
+	&& 
+	!$is_tutorlms
+	&& 
+	!$is_tribe_events
+	&& 
+	!$is_eventkoi
+	&&
+	!$is_vs_portfolio
 ) {
 	$default_hero_elements[] = [
 		'id' => 'custom_meta',

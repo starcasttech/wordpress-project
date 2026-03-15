@@ -1,4 +1,4 @@
-@import 'coupon-form';
-@import 'checkout-form';
-@import 'order-review';
-@import 'payment-methods';
+@use 'coupon-form';
+@use 'checkout-form';
+@use 'order-review';
+@use 'payment-methods';

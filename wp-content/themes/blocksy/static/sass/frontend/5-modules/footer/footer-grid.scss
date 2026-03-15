@@ -1,3 +1,5 @@
+@use "../../1-helpers/functions";
+
 .ct-footer [data-row] {
 
 	> div {
@@ -26,7 +28,7 @@
 	}
 
 	[data-column="ghost"] {
-		@include media-breakpoint-down (md) {
+		@include functions.media-breakpoint-down (md) {
 			display: none;
 		}
 	}

@@ -219,6 +219,13 @@ function backuply_mysql_fn($shost, $suser, $spass, $sdb, $sdbfile){
 	fclose($handle);
 	
 	backuply_backup_stop_checkpoint();
+
+	// Close the connection
+	if(!empty($link)){
+		backuply_mysql_close($link);
+		$link = null;
+	}
+
 	// Just check that file is created or not ??
 	if(file_exists($sdbfile)){
 	
@@ -1080,6 +1087,21 @@ function backuply_mysql_free_result($result){
 	return $return;
 }
 
+// Close mysql connection
+function backuply_mysql_close($conn){
+	if(empty($conn)){
+		return true;
+	}
+
+	if(extension_loaded('mysqli')){
+		@mysqli_close($conn);
+	} else {
+		@mysql_close($conn);
+	}
+
+	return true;
+}
+
 function backuply_getFieldsMeta($result){
 	// Build an associative array for a type look up
 	
@@ -1570,6 +1592,12 @@ function backuply_backup_curl($action) {
 	}
 
 	$url = site_url() . '/?action='.$action.'&security='. $nonce;
+
+	// Cloudflare was returning cached HIT on this request making the request to fail
+	// So we will be adding a cache buster to prevent cached version of the endpoint.
+	if(isset($_SERVER['HTTP_CF_RAY'])){
+	    $url .= '&cachebuster='.time();
+	}
 	
 	backuply_status_log('About to call self to prevent timeout', 'info');
 
@@ -1766,7 +1794,7 @@ if(!empty($backuply['excludes']['exact'])) {
 }
 
 //Create the filename
-$server_name = !empty($_SERVER['SERVER_NAME']) ? wp_kses_post(wp_unslash($_SERVER['SERVER_NAME'])) : '';
+$server_name = !empty($_SERVER['SERVER_NAME']) ? backuply_sanitize_filename(wp_unslash($_SERVER['SERVER_NAME'])) : '';
 $data['name'] =  !isset($backuply['status']['name']) ? (defined('SITEPAD') ? 'sp_' : 'wp_').$server_name.'_'.date('Y-m-d_H-i-s') : $backuply['status']['name'];
 
 //The path where all backups are stored
@@ -1952,6 +1980,12 @@ if(!empty($data['backup_db']) && !empty($data['softdb']) && empty($backuply['sta
 	
 	$backuply['status']['backup_db_done'] = 1;
 	backuply_status_log('Creation of SQL dump completed', 'working', 24);
+
+	// Close the mysql connection opened, creating for dump
+	if(!empty($sql_conn)){
+		backuply_mysql_close($sql_conn);
+		$sql_conn = null;
+	}
 }
 
 //Backup the DIRECTORY

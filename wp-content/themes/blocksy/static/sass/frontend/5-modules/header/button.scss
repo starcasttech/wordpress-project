@@ -4,7 +4,7 @@
 	--theme-icon-color: currentColor;
 
 	a {
-		gap: 0.5em;
+		gap: var(--theme-button-gap, 0.5em);
 	}
 
 	// button size

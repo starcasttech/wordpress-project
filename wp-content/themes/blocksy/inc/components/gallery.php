@@ -10,6 +10,7 @@ function blocksy_flexy($args = []) {
 		'images_ratio' => '3/4',
 
 		'pills_images' => null,
+		'pills_images_ratio' => '1/1',
 
 		'pills_count' => 0,
 
@@ -218,6 +219,7 @@ if (! function_exists('blocksy_flexy_pills')) {
 		$args = wp_parse_args($args, [
 			'pills_count' => 0,
 			'pills_images' => null,
+			'pills_images_ratio' => '1/1',
 			'pills_container_attr' => [],
 			'pills_have_arrows' => false,
 			'active_index' => 1,
@@ -254,7 +256,7 @@ if (! function_exists('blocksy_flexy_pills')) {
 
 				$image_output = '<li' . $class . '>' . blocksy_media([
 					'attachment_id' => $args['pills_images'][$index - 1],
-					'ratio' => 'original',
+					'ratio' => $args['pills_images_ratio'],
 					'tag_name' => 'span',
 					'size' => "woocommerce_gallery_thumbnail",
 					'html_atts' => [

@@ -601,6 +601,7 @@ $(window).on('load resize', function() {
 	);
 	$( document ).ready(
 		function () {
+			
 			// run the select code for all selects
 			if ($( '[name="loginpress_captcha_settings[captchas_type]"]' ).length > 0) {
 					const urlParams   = new URLSearchParams( window.location.search );

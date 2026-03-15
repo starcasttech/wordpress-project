@@ -1,4 +1,7 @@
 <?php
+/**
+ * Blog meta options.
+ */
 
 $options = [
 	[

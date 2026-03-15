@@ -1,3 +1,5 @@
+@use "../../1-helpers/functions";
+
 [data-sidebar] {
 	display: grid;
 	grid-template-columns: var(--grid-template-columns, 100%);
@@ -9,7 +11,7 @@
 	}
 }
 
-@include media-breakpoint-up (lg) {
+@include functions.media-breakpoint-up (lg) {
 	[data-sidebar='right'] {
 		--grid-template-columns: minmax(100px, 1fr) var(--sidebar-width, 27%);
 	}

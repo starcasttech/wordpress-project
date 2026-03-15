@@ -44,6 +44,7 @@
 		padding: var(--theme-button-padding);
 		border: 2px solid;
 		border-color: var(--theme-button-background-initial-color);
+		background-color: initial;
 
 		&:not(.has-text-color) {
 			color: var(--theme-button-background-initial-color);

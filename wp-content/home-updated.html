@@ -1,0 +1,280 @@
+<!-- wp:html -->
+<!-- HERO CAROUSEL -->
+<div class="sc-hero-carousel" id="sc-hero">
+  <div class="sc-hero-track" id="sc-hero-track">
+
+    <!-- Slide 1: Brand -->
+    <div class="sc-hero-slide" style="background: linear-gradient(135deg, #0f1f3d 0%, #1a2d5a 60%, #0f3460 100%);">
+      <div class="sc-hero-content">
+        <span class="sc-hero-kicker">South Africa's Trusted ISP</span>
+        <h1>Connect to the Future <em>with Starcast</em></h1>
+        <p>Lightning-fast fibre and LTE internet nationwide. Same-day LTE activation. Fast fibre installations.</p>
+        <a href="/fibre" class="sc-hero-btn primary">View Fibre Packages</a>
+        <a href="/lte-5g/" class="sc-hero-btn outline">LTE Options</a>
+      </div>
+    </div>
+
+    <!-- Slide 2: Fibre Promo -->
+    <div class="sc-hero-slide" style="background: linear-gradient(135deg, #003D9E 0%, #1a2d5a 100%);">
+      <div class="sc-hero-content">
+        <span class="sc-slide-badge">? Limited Time Offer</span>
+        <h1>Openserve 30/30 Fibre <em>from R435/pm</em></h1>
+        <p>First 2 months at promotional rate, then R480/pm. Month-to-month, no contract required.</p>
+        <a href="/signup/" class="sc-hero-btn primary">Claim This Deal</a>
+        <a href="/fibre" class="sc-hero-btn outline">All Fibre Packages</a>
+      </div>
+    </div>
+
+    <!-- Slide 3: LTE -->
+    <div class="sc-hero-slide" style="background: linear-gradient(135deg, #0f3460 0%, #1a2d5a 50%, #003D9E 100%);">
+      <div class="sc-hero-content">
+        <span class="sc-hero-kicker">No Fibre? No Problem.</span>
+        <h1>Home LTE &amp; 5G <em>Anywhere in SA</em></h1>
+        <p>Telkom, MTN &amp; Vodacom-powered home internet. Same-day activation, no infrastructure required.</p>
+        <a href="/lte-signup/" class="sc-hero-btn primary">Get LTE Today</a>
+        <a href="/lte-5g/" class="sc-hero-btn outline">View All Packages</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Arrows -->
+  <button class="sc-hero-arrow prev" id="sc-prev" aria-label="Previous">&#8592;</button>
+  <button class="sc-hero-arrow next" id="sc-next" aria-label="Next">&#8594;</button>
+
+  <!-- Dots -->
+  <div class="sc-hero-dots" id="sc-dots">
+    <button class="sc-hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+    <button class="sc-hero-dot"        data-slide="1" aria-label="Slide 2"></button>
+    <button class="sc-hero-dot"        data-slide="2" aria-label="Slide 3"></button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var track  = document.getElementById('sc-hero-track');
+  var dots   = document.querySelectorAll('.sc-hero-dot');
+  var total  = 3;
+  var cur    = 0;
+  var timer;
+
+  function go(n) {
+    cur = (n + total) % total;
+    track.style.transform = 'translateX(-' + (cur * 100 / total) + '%)';
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+    restart();
+  }
+
+  function restart() {
+    clearInterval(timer);
+    timer = setInterval(function() { go(cur + 1); }, 5500);
+  }
+
+  document.getElementById('sc-prev').addEventListener('click', function() { go(cur - 1); });
+  document.getElementById('sc-next').addEventListener('click', function() { go(cur + 1); });
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() { go(parseInt(d.dataset.slide)); });
+  });
+
+  restart();
+})();
+</script>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<!-- DEALS CAROUSEL -->
+<div class="sc-deals-carousel-wrap">
+  <h2 class="sc-deals-title">Current Deals &amp; Promotions</h2>
+  <p class="sc-deals-subtitle">Special pricing on our most popular packages &#x26; limited time offers</p>
+
+  <div class="sc-deals-track-outer">
+    <button class="sc-deals-arrow prev" id="deals-prev" aria-label="Scroll left">&#8592;</button>
+    <button class="sc-deals-arrow next" id="deals-next" aria-label="Scroll right">&#8594;</button>
+
+    <div class="sc-deals-track" id="deals-track">
+
+      <!-- Card 1: Openserve 30/30 -->
+      <a href="/signup/" class="sc-deal-card">
+        <div class="sc-deal-header" style="background: linear-gradient(135deg, #003D9E 0%, #1565C0 100%);">
+          <span class="sc-deal-badge promo">PROMO</span>
+        </div>
+        <div class="sc-deal-body">
+          <img class="sc-deal-logo" src="/wp-content/uploads/2025/05/Openserve-e1748528611556.png" alt="Openserve">
+          <div class="sc-deal-speed">30 Mbps <span>Up &amp; Down</span></div>
+          <div class="sc-deal-price-block">
+            <div class="sc-deal-price-promo">R435<span class="sc-deal-pm">/pm</span></div>
+            <div class="sc-deal-price-was">R480</div>
+          </div>
+          <div class="sc-deal-note"><strong>First 2 months at promo rate</strong>, then R480/pm. Month-to-month.</div>
+          <span class="sc-deal-btn">Get This Deal ?</span>
+        </div>
+      </a>
+
+      <!-- Card 2: Octotel 25/25 -->
+      <a href="/signup/" class="sc-deal-card">
+        <div class="sc-deal-header" style="background: linear-gradient(135deg, #1a7a4a 0%, #2e9e66 100%);">
+          <span class="sc-deal-badge promo">PROMO</span>
+        </div>
+        <div class="sc-deal-body">
+          <img class="sc-deal-logo" src="/wp-content/uploads/2025/05/octotel-logo-v2-blue-orange-1-e1748528684490.png" alt="Octotel">
+          <div class="sc-deal-speed">25 Mbps <span>Up &amp; Down</span></div>
+          <div class="sc-deal-price-block">
+            <div class="sc-deal-price-promo">R475<span class="sc-deal-pm">/pm</span></div>
+            <div class="sc-deal-price-was">R515</div>
+          </div>
+          <div class="sc-deal-note"><strong>First 2 months at promo rate</strong>, then R515/pm. Month-to-month.</div>
+          <span class="sc-deal-btn">Get This Deal ?</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Telkom LTE 20Mbps -->
+      <a href="/lte-signup/" class="sc-deal-card">
+        <div class="sc-deal-header" style="background: linear-gradient(135deg, #003D9E 0%, #0277BD 100%);">
+          <span class="sc-deal-badge lte">LTE / 5G</span>
+        </div>
+        <div class="sc-deal-body">
+          <div class="sc-deal-speed">20 Mbps <span>Fixed Speed</span></div>
+          <div class="sc-deal-price-block">
+            <div class="sc-deal-price-reg">R589<span class="sc-deal-pm">/pm</span></div>
+          </div>
+          <div class="sc-deal-note">Uncapped with AUP. Speed continues at reduced rate after threshold. No fibre needed.</div>
+          <span class="sc-deal-btn">View Package ?</span>
+        </div>
+      </a>
+
+      <!-- Card 4: Openserve Web Connect 20/10 -->
+      <a href="/signup/" class="sc-deal-card">
+        <div class="sc-deal-header" style="background: linear-gradient(135deg, #283593 0%, #3949AB 100%);">
+          <span class="sc-deal-badge area">SELECTED AREAS</span>
+        </div>
+        <div class="sc-deal-body">
+          <img class="sc-deal-logo" src="/wp-content/uploads/2025/05/Openserve-e1748528611556.png" alt="Openserve">
+          <div class="sc-deal-speed">20/10 Mbps <span>Fibre</span></div>
+          <div class="sc-deal-price-block">
+            <div class="sc-deal-price-reg">R319<span class="sc-deal-pm">/pm</span></div>
+          </div>
+          <div class="sc-deal-note">Available in <strong>selected coverage areas</strong>. Our most affordable fibre option.</div>
+          <span class="sc-deal-btn">Check Coverage ?</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="sc-deals-dots" id="deals-dots">
+    <button class="sc-deals-dot active" aria-label="Deal 1"></button>
+    <button class="sc-deals-dot" aria-label="Deal 2"></button>
+    <button class="sc-deals-dot" aria-label="Deal 3"></button>
+    <button class="sc-deals-dot" aria-label="Deal 4"></button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var track = document.getElementById('deals-track');
+  var dots  = document.querySelectorAll('#deals-dots .sc-deals-dot');
+  if (!track) return;
+
+  document.getElementById('deals-prev').addEventListener('click', function() {
+    track.scrollBy({ left: -300, behavior: 'smooth' });
+  });
+  document.getElementById('deals-next').addEventListener('click', function() {
+    track.scrollBy({ left: 300, behavior: 'smooth' });
+  });
+
+  function updateDots() {
+    var cards = track.querySelectorAll('.sc-deal-card');
+    if (!cards.length || !dots.length) return;
+    var center = track.scrollLeft + track.offsetWidth / 2;
+    var active = 0, minDist = Infinity;
+    cards.forEach(function(card, i) {
+      var dist = Math.abs((card.offsetLeft + card.offsetWidth / 2) - center);
+      if (dist < minDist) { minDist = dist; active = i; }
+    });
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === active); });
+  }
+
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() {
+      var cards = track.querySelectorAll('.sc-deal-card');
+      if (cards[i]) track.scrollTo({ left: cards[i].offsetLeft - 16, behavior: 'smooth' });
+    });
+  });
+
+  var scrollTimer;
+  track.addEventListener('scroll', function() {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(updateDots, 80);
+  });
+  window.addEventListener('resize', function() { setTimeout(updateDots, 100); });
+  updateDots();
+})();
+</script>
+<!-- /wp:html -->
+
+<!-- wp:spacer {"height":"20px"} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:html -->
+<div class="sc-solutions-compact">
+  <div class="sc-solutions-head">
+    <h2>Explore Our Solutions</h2>
+    <p>Choose your service and get connected quickly.</p>
+  </div>
+
+  <div class="sc-solutions-grid">
+    <article class="sc-sol-card">
+      <h3>Fibre Internet</h3>
+      <p>View uncapped fibre packages available in your area.</p>
+      <a href="/fibre" class="sc-sol-btn">View Fibre Packages</a>
+    </article>
+
+    <article class="sc-sol-card">
+      <h3>LTE Solutions</h3>
+      <p>Browse nationwide LTE options for home, business, or backup connectivity.</p>
+      <a href="/lte-5g/" class="sc-sol-btn">View LTE Options</a>
+    </article>
+
+    <article class="sc-sol-card">
+      <h3>CCTV Installations</h3>
+      <p>Professional CCTV planning and installation services. Dedicated page coming soon.</p>
+      <a href="/cctv-installations/" class="sc-sol-btn sc-sol-btn-outline">CCTV Installations (Coming Soon)</a>
+    </article>
+  </div>
+</div>
+
+<style>
+.sc-solutions-compact{max-width:1120px;margin:24px auto 28px;padding:28px 24px;border-radius:20px;background:linear-gradient(180deg,#f8fbff 0%,#eef4ff 100%);border:1px solid rgba(43,108,176,.12)}
+.sc-solutions-head{text-align:center;max-width:700px;margin:0 auto 18px}
+.sc-solutions-head h2{margin:0 0 8px;font-size:clamp(1.7rem,3vw,2.2rem);color:#1a2d5a;line-height:1.15}
+.sc-solutions-head p{margin:0;color:#4a5568;font-size:1rem}
+.sc-solutions-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.sc-sol-card{background:#fff;border:1px solid rgba(43,108,176,.14);border-radius:14px;padding:18px 16px;box-shadow:0 8px 22px rgba(15,52,96,.06)}
+.sc-sol-card h3{margin:0 0 8px;color:#1a2d5a;font-size:1.2rem;line-height:1.2}
+.sc-sol-card p{margin:0 0 14px;color:#4a5568;font-size:.95rem;line-height:1.5;min-height:3.8em}
+.sc-sol-btn{display:inline-block;background:#2b6cb0;color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;padding:10px 14px;border-radius:10px;line-height:1.2}
+.sc-sol-btn:hover{background:#215387;color:#fff}
+.sc-sol-btn-outline{background:#fff;color:#2b6cb0;border:1px solid rgba(43,108,176,.45)}
+.sc-sol-btn-outline:hover{background:#f3f8ff;color:#215387}
+@media (max-width:980px){.sc-solutions-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.sc-solutions-compact{padding:20px 14px}.sc-solutions-grid{grid-template-columns:1fr}.sc-sol-card p{min-height:0}}
+</style>
+<!-- /wp:html -->
+
+<!-- wp:spacer {"height":"60px"} -->
+<div style="height:60px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:html -->
+<div class="sc-cta-block">
+  <h2>Ready to Experience Better Connectivity?</h2>
+  <p>Join thousands of satisfied customers nationwide who enjoy fast, reliable internet and exceptional technical support from Starcast Technologies.</p>
+  <div class="sc-cta-btns">
+    <a href="/fibre" class="primary">Get Started Today</a>
+    <a href="/on-site-technician/" class="outline">Contact Us</a>
+  </div>
+</div>
+<!-- /wp:html -->
+
+

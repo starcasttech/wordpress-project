@@ -12,6 +12,13 @@ function backuply_license(){
 
 	check_admin_referer('backuply_license_form', 'backuply_license_nonce');
 	
+	if(!empty($_POST['delete_backuply_license'])){
+		delete_option('backuply_license');
+		$backuply['license'] = [];
+		add_settings_error('backuply-notice', esc_attr('settings_updated'), esc_html__('The license has been deleted successfully.', 'backuply'), 'success');
+		return;
+	}
+	
 	$license = sanitize_key(backuply_optpost('backuply_license'));
 	
 	if(empty($license)) {
@@ -61,7 +68,7 @@ function backuply_license(){
 function backuply_license_page() {
 	global $backuply;
 	
-	if(!empty($_POST['save_backuply_license'])) {
+	if(!empty($_POST['save_backuply_license']) || !empty($_POST['delete_backuply_license'])){
 		backuply_license();
 	}
 	
@@ -92,8 +99,15 @@ function backuply_license_page() {
 							<input type="text" name="backuply_license" value="<?php echo (empty($backuply['license']) || empty($backuply['license']['license']) ? '' : esc_html($backuply['license']['license']))?>" size="30" placeholder="e.g. BAKLY-11111-22222-33333-44444" style="width:300px;"> &nbsp;
 							<?php wp_nonce_field( 'backuply_license_form','backuply_license_nonce' ); ?>
 							<input name="save_backuply_license" class="button button-primary" value="Update License" type="submit">
+							
+							<?php 
+							if(!empty($backuply['license']) && !empty($backuply['license']['license']) && strpos($backuply['license']['license'], 'BAKLY') === 0){
+								echo '<input name="delete_backuply_license" class="button" value="'.esc_html__('Delete License', 'backuply').'" type="submit">';
+							}
+							?>
 						</form>
-						<?php if(!empty($backuply['license']) && !empty($backuply['license']['expires'])){
+						<?php
+						if(!empty($backuply['license']) && !empty($backuply['license']['expires'])){
 
 							$expires = $backuply['license']['expires'];
 							$expires = substr($expires, 0, 4).'/'.substr($expires, 4, 2).'/'.substr($expires, 6);
@@ -109,13 +123,21 @@ function backuply_license_page() {
 						if(!empty($backuply['license']['quota']) && !empty($backuply['license']['quota'])){
 							echo '<div style="margin-top:3px;">Cloud Storage: '.size_format(esc_html($backuply['license']['quota'])).'</div>';
 						}
+						
+						if(defined('BACKUPLY_PRO') && !empty($backuply['license']['plan']) && $backuply['license']['plan'] == 'bcloud' && !empty($backuply['license']['active'])){
+							$soft_wp_lic = get_option('softaculous_pro_license', []);
+							
+							if(!empty($soft_wp_lic['license']) && !empty($soft_wp_lic['active'])){
+								echo '<div><span class="dashicons dashicons-info"></span>'.esc_html__('The Pro version will be updated using', 'backuply').' <strong><em>'.esc_html($soft_wp_lic['license']).'</em></strong></div>';
+							}
+						}
 
 						?>
 					</td>
 				</tr>
 
 				<tr>
-					<th align="left" valign="top">Backuply Cloud</th>
+					<th align="left" valign="top">Backuply Cloud Key</th>
 					<?php
 
 					echo '<td align="left">
@@ -126,7 +148,8 @@ function backuply_license_page() {
 									<input type="text" name="bcloud_key" value="'.(!empty($backuply['bcloud_key']) ? esc_attr($backuply['bcloud_key']) : '').'" size="30" placeholder="Your Backuply Cloud Key" style="width:300px;">
 									'.wp_nonce_field('backuply_cloud_form', 'backuply_cloud_nonce').'
 									<input name="save_backuply_cloud_key" class="button button-primary" value="Update Cloud Key" type="submit">
-									<p class="description">'.__('Backuply Cloud Key works in combination with Backuply License which you get when you buy a plan', 'backuply').'<br>'.__('The key is generated automatically, when you add Backuply Cloud location to a new site, for more info read this', 'backuply').' <a href="https://backuply.com/docs/backuply-cloud/how-to-get-backuply-cloud-key/#lost-backuply-clou-key" target="_blank">docs</a></p>
+									<p class="description">'.__('Backuply Cloud requires both a Backuply License and a Cloud Key.', 'backuply').'<br>'.__('The license comes with your plan, and the Cloud Key is automatically generated when you add a Backuply Cloud location for the first time on a site.', 'backuply').'<br/>
+									'.__('For more details, please refer to the', 'backuply').'&nbsp;<a href="https://backuply.com/docs/backuply-cloud/how-to-get-backuply-cloud-key/" target="_blank">'.__('documentation', 'backuply').'</a></p>
 								</label>
 							</form>
 							<label>

@@ -40,6 +40,8 @@ add_filter('body_class', function ($classes) {
 		$current_template = blocksy_manager()->get_current_template();
 
 		if (
+			$current_template
+			&&
 			strpos($current_template, 'elementor') !== false
 			&&
 			is_singular()

@@ -62,7 +62,7 @@ const OptionsRoot = ({
 						...internalValue,
 						[key]: newValue,
 					}))
-					$(input.current).change()
+					$(input.current).trigger('change')
 				}}
 				value={internalValue}
 				options={options}

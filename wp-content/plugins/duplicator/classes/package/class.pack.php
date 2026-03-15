@@ -1062,7 +1062,7 @@ class DUP_Package
             $file_name = $this->getLogFilename();
         }
 
-        $file_path = DUP_Settings::getSsdirPath() . "/$file_name";
+        $file_path = DUP_Settings::getSsdirLogsPath() . "/$file_name";
         DUP_Log::Trace("File path $file_path");
 
         if (file_exists($file_path)) {
@@ -1089,7 +1089,7 @@ class DUP_Package
 
     public function getLogUrl()
     {
-        return DUP_Settings::getSsdirUrl() . "/" . $this->getLogFilename();
+        return DUP_Settings::getSsdirLogsUrl() . "/" . $this->getLogFilename();
     }
 
     public function getArchiveFilename()
@@ -1457,7 +1457,7 @@ class DUP_Package
             }
 
             if (isset($post['dbcompat'])) {
-                $compatlist = is_array($post['dbcompat']) ? implode(',', $post['dbcompat']) : sanitize_text_field($post['dbcompat']);
+                $compatlist = DUP_Database::sanitizeCompatibilityMode($post['dbcompat']);
             } else {
                 $compatlist = '';
             }

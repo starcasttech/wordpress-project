@@ -12,6 +12,26 @@ function blocksy_output_companion_notice() {
 		return;
 	}
 
+	$allowed_screens = [
+		'edit-post',
+		'edit-category',
+		'edit-post_tag',
+		'upload',
+		'edit-page',
+		'edit-comments',
+		'themes',
+		'theme-install',
+		'plugins',
+		'plugin-install',
+		'users',
+	];
+
+	$screen = get_current_screen();
+
+	// blocksy_print($screen);
+	
+	if ( ! $screen || ! in_array( $screen->id, $allowed_screens, true ) ) return;
+
 	if (! current_user_can('activate_plugins') ) return;
 	if (get_option('dismissed-blocksy_plugin_notice', false)) return;
 

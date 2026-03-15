@@ -1291,121 +1291,118 @@ class WPvivid_Uploads_Scanner
         return $files;
     }
 
+    private function scan_oxygen_node($node, &$files, &$attachment_ids)
+    {
+        if (!is_array($node)) {
+            return;
+        }
+
+        if (isset($node['options']['original']['image_ids'])) {
+            $ids = $node['options']['original']['image_ids'];
+
+            if (is_string($ids)) {
+                $parts = explode(',', $ids);
+                foreach ($parts as $id) {
+                    $id = trim($id);
+                    if ($id !== '' && ctype_digit($id)) {
+                        $attachment_ids[] = (int)$id;
+                    }
+                }
+            } elseif (is_array($ids)) {
+                foreach ($ids as $id) {
+                    if (is_numeric($id)) {
+                        $attachment_ids[] = (int)$id;
+                    }
+                }
+            } elseif (is_numeric($ids)) {
+                $attachment_ids[] = (int)$ids;
+            }
+        }
+
+        if (isset($node['options']['original']['src']) && is_string($node['options']['original']['src'])) {
+            $files[] = $this->get_src($node['options']['original']['src']);
+        }
+
+        if (isset($node['options']['original']['background-image'])) {
+            $bg = $node['options']['original']['background-image'];
+
+            if (is_string($bg)) {
+                $files[] = $this->get_src($bg);
+            } elseif (is_array($bg)) {
+                $keys = array('url', 'src', 'value');
+                foreach ($keys as $k) {
+                    if (isset($bg[$k]) && is_string($bg[$k]) && $bg[$k] !== '') {
+                        $files[] = $this->get_src($bg[$k]);
+                        break;
+                    }
+                }
+
+                if (isset($bg['attachment_id']) && is_numeric($bg['attachment_id'])) {
+                    $attachment_ids[] = (int)$bg['attachment_id'];
+                }
+            }
+        }
+
+        foreach ($node as $v) {
+            if (is_string($v) && strpos($v, 'wp-content/uploads/') !== false) {
+                $files[] = $this->get_src($v);
+            } elseif (is_array($v)) {
+                $this->scan_oxygen_node($v, $files, $attachment_ids);
+            }
+        }
+
+        if (isset($node['children']) && is_array($node['children'])) {
+            foreach ($node['children'] as $child) {
+                $this->scan_oxygen_node($child, $files, $attachment_ids);
+            }
+        }
+    }
+
     public function get_media_from_oxygen( $post )
     {
-        $files=array();
-        $image_post_id_array=array();
-        $image_to_attach=get_post_meta( $post, '_ct_builder_json',true);
-        if (is_string($image_to_attach))
-        {
-            $metadata_array = json_decode($image_to_attach, true);
-            if(isset( $metadata_array['children'] ) && is_array( $metadata_array['children'] ) && count( $metadata_array['children'] ) > 0 )
-            {
-                foreach($metadata_array['children'] as $index=>$value)
-                {
-                    if(isset($value['children']))
-                    {
-                        foreach ($value['children'] as $index1 => $value1)
-                        {
-                            if(isset($value1['options']['original']['image_ids']))
-                            {
-                                $tmp_array = explode(',', $value1['options']['original']['image_ids']);
-                                foreach ($tmp_array as $image_post_id)
-                                {
-                                    $image_post_id_array[]=$image_post_id;
-                                }
-                            }
-                            if(isset($value1['options']['original']['src']))
-                            {
-                                $src=$this->get_src($value1['options']['original']['src']);
-                                array_push( $files, $src );
-                            }
-                            if(isset($value1['options']['original']['background-image']))
-                            {
-                                $src=$this->get_src($value1['options']['original']['background-image']);
-                                array_push( $files, $src );
-                            }
-                            if(isset($value1['children']))
-                            {
-                                foreach ($value1['children'] as $index2 => $value2)
-                                {
-                                    if(isset($value2['options']['original']['image_ids']))
-                                    {
-                                        $tmp_array = explode(',', $value2['options']['original']['image_ids']);
-                                        foreach ($tmp_array as $image_post_id)
-                                        {
-                                            $image_post_id_array[]=$image_post_id;
-                                        }
-                                    }
-                                    if(isset($value2['options']['original']['src']))
-                                    {
-                                        $src=$this->get_src($value2['options']['original']['src']);
-                                        array_push( $files, $src );
-                                    }
-                                    if(isset($value2['options']['original']['background-image']))
-                                    {
-                                        $src=$this->get_src($value2['options']['original']['background-image']);
-                                        array_push( $files, $src );
-                                    }
-                                    if(isset($value2['children']))
-                                    {
-                                        foreach ($value2['children'] as $index3 => $value3)
-                                        {
-                                            if(isset($value3['options']['original']['image_ids']))
-                                            {
-                                                $tmp_array = explode(',', $value3['options']['original']['image_ids']);
-                                                foreach ($tmp_array as $image_post_id)
-                                                {
-                                                    $image_post_id_array[]=$image_post_id;
-                                                }
-                                            }
-                                            if(isset($value3['options']['original']['src']))
-                                            {
-                                                $src=$this->get_src($value3['options']['original']['src']);
-                                                array_push( $files, $src );
-                                            }
-                                            if(isset($value3['options']['original']['background-image']))
-                                            {
-                                                $src=$this->get_src($value3['options']['original']['background-image']);
-                                                array_push( $files, $src );
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+        $files = array();
+        $attachment_ids = array();
+
+        $raw = get_post_meta($post, '_ct_builder_json', true);
+        if (!is_string($raw) || $raw === '') {
+            return array();
+        }
+
+        $tree = json_decode($raw, true);
+        if (!is_array($tree)) {
+            return array();
+        }
+
+        $this->scan_oxygen_node($tree, $files, $attachment_ids);
+
+        $attachment_ids = array_values(array_unique(array_filter($attachment_ids)));
+
+        foreach ($attachment_ids as $att_id) {
+            $meta = get_post_meta($att_id, '_wp_attachment_metadata', true);
+            if (!is_array($meta) || empty($meta['file'])) {
+                continue;
+            }
+
+            $files[] = $meta['file'];
+
+            $pos = strrpos($meta['file'], '/');
+            $base = ($pos !== false) ? substr($meta['file'], 0, $pos + 1) : '';
+
+            if (!empty($meta['original_image'])) {
+                $files[] = $base . $meta['original_image'];
+            }
+
+            if (!empty($meta['sizes']) && is_array($meta['sizes'])) {
+                foreach ($meta['sizes'] as $size) {
+                    if (!empty($size['file'])) {
+                        $files[] = $base . $size['file'];
                     }
                 }
             }
         }
 
-        if(!empty($image_post_id_array))
-        {
-            foreach ($image_post_id_array as $image_post_id)
-            {
-                $_wp_attachment_metadata = get_post_meta( $image_post_id, '_wp_attachment_metadata',true);
-                if(isset($_wp_attachment_metadata['file']))
-                {
-                    $files[] = $_wp_attachment_metadata['file'];
-                    $iPos = strripos($_wp_attachment_metadata['file'], '/');
-                    $relative_path = substr($_wp_attachment_metadata['file'], 0, $iPos+1);
-                    if(isset($_wp_attachment_metadata['original_image']))
-                    {
-                        $files[] = $relative_path.$_wp_attachment_metadata['original_image'];
-                    }
-                    if(isset($_wp_attachment_metadata['sizes']))
-                    {
-                        foreach ($_wp_attachment_metadata['sizes'] as $type)
-                        {
-                            if(isset($type['file']))
-                            {
-                                $files[] = $relative_path.$type['file'];
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        $files = array_values(array_unique(array_filter(array_map('trim', $files))));
+
         return $files;
     }
 

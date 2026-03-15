@@ -1,6 +1,8 @@
 import { getCurrentScreen } from '../helpers/current-screen'
 import { isTouchDevice } from '../helpers/is-touch-device'
 
+// Maybe try to check focus with :has(:focus) instead of document.activeElement.
+
 const tabbables = [
 	'button:enabled:not([readonly])',
 	'select:enabled:not([readonly])',
@@ -47,7 +49,19 @@ const handleKeydown = (e) => {
 		return
 	}
 
-	if (!focusableEls.includes(document.activeElement)) {
+	let isElFocusable = focusableEls.includes(document.activeElement)
+
+	// Firefox will make scrollable elements focusable, even if those are not
+	// tabbable usually.
+	if (
+		lockedElement.contains(document.activeElement) &&
+		document.activeElement.scrollHeight >
+			document.activeElement.clientHeight
+	) {
+		isElFocusable = true
+	}
+
+	if (!isElFocusable) {
 		firstFocusableEl.focus()
 		e.preventDefault()
 	}

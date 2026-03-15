@@ -364,7 +364,7 @@ class WPvivid_mail_report
                                         <tr>
                                             <td style="padding-top:40px;padding-bottom:0px;padding-left:40px;padding-right:40px;background-color:#ffffff;width:100%;text-align:left">
                                                 <p style="gdsherpa-regular;margin-top:0px;font-size:14px;line-height:24px;margin-bottom:0px">
-                                                    You receive this email because you have enabled the email notification feature in WPvivid plugin. Backup Details:
+                                                    You received this email because you have enabled the email notification feature in WPvivid plugin. Backup Details:
                                                 </p>
                                             </td>
                                         </tr>
@@ -460,7 +460,7 @@ class WPvivid_mail_report
                                         <tr>
                                             <td style="padding-top:20px;padding-bottom:0px;padding-left:40px;padding-right:40px;background-color:#ffffff;width:100%;text-align:left">
                                                 <p style="gdsherpa-regular;margin-top:0px;font-size:14px;line-height:24px;margin-bottom:0px">
-                                                    *WPvivid Backup plugin is a Wordpress plugin that it will help you back up your site to the leading cloud storage providers like Dropbox, Google Drive, Amazon S3, Microsoft OneDrive, FTP and SFTP.
+                                                    *WPvivid Backup plugin is a Wordpress plugin that will help you back up your site to the leading cloud storage providers like Dropbox, Google Drive, Amazon S3, Microsoft OneDrive, FTP and SFTP.
                                                 </p>
                                                 <p style="gdsherpa-regular;margin-top:0px;font-size:14px;line-height:24px;margin-bottom:0px">
                                                     Plugin Page: <a href="https://wordpress.org/plugins/wpvivid-backuprestore/">https://wordpress.org/plugins/wpvivid-backuprestore/</a>
@@ -812,7 +812,7 @@ class WPvivid_mail_report
                                         <tr>
                                             <td style="padding-top:40px;padding-bottom:0px;padding-left:40px;padding-right:40px;background-color:#ffffff;width:100%;text-align:left">
                                                 <p style="gdsherpa-regular;margin-top:0px;font-size:14px;line-height:24px;margin-bottom:0px">
-                                                    You receive this email because you have enabled the email notification feature in WPvivid plugin. Backup Details:
+                                                    You received this email because you have enabled the email notification feature in WPvivid plugin. Backup Details:
                                                 </p>
                                             </td>
                                         </tr>
@@ -908,7 +908,7 @@ class WPvivid_mail_report
                                         <tr>
                                             <td style="padding-top:20px;padding-bottom:0px;padding-left:40px;padding-right:40px;background-color:#ffffff;width:100%;text-align:left">
                                                 <p style="gdsherpa-regular;margin-top:0px;font-size:14px;line-height:24px;margin-bottom:0px">
-                                                    *WPvivid Backup plugin is a Wordpress plugin that it will help you back up your site to the leading cloud storage providers like Dropbox, Google Drive, Amazon S3, Microsoft OneDrive, FTP and SFTP.
+                                                    *WPvivid Backup plugin is a Wordpress plugin that will help you back up your site to the leading cloud storage providers like Dropbox, Google Drive, Amazon S3, Microsoft OneDrive, FTP and SFTP.
                                                 </p>
                                                 <p style="gdsherpa-regular;margin-top:0px;font-size:14px;line-height:24px;margin-bottom:0px">
                                                     Plugin Page: <a href="https://wordpress.org/plugins/wpvivid-backuprestore/">https://wordpress.org/plugins/wpvivid-backuprestore/</a>

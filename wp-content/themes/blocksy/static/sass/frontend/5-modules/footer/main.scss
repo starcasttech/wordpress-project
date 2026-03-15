@@ -1,14 +1,14 @@
-@import '../../1-helpers/functions';
+@use '../../1-helpers/functions';
 
-@import 'footer-container';
-@import 'footer-grid';
-@import 'divider';
-@import 'footer-reveal';
+@use 'footer-container';
+@use 'footer-grid';
+@use 'divider';
+@use 'footer-reveal';
 
 // footer elements
-@import 'common';
-@import 'copyright';
-@import 'socials';
+@use 'common';
+@use 'copyright';
+@use 'socials';
 
 // footer widgets
-@import 'widgets';
+@use 'widgets';

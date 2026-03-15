@@ -14,7 +14,7 @@ function loginizer_page_security(){
 	}
 	
 	if(!loginizer_is_premium() && count($_POST) > 0){
-		$lz_error['not_in_free'] = __('This feature is not available in the Free version. <a href="'.LOGINIZER_PRICING_URL.'" target="_blank" style="text-decoration:none; color:green;"><b>Upgrade to Pro</b></a>', 'loginizer');
+		$lz_error['not_in_free'] = __('This feature is not available in the Free version.', 'loginizer').' <a href="'.LOGINIZER_PRICING_URL.'" target="_blank" style="text-decoration:none; color:green;"><b>'.esc_html__('Upgrade to Pro', 'loginizer').'</b></a>';
 		return loginizer_page_security_T();
 	}
 
@@ -349,7 +349,7 @@ if(!defined('SITEPAD')){
 			<tr>
 				<td scope="row" valign="top" style="width:200px !important">
 					<label><?php echo __('Access Secretly Only', 'loginizer'); ?></label><br>
-					<span class="exp"><?php echo __('If set, then all Login URL\'s will still point to '.$loginizer['login_basename'].' and users will have to access the New Login Slug by typing it in the browser.', 'loginizer'); ?></span>
+					<span class="exp"><?php echo sprintf(__('If set, then all Login URL\'s will still point to %s and users will have to access the New Login Slug by typing it in the browser.', 'loginizer'), esc_html($loginizer['login_basename'])); ?></span>
 				</td>
 				<td>
 					<input type="checkbox" value="1" name="rename_login_secret" <?php echo lz_POSTchecked('rename_login_secret', (empty($loginizer['rename_login_secret']) ? false : true)); ?> />
@@ -575,7 +575,7 @@ function lz_test_wp_admin(){
 			<tr>
 				<td scope="row" valign="top" style="width:200px !important">
 					<label><?php echo __('I have setup .htaccess', 'loginizer'); ?></label><br>
-					<span class="exp"><?php echo __('You need to confirm that you have configured .htaccess as per <a href="'.LOGINIZER_DOCS.'Renaming_the_WP-Admin_Area" target="_blank">our guide</a> so that we can safely enable this feature', 'loginizer'); ?></span>
+					<span class="exp"><?php echo sprintf(__('You need to confirm that you have configured .htaccess as per %sour guide%s so that we can safely enable this feature', 'loginizer'), '<a href="'.LOGINIZER_DOCS.'Renaming_the_WP-Admin_Area" target="_blank">', '</a>'); ?></span>
 				</td>
 				<td>
 					<input type="checkbox" value="1" name="lz_wp_admin_docs" />
@@ -732,7 +732,7 @@ lz_wp_admin_msg_toggle();
 				</td>
 			</tr>
 		</table><br />
-		<i><?php echo __('Note: Username can be changed only for administrator users.'); ?></i>
+		<i><?php echo __('Note: Username can be changed only for administrator users.', 'loginizer'); ?></i>
 		<center><input name="save_lz_admin" class="button button-primary action" value="<?php echo __('Set the Username', 'loginizer'); ?>" type="submit" /></center>
 	
 		</div>

@@ -227,9 +227,11 @@ function blocksy_custom_comment_template($comment, $args, $depth) {
 							]
 						);
 					}
+
+				$label_tag = blocksy_get_theme_mod($prefix . '_comments_author_heading_tag', 'h4');
 				?>
 
-				<h4 class="ct-comment-author" <?php echo blocksy_schema_org_definitions('author'); ?>>
+				<<?php echo esc_html($label_tag); ?> class="ct-comment-author" <?php echo blocksy_schema_org_definitions('author'); ?>>
 					<?php
 						echo blocksy_html_tag(
 							'cite',
@@ -243,7 +245,7 @@ function blocksy_custom_comment_template($comment, $args, $depth) {
 							])
 						);
 					?>
-				</h4>
+				</<?php echo esc_html($label_tag); ?>>
 
 				<div class="ct-comment-meta-data">
 					<?php

@@ -92,7 +92,7 @@ class SupportToolkit
         //Last 10 backup build logs
         DUP_Package::by_status_callback(
             function (DUP_Package $package) use ($zip) {
-                $file_path = DUP_Settings::getSsdirPath() . "/" . $package->getLogFilename();
+                $file_path = DUP_Settings::getSsdirLogsPath() . "/" . $package->getLogFilename();
                 $zip->addFile($file_path);
             },
             [],

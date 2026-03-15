@@ -444,6 +444,13 @@ export const handleRowVariables = ({ itemId }) => ({
 		forceOutput: true,
 	},
 
+	header_row_padding: {
+		selector: assembleSelector(getRootSelectorFor({ itemId })),
+		type: 'spacing',
+		variable: 'row-padding',
+		responsive: true,
+	},
+
 	header_row_border_radius: {
 		selector: assembleSelector(getRootSelectorFor({ itemId })),
 		type: 'spacing',

@@ -1,4 +1,4 @@
-@import '../1-helpers/functions.scss';
+@use '../1-helpers/functions.scss';
 
 .wpforms-container:not(.wpforms-container-full) {
 	.wpforms-field-label {
@@ -59,7 +59,7 @@ div.ct-wpforms-inline-fields {
 		flex-wrap: wrap;
 		gap: var(--wpforms-inline-fields-gap, 20px);
 
-		@include media-breakpoint-down(sm) {
+		@include functions.media-breakpoint-down(sm) {
 			flex-direction: column;
 		}
 	}
@@ -77,7 +77,7 @@ div.ct-wpforms-inline-fields {
 		padding: 0;
 	}
 
-	@include media-breakpoint-down(sm) {
+	@include functions.media-breakpoint-down(sm) {
 		input,
 		select option {
 			text-align: center;

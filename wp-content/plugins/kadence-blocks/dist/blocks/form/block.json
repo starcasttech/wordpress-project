@@ -603,7 +603,8 @@
     "ktanimateadd": true,
     "ktanimatepreview": true,
     "ktanimateswipe": true,
-    "kbMetadata": true
+    "kbMetadata": true,
+    "inserter": false
   },
   "usesContext": [
     "postId"

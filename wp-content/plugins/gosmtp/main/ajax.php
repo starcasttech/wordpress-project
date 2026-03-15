@@ -14,6 +14,10 @@ function gosmtp_test_mail(){
 	
 	global $phpmailer;
 
+	if(!current_user_can('manage_options')){
+		wp_send_json_error(__('You do not have required access to do this action', 'gosmtp'));
+	}
+
 	// Check nonce
 	check_admin_referer( 'gosmtp_ajax' , 'gosmtp_nonce' );
 

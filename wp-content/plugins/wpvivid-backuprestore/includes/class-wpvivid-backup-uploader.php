@@ -830,6 +830,12 @@ class Wpvivid_BackupUploader
                 var exist_count=0;
                 plupload.each(files, function(file)
                 {
+                    if (/\.json$/i.test(file.name))
+                    {
+                        uploader.removeFile(file);
+                        return;
+                    }
+
                     var brepeat=false;
                     var file_list = jQuery('#wpvivid_upload_file_list span');
                     file_list.each(function (index, value)

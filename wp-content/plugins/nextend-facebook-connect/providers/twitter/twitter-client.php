@@ -322,4 +322,11 @@ class NextendSocialProviderTwitterClient extends NextendSocialAuth {
         return '';
     }
 
+    /**
+     * @return string
+     */
+    public function getConsumerKey() {
+        return $this->consumer_key;
+    }
+
 }

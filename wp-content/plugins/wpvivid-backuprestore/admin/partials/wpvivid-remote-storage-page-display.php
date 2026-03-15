@@ -270,6 +270,18 @@ function wpvivid_add_page_storage_list()
             }
         }
 
+        function wpvivid_toggle_sensitive_hint($input)
+        {
+            var $hint = $input.next('.wpvivid-sensitive-hint');
+            if($hint.length === 0) return;
+
+            if(($input.val() || '').length > 0){
+                $hint.hide();
+            }else{
+                $hint.show();
+            }
+        }
+
         function click_retrieve_remote_storage(id,type,name)
         {
             wpvivid_editing_storage_id = id;
@@ -291,14 +303,54 @@ function wpvivid_add_page_storage_list()
                     var jsonarray = jQuery.parseJSON(data);
                     if (jsonarray.result === 'success')
                     {
-                        /*jQuery('input:text[option=edit-'+jsonarray.type+']').each(function(){
+                        var sensitive_keys = ['host','server','password','access','secret'];
+
+                        jQuery('input:text[option=edit-'+jsonarray.type+'], textarea[option=edit-'+jsonarray.type+'], select[option=edit-'+jsonarray.type+']').each(function(){
                             var key = jQuery(this).prop('name');
-                            jQuery(this).val(jsonarray[key]);
+                            if(sensitive_keys.indexOf(key) !== -1 && jsonarray[key]){
+                                var $input = jQuery(this);
+                                $input.val('');
+                                $input.attr('placeholder','********');
+                                if ($input.next('.wpvivid-sensitive-hint').length === 0) {
+                                    $input.after(
+                                        '<div class="wpvivid-sensitive-hint" style="margin-top:4px;color:#999;font-size:12px;">' +
+                                        '⚠️ This value is hidden for security reasons. Please re-enter it to save changes.' +
+                                        '</div>'
+                                    );
+                                }
+                                $input.off('input.wpvividSensitive').on('input.wpvividSensitive', function(){
+                                    wpvivid_toggle_sensitive_hint(jQuery(this));
+                                });
+                                wpvivid_toggle_sensitive_hint($input);
+                            }
+                            else{
+                                jQuery(this).val(jsonarray[key]);
+                            }
                         });
+
                         jQuery('input:password[option=edit-'+jsonarray.type+']').each(function(){
                             var key = jQuery(this).prop('name');
-                            jQuery(this).val(jsonarray[key]);
-                        });*/
+                            if(sensitive_keys.indexOf(key) !== -1 && jsonarray[key]){
+                                var $input = jQuery(this);
+                                $input.val('');
+                                $input.attr('placeholder','********');
+                                if ($input.next('.wpvivid-sensitive-hint').length === 0) {
+                                    $input.after(
+                                        '<div class="wpvivid-sensitive-hint" style="margin-top:4px;color:#999;font-size:12px;">' +
+                                        '⚠️ This value is hidden for security reasons. Please re-enter it to save changes.' +
+                                        '</div>'
+                                    );
+                                }
+                                $input.off('input.wpvividSensitive').on('input.wpvividSensitive', function(){
+                                    wpvivid_toggle_sensitive_hint(jQuery(this));
+                                });
+                                wpvivid_toggle_sensitive_hint($input);
+                            }
+                            else{
+                                jQuery(this).val(jsonarray[key]);
+                            }
+                        });
+
                         jQuery('input:checkbox[option=edit-'+jsonarray.type+']').each(function() {
                             var key = jQuery(this).prop('name');
                             var value;

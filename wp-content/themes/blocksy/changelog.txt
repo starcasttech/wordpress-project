@@ -1,3 +1,147 @@
+2.1.32: 2026-02-27
+- Improvement: Ensure ct-options-scripts is not registered as dependency in customizer
+- Improvement: Related posts - make sure the grid styles are applied correctly
+
+2.1.31: 2026-02-26
+- Improvement: Don't load comments CSS on single product pages
+- Improvement: Improved logic for sanitizing post meta for single posts/pages
+- Improvement: Load archive cards CSS only on archive/posts loop pages
+- Improvement: Load pagination CSS only on pages where archive/posts loop is present
+- Improvement: Load related posts CSS only on single post pages
+
+2.1.30: 2026-02-20
+- Improvement: Post meta for single posts - correctly sanitize typography values
+
+2.1.29: 2026-02-18
+- Improvement: Post meta for single posts - correctly sanitize background values
+- Improvement: Single product gallery thumbnails - add option for changing image ratio
+
+2.1.28: 2026-02-12
+- Improvement: Improved integration with Visual Portfolio plugin
+- Improvement: Optimize selectors for entry content links type
+- Fix: Make sure the header main background options can be resetted
+
+2.1.27: 2026-01-30
+- Improvement: Core accordion block - unset the extra margin from `wp-block-accordion-heading`
+- Improvement: Improve compatibility with WordPress 6.9.1 to allow separated loading of core block assets
+
+2.1.26: 2026-01-29
+- Improvement: Improve stacking order of the sidebar elements
+- Improvement: Single Product  Page - AJAX Add to Cart correct signaling of context so that mini cart fragments are rendered correctly
+- Improvement: Single Product Page - better integration with WooCommerce Composite Products plugin
+- Improvement: Visual improvements of the WooCommerce notice on mobile devices
+- Fix: Page "freezes" if an off canvas link is opened in a new tab and then the browser back button is used to navigate back
+
+2.1.25: 2026-01-16
+- Improvement: General fixes and improvements
+
+2.1.24: 2026-01-15
+- Improvement: Custom post types - better parsing of the tax_query when detecting supported post types
+- Improvement: Header logo element - correctly clear settings panel if dark mode is enabled, not filled with a logo, and standard logo is deleted
+- Improvement: Search live results - pass REST API nonces only for logged in users
+- Improvement: Small RTL alignment issue for the avatar in the single post author box
+- Improvement: WooCommerce checkout shipping calculator - make sure the form drop down doesn't overflow from the content area
+- Fix: WooCommerce account page - make sure all native notices are correctly outputted
+
+2.1.23: 2025-12-11
+- Improvement: Ensure single product gallery slider is mounted fully when items visibility is calculated
+- Improvement: Header "Trigger" element - accessibility improvements
+
+2.1.22: 2025-11-27
+- Improvement: Better integration with Visual Portfolio plugin
+- Improvement: Header and footer builder - add possibility to view and remove unsupported items
+- Improvement: Live search - better integration with WooCommerce Dynamic Pricing and Discount Rules plugin
+- Improvement: Smarter detection of all compatible custom post types in case plugins register post types too late
+- Fix: Fix minor issue in Customizer notice modal when the companion plugin is not installed
+
+2.1.21: 2025-11-13
+- Improvement: Archive cards - add option for post meta comments to display even if posts has no comments
+- Improvement: Archive cards - don't apply `wpautop` when "full post" option is used for excerpt element
+- Improvement: Widgets admin screen - make sure the site background is applied to widget areas in order to keep a visual sync with frontend
+
+2.1.20: 2025-11-07
+- Improvement: Mini-cart - use the native WooCommerce `cart-empty` template when there are no products
+
+2.1.19: 2025-11-06
+- Improvement: Live search - added filter to set a minimum length of the search term
+- Improvement: Make sure the `global.css` file is not loaded on `wp-login` page
+- Improvement: WooCommerce archive - avoid duplicated actions in product cards
+
+2.1.18: 2025-10-30
+- Improvement: Better integration with EventKoi plugin
+- Improvement: Products archive card type 3 - make sure the pre-selected variations are properly initialized
+
+2.1.17: 2025-10-17
+- Improvement: General fixes and improvements
+
+2.1.16: 2025-10-16
+- Improvement: Don't add cart actions for the second add to cart form in the single product
+- Improvement: Header menu - restored correct default selection after menu deletion
+- Improvement: Make sure images with captions in product description don't go outside of viewport bounds in responsive mode
+- Improvement: Product archive price - correctly apply typography underline/strikethrough proprieties
+
+2.1.15: 2025-10-02
+- Improvement: Cleaner and smarter logic for enqueueing dynamic data styles in frontend
+- Improvement: Mobile menu - add option to keep the dropdown expanded if a child menu item is active
+
+2.1.14: 2025-09-25
+- Improvement: Add possibility to automatically detect child theme and apply Customizer string translations
+- Improvement: Correctly generate URL's of dynamic chunk dependencies
+
+2.1.13: 2025-09-18
+- Improvement: Better handling of back/forward cache in off-canvas module
+- Improvement: Correctly set `update_existing` flag when running CSV importer in WooCommerce
+- Improvement: Correctly validate customizer `ct-number` option
+- Improvement: Don't attempt to run the CSV importer while the WooCommerce onboarding screen is still displayed
+- Improvement: Make sure the pagination works properly in `[blocksy_posts]` shortcode when the `post_type` parameter is added
+- Improvement: Pagination "Load More" button - make sure the button border radius option applies the correct CSS variable
+
+2.1.12: 2025-09-11
+- Improvement: General fixes and improvements
+
+2.1.11: 2025-09-11
+- Fix: Search live results - make sure the product prices are displayed properly for simple products
+
+2.1.10: 2025-09-04
+- Improvement: Add to cart button element from single product - output correctly the CSS for customizer preview
+- Improvement: Add to cart button from single product - make sure the width option is applied correctly on mobile devices
+- Improvement: Better detection of current template in Elementor integration
+- Improvement: Correctly compute prefix on pages where SEO plugins trigger loops in wp_head
+- Improvement: Don't load outdated polyfills in the JS files served in modern browsers
+- Improvement: Header logo - add option to remove the link for site logo or site title
+- Improvement: Make sure the slider arrows are correctly placed in RTL mode
+- Improvement: Offcanvas cart - correctly prefix selectors to scope under multiple headers
+- Improvement: Proper detection of responsive slider option in customizer validator
+- Improvement: Search live results - better integration with WooCommerce Wholesale Prices plugin
+
+2.1.9: 2025-08-21
+- Improvement: I18n - Properly register theme mods keys for Polylang
+- Improvement: Infinite scroll - don't load next page when scrolled way past the end of the archive container
+- Improvement: Logo element - correctly detect SVG logo when taking default native logo
+- Improvement: Make sure "Customizer" toggles are correctly aligned in RTL mode when turned on
+- Improvement: Make sure the "Customizer" menu levels have the correct animation in RTL mode
+- Improvement: Make sure the WooCommerce "Coupon Form" option works correctly for the "Checkout" page
+- Improvement: Single product gallery - Correctly initialize zoom on first hover without hardcoded timeouts
+- Fix: Make sure all "Customizer" panel levels are accessible in RTL mode
+
+2.1.8: 2025-08-14
+- Improvement: Customizer - properly validate color values in customizer
+- Improvement: Customizer - properly validate responsive values in customizer
+- Improvement: Offcanvas - correctly handle focus lock when offcanvas is scrollable in Firefox
+- Improvement: Post comments - add option to change the comments number and comments author heading tag
+- Improvement: Update WooCommerce cart template to the latest version
+
+2.1.7: 2025-08-08
+- Improvement: Proper integration with Simply Static plugin
+- Improvement: Properly sanitize slider values from customizer
+
+2.1.6: 2025-08-07
+- Improvement: Better detect Stackable free version and apply needed styles
+- Improvement: Correctly sanitize HTML fields for users that don't have the unfiltered_html capability
+- Improvement: Improved Schema markup for comments
+- Improvement: Single product - smarter loading of image gallery JS assets
+- Fix: Archive cards - fix the "Read more" button position for Gutenberg layout type
+
 2.1.5: 2025-07-31
 - Improvement: Better integration with latest version of the Simply Static plugin
 - Improvement: Cart header element properly handle click when placed inside offcanvas panel

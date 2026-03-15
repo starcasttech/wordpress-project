@@ -140,13 +140,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 	if (trim($maybe_content_block) !== '') {
 		echo $maybe_content_block;
 	} else {
-		echo blocksy_html_tag(
-			'p',
-			[
-				'class' => 'woocommerce-mini-cart__empty-message'
-			],
-			esc_html__( 'No products in the cart.', 'blocksy' ),
-		);
+		wc_get_template( 'cart/cart-empty.php' );
 	}
 
 ?>

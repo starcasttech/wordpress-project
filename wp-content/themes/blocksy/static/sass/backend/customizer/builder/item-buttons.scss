@@ -1,3 +1,5 @@
+@use "variables";
+
 .ct-btn-remove {
 	display: flex;
 	align-items: center;
@@ -32,7 +34,7 @@
 		align-items: center;
 		justify-content: center;
 		width: 30px;
-		height: $builder-item-height;
+		height: variables.$builder-item-height;
 		cursor: pointer;
 		margin-left: auto;
 		margin-right: 10px;

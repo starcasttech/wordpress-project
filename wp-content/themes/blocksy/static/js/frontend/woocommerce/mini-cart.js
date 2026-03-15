@@ -71,6 +71,8 @@ export const mount = (el, { event }) => {
 				!document.querySelector('.quick-view-modal.active') &&
 				!document.querySelector('#woo-cart-panel.active') &&
 				((!document.body.classList.contains('single-product') &&
+					!document.body.classList.contains('woocommerce-cart') &&
+					!document.body.classList.contains('woocommerce-checkout') &&
 					cart.querySelector('[data-auto-open*="archive"]')) ||
 					(document.body.classList.contains('single-product') &&
 						cart.querySelector('[data-auto-open*="product"]')))

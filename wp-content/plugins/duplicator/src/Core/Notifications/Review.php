@@ -163,7 +163,7 @@ class Review
      */
     public static function getReviewUrl()
     {
-        return "https://wordpress.org/support/plugin/duplicator/reviews/?filter=5#new-post";
+        return "https://wordpress.org/support/plugin/duplicator/reviews/#new-post";
     }
 
     /**

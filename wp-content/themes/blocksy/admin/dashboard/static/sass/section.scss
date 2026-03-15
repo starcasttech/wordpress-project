@@ -11,6 +11,10 @@
 			padding-top: 60px;
 			padding: 70px 30px;
 			box-sizing: border-box;
+
+			> * {
+				position: relative;
+			}
 		}
 	}
 }

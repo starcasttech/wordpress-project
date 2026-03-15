@@ -159,6 +159,30 @@ $options = [
 				],
 			],
 
+			blocksy_rand_md5() => [
+				'type' => 'ct-condition',
+				'condition' => [ 'wp_customizer_current_view' => 'tablet|mobile' ],
+				'options' => [
+
+					'header_trigger_visibility' => [
+						'label' => __( 'Element Visibility', 'blocksy' ),
+						'type' => 'ct-visibility',
+						'design' => 'block',
+						'divider' => 'top:full',
+						'setting' => [ 'transport' => 'postMessage' ],
+						'allow_empty' => true,
+						'value' => blocksy_default_responsive_value([
+							'tablet' => true,
+							'mobile' => true,
+						]),
+						'choices' => blocksy_ordered_keys([
+							'tablet' => __( 'Tablet', 'blocksy' ),
+							'mobile' => __( 'Mobile', 'blocksy' ),
+						]),
+					],
+
+				],
+			],
 		],
 	],
 
@@ -624,31 +648,6 @@ $options = [
 				'value' => blocksy_spacing_value(),
 				'responsive' => true,
 				'divider' => 'top'
-			],
-
-		],
-	],
-
-	blocksy_rand_md5() => [
-		'type' => 'ct-condition',
-		'condition' => [ 'wp_customizer_current_view' => 'tablet|mobile' ],
-		'options' => [
-
-			'header_trigger_visibility' => [
-				'label' => __( 'Element Visibility', 'blocksy' ),
-				'type' => 'ct-visibility',
-				'design' => 'block',
-				'divider' => 'top:full',
-				'setting' => [ 'transport' => 'postMessage' ],
-				'allow_empty' => true,
-				'value' => blocksy_default_responsive_value([
-					'tablet' => true,
-					'mobile' => true,
-				]),
-				'choices' => blocksy_ordered_keys([
-					'tablet' => __( 'Tablet', 'blocksy' ),
-					'mobile' => __( 'Mobile', 'blocksy' ),
-				]),
 			],
 
 		],

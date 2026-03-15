@@ -832,6 +832,53 @@ class WPCode_Library {
 	}
 
 	/**
+	 * Search snippets in the library by keyword.
+	 *
+	 * @param string $keyword The keyword to search for.
+	 *
+	 * @return array Array of matching snippets.
+	 */
+	public function search_snippets( $keyword ) {
+		$data         = $this->get_data();
+		$all_snippets = isset( $data['snippets'] ) ? $data['snippets'] : array();
+		$results      = array();
+
+		if ( empty( $all_snippets ) || ! is_array( $all_snippets ) ) {
+			return $results;
+		}
+
+		foreach ( $all_snippets as $snippet ) {
+			$found = false;
+
+			// Search in title.
+			if ( isset( $snippet['title'] ) && stripos( $snippet['title'], $keyword ) !== false ) {
+				$found = true;
+			}
+
+			// Search in description/note.
+			if ( ! $found && isset( $snippet['note'] ) && stripos( $snippet['note'], $keyword ) !== false ) {
+				$found = true;
+			}
+
+			// Search in tags.
+			if ( ! $found && isset( $snippet['tags'] ) && is_array( $snippet['tags'] ) ) {
+				foreach ( $snippet['tags'] as $tag ) {
+					if ( stripos( $tag, $keyword ) !== false ) {
+						$found = true;
+						break;
+					}
+				}
+			}
+
+			if ( $found ) {
+				$results[] = $snippet;
+			}
+		}
+
+		return $results;
+	}
+
+	/**
 	 * Get the list of snippets that have updates available.
 	 * Checks on the fly using cached data.
 	 *

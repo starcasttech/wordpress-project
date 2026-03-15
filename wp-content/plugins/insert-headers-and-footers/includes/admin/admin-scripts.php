@@ -68,6 +68,12 @@ function wpcode_admin_scripts() {
 					'learn_more_text' => __( 'Learn more about Testing Mode', 'insert-headers-and-footers' ),
 					'learn_more_link' => wpcode_utm_url( 'https://wpcode.com/docs/testing-mode/', 'testing-mode-learn-more', $current_screen->id ),
 				),
+				'file_based_loading'       => array(
+					'title'       => __( 'File-Based Loading is a Premium Feature', 'insert-headers-and-footers' ),
+					'text'        => __( 'Upgrade to PRO today and load your snippets from files instead of the database. This improves performance and allows for easier version control of your code snippets.', 'insert-headers-and-footers' ),
+					'button_text' => __( 'Upgrade to PRO', 'insert-headers-and-footers' ),
+					'link'        => wpcode_utm_url( 'https://wpcode.com/lite/', 'settings', 'tab-general', 'file-based-loading' ),
+				),
 				'auth_needed_title_sync'   => __( 'Connect with WPCode Library to Sync Snippets', 'insert-headers-and-footers' ),
 				'auth_needed_text_sync'    => __( 'Before syncing your snippets, you must connect to WPCode Library, so we can securely access and update them.', 'insert-headers-and-footers' ),
 				'auth_needed_confirm'      => __( 'Connect with WPCode Library', 'insert-headers-and-footers' ),

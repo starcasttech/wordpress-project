@@ -497,6 +497,21 @@ $sdk_extensions      = isset( $sdk_data['extensions'] ) ? $sdk_data['extensions'
 				$('.' + pluginSlug + '-modal-opt-out').addClass('active');  // Show the modal.
 			});
 
+			// Also handle generic .opt-out clicks (fallback for plugin action links).
+			// This ensures clicks are caught even if the specific selector doesn't match.
+			$(document).on('click', '.opt-out', function (e) {
+				var $clickedElement = $(this);
+				var $parentRow = $clickedElement.closest('tr');
+				var rowSlug = $parentRow.attr('data-slug');
+				
+				// Only handle if it's in the plugin row for this plugin.
+				if (rowSlug === pluginSlug) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.' + pluginSlug + '-modal-opt-out').addClass('active');  // Show the modal.
+				}
+			});
+
 			// Close the modal and reload the page when the "Done" button is clicked.
 			$(document).on('click', '.' + pluginSlug + '-modal .' + pluginSlug + '-continue-button', function (event) {
 				event.preventDefault();
@@ -558,6 +573,8 @@ $sdk_extensions      = isset( $sdk_data['extensions'] ) ? $sdk_data['extensions'
 
 			// Function to send an AJAX request for opt-in/out changes.
 			function send_optin_request(el, setting_name, setting_option_value) {
+				var nonceValue = '<?php echo isset( $loginpress_optout_nonce ) ? esc_js( $loginpress_optout_nonce ) : ''; ?>';
+
 				$.ajax({
 					type: 'POST',
 					url: ajaxurl,  // Use WordPress AJAX URL.
@@ -565,17 +582,7 @@ $sdk_extensions      = isset( $sdk_data['extensions'] ) ? $sdk_data['extensions'
 						action: 'loginpress_optout_yes',  // The action to trigger.
 						setting_name: setting_name,  // The setting name (option).
 						setting_value: setting_option_value,  // The value (opt-in or opt-out).
-						optout_nonce: 
-						'
-						<?php
-						/**
-						 * Output security nonce.
-						 *
-						 * @phpstan-ignore-next-line
-						 */
-						echo isset( $loginpress_optout_nonce ) ? esc_js( $loginpress_optout_nonce ) : '';
-						?>
-						',  // Security nonce.
+						optout_nonce: nonceValue,  // Security nonce.
 					},
 					beforeSend: function () {
 						if (setting_option_value == '0') {
@@ -587,8 +594,8 @@ $sdk_extensions      = isset( $sdk_data['extensions'] ) ? $sdk_data['extensions'
 						$('.' + pluginSlug + '-modal .wpb-' + setting_name + '-switch-feedback').show().html('<span class="wpb-ajax-spinner"></span>');
 						el.closest('.communication-container').addClass('wpb-loading');
 					},
-					error: function (error) {
-						// Handle error here (currently empty).
+					error: function (xhr, status, error) {
+						//error handling.
 					},
 					success: function (response) {
 						$('#' + pluginSlug + '_' + setting_name).val(setting_option_value);

@@ -3,9 +3,9 @@ Contributors: nextendweb
 Tags: social login, facebook, google, twitter, x, linkedin, register, login, social, nextend facebook connect, social sign in
 Donate link: https://www.facebook.com/nextendweb
 Requires at least: 4.9
-Tested up to: 6.8.3
-Stable tag: 3.1.22
-Requires PHP: 7.0
+Tested up to: 6.9.1
+Stable tag: 3.1.23
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,14 @@ Using the Pro Addon you can set where the login buttons should appear on the Reg
 4. The Settings page of the Facebook provider.
 
 == Changelog ==
+
+= 3.1.23 =
+* Improvement: Increased the minimum required PHP version to 7.4.
+* Improvement: To prevent redundancy and outdated in-plugin guides, the Getting Started instructions within the plugin now link directly to the relevant provider documentation, which can be updated more frequently.
+* Improvement: Added Hindi translation.
+* Improvement: Introduced the [nsl_register_flow_page](https://social-login.nextendweb.com/documentation/for-developers/hooks/#nsl-register-flow-page) filter, allowing developers to override the page ID selected in the [Page for register flow](https://social-login.nextendweb.com/documentation/settings/general-settings/#register-flow) setting.
+* Fix: Shortcode headings are no longer rendered when no buttons are displayed.
+
 
 = 3.1.22 =
 * Improvement: Security improvement.

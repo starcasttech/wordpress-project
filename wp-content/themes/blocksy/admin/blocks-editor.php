@@ -84,10 +84,17 @@ add_action(
 			);
 		}
 
+		$script_deps = ['wp-plugins', 'wp-edit-post', 'wp-element', 'wp-hooks'];
+
+		// ct-options-scripts is not registered in the customizer.
+		if (get_current_screen()->base !== 'customize') {
+			$script_deps[] = 'ct-options-scripts';
+		}
+
 		wp_enqueue_script(
 			'ct-main-editor-scripts',
 			get_template_directory_uri() . '/static/bundle/editor.js',
-			['wp-plugins', 'wp-edit-post', 'wp-element', 'wp-hooks', 'ct-options-scripts'],
+			$script_deps,
 			$theme->get('Version'),
 			true
 		);

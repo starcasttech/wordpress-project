@@ -14,7 +14,7 @@ function loginizer_page_2fa(){
 	}
 	
 	if(!loginizer_is_premium() && count($_POST) > 0){
-		$lz_error['not_in_free'] = __('This feature is not available in the Free version. <a href="'.LOGINIZER_PRICING_URL.'" target="_blank" style="text-decoration:none; color:green;"><b>Upgrade to Pro</b></a>', 'loginizer');
+		$lz_error['not_in_free'] = __('This feature is not available in the Free version.', 'loginizer').'<a href="'.LOGINIZER_PRICING_URL.'" target="_blank" style="text-decoration:none; color:green;"><b>'.esc_html__('Upgrade to Pro', 'loginizer').'</b></a>';
 		return loginizer_page_2fa_T();
 	}
 
@@ -282,7 +282,7 @@ function loginizer_page_2fa_T(){
 	
 	// Saved ?
 	if(!empty($GLOBALS['lz_saved'])){
-		echo '<div id="message" class="updated"><p>'. __(is_string($GLOBALS['lz_saved']) ? $GLOBALS['lz_saved'] : 'The settings were saved successfully', 'loginizer'). '</p></div><br />';
+		echo '<div id="message" class="updated"><p>'. (is_string($GLOBALS['lz_saved']) ? $GLOBALS['lz_saved'] : __('The settings were saved successfully', 'loginizer')). '</p></div><br />';
 	}
 	
 	// Any errors ?
@@ -490,7 +490,7 @@ lz_roles_handle();
 					<tr>
 						<td scope="row" valign="top" style="width:350px !important">
 							<label for="msg_otp_app"><?php echo __('OTP via APP','loginizer'); ?></label><br />
-							<?php echo __('Default: <em>&quot;' . $loginizer['2fa_d_msg']['otp_app']. '&quot;</em>', 'loginizer'); ?>
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . $loginizer['2fa_d_msg']['otp_app']. '&quot;</em>'; ?>
 						</td>
 						<td>
 							<input type="text" size="50" value="<?php echo esc_attr(empty($saved_msgs['otp_app']) ? '' : $saved_msgs['otp_app']); ?>" name="msg_otp_app" id="msg_otp_app" style="width:auto !important;" />
@@ -500,7 +500,7 @@ lz_roles_handle();
 					<tr>
 						<td scope="row" valign="top" style="width:350px !important">
 							<label for="msg_otp_email"><?php echo __('OTP via Email','loginizer'); ?></label><br />
-							<?php echo __('Default: <em>&quot;' . $loginizer['2fa_d_msg']['otp_email']. '&quot;</em>', 'loginizer'); ?>
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . $loginizer['2fa_d_msg']['otp_email']. '&quot;</em>'; ?>
 						</td>
 						<td>
 							<input type="text" size="50" value="<?php echo esc_attr(empty($saved_msgs['otp_email']) ? '' : $saved_msgs['otp_email']); ?>" name="msg_otp_email" id="msg_otp_email" style="width:auto !important;" />
@@ -510,7 +510,7 @@ lz_roles_handle();
 					<tr>
 						<td scope="row" valign="top" style="width:350px !important">
 							<label for="msg_otp_field"><?php echo __('Title for OTP field','loginizer'); ?></label><br />
-							<?php echo __('Default: <em>&quot;' . $loginizer['2fa_d_msg']['otp_field']. '&quot;</em>', 'loginizer'); ?>
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . $loginizer['2fa_d_msg']['otp_field']. '&quot;</em>'; ?>
 						</td>
 						<td>
 							<input type="text" size="50" value="<?php echo esc_attr(empty($saved_msgs['otp_field']) ? '' : $saved_msgs['otp_field']); ?>" name="msg_otp_field" id="msg_otp_field" style="width:auto !important;" />
@@ -520,7 +520,7 @@ lz_roles_handle();
 					<tr>
 						<td scope="row" valign="top" style="width:350px !important">
 							<label for="msg_otp_question"><?php echo __('Title for Security Question','loginizer'); ?></label><br />
-							<?php echo __('Default: <em>&quot;' . $loginizer['2fa_d_msg']['otp_question']. '&quot;</em>', 'loginizer'); ?>
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . $loginizer['2fa_d_msg']['otp_question']. '&quot;</em>'; ?>
 						</td>
 						<td>
 							<input type="text" size="50" value="<?php echo esc_attr(empty($saved_msgs['otp_question']) ? '' : $saved_msgs['otp_question']); ?>" name="msg_otp_question" id="msg_otp_question" style="width:auto !important;" />
@@ -530,7 +530,7 @@ lz_roles_handle();
 					<tr>
 						<td scope="row" valign="top" style="width:350px !important">
 							<label for="msg_otp_answer"><?php echo __('Title for Security Answer','loginizer'); ?></label><br />
-							<?php echo __('Default: <em>&quot;' . $loginizer['2fa_d_msg']['otp_answer']. '&quot;</em>', 'loginizer'); ?>
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . $loginizer['2fa_d_msg']['otp_answer']. '&quot;</em>'; ?>
 						</td>
 						<td>
 							<input type="text" size="50" value="<?php echo esc_attr(empty($saved_msgs['otp_answer']) ? '' : $saved_msgs['otp_answer']); ?>" name="msg_otp_answer" id="msg_otp_answer" style="width:auto !important;" />

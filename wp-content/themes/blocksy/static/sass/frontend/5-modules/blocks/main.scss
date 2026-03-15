@@ -1,8 +1,8 @@
-@import 'search';
-@import 'gallery';
-@import 'query-loop';
-@import 'contact-info';
-@import 'dynamic-data';
+@use 'search';
+@use 'gallery';
+@use 'query-loop';
+@use 'contact-info';
+@use 'dynamic-data';
 
 
 .ct-widget {

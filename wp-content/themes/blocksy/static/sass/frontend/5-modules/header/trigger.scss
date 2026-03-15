@@ -2,11 +2,14 @@
 
 	// icon type
 	.ct-icon {
-		transition: none;
 
-		rect {
-			transform-origin: 50% 50%;
-			transition: all 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+		&[data-type] {
+			transition: none;
+
+			rect {
+				transform-origin: 50% 50%;
+				transition: all 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+			}
 		}
 
 		// type 2
@@ -48,7 +51,7 @@
 		}
 	}
 
-	&[aria-expanded="true"] .ct-icon {
+	&[aria-expanded="true"] .ct-icon[data-type] {
 		rect {
 			&:nth-child(1), &:nth-child(3) {
 				width: 18px;

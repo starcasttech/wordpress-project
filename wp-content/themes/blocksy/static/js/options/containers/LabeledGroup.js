@@ -3,13 +3,13 @@ import {
 	useMemo,
 	useRef,
 	useEffect,
-	useContext,
+	useContext
 } from '@wordpress/element'
 import OptionsPanel from '../OptionsPanel'
 import { normalizeCondition, matchValuesWithCondition } from 'match-conditions'
 import {
 	useDeviceManagerState,
-	useDeviceManagerActions,
+	useDeviceManagerActions
 } from '../../customizer/components/useDeviceManager'
 import { capitalizeFirstLetter, optionWithDefault } from '../GenericOptionType'
 import deepEqual from 'deep-equal'
@@ -25,7 +25,7 @@ const SingleChoice = ({
 	onChange,
 	value,
 	hasRevertButton,
-	parentValue,
+	parentValue
 }) => {
 	return (
 		<div key={singleChoice.id} className="ct-labeled-group-item">
@@ -38,8 +38,8 @@ const SingleChoice = ({
 				options={{
 					[singleChoice.id]: {
 						...groupOption.options[singleChoice.id],
-						design: 'none',
-					},
+						design: 'none'
+					}
 				}}
 				value={value}
 				hasRevertButton={hasRevertButton}
@@ -55,7 +55,7 @@ const LabeledGroup = ({
 	onChange,
 	purpose,
 	parentValue,
-	hasRevertButton,
+	hasRevertButton
 }) => {
 	const { currentView } = useDeviceManagerState()
 	const { setDevice } = useDeviceManagerActions()
@@ -66,7 +66,7 @@ const LabeledGroup = ({
 		if (!valueForCondition) {
 			valueForCondition = {
 				...value,
-				wp_customizer_current_view: currentView,
+				wp_customizer_current_view: currentView
 			}
 		}
 
@@ -76,14 +76,14 @@ const LabeledGroup = ({
 					? matchValuesWithCondition(
 							normalizeCondition(singleChoice.condition),
 							valueForCondition
-					  )
+						)
 					: true
 		)
 
 		let maybeLabel = getOptionLabelFor({
 			id: groupOption.id,
 			option: groupOption,
-			values: value,
+			values: value
 		})
 
 		if (totalAmountofMatched.length === 0) {
@@ -102,8 +102,8 @@ const LabeledGroup = ({
 
 							...(groupOption.divider
 								? { divider: groupOption.divider }
-								: {}),
-						},
+								: {})
+						}
 					}}
 					value={value}
 					hasRevertButton={hasRevertButton}
@@ -129,7 +129,7 @@ const LabeledGroup = ({
 								groupOption.options[id].value,
 								optionWithDefault({
 									value: value[id],
-									option: groupOption.options[id],
+									option: groupOption.options[id]
 								})
 							)
 						)}
@@ -147,17 +147,16 @@ const LabeledGroup = ({
 													].value
 												)
 												r()
-											})
+											}, 10)
 										})
 									})
 								},
 								Promise.resolve()
 							)
-						}}
-					>
+						}}>
 						<svg fill="currentColor" viewBox="0 0 35 35">
-							<path d="M17.5,26L17.5,26C12.8,26,9,22.2,9,17.5v0C9,12.8,12.8,9,17.5,9h0c4.7,0,8.5,3.8,8.5,8.5v0C26,22.2,22.2,26,17.5,26z"/>
-							<polygon points="34.5,30.2 21.7,17.5 34.5,4.8 30.2,0.5 17.5,13.3 4.8,0.5 0.5,4.8 13.3,17.5 0.5,30.2 4.8,34.5 17.5,21.7 30.2,34.5 "/>
+							<path d="M17.5,26L17.5,26C12.8,26,9,22.2,9,17.5v0C9,12.8,12.8,9,17.5,9h0c4.7,0,8.5,3.8,8.5,8.5v0C26,22.2,22.2,26,17.5,26z" />
+							<polygon points="34.5,30.2 21.7,17.5 34.5,4.8 30.2,0.5 17.5,13.3 4.8,0.5 0.5,4.8 13.3,17.5 0.5,30.2 4.8,34.5 17.5,21.7 30.2,34.5 " />
 						</svg>
 					</button>
 

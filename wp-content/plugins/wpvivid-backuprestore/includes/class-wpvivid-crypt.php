@@ -57,6 +57,10 @@ class WPvivid_crypt
         $rsa = new Crypt_RSA();
         $rsa->loadKey($this->public_key);
         $key=$rsa->decrypt($key);
+        if ($key === false || empty($key))
+        {
+            return false;
+        }
         $rij = new Crypt_Rijndael();
         $rij->setKey($key);
         return $rij->decrypt($data);

@@ -4,7 +4,7 @@ Tags: security, access, admin, Loginizer, login, logs, ban ip, failed login, ip,
 Requires at least: 3.0
 Tested up to: 6.9
 Requires PHP: 5.5
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 License: LGPLv2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -58,6 +58,7 @@ Pro Features :
 * Limit Concurrent Logins - It prevents user to login from different devices concurrently, you can define how many devices you want to allow, and how you want to restrict the user when concurrent limit is reached.
 * Social Login - Users can login or register with their Google, Github, Facebook, X (Twitter), Discord, Twitch, LinkedIn, Microsoft with support for WooCommerce and Ultimate Member.
 * Key Less Social Login - Use Loginizer's Social Auth for easy key less Social login configuration, now supports Google, GitHub, X, LinkedIn more to be added later
+* Country Blocking - Block IPs from specific countries to restrict access to your website.
 
 Features in Loginizer include:
 
@@ -85,6 +86,12 @@ That's it. You're done!
 3. Loginizer Brute Force Settings page
 
 == Changelog ==
+
+= 2.0.5 =
+* [Feature Pro] Country Blocking: Block IPs from specific countries to restrict access to your website.
+* [Improvement Pro] Captcha Compatibility: Added Captcha support for Contact Form 7 and WPForms.
+* [Improvement] Brute Force Optimization: Improved blacklist/whitelist handling for up to 50% better performance.
+* [Bug-Fix] There was an issue with Captcha for WooCommerce Block checkout, that has been fixed.
 
 = 2.0.4 =
 * [Improvement] Loginizer now supports Captcha for Block based WooCommerce checkout.

@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import ctEvents from 'ct-events'
 
-import cachedFetch from 'ct-wordpress-helpers/cached-fetch'
+import cachedFetch from '@creative-themes/wordpress-helpers/cached-fetch'
 
 let originalImageUpdate = null
 

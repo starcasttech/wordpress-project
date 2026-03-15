@@ -1,5 +1,7 @@
+@use "../../../1-helpers/functions";
+
 .ct-woo-account {
-	@include media-breakpoint-up(md) {
+	@include functions.media-breakpoint-up(md) {
 		display: flex;
 	}
 }
@@ -12,11 +14,11 @@
 	box-shadow: var(--theme-box-shadow);
 	background: var(--account-nav-background-initial-color, var(--theme-palette-color-8));
 
-	@include media-breakpoint-down(sm) {
+	@include functions.media-breakpoint-down(sm) {
 		margin-bottom: 30px;
 	}
 
-	@include media-breakpoint-up(md) {
+	@include functions.media-breakpoint-up(md) {
 		width: 20%;
 		min-width: 220px;
 		margin-inline-end: 30px;
@@ -124,7 +126,7 @@ th.woocommerce-orders-table__header-order-actions {
 
 td.download-file .button,
 td.woocommerce-orders-table__cell-order-actions .button {
-	@include media-breakpoint-up(md) {
+	@include functions.media-breakpoint-up(md) {
 		width: 100%;
 	}
 

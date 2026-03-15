@@ -99,7 +99,11 @@ background: linear-gradient(61deg, rgba(56,120,255,1) 0%, rgba(98,178,255,1) 100
 	</a>
 	
 	<?php
-	if(empty($backuply['bcloud_key'])){
+	// The promo should be only visible to Free versions and SOFTWP license users
+	if(
+		empty($backuply['license']) || 
+		(!empty($backuply['license']['license']) && strpos($backuply['license']['license'], 'BAKLY') !== 0)
+	){
 		echo '<div class="backuply-promotion-content backuply-cloud-banner" style="background-color:#000;">
 			<div class="backuply-cloud-gtext"><div>Backuply</div> <div>Cloud</div></div>
 			<div class="bcloud-banner-content">
@@ -1819,7 +1823,7 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 		</div>
 		<div class="inside">
 			<div class="backuply-settings-block">
-				<table class="table" style="width:100%;">
+				<table class="table" style="width:100%;" id="backuply-history-table">
 					<thead>
 						<tr>
 							<th style="width:3%;text-align:left;">&nbsp;</th>
@@ -1835,9 +1839,13 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 					</thead>
 					<tbody>
 					<?php
-					$backup_infos = backuply_get_backups_info();
+					$history_page = !empty($_GET['history_page']) ? (int)$_GET['history_page'] : 0;
+					$backups_per_page = 20;
+					$history_offset = ($history_page - 1)*$backups_per_page;
+					
+					$backup_infos = backuply_get_backups_info_data($history_offset, $backups_per_page);
 
-					foreach($backup_infos as $count => $all_info){
+					foreach($backup_infos['backup_infos'] as $count => $all_info){
 						$backup_loc_name = 'Local';
 						$backup_protocol = 'local';
 						$backup_server_host = '-';
@@ -1952,6 +1960,41 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 					</tbody>
 				</table>
 			</div>
+			
+			<?php 
+			$page_count = ceil($backup_infos['total_backups']/$backups_per_page);
+			
+			if(!empty($page_count) && $page_count > 1){
+			?>
+			<div class="backuply-tablenav">
+				<div class="backuply-tablenav-pages" id="backuply-pagination">
+					<div class="backuply-total-items">Total Backups: <?php echo esc_html($backup_infos['total_backups']);?></div>
+					<div class="backuply-pagination-controls">
+					<?php
+						if(empty($history_page) || $history_page < 1){
+							$history_page = 1;
+						} else if($history_page > $page_count){
+							$history_page = $page_count;
+						}
+
+						echo '<div class="backuply-pagination-links">
+							<div class="backuply-pagination-links">
+								<a class="button backuply-prev-first-page" '.($history_page  <= 1 ? 'disabled' : 'href="'.esc_url(admin_url('?page=backuply#backuply-history')).'"').'>‹‹</a>
+								
+								<a class="button backuply-prev-page" '.($history_page <= 1 ? 'disabled' : 'href="'.esc_url(admin_url('?page=backuply&history_page='.($history_page-1).'#backuply-history')).'"').'>‹</a>
+								<span class="backuply-pagination-info"> Page '.esc_html($history_page).' of '.esc_html($page_count).' </span>
+								<a class="button backuply-next-page" '.(($page_count <= 1 || $history_page == $page_count) ? 'disabled' : 'href="'.esc_url(admin_url('?page=backuply&history_page='.($history_page+1).'#backuply-history')).'"').'>›</a>
+								<a class="button backuply-last-next-page" '.(($page_count <= 1 || $history_page == $page_count) ? 'disabled' : 'href="'.esc_url(admin_url('?page=backuply&history_page='.($page_count).'#backuply-history')).'"').'>››</a>
+								<form method="GET" action="'.esc_url(admin_url('?page=backuply#backuply-history')).'">
+								<input type="hidden" value="backuply" name="page"/>
+								<span class="backuply-pagination-input">Go to <input type="number" name="history_page" min="1" max="'.esc_attr($page_count).'" value="'.esc_attr($history_page).'"> Page</span>
+								</form>
+								</div></div>';
+					?>
+					</div>
+				</div>
+			</div>
+			<?php } ?>
 		</div>
 	</div>
 

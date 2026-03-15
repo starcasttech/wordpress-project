@@ -1,4 +1,7 @@
 <?php
+/**
+ * Post meta options.
+ */
 
 $options = [
 	[

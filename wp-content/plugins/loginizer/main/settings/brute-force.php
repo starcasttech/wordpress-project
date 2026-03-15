@@ -284,7 +284,7 @@ function loginizer_page_brute_force(){
 			echo '<div id="message" class="updated fade"><p>'
 					. __('Blacklist IP range added successfully', 'loginizer')
 					. '</p></div><br />';
-			
+
 		}
 		
 		if(!empty($error)){
@@ -318,7 +318,7 @@ function loginizer_page_brute_force(){
 			$whitelist[$newid]['time'] = time();
 			
 			update_option('loginizer_whitelist', $whitelist);
-			
+
 			echo '<div id="message" class="updated fade"><p>'
 					. __('Whitelist IP range added successfully', 'loginizer')
 					. '</p></div><br />';
@@ -386,7 +386,7 @@ function loginizer_page_brute_force(){
 						update_option('loginizer_'.$lz_csv_type, $loginizer[$lz_csv_type]);
 						
 						echo '<div id="message" class="updated fade"><p>'
-								. __('Imported '.ucfirst($lz_csv_type).' IP range(s) successfully', 'loginizer')
+								. sprintf(__('Imported %s IP range(s) successfully', 'loginizer'), esc_html(ucfirst($lz_csv_type)))
 								. '</p></div><br />';
 						
 					}
@@ -684,7 +684,7 @@ function loginizer_page_brute_force(){
 			<tr>
 				<th scope="row" valign="top"><label for="max_lockouts"><?php echo __('Max Lockouts','loginizer'); ?></label></th>
 				<td>
-					<input type="text" size="3" value="<?php echo lz_optpost('max_lockouts', $loginizer['max_lockouts']); ?>" name="max_lockouts" id="max_lockouts" /> <?php echo __('','loginizer'); ?> <br />
+					<input type="text" size="3" value="<?php echo lz_optpost('max_lockouts', $loginizer['max_lockouts']); ?>" name="max_lockouts" id="max_lockouts" /> <br />
 				</td>
 			</tr>
 			<tr>
@@ -949,7 +949,7 @@ function lz_shift_check_all(check_class){
 	
 	<br />
 	
-	<div id="" class="postbox">
+	<div id="lz-whitelist-ip" class="postbox">
 	
 		<div class="postbox-header">
 		<h2 class="hndle ui-sortable-handle">
@@ -1064,42 +1064,42 @@ function lz_shift_check_all(check_class){
 						<th scope="row" valign="top"><label for="msg_inv_userpass"><?php echo __('Failed Login Attempt','loginizer'); ?></label></th>
 						<td>
 							<input type="text" size="25" value="<?php echo (empty($saved_msgs['inv_userpass']) ? '' : esc_attr($saved_msgs['inv_userpass'])); ?>" name="msg_inv_userpass" id="msg_inv_userpass" />
-							<?php echo __('Default: <em>&quot;' . $loginizer['d_msg']['inv_userpass']. '&quot;</em>', 'loginizer'); ?><br />
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . $loginizer['d_msg']['inv_userpass']. '&quot;</em>'; ?><br />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row" valign="top"><label for="msg_ip_blacklisted"><?php echo __('Blacklisted IP','loginizer'); ?></label></th>
 						<td>
 							<input type="text" size="25" value="<?php echo (empty($saved_msgs['ip_blacklisted']) ? '' : esc_attr($saved_msgs['ip_blacklisted'])); ?>" name="msg_ip_blacklisted" id="msg_ip_blacklisted" />
-							<?php echo __('Default: <em>&quot;' . $loginizer['d_msg']['ip_blacklisted']. '&quot;</em>', 'loginizer'); ?><br />
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . $loginizer['d_msg']['ip_blacklisted']. '&quot;</em>'; ?><br />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row" valign="top"><label for="msg_attempts_left"><?php echo __('Attempts Left','loginizer'); ?></label></th>
 						<td>
 							<input type="text" size="25" value="<?php echo (empty($saved_msgs['attempts_left']) ? '' : esc_attr($saved_msgs['attempts_left'])); ?>" name="msg_attempts_left" id="msg_attempts_left" />
-							<?php echo __('Default: <em>&quot;' . $loginizer['d_msg']['attempts_left']. '&quot;</em>', 'loginizer'); ?><br />
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . $loginizer['d_msg']['attempts_left']. '&quot;</em>'; ?><br />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row" valign="top"><label for="msg_lockout_err"><?php echo __('Lockout Error','loginizer'); ?></label></th>
 						<td>
 							<input type="text" size="25" value="<?php echo (empty($saved_msgs['lockout_err']) ? '' : esc_attr($saved_msgs['lockout_err'])); ?>" name="msg_lockout_err" id="msg_lockout_err" />
-							<?php echo __('Default: <em>&quot;' . strip_tags($loginizer['d_msg']['lockout_err']). '&quot;</em>', 'loginizer'); ?><br />
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . strip_tags($loginizer['d_msg']['lockout_err']). '&quot;</em>'; ?><br />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row" valign="top"><label for="msg_minutes_err"><?php echo __('Minutes','loginizer'); ?></label></th>
 						<td>
 							<input type="text" size="25" value="<?php echo (empty($saved_msgs['minutes_err']) ? '' : esc_attr($saved_msgs['minutes_err'])); ?>" name="msg_minutes_err" id="msg_minutes_err" />
-							<?php echo __('Default: <em>&quot;' . strip_tags($loginizer['d_msg']['minutes_err']). '&quot;</em>', 'loginizer'); ?><br />
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . strip_tags($loginizer['d_msg']['minutes_err']). '&quot;</em>'; ?><br />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row" valign="top"><label for="msg_hours_err"><?php echo __('Hours','loginizer'); ?></label></th>
 						<td>
 							<input type="text" size="25" value="<?php echo (empty($saved_msgs['hours_err']) ? '' : esc_attr($saved_msgs['hours_err'])); ?>" name="msg_hours_err" id="msg_hours_err" />
-							<?php echo __('Default: <em>&quot;' . strip_tags($loginizer['d_msg']['hours_err']). '&quot;</em>', 'loginizer'); ?><br />
+							<?php echo __('Default:', 'loginizer').' <em>&quot;' . strip_tags($loginizer['d_msg']['hours_err']). '&quot;</em>'; ?><br />
 						</td>
 					</tr>
 				</table><br />

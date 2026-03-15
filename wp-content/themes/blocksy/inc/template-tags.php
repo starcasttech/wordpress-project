@@ -182,12 +182,14 @@ if (! function_exists('blocksy_entry_excerpt')) {
 			return $excerpt_additions . do_shortcode($excerpt);
 		}
 
+		$result = $excerpt_additions . do_shortcode($excerpt);
+
 		return blocksy_html_tag(
 			$args['container_tag'],
 			[
 				'class' => esc_attr($args['class'])
 			],
-			wpautop($excerpt_additions . do_shortcode($excerpt))
+			$args['source'] !== 'full' ? wpautop($result) : $result
 		);
 	}
 }

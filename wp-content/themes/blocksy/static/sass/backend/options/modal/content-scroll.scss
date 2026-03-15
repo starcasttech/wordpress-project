@@ -3,6 +3,15 @@
 	overflow: auto;
 	padding: 0 var(--modal-padding);
 	margin: 0 calc(var(--modal-padding) * -1);
+
+	&[data-section-divider="top"] {
+		padding-block: 30px;
+		border-top: 1px solid var(--optionBorderColor);
+
+		> *:first-child {
+			--options-vertical-spacing: 0;
+		}
+	}
 }
 
 // tabs scroll

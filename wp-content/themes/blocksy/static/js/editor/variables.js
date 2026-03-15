@@ -52,7 +52,7 @@ export const gutenbergVariables = {
 						'template_subtype',
 						'template_editor_width_source',
 						'template_editor_width',
-				  ]
+					]
 				: []),
 		],
 		[
@@ -105,6 +105,20 @@ export const gutenbergVariables = {
 											color: 'CT_CSS_SKIP_RULE',
 										},
 									},
+								}
+							}
+
+							if (isContentBlock) {
+								if (
+									!valueToUse.desktop &&
+									valueToUse.background_type === 'color' &&
+									valueToUse.backgroundColor.default.color &&
+									valueToUse.backgroundColor.default.color.indexOf(
+										'CT_CSS_SKIP_RULE'
+									) > -1
+								) {
+									valueToUse =
+										ct_editor_localizations.default_background
 								}
 							}
 

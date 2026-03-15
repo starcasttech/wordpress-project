@@ -1,4 +1,7 @@
 <?php
+/**
+ * Page meta options.
+ */
 
 $maybe_taxonomy = blocksy_maybe_get_matching_taxonomy('page', false);
 

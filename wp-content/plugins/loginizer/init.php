@@ -5,7 +5,7 @@ if(!function_exists('add_action')){
 	exit;
 }
 
-define('LOGINIZER_VERSION', '2.0.4');
+define('LOGINIZER_VERSION', '2.0.5');
 define('LOGINIZER_DIR', dirname(LOGINIZER_FILE));
 define('LOGINIZER_URL', plugins_url('', LOGINIZER_FILE));
 define('LOGINIZER_PRO_URL', 'https://loginizer.com/features#compare');
@@ -495,24 +495,29 @@ function loginizer_is_blacklisted(){
 	if(empty($blacklist)){
 		return false;
 	}
-	  
+	
+	$current_ip_inet = inet_ptoi($loginizer['current_ip']);
+
 	foreach($blacklist as $k => $v){
-		
+
+		$start_inet = inet_ptoi($v['start']);
+		$end_inet = inet_ptoi($v['end']);
+
 		// Is the IP in the blacklist ?
-		if(inet_ptoi($v['start']) <= inet_ptoi($loginizer['current_ip']) && inet_ptoi($loginizer['current_ip']) <= inet_ptoi($v['end'])){
+		if($start_inet <= $current_ip_inet && $current_ip_inet <= $end_inet){
 			$result = 1;
 			break;
 		}
-		
+
 		// Is it in a wider range ?
-		if(inet_ptoi($v['start']) >= 0 && inet_ptoi($v['end']) < 0){
+		if($start_inet >= 0 && $end_inet < 0){
 			
 			// Since the end of the RANGE (i.e. current IP range) is beyond the +ve value of inet_ptoi, 
 			// if the current IP is <= than the start of the range, it is within the range
 			// OR
 			// if the current IP is <= than the end of the range, it is within the range
-			if(inet_ptoi($v['start']) <= inet_ptoi($loginizer['current_ip'])
-				|| inet_ptoi($loginizer['current_ip']) <= inet_ptoi($v['end'])){				
+			if($start_inet <= $current_ip_inet
+				|| $current_ip_inet <= $end_inet){				
 				$result = 1;
 				break;
 			}
@@ -520,54 +525,10 @@ function loginizer_is_blacklisted(){
 		}
 		
 	}
-		
+
 	// You are blacklisted
 	if(!empty($result)){
 		$lz_error['ip_blacklisted'] = $loginizer['msg']['ip_blacklisted'];
-		return true;
-	}
-	
-	return false;
-	
-}
-
-function loginizer_is_whitelisted(){
-	
-	global $wpdb, $loginizer, $lz_error;
-	
-	$whitelist = $loginizer['whitelist'];
-			
-	if(empty($whitelist)){
-		return false;
-	}
-	  
-	foreach($whitelist as $k => $v){
-		
-		// Is the IP in the blacklist ?
-		if(inet_ptoi($v['start']) <= inet_ptoi($loginizer['current_ip']) && inet_ptoi($loginizer['current_ip']) <= inet_ptoi($v['end'])){
-			$result = 1;
-			break;
-		}
-		
-		// Is it in a wider range ?
-		if(inet_ptoi($v['start']) >= 0 && inet_ptoi($v['end']) < 0){
-			
-			// Since the end of the RANGE (i.e. current IP range) is beyond the +ve value of inet_ptoi, 
-			// if the current IP is <= than the start of the range, it is within the range
-			// OR
-			// if the current IP is <= than the end of the range, it is within the range
-			if(inet_ptoi($v['start']) <= inet_ptoi($loginizer['current_ip'])
-				|| inet_ptoi($loginizer['current_ip']) <= inet_ptoi($v['end'])){				
-				$result = 1;
-				break;
-			}
-			
-		}
-		
-	}
-		
-	// You are whitelisted
-	if(!empty($result)){
 		return true;
 	}
 	

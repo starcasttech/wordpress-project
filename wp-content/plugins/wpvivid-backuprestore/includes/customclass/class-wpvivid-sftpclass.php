@@ -512,12 +512,65 @@ class WPvivid_SFTPClass extends WPvivid_Remote{
                     WPvivid_taskmanager::update_backup_sub_task_progress($task_id,'upload',WPVIVID_REMOTE_SFTP,WPVIVID_UPLOAD_SUCCESS,'Uploading '.basename($file).' completed.',$upload_job['job_data']);
                     break;
                 }
-
-                if(!$result && $i == (WPVIVID_REMOTE_CONNECT_RETRY_TIMES - 1))
+                else
                 {
-                    $conn -> disconnect();
-                    return array('result'=>WPVIVID_FAILED,'error'=>'Uploading '.$file.' to SFTP server failed. '.$file.' might be deleted or network doesn\'t work properly. Please verify the file and confirm the network connection and try again later.');
+                    $last_error = error_get_last();
+                    $wpvivid_plugin->wpvivid_log->WriteLog('Upload failed, get last error: '.json_encode($last_error).', retry times: '.$i, 'notice');
+                    $sftperrors=$conn->getSFTPErrors();
+                    $wpvivid_plugin->wpvivid_log->WriteLog('getSFTPErrors: '.json_encode($sftperrors), 'notice');
+                    $lastsftperror=$conn->getLastSFTPError();
+                    $wpvivid_plugin->wpvivid_log->WriteLog('getLastSFTPError: '.json_encode($lastsftperror), 'notice');
+
+                    $is_status_failure = false;
+                    if (is_string($lastsftperror) && stripos($lastsftperror, 'NET_SFTP_STATUS_FAILURE') !== false)
+                    {
+                        $is_status_failure = true;
+                    }
+
+                    if (!$is_status_failure && is_array($sftperrors))
+                    {
+                        foreach ($sftperrors as $e)
+                        {
+                            if (is_string($e) && stripos($e, 'NET_SFTP_STATUS_FAILURE') !== false)
+                            {
+                                $is_status_failure = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if ($i == (WPVIVID_REMOTE_CONNECT_RETRY_TIMES - 1))
+                    {
+                        @$conn -> disconnect();
+                        return array('result'=>WPVIVID_FAILED,'error'=>'Uploading '.$file.' to SFTP server failed. '.$file.' might be deleted or network doesn\'t work properly. Please verify the file and confirm the network connection and try again later.');
+                    }
+
+                    if($is_status_failure)
+                    {
+                        $wpvivid_plugin->wpvivid_log->WriteLog('disconnect sftp', 'notice');
+                        @$conn->disconnect();
+
+                        $wpvivid_plugin->wpvivid_log->WriteLog('reconnect sftp', 'notice');
+                        $conn = $this->do_connect($host,$username,$password,$port);
+                        if(is_array($conn) && $conn['result'] ==WPVIVID_FAILED)
+                        {
+                            $wpvivid_plugin->wpvivid_log->WriteLog('connect sftp failed', 'notice');
+                            return $conn;
+                        }
+
+                        $str = $this->do_chdir($conn, $path);
+                        if ($str['result'] == WPVIVID_FAILED)
+                        {
+                            $wpvivid_plugin->wpvivid_log->WriteLog('do_chdir failed', 'notice');
+                            return $str;
+                        }
+                    }
+                    else
+                    {
+                        $wpvivid_plugin->wpvivid_log->WriteLog('Upload failed but not status failure, keep connection and retry normally', 'notice');
+                    }
                 }
+
                 sleep(WPVIVID_REMOTE_CONNECT_RETRY_INTERVAL);
             }
 		}

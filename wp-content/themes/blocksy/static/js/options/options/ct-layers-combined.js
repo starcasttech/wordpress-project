@@ -2,7 +2,7 @@ import { Fragment, createElement, Component } from '@wordpress/element'
 import OptionsPanel from '../OptionsPanel'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { reorder } from '../options/ct-layers'
-import nanoid from 'nanoid'
+import { nanoid } from 'nanoid'
 
 import { getValueFromInput } from '../helpers/get-value-from-input'
 
@@ -14,7 +14,7 @@ const valueWithUniqueIds = (value) =>
 			? {}
 			: {
 					__id: nanoid(),
-			  }),
+				}),
 	}))
 
 const LayersCombined = ({ option, value, onChange }) => {

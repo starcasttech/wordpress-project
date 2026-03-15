@@ -99,6 +99,10 @@ class LangEN_ZA {
                         'MetaBoxFields' => 'MetaBox-velde',
                         'YoastSeoFields' => 'Yoast Seo Fields',
                         'SlimSeoFields' => 'Slim SEO Fields',
+'EDDDownloadsFields' => 'EDD Downloads Fields',
+'EDDCustomersFields' => 'EDD Customers Fields',
+'EDDDiscountsFields' => 'EDD Discounts Fields',
+
                         'ListeoFields' => 'Listeo Fields',
                         'EventCalendarMetaFields' => 'EventCalendar Meta Fields',
                         'WPMLFields' => 'WPML Fields',

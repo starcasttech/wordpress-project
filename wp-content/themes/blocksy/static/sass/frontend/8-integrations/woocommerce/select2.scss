@@ -8,10 +8,9 @@ span.select2-container {
 		border: var(--theme-form-field-border-width, 1px) var(--theme-form-field-border-style, solid) var(--theme-form-field-border-initial-color);
 
 		.select2-selection__rendered {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			// font-size: var(--theme-form-font-size, 15px);
+			// display: flex;
+			// flex-wrap: wrap;
+			// align-items: center;
 			color: var(--theme-form-text-initial-color, var(--theme-text-color));
 			padding: var(--has-classic-forms, var(--theme-form-field-padding, 0 15px));
 		}
@@ -19,10 +18,14 @@ span.select2-container {
 
 	// single option
 	.select2-selection--single {
+		display: flex;
+		align-items: center;
 		height: var(--theme-form-field-height, 40px);
 
 		.select2-selection__rendered {
-			height: 100%;
+			// height: 100%;
+			width: 100%;
+			padding-inline-end: 30px;
 		}
 
 		.select2-selection__arrow {
@@ -39,8 +42,11 @@ span.select2-container {
 	.select2-selection--multiple {
 
 		.select2-selection__rendered {
-			min-height: var(--theme-form-field-height, 40px);
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
 			gap: 4px;
+			min-height: var(--theme-form-field-height, 40px);
 			padding-block: 6px;
 
 			.select2-selection__choice {
@@ -74,7 +80,6 @@ span.select2-container {
 // dropdown
 span.select2-dropdown {
 	color: var(--form-field-select-initial-color, var(--theme-text-color));
-	// font-size: var(--theme-form-font-size, 15px);
 	background-color: var(--theme-form-select-background-initial-color, #fff);
 	border-radius: var(--has-classic-forms, var(--theme-form-field-border-radius, 3px));
 	border: var(--theme-form-field-border-width, 1px) var(--theme-form-field-border-style, solid) var(--theme-form-field-border-initial-color);

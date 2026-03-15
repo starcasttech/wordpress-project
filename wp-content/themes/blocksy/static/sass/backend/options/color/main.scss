@@ -1,7 +1,7 @@
-@import 'color-pill';
-@import 'modal';
-@import 'actions';
-@import 'color-picker';
+@use 'color-pill';
+@use 'modal';
+@use 'actions';
+@use 'color-picker';
 
-@import 'color-palette-preview';
-@import 'color-palette-presets-modal';
+@use 'color-palette-preview';
+@use 'color-palette-presets-modal';

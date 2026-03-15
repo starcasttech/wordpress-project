@@ -1,8 +1,8 @@
-@import 'base';
-@import 'type-1';
-@import 'type-2';
-@import 'typography';
+@use 'base';
+@use 'type-1';
+@use 'type-2';
+@use 'typography';
 
 // speciffic buttons
-@import 'toggle-base';
-@import 'action-button';
+@use 'toggle-base';
+@use 'action-button';

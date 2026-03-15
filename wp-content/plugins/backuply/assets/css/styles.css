@@ -804,3 +804,44 @@ line-height: 1.5;
 border-radius: 5px;
 border:1px solid #d9d9d9;
 }
+
+/* Pagination CSS*/
+.backuply-tablenav{
+height: 30px;
+margin: 6px 0 4px;
+padding-top: 5px;
+}
+
+#backuply-pagination{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 0;
+}
+
+.backuply-pagination-links{
+display:flex;
+align-items:center; 
+gap:10px;
+}
+
+a.button.backuply-prev-page,
+a.button.backuply-next-page,
+a.button.backuply-prev-first-page,
+a.button.backuply-last-next-page{
+background-color: #2271b1;
+color: #fff;
+}
+
+.backuply-total-items,
+.backuply-pagination-info,
+.backuply-pagination-input{
+font-weight: 600;
+color:#555 ;
+}
+
+/* Input box */
+.backuply-pagination-input input{
+padding: 0px;
+text-align: center;
+}

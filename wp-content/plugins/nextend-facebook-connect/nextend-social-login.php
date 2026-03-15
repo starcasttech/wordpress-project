@@ -20,9 +20,9 @@ require_once(NSL_PATH . '/compat.php');
 
 class NextendSocialLogin {
 
-    public static $version = '3.1.22';
+    public static $version = '3.1.23';
 
-    public static $nslPROMinVersion = '3.1.21';
+    public static $nslPROMinVersion = '3.1.23';
 
     public static $proxyPage = false;
 
@@ -973,12 +973,17 @@ class NextendSocialLogin {
 
         $containerID = 'nsl-custom-login-form-' . $index;
 
-        echo '<div id="' . $containerID . '">' . self::renderButtonsWithContainer(self::$settings->get('embedded_login_form_button_style'), false, false, false, self::$settings->get('embedded_login_form_button_align'), $labelType) . '</div>';
+        $buttons = self::renderButtonsWithContainer(self::$settings->get('embedded_login_form_button_style'), false, false, false, self::$settings->get('embedded_login_form_button_align'), $labelType);
 
-        $template = self::get_template_part('embedded-login/' . sanitize_file_name(self::$settings->get('embedded_login_form_layout')) . '.php');
-        if (!empty($template) && file_exists($template)) {
-            include($template);
+        if ($buttons) {
+            echo '<div id="' . $containerID . '">' . $buttons . '</div>';
+
+            $template = self::get_template_part('embedded-login/' . sanitize_file_name(self::$settings->get('embedded_login_form_layout')) . '.php');
+            if (!empty($template) && file_exists($template)) {
+                include($template);
+            }
         }
+
 
         return ob_get_clean();
     }
@@ -1014,14 +1019,17 @@ class NextendSocialLogin {
         self::$loginMainButtonsAdded = true;
         ob_start();
 
-        $ret = '<div id="nsl-custom-login-form-main">';
-        $ret .= self::renderButtonsWithContainer(self::$settings->get('login_form_button_style'), false, false, false, self::$settings->get('login_form_button_align'), $labelType);
-        $ret .= '</div>';
-        echo $ret;
+        $buttons = self::renderButtonsWithContainer(self::$settings->get('login_form_button_style'), false, false, false, self::$settings->get('login_form_button_align'), $labelType);
+        if ($buttons) {
+            $ret = '<div id="nsl-custom-login-form-main">';
+            $ret .= $buttons;
+            $ret .= '</div>';
+            echo $ret;
 
-        $template = self::get_template_part('login/' . sanitize_file_name(self::$settings->get('login_form_layout')) . '.php');
-        if (!empty($template) && file_exists($template)) {
-            include($template);
+            $template = self::get_template_part('login/' . sanitize_file_name(self::$settings->get('login_form_layout')) . '.php');
+            if (!empty($template) && file_exists($template)) {
+                include($template);
+            }
         }
 
 
@@ -1094,15 +1102,18 @@ class NextendSocialLogin {
                     }
                 }
 
-                if (!empty($heading)) {
-                    $heading = '<h2 class="nsl-heading">' . $heading . '</h2>';
-                } else {
-                    $heading = '';
+                if ($buttons) {
+
+                    if (!empty($heading)) {
+                        $heading = '<h2 class="nsl-heading">' . $heading . '</h2>';
+                    } else {
+                        $heading = '';
+                    }
+
+                    $buttons = '<div class="nsl-container-buttons">' . $buttons . '</div>';
+
+                    return '<div class="nsl-container ' . self::$styles[$style]['container'] . '"' . ($style !== 'fullwidth' ? ' data-align="' . esc_attr($align) . '"' : '') . '>' . wp_kses_post($heading) . $buttons . '</div>';
                 }
-
-                $buttons = '<div class="nsl-container-buttons">' . $buttons . '</div>';
-
-                return '<div class="nsl-container ' . self::$styles[$style]['container'] . '"' . ($style !== 'fullwidth' ? ' data-align="' . esc_attr($align) . '"' : '') . '>' . wp_kses_post($heading) . $buttons . '</div>';
             }
         }
 
@@ -1226,25 +1237,27 @@ class NextendSocialLogin {
                     $buttons .= $provider->getConnectButton($style, $redirect_to, $trackerData, $labelType, $customLabel);
                 }
 
-                if (!empty($heading)) {
-                    $heading = '<h2 class="nsl-heading">' . $heading . '</h2>';
-                } else {
-                    $heading = '';
-                }
-
-                $buttons = '<div class="nsl-container-buttons">' . $buttons . '</div>';
-
-                $ret = '<div class="nsl-container ' . self::$styles[$style]['container'] . '"' . ($style !== 'fullwidth' ? ' data-align="' . esc_attr($align) . '"' : '') . '>' . wp_kses_post($heading) . $buttons . '</div>';
-                if (defined('DOING_AJAX') && DOING_AJAX) {
-                    $id  = md5(uniqid('nsl-ajax-'));
-                    $ret = '<div id="' . $id . '">' . $ret . '</div>';
-                    if (!$redirect_to) {
-                        $ret .= '<script>window._nslDOMReady(function(){var socialButtonContainer=document.getElementById("' . $id . '");if(socialButtonContainer){var socialButtons=socialButtonContainer.querySelectorAll("a");socialButtons.forEach(function(el,i){var href=el.getAttribute("href");if(href.indexOf("?")===-1){href+="?"}else{href+="&"}
-el.setAttribute("href",href+"redirect="+encodeURIComponent(window.location.href))})}});</script>';
+                if ($buttons) {
+                    if (!empty($heading)) {
+                        $heading = '<h2 class="nsl-heading">' . $heading . '</h2>';
+                    } else {
+                        $heading = '';
                     }
-                }
 
-                return $ret;
+                    $buttons = '<div class="nsl-container-buttons">' . $buttons . '</div>';
+
+                    $ret = '<div class="nsl-container ' . self::$styles[$style]['container'] . '"' . ($style !== 'fullwidth' ? ' data-align="' . esc_attr($align) . '"' : '') . '>' . wp_kses_post($heading) . $buttons . '</div>';
+                    if (defined('DOING_AJAX') && DOING_AJAX) {
+                        $id  = md5(uniqid('nsl-ajax-'));
+                        $ret = '<div id="' . $id . '">' . $ret . '</div>';
+                        if (!$redirect_to) {
+                            $ret .= '<script>window._nslDOMReady(function(){var socialButtonContainer=document.getElementById("' . $id . '");if(socialButtonContainer){var socialButtons=socialButtonContainer.querySelectorAll("a");socialButtons.forEach(function(el,i){var href=el.getAttribute("href");if(href.indexOf("?")===-1){href+="?"}else{href+="&"}
+el.setAttribute("href",href+"redirect="+encodeURIComponent(window.location.href))})}});</script>';
+                        }
+                    }
+
+                    return $ret;
+                }
             }
         }
 
@@ -1471,7 +1484,7 @@ el.setAttribute("href",href+"redirect="+encodeURIComponent(window.location.href)
     public static function getRegisterFlowPage() {
         static $registerFlowPage = null;
         if ($registerFlowPage === null) {
-            $registerFlowPage = intval(self::$settings->get('register-flow-page'));
+            $registerFlowPage = apply_filters('nsl_register_flow_page', intval(self::$settings->get('register-flow-page')));
             if (empty($registerFlowPage) || get_post($registerFlowPage) === null || get_post_status($registerFlowPage) !== 'publish') {
                 $registerFlowPage = false;
             }

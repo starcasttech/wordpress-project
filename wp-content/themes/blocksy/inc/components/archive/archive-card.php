@@ -413,6 +413,37 @@ if (! function_exists('blocksy_render_archive_card')) {
 				);
 			}
 
+			if ('read_more' === $single_component['id']) {
+				$output = blocksy_html_tag(
+					'a',
+					[
+						'class' => $button_class,
+						// 'data-type' => $button_type,
+						'href' => esc_url( get_permalink() )
+					],
+
+					$read_more_text .
+
+					blocksy_html_tag(
+						'span',
+						[
+							'class' => 'screen-reader-text'
+						],
+						get_the_title()
+					)
+				);
+
+				if ($blog_post_structure === 'gutenberg') {
+					$output = blocksy_html_tag(
+						'div',
+						[
+							'class' => 'entry-button-container'
+						],
+						$output
+					);
+				} 
+			}
+
 			if (! $outputs) {
 				$featured_image_output = '';
 
@@ -449,25 +480,6 @@ if (! function_exists('blocksy_render_archive_card')) {
 							'excerpt'
 						)
 					]),
-
-					'read_more' => blocksy_html_tag(
-						'a',
-						[
-							'class' => $button_class,
-							// 'data-type' => $button_type,
-							'href' => esc_url( get_permalink() )
-						],
-
-						$read_more_text .
-
-						blocksy_html_tag(
-							'span',
-							[
-								'class' => 'screen-reader-text'
-							],
-							get_the_title()
-						)
-					),
 				], $args['prefix'], $featured_image_args);
 			}
 

@@ -41,16 +41,9 @@ if ($page_title_bg_type !== 'color') {
 				$attachment_id = null;
 			}
 
-			$term_atts = get_term_meta(
-				$term_id,
-				'blocksy_taxonomy_meta_options'
-			);
+			$term_atts = blocksy_get_taxonomy_options($term_id);
 
-			if (empty($term_atts)) {
-				$term_atts = [[]];
-			}
-
-			$maybe_image = blocksy_akg('image', $term_atts[0], '');
+			$maybe_image = blocksy_akg('image', $term_atts, '');
 
 			if (
 				$maybe_image

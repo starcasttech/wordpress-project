@@ -12,6 +12,7 @@ import Switch from './ct-switch'
 import { PanelContext } from '../components/PanelLevel'
 
 import { Transition, animated } from 'react-spring'
+import { transformValueForRtl } from '../helpers/transform-value-for-rtl'
 
 export const PanelMetaWrapper = ({ id, option, getActualOption, value }) => {
 	const { panelsState, panelsHelpers, panelsDispatch, containerRef } =
@@ -158,7 +159,9 @@ const PanelContainer = ({ option, id, onChange, getValues, onChangeFor }) => {
 		? createPortal(
 				<Transition
 					items={panelsHelpers.isOpenFor(id)}
-					from={{ transform: 'translateX(100%)' }}
+					from={{
+						transform: `translateX(${transformValueForRtl(-100)}%)`,
+					}}
 					enter={{
 						transform: 'translateX(0%)',
 					}}
@@ -168,7 +171,9 @@ const PanelContainer = ({ option, id, onChange, getValues, onChangeFor }) => {
 									transform: 'translateX(-100%)',
 							  }
 							: {
-									transform: 'translateX(100%)',
+									transform: `translateX(${transformValueForRtl(
+										-100
+									)}%)`,
 							  }
 					}
 					config={(item, type) => ({

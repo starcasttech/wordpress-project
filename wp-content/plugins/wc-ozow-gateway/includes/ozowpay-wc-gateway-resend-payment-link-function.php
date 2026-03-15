@@ -74,7 +74,7 @@ function ozowpay_send_payment_link($order, $address, $correspondenceType) {
     $bank_reference = $order->get_id();
     $order_id = $order->get_id();
     $order_key = $order->get_order_key();
-    $optional_5 = 'WP-' . $GLOBALS['wp_version'] . ' PHP-' . phpversion() . ' Plugin-V1.3.2 WC-' . WC_VERSION;
+    $optional_5 = 'WP-' . $GLOBALS['wp_version'] . ' PHP-' . phpversion() . ' Plugin-V1.3.3 WC-' . WC_VERSION;
     $customer_first_name = $order->get_billing_first_name();
     $customer_last_name = $order->get_billing_last_name();
     $customer_phone = $order->get_billing_phone();

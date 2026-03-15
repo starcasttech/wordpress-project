@@ -19,11 +19,12 @@ if (! function_exists('blocksy_validate_color')) {
 		/**
 		 * Allow var(--global) values
 		 */
-		if (strlen($color) > 2 && substr( $color, 0, 5 ) === "var(--") {
+		if (strlen($color) > 2 && substr($color, 0, 6) === "var(--") {
 			return $color;
 		}
 
-		if ($color === 'CT_CSS_SKIP_RULE') {
+		// Allow CT_CSS_SKIP_RULE values
+		if (strpos($color, 'CT_CSS_SKIP_RULE') !== false) {
 			return $color;
 		}
 
@@ -32,7 +33,7 @@ if (! function_exists('blocksy_validate_color')) {
 }
 
 if (! function_exists('blocksy_validate_single_slider')) {
-	function blocksy_validate_single_slider($option, $value) {
+	function blocksy_validate_single_slider($value) {
 		if (! intval($value) && intval($value) !== 0) {
 			return null;
 		}
@@ -41,14 +42,73 @@ if (! function_exists('blocksy_validate_single_slider')) {
 	}
 }
 
+function blocksy_sanitize_builder_value($option, $input) {
+	if (! isset($input['sections'])) {
+		return $input;
+	}
+
+	foreach ($input['sections'] as $key => $section) {
+		if (! isset($section['items'])) {
+			continue;
+		}
+
+		$html_fields = [
+			'text' => ['header_text'],
+			'copyright_text' => ['copyright_text']
+		];
+
+		foreach ($section['items'] as $item_key => $item) {
+			if (! isset($item['id'])) {
+				continue;
+			}
+
+			if (
+				! isset($html_fields[$item['id']])
+				||
+				! isset($item['values'])
+			) {
+				continue;
+			}
+
+			foreach ($html_fields[$item['id']] as $html_field) {
+				if (! isset($item['values'][$html_field])) {
+					continue;
+				}
+
+				$item['values'][$html_field] = blocksy_sanitize_user_html(
+					$item['values'][$html_field]
+				);
+			}
+
+			$input['sections'][$key]['items'][$item_key] = $item;
+		}
+	}
+
+	return $input;
+}
+
 if (! function_exists('blocksy_validate_for')) {
 	function blocksy_validate_for($option, $input) {
+		if (
+			$option['type'] === 'ct-header-builder'
+			||
+			$option['type'] === 'ct-footer-builder'
+		) {
+			return blocksy_sanitize_builder_value($option, $input);
+		}
+
 		if (
 			$option['type'] === 'ct-switch'
 			||
 			$option['type'] === 'ct-panel'
 		) {
-			if (in_array($input, ['yes', 'no'], true)) {
+			$allowed_values = ['yes', 'no'];
+
+			if (isset($option['behavior']) && $option['behavior'] === 'bool') {
+				$allowed_values = [true, false];
+			}
+
+			if (in_array($input, $allowed_values, true)) {
 				return $input;
 			}
 
@@ -94,7 +154,7 @@ if (! function_exists('blocksy_validate_for')) {
 				true
 			)) {
 				return $option['value'];
-						}
+			}
 		}
 
 		if (
@@ -117,13 +177,29 @@ if (! function_exists('blocksy_validate_for')) {
 						),
 						true
 					)
-								) {
-									return $option['value'];
-								}
+				) {
+					return $option['value'];
+				}
 			}
 		}
 
 		if ($option['type'] === 'ct-number') {
+			if (isset($option['responsive']) && $option['responsive']) {
+				$values_to_validate = ['desktop', 'tablet', 'mobile'];
+
+				foreach (blocksy_expand_responsive_value($input) as $single_key => $single_value) {
+					if (! in_array($single_key, $values_to_validate)) {
+						continue;
+					}
+
+					if (! is_numeric($single_value)) {
+						return $option['value'];
+					}
+				}
+
+				return $input;
+			}
+
 			if (! is_numeric($input)) {
 				return $option['value'];
 			}
@@ -135,16 +211,20 @@ if (! function_exists('blocksy_validate_for')) {
 		}
 
 		if ($option['type'] === 'ct-slider') {
-			if ($option['responsive']) {
-				foreach (
-					array_values(
-						blocksy_expand_responsive_value($input)
-					) as $single_value
-				) {
+			if (isset($option['responsive']) && $option['responsive']) {
+				$values_to_validate = ['desktop', 'tablet', 'mobile'];
+
+				foreach (blocksy_expand_responsive_value($input) as $single_key => $single_value) {
+					if (! in_array($single_key, $values_to_validate)) {
+						continue;
+					}
+
 					if (! blocksy_validate_single_slider($single_value)) {
 						return $option['value'];
 					}
 				}
+
+				return $input;
 			}
 
 			if (
@@ -162,7 +242,7 @@ if (! function_exists('blocksy_validate_for')) {
 				||
 				! isset($input['attachment_id'])
 				||
-				!wp_attachment_is_image($input['attachment_id'])
+				! wp_attachment_is_image($input['attachment_id'])
 			) {
 				return $option['value'];
 			}
@@ -174,11 +254,15 @@ if (! function_exists('blocksy_validate_for')) {
 
 if (! function_exists('blocksy_include_sanitizer')) {
 	function blocksy_include_sanitizer($option) {
-		if (isset($option['sanitize_callback'])) {
+		if (! isset($option['setting'])) {
 			return $option;
 		}
 
-		$option['sanitize_callback'] = function ($input, $setting) use ($option) {
+		if (isset($option['setting']['sanitize_callback'])) {
+			return $option;
+		}
+
+		$option['setting']['sanitize_callback'] = function ($input, $setting) use ($option) {
 			return blocksy_validate_for($option, $input);
 		};
 

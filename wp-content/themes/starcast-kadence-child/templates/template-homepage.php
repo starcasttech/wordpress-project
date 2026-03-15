@@ -146,10 +146,10 @@ get_header();
     <div style="max-width: 1366px; margin: 0 auto; padding: 0 1.5rem;">
         <div style="text-align: center; margin-bottom: var(--starcast-spacing-xl);">
             <h2 style="font-size: 2.5rem; color: var(--starcast-primary); margin-bottom: 1rem;">
-                Our Services
+                Explore Our Solutions
             </h2>
             <p style="font-size: 1.125rem; color: var(--starcast-gray-600);">
-                Comprehensive internet and technical services for home and business
+                Choose your service and get connected quickly.
             </p>
         </div>
 
@@ -159,9 +159,9 @@ get_header();
                 <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
                 <h3 style="color: var(--starcast-primary); margin-bottom: 1rem;">Fibre Internet</h3>
                 <p style="color: var(--starcast-gray-600); margin-bottom: 1.5rem;">
-                    Lightning-fast, reliable connectivity with uncapped packages available nationwide through our trusted partner network.
+                    View uncapped fibre packages available in your area.
                 </p>
-                <a href="<?php echo home_url('/fibre'); ?>" class="starcast-btn starcast-btn-primary">Explore Packages</a>
+                <a href="<?php echo home_url('/fibre'); ?>" class="starcast-btn starcast-btn-primary">View Fibre Packages</a>
             </div>
 
             <!-- LTE Solutions -->
@@ -169,19 +169,19 @@ get_header();
                 <div style="font-size: 3rem; margin-bottom: 1rem;">📡</div>
                 <h3 style="color: var(--starcast-primary); margin-bottom: 1rem;">LTE Solutions</h3>
                 <p style="color: var(--starcast-gray-600); margin-bottom: 1.5rem;">
-                    Stay connected anywhere with our flexible LTE packages. Perfect for areas without fibre or as a backup solution.
+                    Browse nationwide LTE options for home, business, or backup connectivity.
                 </p>
                 <a href="<?php echo home_url('/lte-5g'); ?>" class="starcast-btn starcast-btn-primary">View LTE Options</a>
             </div>
 
-            <!-- Technical Services -->
+            <!-- CCTV Installations -->
             <div style="background: var(--starcast-white); padding: 2rem; border-radius: var(--starcast-radius-xl); box-shadow: var(--starcast-shadow-md); text-align: center;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🔧</div>
-                <h3 style="color: var(--starcast-primary); margin-bottom: 1rem;">Technical Services</h3>
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📷</div>
+                <h3 style="color: var(--starcast-primary); margin-bottom: 1rem;">CCTV Installations</h3>
                 <p style="color: var(--starcast-gray-600); margin-bottom: 1.5rem;">
-                    Professional installation and support for WiFi, CCTV, routers, and access points. Expert technicians ready to help.
+                    Professional CCTV planning and installation services. Dedicated page coming soon.
                 </p>
-                <a href="<?php echo home_url('/booking'); ?>" class="starcast-btn starcast-btn-primary">Book a Technician</a>
+                <a href="#" class="starcast-btn starcast-btn-outline" aria-disabled="true">Coming Soon</a>
             </div>
         </div>
     </div>

@@ -116,7 +116,7 @@ class WC_Gateway_Ozow extends WC_Payment_Gateway {
         $order_key = $order->order_key;
         $private_key = $this->private_key;
         $plugin_name = "WooCommerce";
-        $pluginVersion = "Plugin-V1.3.2";
+        $pluginVersion = "Plugin-V1.3.3";
         $wordpressVersion = 'WP-' . $this->ozowpay_get_wordepress_version();
         $phpVersion = 'PHP-' . phpversion();
         $wooCommerceVersion = "WC-" . WC_VERSION;

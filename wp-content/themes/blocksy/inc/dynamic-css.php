@@ -132,10 +132,9 @@ class ThemeDynamicCss {
 		}
 
 		if (! empty($final_css)) {
-			/**
-			 * Note to code reviewers: This line doesn't need to be escaped.
-			 * The variable used here has the value escaped properly.
-			 */
+			// Strip HTML tags to prevent XSS via CSS injection.
+			$final_css = wp_strip_all_tags($final_css);
+
 			echo '<style id="ct-main-styles-inline-css">';
 			echo $final_css;
 			echo "</style>\n";
@@ -447,8 +446,11 @@ class ThemeDynamicCss {
 		}
 
 		if ($args['echo']) {
+			// Strip HTML tags to prevent XSS via CSS injection.
+			$safe_css = wp_strip_all_tags($css);
+
 			echo '<style id="ct-main-styles-inline-css">';
-			echo $css;
+			echo $safe_css;
 			echo "</style>\n";
 		}
 

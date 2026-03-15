@@ -1,7 +1,9 @@
+@use "../../../1-helpers/functions";
+
 .ct-order-review,
 .sticky-summary .entry-summary,
 .sticky-gallery .woocommerce-product-gallery {
-	@include media-breakpoint-up(lg) {
+	@include functions.media-breakpoint-up(lg) {
 		align-self: flex-start;
 		position: sticky;
 		top: calc(

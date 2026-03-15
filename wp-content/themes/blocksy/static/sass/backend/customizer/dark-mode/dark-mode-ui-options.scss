@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables";
+
 .ct-dark-mode {
 
 	// input
@@ -7,9 +10,9 @@
 		input[type='text'],
 		input[type='number'],
 		[class^=ct-option] input[type='search'] {
-			color: $light;
-			border-color: $border;
-			background: $background_light;
+			color: variables.$light;
+			border-color: variables.$border;
+			background: variables.$background_light;
 		}
 	}
 
@@ -17,10 +20,10 @@
 	input[type=checkbox],
 	input[type=radio] {
 		&:not(:checked) {
-			background: $background_light;
+			background: variables.$background_light;
 
 			&:not(:hover) {
-				border-color: lighten($border, 5%);
+				border-color: color.adjust(variables.$border, $lightness: 5%);
 			}
 		}
 	}
@@ -28,8 +31,8 @@
 	.ct-option-spacing {
 
 		> span input.inactive {
-			color: darken($light, 50%);
-			background: darken($background_light, 2%);
+			color: color.adjust(variables.$light, $lightness: -50%);
+			background: color.adjust(variables.$background_light, $lightness: -2%);
 		}
 	}
 
@@ -37,54 +40,54 @@
 	// ct-title
 	.ct-options-container .ct-title {
 		h3 {
-			color: $light;
+			color: variables.$light;
 		}
 
 		p {
-			color: lighten($background, 60%);
+			color: color.adjust(variables.$background, $lightness: 60%);
 		}
 	}
 
 	// group title
 	.ct-group-title {
-		border-top-color: $border;
+		border-top-color: variables.$border;
 
 		h3 {
 			// color: $accent;
-			color: lighten($accent, 7%);
+			color: color.adjust(variables.$accent, $lightness: 7%);
 		}
 	}
 
 	.ct-options-container .ct-control > header label {
-		color: lighten($background, 65%);
+		color: color.adjust(variables.$background, $lightness: 65%);
 	}
 
 	// switch
 	.ct-option-switch {
 		&:not(.ct-active) {
-			border-color: lighten($border, 4%);
+			border-color: color.adjust(variables.$border, $lightness: 4%);
 
 			> span {
-				background: lighten($border, 15%);
+				background: color.adjust(variables.$border, $lightness: 15%);
 			}
 
 			&:after {
-				border-color: lighten($border, 15%);
+				border-color: color.adjust(variables.$border, $lightness: 15%);
 			}
 		}
 
 		&.ct-active {
-			background: $accent;
-			border-color: $accent;
+			background: variables.$accent;
+			border-color: variables.$accent;
 		}
 	}
 	
 	.ct-control:hover {
 		.ct-option-switch:not(.ct-active) {
-			border-color: lighten($border, 12%);
+			border-color: color.adjust(variables.$border, $lightness: 12%);
 
 			> span {
-				background: lighten($border, 25%);
+				background: color.adjust(variables.$border, $lightness: 25%);
 			}
 		}
 	}
@@ -100,14 +103,14 @@
 	.ct-image-picker {
 		li {
 			&.active {
-				background: $accent;
+				background: variables.$accent;
 			}
 
 			&:not(.active):not(:hover) {
 				background: rgba(221, 224, 226, 0.5);
 
 				svg {
-					fill: $background_light;
+					fill: variables.$background_light;
 				}
 			}
 		}
@@ -116,54 +119,54 @@
 	// panel
 	.ct-panel.ct-click-allowed {
 		&:hover:before {
-			background: $background_light;
+			background: variables.$background_light;
 		}
 
 		.ct-customizer-panel-option button {
-			color: lighten($background, 60%);
+			color: color.adjust(variables.$background, $lightness: 60%);
 		}
 	}
 
 	.customize-panel-actions {
-		background: $background_light;
-		border-top-color: $border;
-		border-bottom-color: $border;
+		background: variables.$background_light;
+		border-top-color: variables.$border;
+		border-bottom-color: variables.$border;
 
 		h3 {
-			color: lighten($background, 40%);
+			color: color.adjust(variables.$background, $lightness: 40%);
 		}
 	}
 
 	.ct-customizer-panel {
-		background: $background;
-		border-bottom-color: $border;
-		border-top-color: $border;
+		background: variables.$background;
+		border-bottom-color: variables.$border;
+		border-top-color: variables.$border;
 	}
 
 	.ct-more-options-trigger button {
-		color: $color_background_light;
+		color: variables.$color_background_light;
 	}
 
 	// tabs
 	.ct-tabs {
-		--tabs-pills-inactive-color: #{lighten($background, 60%)};
-		--tabs-pills-inactive-background-color: #{$background_light};
+		--tabs-pills-inactive-color: #{color.adjust(variables.$background, $lightness: 60%)};
+		--tabs-pills-inactive-background-color: #{variables.$background_light};
 
-		--tabs-pills-hover-color: #{lighten($background, 60%)};
-		--tabs-pills-hover-background-color: #{lighten($background_light, 2%)};
+		--tabs-pills-hover-color: #{color.adjust(variables.$background, $lightness: 60%)};
+		--tabs-pills-hover-background-color: #{color.adjust(variables.$background_light, $lightness: 2%)};
 
-		--tabs-pills-active-color: #{lighten($background, 60%)};
-		--tabs-pills-active-background-color: #{$background};
+		--tabs-pills-active-color: #{color.adjust(variables.$background, $lightness: 60%)};
+		--tabs-pills-active-background-color: #{variables.$background};
 	}
 
 	.widget-inside .ct-tabs li.active:after {
-		background: darken($background_light, 1.5%);
+		background: color.adjust(variables.$background_light, $lightness: -1.5%);
 	}
 
 	// color picker
 	.ct-color-picker-single {
 		> span > span {
-			box-shadow: 0 0 0 2px lighten($background, 10%);
+			box-shadow: 0 0 0 2px color.adjust(variables.$background, $lightness: 10%);
 
 			&:after {
 				display: none;
@@ -174,8 +177,8 @@
 	.ct-color-picker-modal {
 		.components-color-picker__inputs-wrapper .components-base-control__field label,
 		.components-color-picker__inputs-toggle {
-			background: lighten($background_light, 3%);
-			color: lighten($background, 60%);
+			background: color.adjust(variables.$background_light, $lightness: 3%);
+			color: color.adjust(variables.$background, $lightness: 60%);
 		}
 	}
 
@@ -183,7 +186,7 @@
 	.ct-gutenberg-color-picker .ct-option-color-variable,
 	.ct-color-picker-palette,
 	.ct-image-tab > *:not(:last-child) {
-		border-color: $border;
+		border-color: variables.$border;
 	}
 
 	.ct-color-picker-palette span.active {
@@ -200,22 +203,22 @@
 		.components-angle-picker-control__input-field {
 
 			.components-input-control__label {
-				color: lighten($background, 65%);
+				color: color.adjust(variables.$background, $lightness: 65%);
 			}
 
 			.components-input-control__container {
-				color: $light;
-				background: $background_light;
+				color: variables.$light;
+				background: variables.$background_light;
 
 				.components-input-control__backdrop {
-					border-color: $border !important;
+					border-color: variables.$border !important;
 					box-shadow: none !important;
 				}
 			}
 		}
 
 		.components-angle-picker-control__angle-circle {
-			border-color: $border;
+			border-color: variables.$border;
 
 			.components-angle-picker-control__angle-circle-indicator {
 				background: var(--ui-accent-color);
@@ -229,7 +232,7 @@
 		color: #929499;
 
 		&.active {
-			color: $accent;
+			color: variables.$accent;
 		}
 
 		&:not(.active) {
@@ -247,155 +250,154 @@
 
 	// buttons group
 	.ct-buttons-group li {
-		color: lighten($background, 60%);
-		background: $background_light;
-		box-shadow: inset 0px 0px 0px 1px $border;
+		color: color.adjust(variables.$background, $lightness: 60%);
+		background: variables.$background_light;
+		box-shadow: inset 0px 0px 0px 1px variables.$border;
 
 		&.active {
-			color: $light;
-			background: $accent;
-			box-shadow: inset 0px 0px 0px 1px darken($accent, 5%);
+			color: variables.$light;
+			background: variables.$accent;
+			box-shadow: inset 0px 0px 0px 1px color.adjust(variables.$accent, $lightness: -5%);
 		}
 
 		&:not(.active) {
-			color: lighten($background, 60%);
+			color: color.adjust(variables.$background, $lightness: 60%);
 
 			&:hover {
-				color: $light;
-				background: lighten($background_light, 4%);
+				color: variables.$light;
+				background: color.adjust(variables.$background_light, $lightness: 4%);
 			}
 		}
 	}
 
 	// option description
 	.ct-option-description {
-		color: lighten($background, 50%);
+		color: color.adjust(variables.$background, $lightness: 50%);
 	}
 
 	// select
 	.ct-select-input {
 		input[readonly] {
-			color: $light;
-			border-color: $border;
-			background: $background_light;
+			color: variables.$light;
+			border-color: variables.$border;
+			background: variables.$background_light;
 		}
 
 		&:before {
-			background: $background_light;
+			background: variables.$background_light;
 		}
 
 		&:after {
-			color: $light;
+			color: variables.$light;
 		}
 	}
 
 	.ct-select-dropdown {
-		border-color: $border;
-		background: $background_light;
+		border-color: variables.$border;
+		background: variables.$background_light;
 
 		> div {
-			color: lighten($background, 60%);
-			border-top-color: $border;
+			color: color.adjust(variables.$background, $lightness: 60%);
+			border-top-color: variables.$border;
 
 			&.active,
 			&.selected {
-				color: $light;
-				background: lighten($background_light, 4%);
+				color: variables.$light;
+				background: color.adjust(variables.$background_light, $lightness: 4%);
 			}
 		}
 
 		.ct-select-dropdown-group {
-			color: $light;
-			background: lighten($background_light, 2%);
+			color: variables.$light;
+			background: color.adjust(variables.$background_light, $lightness: 2%);
 		}
 	}
 
 	// layers
 
 	.ct-layer-controls {
-		color: lighten($background, 60%);
-		background: lighten($background_light, 1%);
+		color: color.adjust(variables.$background, $lightness: 60%);
+		background: color.adjust(variables.$background_light, $lightness: 1%);
 
 		> * {
-			color: lighten($background, 60%);
+			color: color.adjust(variables.$background, $lightness: 60%);
 		}
 
 		.ct-visibility:before {
-			background: lighten($background, 60%);
-			box-shadow: 0px 0px 0px 1px lighten($background_light, 1%);
+			background: color.adjust(variables.$background, $lightness: 60%);
+			box-shadow: 0px 0px 0px 1px color.adjust(variables.$background_light, $lightness: 1%);
 		}
 	}
 
 	.ct-layer-content {
-		background: darken($background_light, 1.5%);
+		background: color.adjust(variables.$background_light, $lightness: -1.5%);
 	}
 
 	// value changer
 	.ct-value-changer {
-		--backgroundColor: #{$background_light};
+		--backgroundColor: #{variables.$background_light};
 
 		input[type="number"] {
 			background: transparent;
 		}
 
 		.ct-units-list {
-			background: $background_light;
+			background: variables.$background_light;
 
 			span:not(:hover) {
-				color: lighten($background, 60%);
+				color: color.adjust(variables.$background, $lightness: 60%);
 			}
 
 			&:after, span {
-				border-color: $border;
+				border-color: variables.$border;
 			}
 		}
 	}
 
 	// notification
-	.ct-notification,
-	.ct-disabled-notification {
-		color: lighten($background, 50%);
-		background: $background_light;
-		border-left-color: $accent;
+	.ct-notification {
+		color: color.adjust(variables.$background, $lightness: 50%);
+		// background: $background_light;
+		// border-left-color: $accent;
 	}
 
 	// attachment
 	.ct-attachment {
 		
 		.thumbnail {
-			border-color: $border; 
+			border-color: variables.$border; 
 		}
 
 		.actions {
-			background: lighten($background_light, 1%);
+			background: color.adjust(variables.$background_light, $lightness: 1%);
 		}
 	}
 
 	.ct-upload-button {
 		box-shadow: none;
-		background: $background_light !important;
+		background: variables.$background_light !important;
 
 		&:not(:hover) {
-			border-color: $border;
+			border-color: variables.$border;
 		}
 	}
 
 	// tooltip
 	.ct-tooltip {
-		background: $accent;
+		background: variables.$accent;
 	}
 
 	[data-tooltip-reveal="top"] .ct-tooltip {
 		
 		&:after {
-			border-top-color: $accent;
+			border-top-color: variables.$accent;
 		}
 	}
 
 	[data-tooltip-reveal="left"] .ct-tooltip {
 		
 		&:after {
-			border-inline-start-color: $accent;
+			border-inline-start-color: variables.$accent;
 		}
 	}
 
@@ -404,28 +406,28 @@
 		li {
 			&.active,
 			&:hover {
-				background: $background_light;
+				background: variables.$background_light;
 			}
 		}
 	}
 
 	.ct-spacing-controls a {
 		&:not(:hover) {
-			color: lighten($background, 40%);
+			color: color.adjust(variables.$background, $lightness: 40%);
 		}
 	}
 
 	// box-shadow
 	.ct-box-shadow-values {
-		background: $background_light;
+		background: variables.$background_light;
 
 		button {
-			color: lighten($background, 65%);
+			color: color.adjust(variables.$background, $lightness: 65%);
 			border-right-color: var(--optionBorderColor);
 
 			&:before {
-				background: lighten($background, 65%);
-				box-shadow: 0px 0px 0px 1px $background_light;
+				background: color.adjust(variables.$background, $lightness: 65%);
+				box-shadow: 0px 0px 0px 1px variables.$background_light;
 			}
 		}
 
@@ -448,53 +450,53 @@
 
 	// ratio picker
 	.ct-ratio-preview {
-		background: $background_light;
+		background: variables.$background_light;
 	}
 
 	.ct-ratio-modal {
-		background: $background_light;
+		background: variables.$background_light;
 
 		&:before {
-			border-color: transparent transparent $background_light transparent
+			border-color: transparent transparent variables.$background_light transparent
 		}
 
 		.ct-radio-option {
-			border-color: lighten($border, 5%);
+			border-color: color.adjust(variables.$border, $lightness: 5%);
 		}
 	}
 
 	// conditions
 	.ct-display-conditions {
-		border-top-color: $border;
+		border-top-color: variables.$border;
 	}
 
 	.ct-condition-group {
-		border-bottom-color: $border;
+		border-bottom-color: variables.$border;
 	}
 
 	.ct-condition-group button:not(:hover) {
-		color: $light;
+		color: variables.$light;
 	}
 
 	// admin modal
 	.ct-admin-modal {
-		background: $background;
+		background: variables.$background;
 		box-shadow: 0 10px 500px 10px rgba(0, 0, 0, 0.7);
 
 		--optionBorderColor: red;
 
 		.ct-modal-content {
 			h2, h4 {
-				color: $light;
+				color: variables.$light;
 			}
 
 			p {
-				color: lighten($background, 30%);
+				color: color.adjust(variables.$background, $lightness: 30%);
 			}
 		}
 
 		.ct-modal-actions.has-divider:before {
-			background: $border;
+			background: variables.$border;
 		}
 	}
 
@@ -504,14 +506,14 @@
 
 	// option modal
 	.ct-option-modal {
-		background: $background_light;
+		background: variables.$background_light;
 
 		&[data-position='bottom']:before {
-			border-color: transparent transparent $background_light transparent;
+			border-color: transparent transparent variables.$background_light transparent;
 		}
 
 		&[data-position='top']:before {
-			border-color: $background_light transparent transparent transparent;
+			border-color: variables.$background_light transparent transparent transparent;
 		}
 
 		.ct-color-picker-top,
@@ -523,25 +525,25 @@
 		.ct-color-picker-modal:before,
 		.ct-typography-top,
 		.ct-typography-options > li:not(:last-child) {
-			border-color: $border;
+			border-color: variables.$border;
 		}
 
 		.ct-typography-single-font, 
 		.ct-typography-variations li {
 
 			&:not(.active):not(:first-child) {
-				border-color: $border;
+				border-color: variables.$border;
 			}
 		}
 	}
 
 	.ct-options-popover .components-popover__content {
-		background: $background_light;
+		background: variables.$background_light;
 	}
 
 	.ct-color-picker-value,
 	.components-popover__content {
-		border-color: $border !important;
+		border-color: variables.$border !important;
 	}
 
 	.ct-color-palettes-container .ct-single-palette {
@@ -553,35 +555,35 @@
 	.ct-options-popover {
 		
 		.components-button {
-			color: lighten($background, 60%);
+			color: color.adjust(variables.$background, $lightness: 60%);
 		}
 	}
 
 	// modal
 	.ct-admin-modal .ct-modal-content {
-		--optionBorderColor: #{$border};
+		--optionBorderColor: #{variables.$border};
 	}
 
 	// option modal tabs
 	.ct-modal-tabs {
 
 		li {
-			border-bottom-color: $border;
+			border-bottom-color: variables.$border;
 
 			&:not(:last-child) {
-				border-right-color: $border;
+				border-right-color: variables.$border;
 			}
 
 			&:not(.active) {
-				color: lighten($background, 30%);
+				color: color.adjust(variables.$background, $lightness: 30%);
 
 				&:hover {
-					color: lighten($background, 60%);
+					color: color.adjust(variables.$background, $lightness: 60%);
 				}
 			}
 
 			&.active {
-				color: lighten($background, 60%);
+				color: color.adjust(variables.$background, $lightness: 60%);
 			}
 		}
 	}
@@ -589,95 +591,95 @@
 	// background modal
 	.ct-background-modal {
 		.ct-patterns-list li:not(.active):hover {
-			border-color: lighten($border, 15%);
+			border-color: color.adjust(variables.$border, $lightness: 15%);
 		}
 
 		.ct-color-picker-modal:before {
-			background: $background_light;
+			background: variables.$background_light;
 		}
 	}
 
 	// icon picker
 	.ct-icon-picker-value > div {
-		background: $background_light;
+		background: variables.$background_light;
 	}
 
 	.ct-icon-picker-modal {
 		
 		.ct-icons-list h2 {
-			color: lighten($background, 65%);
+			color: color.adjust(variables.$background, $lightness: 65%);
 		}
 
 		ul li:not(.active):hover {
 			color: #fff;
-			background: lighten($background_light, 4%);
+			background: color.adjust(variables.$background_light, $lightness: 4%);
 		}
 	}
 
 	// typography
 	.ct-typohraphy-value {
-		border-color: $border;
-		background: $background_light;
+		border-color: variables.$border;
+		background: variables.$background_light;
 
 		&:hover {
-			border-color: $accent;
+			border-color: variables.$accent;
 
 			a {
-				color: $accent;
+				color: variables.$accent;
 			}
 		}
 
 		> div > span {
 			&:hover span {
-				color: $light;
+				color: variables.$light;
 			}
 
 			&:after {
-				background: $accent;
+				background: variables.$accent;
 			}
 		}
 
 		> a {
-			color: $light;
+			color: variables.$light;
 		}
 	}
 
 	.ct-typography-top li {
-		color: lighten($background, 65%);
-		background: $background_light;
+		color: color.adjust(variables.$background, $lightness: 65%);
+		background: variables.$background_light;
 
 		&:not(.active) {
-			border-color: lighten($border, 10%);
+			border-color: color.adjust(variables.$border, $lightness: 10%);
 
 			&:hover {
-				border-color: $accent;
+				border-color: variables.$accent;
 			}
 		}
 
 		&.ct-weight {
 			&:before {
-				color: lighten($background, 40%);
+				color: color.adjust(variables.$background, $lightness: 40%);
 			}
 
 			span {
-				background: $background_light;
-				box-shadow: 0px 0px 10px 3px $background_light;
+				background: variables.$background_light;
+				box-shadow: 0px 0px 10px 3px variables.$background_light;
 			}
 		}
 	}
 
 	.ct-typography-variant ul li {
 		&:not(.active) {
-			border-color: lighten($border, 5%);
+			border-color: color.adjust(variables.$border, $lightness: 5%);
 		}
 
 		&:not(:hover):not(.active) {
-			color: lighten($background, 50%);
+			color: color.adjust(variables.$background, $lightness: 50%);
 		}
 	}
 
 	.ct-typography-single-font:not(.active):not(:hover):after {
-		box-shadow: -5px 0px 15px 10px $background_light;
+		box-shadow: -5px 0px 15px 10px variables.$background_light;
 	}
 
 	.ct-control {
@@ -687,25 +689,25 @@
 	// widgets
 	.customize-control-widget_form .widget-top {
 		border-color: var(--optionBorderColor);
-		background: lighten($background_light, 1%);
+		background: color.adjust(variables.$background_light, $lightness: 1%);
 
 		h3 {
-			color: lighten($background, 60%);
+			color: color.adjust(variables.$background, $lightness: 60%);
 		}
 	}
 
 	.widget-inside {
 		border-color: var(--optionBorderColor);
-		background: darken($background_light, 1.5%);
+		background: color.adjust(variables.$background_light, $lightness: -1.5%);
 	}
 
 	#available-widgets,
 	#available-menu-items {
-		background: $background_light;
+		background: variables.$background_light;
 	}
 
 	#available-widgets-filter {
-		background: $background_light;
+		background: variables.$background_light;
 	}
 
 	#available-widgets,
@@ -715,29 +717,29 @@
 
 	#available-widgets {
 		.widget-tpl {
-			background: $background_light;
+			background: variables.$background_light;
 
 			h3 {
-				color: lighten($background, 60%);
+				color: color.adjust(variables.$background, $lightness: 60%);
 			}
 
 			.widget-title:before {
-				color: lighten($background, 60%);
+				color: color.adjust(variables.$background, $lightness: 60%);
 			}
 
 			.widget-description {
-				color: lighten($background, 25%);
+				color: color.adjust(variables.$background, $lightness: 25%);
 			}
 			
 			&:not(:hover) {
-				border-left-color: $background_light;
+				border-left-color: variables.$background_light;
 				border-bottom-color: var(--optionBorderColor);
 			}
 
 			&:hover {
-				background: lighten($background_light, 3%);
+				background: color.adjust(variables.$background_light, $lightness: 3%);
 				border-left-color: var(--ui-accent-color);
-				border-bottom-color: lighten($border, 3%);
+				border-bottom-color: color.adjust(variables.$border, $lightness: 3%);
 			}
 		}
 	}
@@ -745,19 +747,19 @@
 
 	// block widgets
 	#customize-sidebar-outer-content {
-		border-color: $border;
-		background: $background;
+		border-color: variables.$border;
+		background: variables.$background;
 
 		.customize-widgets-layout__inserter-panel {
 			background: transparent;
 
 			.customize-widgets-layout__inserter-panel-header {
-				border-bottom-color: $border;
-				background: $background_light;
+				border-bottom-color: variables.$border;
+				background: variables.$background_light;
 
 				h2,
 				button {
-					color: $color_background_light;
+					color: variables.$color_background_light;
 				}
 			}
 
@@ -766,11 +768,11 @@
 				.components-search-control__input-wrapper {
 
 					input[type=search] {
-						background: $background_light;
+						background: variables.$background_light;
 					}
 
 					.components-search-control__icon svg {
-						fill: $color_background_light;
+						fill: variables.$color_background_light;
 					}
 				}
 
@@ -779,16 +781,16 @@
 					.components-button {
 
 						&:hover {
-							background: $background_light;
+							background: variables.$background_light;
 						}
 
 						.block-editor-block-types-list__item-icon {
 							--wp-admin-theme-color: var(--ui-accent-color);
-							color: lighten($background, 65%);
+							color: color.adjust(variables.$background, $lightness: 65%);
 						}
 
 						.block-editor-block-types-list__item-title {
-							color: lighten($background, 65%) !important;
+							color: color.adjust(variables.$background, $lightness: 65%) !important;
 						}
 					}
 				}
@@ -803,27 +805,27 @@
 	
 	// header instances
 	.ct-panels-manager li {
-		color: lighten($background, 60%);
-		background: lighten($background_light, 1%);
+		color: color.adjust(variables.$background, $lightness: 60%);
+		background: color.adjust(variables.$background_light, $lightness: 1%);
 
 		&:not(.active):not(:hover) {
-			border-color: $border;
+			border-color: variables.$border;
 		}
 	}
 
 	// available items
 	.ct-available-items {
 		.ct-title {
-			color: $light;
+			color: variables.$light;
 		}
 
 		.ct-builder-item.sortable-chosen,
 		.ct-item-in-builder {
-			border-color: lighten($background, 15%);
-			background: lighten($background, 1%);
+			border-color: color.adjust(variables.$background, $lightness: 15%);
+			background: color.adjust(variables.$background, $lightness: 1%);
 
 			&:hover {
-				background: lighten($background, 2.5%);
+				background: color.adjust(variables.$background, $lightness: 2.5%);
 			}
 		}
 
@@ -833,20 +835,20 @@
 	}
 
 	.ct-panel-builder {
-		background: $background;
+		background: variables.$background;
 	}
 
 	.placements-builder {
-		border-top-color: $border;
+		border-top-color: variables.$border;
 	}
 
 	.ct-view-switch {
-		border-top-color: $border;
-		background: $background_light;
+		border-top-color: variables.$border;
+		background: variables.$background_light;
 
 		li {
-			color: lighten($background, 60%);
-			border-color: $border;
+			color: color.adjust(variables.$background, $lightness: 60%);
+			border-color: variables.$border;
 
 			&.active {
 				&:after {
@@ -856,19 +858,19 @@
 
 			&.active,
 			&:hover {
-				color: $light;
-				background: lighten($background_light, 2.5%);
+				color: variables.$light;
+				background: color.adjust(variables.$background_light, $lightness: 2.5%);
 			}
 
 			&.ct-builder-toggle {
-				border-left-color: $border;
+				border-left-color: variables.$border;
 			}
 		}
 	}
 
 	.row-inner {
-		background: $background;
-		border-color: lighten($background, 20%);
+		background: variables.$background;
+		border-color: color.adjust(variables.$background, $lightness: 20%);
 
 		.ct-builder-item:not(.sortable-ghost):hover {
 			border-color: var(--ui-accent-color);
@@ -876,28 +878,28 @@
 	}
 
 	.ct-builder-column-middle {
-		background: lighten($background, 2%);
-		border-color: lighten($background, 20%);
+		background: color.adjust(variables.$background, $lightness: 2%);
+		border-color: color.adjust(variables.$background, $lightness: 20%);
 	}
 
 	.ct-builder-item {
-		color: lighten($background, 60%);
-		border-color: $border;
-		background: lighten($background_light, 1%);
+		color: color.adjust(variables.$background, $lightness: 60%);
+		border-color: variables.$border;
+		background: color.adjust(variables.$background_light, $lightness: 1%);
 	}
 
 	// footer builder
 	[data-builder='footer'] {
 		.builder-column:not(:last-child) {
-			border-right-color: lighten($background, 20%);
+			border-right-color: color.adjust(variables.$background, $lightness: 20%);
 		}
 	}
 
 	// instances
 	[class*="ct-instance-button"]:not(.active) {
-		color: lighten($background, 60%);
-		border-color: $border;
-		background: lighten($background_light, 1%);
+		color: color.adjust(variables.$background, $lightness: 60%);
+		border-color: variables.$border;
+		background: color.adjust(variables.$background_light, $lightness: 1%);
 
 		&:hover {
 			border-color: var(--ui-accent-color);
@@ -907,11 +909,11 @@
 	// palette picker
 	.ct-palettes-modal {
 		label {
-			color: lighten($background, 65%);
+			color: color.adjust(variables.$background, $lightness: 65%);
 		}
 
 		.ct-single-palette {
-			border-bottom-color: $border;
+			border-bottom-color: variables.$border;
 		}
 	}
 }

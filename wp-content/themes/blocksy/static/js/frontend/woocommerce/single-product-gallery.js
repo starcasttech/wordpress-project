@@ -175,15 +175,14 @@ export const mount = (el, { event: mountEvent }) => {
 	}
 
 	const renderPhotoswipe = ({ onlyZoom = false } = {}) => {
-		let isZoomEnabledInCustomizer = true
+		let isZoomEnabled = true
 
 		if (
 			window.wp &&
 			wp.customize &&
 			wp.customize('has_product_single_zoom')
 		) {
-			isZoomEnabledInCustomizer =
-				wp.customize('has_product_single_zoom')() === 'yes'
+			isZoomEnabled = wp.customize('has_product_single_zoom')() === 'yes'
 		}
 
 		let maybeTrigger = [
@@ -200,7 +199,7 @@ export const mount = (el, { event: mountEvent }) => {
 			.filter((el) => !el.closest('.flexy-pills'))
 			.map((el) => {
 				if (
-					isZoomEnabledInCustomizer &&
+					isZoomEnabled &&
 					!onlyZoom &&
 					!el.matches('[data-media-id]')
 				) {
@@ -231,14 +230,15 @@ export const mount = (el, { event: mountEvent }) => {
 								].indexOf(el.parentNode)
 							}
 
-							isGalleryEnabled &&
+							if (isGalleryEnabled) {
 								openPhotoswipeFor(el, activeIndex)
+							}
 						})
 					}
 				}
 
 				if ($.fn.zoom) {
-					if (isZoomEnabledInCustomizer) {
+					if (isZoomEnabled) {
 						const rect = el.getBoundingClientRect()
 
 						if (el.closest('.elementor-section-wrap')) {
@@ -266,6 +266,51 @@ export const mount = (el, { event: mountEvent }) => {
 								touch: false,
 								duration: 50,
 
+								// There is a img.onload inside. We don't need to
+								// rely on hardcoded duration to rely the initial event.
+								// Otherwise, it risks not running at all.
+								callback: () => {
+									if (!mountEvent) {
+										return
+									}
+
+									if (
+										mountEvent.target.closest(
+											'.elementor-section-wrap'
+										)
+									) {
+										return
+									}
+
+									let mediaContainer =
+										mountEvent.target.closest(
+											'.ct-media-container'
+										)
+
+									if (
+										mountEvent.target.querySelector(
+											'.ct-media-container'
+										)
+									) {
+										mediaContainer =
+											mountEvent.target.querySelector(
+												'.ct-media-container'
+											)
+									}
+
+									if (mediaContainer) {
+										if (
+											mountEvent &&
+											mountEvent.type !== 'click'
+										) {
+											$(mediaContainer).trigger(
+												'mouseenter.zoom',
+												mountEvent
+											)
+										}
+									}
+								},
+
 								...(rect.width > parseFloat(el.dataset.width) ||
 								rect.height > parseFloat(el.dataset.height)
 									? {
@@ -283,38 +328,6 @@ export const mount = (el, { event: mountEvent }) => {
 					}
 				}
 			})
-
-		if ($.fn.zoom) {
-			if (isZoomEnabledInCustomizer) {
-				setTimeout(() => {
-					if (!mountEvent) {
-						return
-					}
-
-					if (mountEvent.target.closest('.elementor-section-wrap')) {
-						return
-					}
-
-					let mediaContainer = mountEvent.target.closest(
-						'.ct-media-container'
-					)
-
-					if (
-						mountEvent.target.querySelector('.ct-media-container')
-					) {
-						mediaContainer = mountEvent.target.querySelector(
-							'.ct-media-container'
-						)
-					}
-
-					if (mediaContainer) {
-						if (mountEvent && mountEvent.type !== 'click') {
-							$(mediaContainer).trigger('mouseenter.zoom')
-						}
-					}
-				}, 150)
-			}
-		}
 
 		maybeTrigger.map((maybeTrigger) => {
 			if (maybeTrigger.hasPhotoswipeListener) {

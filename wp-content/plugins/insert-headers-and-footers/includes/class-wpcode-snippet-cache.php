@@ -31,26 +31,35 @@ class WPCode_Snippet_Cache {
 	 */
 	public function get_cached_snippets() {
 		if ( ! isset( $this->snippets ) ) {
-			$all_snippets = $this->get_option();
-			foreach ( $all_snippets as $location => $snippets ) {
-				if ( empty( $snippets ) ) {
-					continue;
-				}
-				if ( ! is_array( $all_snippets[ $location ] ) ) {
-					$all_snippets[ $location ] = array();
-				}
-				// Load minimal snippet data from array.
-				foreach ( $snippets as $key => $snippet ) {
-					$all_snippets[ $location ][ $key ] = $this->load_snippet( $snippet );
-				}
-
-				usort( $all_snippets[ $location ], array( $this, 'priority_order' ) );
-			}
-
-			$this->snippets = $all_snippets;
+			$this->snippets = $this->get_snippets_from_db_cache();
 		}
 
 		return $this->snippets;
+	}
+
+	/**
+	 * Get snippets from database cache.
+	 *
+	 * @return array
+	 */
+	protected function get_snippets_from_db_cache() {
+		$all_snippets = $this->get_option();
+		foreach ( $all_snippets as $location => $snippets ) {
+			if ( empty( $snippets ) ) {
+				continue;
+			}
+			if ( ! is_array( $all_snippets[ $location ] ) ) {
+				$all_snippets[ $location ] = array();
+			}
+			// Load minimal snippet data from array.
+			foreach ( $snippets as $key => $snippet ) {
+				$all_snippets[ $location ][ $key ] = $this->load_snippet( $snippet );
+			}
+
+			usort( $all_snippets[ $location ], array( $this, 'priority_order' ) );
+		}
+
+		return $all_snippets;
 	}
 
 	/**
@@ -160,7 +169,7 @@ class WPCode_Snippet_Cache {
 	 *
 	 * @return array
 	 */
-	private function prepare_snippets_for_caching( $snippets ) {
+	protected function prepare_snippets_for_caching( $snippets ) {
 		$prepared_snippets = array();
 		foreach ( $snippets as $snippet ) {
 			$prepared_snippets[] = $snippet->get_data_for_caching();

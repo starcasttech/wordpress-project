@@ -28,35 +28,35 @@ const triggersList = {
 		})
 	},
 
-	input: (trigger, chunk, loadChunkWithPayload) => {
-		;[...document.querySelectorAll(trigger.selector)].map((el) => {
-			if (el.hasLazyLoadInputListener) {
-				return
-			}
+	// input: (trigger, chunk, loadChunkWithPayload) => {
+	// 	;[...document.querySelectorAll(trigger.selector)].map((el) => {
+	// 		if (el.hasLazyLoadInputListener) {
+	// 			return
+	// 		}
 
-			el.hasLazyLoadInputListener = true
+	// 		el.hasLazyLoadInputListener = true
 
-			el.addEventListener('input', (event) => {
-				event.preventDefault()
-				loadChunkWithPayload(chunk, { event }, el)
-			})
-		})
-	},
+	// 		el.addEventListener('input', (event) => {
+	// 			event.preventDefault()
+	// 			loadChunkWithPayload(chunk, { event }, el)
+	// 		})
+	// 	})
+	// },
 
-	change: (trigger, chunk, loadChunkWithPayload) => {
-		;[...document.querySelectorAll(trigger.selector)].map((el) => {
-			if (el.hasLazyLoadChangeListener) {
-				return
-			}
+	// change: (trigger, chunk, loadChunkWithPayload) => {
+	// 	;[...document.querySelectorAll(trigger.selector)].map((el) => {
+	// 		if (el.hasLazyLoadChangeListener) {
+	// 			return
+	// 		}
 
-			el.hasLazyLoadChangeListener = true
+	// 		el.hasLazyLoadChangeListener = true
 
-			el.addEventListener('change', (event) => {
-				event.preventDefault()
-				loadChunkWithPayload(chunk, { event }, el)
-			})
-		})
-	},
+	// 		el.addEventListener('change', (event) => {
+	// 			event.preventDefault()
+	// 			loadChunkWithPayload(chunk, { event }, el)
+	// 		})
+	// 	})
+	// },
 
 	submit: (trigger, chunk, loadChunkWithPayload) => {
 		;[...document.querySelectorAll(trigger.selector)].map((el) => {
@@ -159,6 +159,37 @@ const triggersList = {
 					)
 				}
 			)
+		})
+	},
+
+	'dom-event': (trigger, chunk, loadChunkWithPayload) => {
+		trigger = {
+			selector: 'body',
+			...trigger,
+		}
+
+		const maybeEls = [...document.querySelectorAll(trigger.selector)]
+
+		maybeEls.forEach((maybeEl) => {
+			if (!maybeEl) {
+				return
+			}
+
+			if (!maybeEl.ctHasDomEventListener) {
+				maybeEl.ctHasDomEventListener = {}
+			}
+
+			if (maybeEl.ctHasDomEventListener[chunk.id]) {
+				return
+			}
+
+			maybeEl.ctHasDomEventListener[chunk.id] = true
+
+			trigger.events.map((eventName) => {
+				maybeEl.addEventListener(eventName, (event) => {
+					loadChunkWithPayload(chunk, { event }, maybeEl)
+				})
+			})
 		})
 	},
 

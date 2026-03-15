@@ -50,6 +50,8 @@ class Starcast_Customer_Dashboard {
         add_action('wp_enqueue_scripts', array($this, 'enqueue_styles'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_header_nav_styles'), 20);
         add_action('wp_footer', array($this, 'force_hide_account_hero'), 100);
+        add_filter('body_class', array($this, 'add_endpoint_body_class'));
+        add_action('wp_footer', array($this, 'add_mobile_back_button'), 20);
 
         // Login page styling
         add_action('login_enqueue_scripts', array($this, 'enqueue_login_styles'));
@@ -74,6 +76,38 @@ class Starcast_Customer_Dashboard {
         add_rewrite_endpoint('support', EP_ROOT | EP_PAGES);
     }
     
+    public function add_endpoint_body_class($classes) {
+        if (!is_account_page()) return $classes;
+        global $wp;
+        $endpoints = ['my-package', 'billing', 'account-details', 'support', 'payment-methods', 'customer-logout'];
+        foreach ($endpoints as $ep) {
+            if (isset($wp->query_vars[$ep])) {
+                $classes[] = 'scd-endpoint-active';
+                return $classes;
+            }
+        }
+        return $classes;
+    }
+
+    public function add_mobile_back_button() {
+        if (!is_account_page()) return;
+        $account_url = esc_url(wc_get_page_permalink('myaccount'));
+        ?>
+        <script>
+        (function() {
+            if (!document.body.classList.contains('scd-endpoint-active')) return;
+            var content = document.querySelector('.woocommerce-MyAccount-content');
+            if (!content) return;
+            var btn = document.createElement('a');
+            btn.href = '<?php echo $account_url; ?>';
+            btn.className = 'scd-back-btn';
+            btn.textContent = '\u2190 Back to Menu';
+            content.insertBefore(btn, content.firstChild);
+        })();
+        </script>
+        <?php
+    }
+
     public function add_menu_items($items) {
         // Remove default/unused WooCommerce items for cleaner ISP dashboard
         unset($items['dashboard']);
@@ -82,10 +116,10 @@ class Starcast_Customer_Dashboard {
         unset($items['downloads']);
         unset($items['subscriptions']);
         unset($items['wps_subscriptions']);
+        unset($items['edit-address']);
 
-        // Add custom items
+        // Add custom items (no Dashboard tab — redirect to My Package instead)
         $new_items = array(
-            'dashboard' => __('Dashboard', 'starcast-customer-dashboard'),
             'my-package' => __('My Package', 'starcast-customer-dashboard'),
             'billing' => __('Billing & Payments', 'starcast-customer-dashboard'),
             'account-details' => __('Account Details', 'starcast-customer-dashboard'),
@@ -223,7 +257,7 @@ class Starcast_Customer_Dashboard {
         $package_type = $subscription ? $subscription->package_type : $profile['package_type'];
         $monthly_price = $subscription ? $subscription->monthly_price : $profile['monthly_price'];
         $installation_address = $subscription ? $subscription->installation_address : $profile['installation_address'];
-        $status = $subscription ? $subscription->status : 'approved';
+        $status = $subscription ? $subscription->status : 'active';
         $next_billing_date = ($subscription && !empty($subscription->next_billing_date)) ? $subscription->next_billing_date : null;
         $start_date = ($subscription && !empty($subscription->start_date)) ? $subscription->start_date : null;
 
@@ -262,7 +296,7 @@ class Starcast_Customer_Dashboard {
                 <div class="package-header">
                     <h3><?php echo esc_html($package ? $package->post_title : 'Package'); ?></h3>
                     <span class="status-badge status-<?php echo esc_attr($status); ?>">
-                        <?php echo esc_html(ucfirst($status)); ?>
+                        <?php echo esc_html($this->format_status_label($status)); ?>
                     </span>
                 </div>
                 
@@ -328,7 +362,7 @@ class Starcast_Customer_Dashboard {
                     <div class="stat-label">Days Until Next Billing</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value"><?php echo ucfirst($status); ?></div>
+                    <div class="stat-value"><?php echo esc_html($this->format_status_label($status)); ?></div>
                     <div class="stat-label">Account Status</div>
                 </div>
             </div>
@@ -352,11 +386,11 @@ class Starcast_Customer_Dashboard {
                 $package_id = $subscription ? $subscription->package_id : $profile['package_id'];
                 $package_title = $package_id ? get_the_title($package_id) : 'Package';
                 $monthly_price = $subscription ? $subscription->monthly_price : $profile['monthly_price'];
-                $status = $subscription ? $subscription->status : 'approved';
+                $status = $subscription ? $subscription->status : 'active';
                 ?>
                 <p><strong>Package:</strong> <?php echo esc_html($package_title); ?></p>
                 <p><strong>Monthly Price:</strong> R<?php echo number_format((float) $monthly_price, 2); ?></p>
-                <p><strong>Status:</strong> <?php echo esc_html(ucfirst($status)); ?></p>
+                <p><strong>Status:</strong> <?php echo esc_html($this->format_status_label($status)); ?></p>
             </div>
 
             <div class="current-package">
@@ -419,30 +453,26 @@ class Starcast_Customer_Dashboard {
                 
                 <div class="payment-options">
                     <div class="payment-card payfast-card">
-                        <div class="payment-logo">
-                            <h4>PayFast</h4>
+                        <div class="payment-card-info">
+                            <div class="payment-logo"><h4>PayFast</h4></div>
+                            <p>Credit Card, EFT, SnapScan</p>
                         </div>
-                        <p>Secure payment via PayFast (Credit Card, EFT, SnapScan)</p>
                         <form action="<?php echo esc_url(home_url('/process-payfast-payment')); ?>" method="post">
                             <input type="hidden" name="subscription_id" value="<?php echo esc_attr($subscription ? $subscription->id : 0); ?>">
                             <input type="hidden" name="amount" value="<?php echo esc_attr($monthly_price); ?>">
-                            <button type="submit" class="button button-primary button-large">
-                                Pay with PayFast
-                            </button>
+                            <button type="submit" class="button button-primary">Pay with PayFast</button>
                         </form>
                     </div>
-                    
+
                     <div class="payment-card ozow-card">
-                        <div class="payment-logo">
-                            <h4>Ozow</h4>
+                        <div class="payment-card-info">
+                            <div class="payment-logo"><h4>Ozow</h4></div>
+                            <p>Instant EFT payment</p>
                         </div>
-                        <p>Instant EFT payment via Ozow</p>
                         <form action="<?php echo esc_url(home_url('/process-ozow-payment')); ?>" method="post">
                             <input type="hidden" name="subscription_id" value="<?php echo esc_attr($subscription ? $subscription->id : 0); ?>">
                             <input type="hidden" name="amount" value="<?php echo esc_attr($monthly_price); ?>">
-                            <button type="submit" class="button button-primary button-large">
-                                Pay with Ozow
-                            </button>
+                            <button type="submit" class="button button-primary">Pay with Ozow</button>
                         </form>
                     </div>
                 </div>
@@ -670,6 +700,19 @@ class Starcast_Customer_Dashboard {
         return !empty($orders) ? $orders[0] : null;
     }
 
+    private function format_status_label($raw_status) {
+        $map = array(
+            'active'    => 'Active',
+            'approved'  => 'Active',
+            'pending'   => 'Pending',
+            'cancelled' => 'Cancelled',
+            'canceled'  => 'Cancelled',
+            'suspended' => 'Cancelled',
+        );
+        $key = strtolower(trim($raw_status));
+        return isset($map[$key]) ? $map[$key] : ucfirst($raw_status);
+    }
+
     private function get_user_subscription($user_id) {
         global $wpdb;
         
@@ -684,7 +727,7 @@ class Starcast_Customer_Dashboard {
         }
         
         $subscription = $wpdb->get_row($wpdb->prepare(
-            "SELECT * FROM $table_name WHERE user_id = %d AND status = 'active' LIMIT 1",
+            "SELECT * FROM $table_name WHERE user_id = %d ORDER BY id DESC LIMIT 1",
             $user_id
         ));
         
@@ -788,8 +831,6 @@ class Starcast_Customer_Dashboard {
     
     private function get_custom_css() {
         return "
-        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-
         :root {
             --starcast-ink: #0f172a;
             --starcast-muted: #5b6475;
@@ -814,8 +855,12 @@ class Starcast_Customer_Dashboard {
             max-width: 1100px;
             margin: 0 auto;
             padding: 32px 20px 60px;
-            font-family: 'IBM Plex Sans', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 15px;
+            line-height: 1.45;
             color: var(--starcast-ink);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .woocommerce-account:not(.logged-in) .entry-content .woocommerce {
@@ -924,25 +969,32 @@ class Starcast_Customer_Dashboard {
             background: var(--starcast-surface);
             border: 1px solid var(--starcast-line);
             border-radius: var(--starcast-radius);
-            padding: 28px 28px 32px;
+            padding: 20px 20px 24px;
             box-shadow: var(--starcast-shadow);
-            min-height: 420px;
-        }
-
-        .woocommerce-account h2,
-        .woocommerce-account h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: -0.01em;
+            min-height: 0;
         }
 
         .woocommerce-account h2 {
-            font-size: 28px;
-            margin-bottom: 18px;
+            font-family: inherit;
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin-bottom: 14px;
         }
 
+        /* iOS-style section label */
         .woocommerce-account h3 {
-            font-size: 20px;
-            margin-top: 8px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--starcast-muted);
+            margin: 20px 0 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--starcast-line);
         }
 
         .woocommerce-account .woocommerce-message,
@@ -959,12 +1011,14 @@ class Starcast_Customer_Dashboard {
         .woocommerce-account .woocommerce-button {
             background: var(--starcast-accent);
             color: var(--starcast-accent-ink);
-            border-radius: 12px;
+            border-radius: 10px;
             border: none;
-            padding: 12px 18px;
+            padding: 10px 20px;
+            font-size: 14px;
             font-weight: 600;
-            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 40px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
         .woocommerce-account .button:hover,
@@ -985,8 +1039,10 @@ class Starcast_Customer_Dashboard {
         .woocommerce-account textarea {
             border-radius: 12px;
             border: 1px solid var(--starcast-line);
-            padding: 12px 14px;
+            padding: 11px 13px;
             background: #fbfcff;
+            font-size: 16px;
+            line-height: 1.4;
         }
 
         .woocommerce-account .shop_table {
@@ -1003,28 +1059,39 @@ class Starcast_Customer_Dashboard {
             padding: 20px;
         }
         
-        .account-details-form .form-row {
-            margin-bottom: 20px;
+        .account-details-form p.form-row {
+            margin: 0 0 10px;
+            padding: 0;
         }
-        
+
         .account-details-form label {
             display: block;
             font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: var(--starcast-muted, #666);
         }
-        
+
         .account-details-form input[type='email'],
         .account-details-form input[type='tel'],
+        .account-details-form input[type='text'],
         .account-details-form textarea {
             width: 100%;
-            max-width: 500px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            box-sizing: border-box;
         }
-        
+
+        .account-details-form textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+
         .account-details-form .required {
-            color: red;
+            color: #e53e3e;
+        }
+
+        .account-details-form .button[type='submit'] {
+            width: 100%;
+            margin-top: 6px;
         }
         
         .package-card {
@@ -1123,66 +1190,140 @@ class Starcast_Customer_Dashboard {
         }
         
         .payment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 10px 0;
         }
-        
+
         .payment-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
             border: 1px solid var(--starcast-line);
-            border-radius: 14px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: left;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
             background: var(--starcast-surface);
         }
-        
+
+        .payment-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+
         .payment-card:hover {
-            border-color: rgba(37, 99, 235, 0.45);
-            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+            border-color: rgba(37, 99, 235, 0.4);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
         }
-        
+
         .payment-logo h4 {
-            font-size: 24px;
-            margin: 0 0 15px 0;
-            color: #333;
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 2px;
+            color: var(--starcast-ink);
         }
-        
-        .payfast-card {
-            background: linear-gradient(to bottom, #fff 0%, #f8f9fa 100%);
+
+        .payment-card > p {
+            font-size: 12px;
+            color: var(--starcast-muted);
+            margin: 0;
+            line-height: 1.3;
         }
-        
-        .ozow-card {
-            background: linear-gradient(to bottom, #fff 0%, #f0f8ff 100%);
+
+        .payment-card .button,
+        .payment-card button {
+            flex-shrink: 0;
+            width: auto;
+            white-space: nowrap;
+            padding: 9px 16px;
+            font-size: 13px;
         }
+
+        .payfast-card { background: #fff; }
+        .ozow-card { background: #fff; }
         
         .billing-summary {
             background: #f4f7ff;
             border-left: 4px solid var(--starcast-accent);
-            padding: 20px;
-            margin-bottom: 30px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            border-radius: 0 10px 10px 0;
         }
-        
+
         .billing-amount .amount {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--starcast-accent);
-            margin: 10px 0;
+            margin: 6px 0 2px;
         }
         
         .action-buttons {
-            display: flex;
-            gap: 10px;
-            margin: 15px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 12px 0;
         }
-        
+
+        .action-buttons .button,
+        .action-buttons a.button {
+            text-align: center;
+            box-sizing: border-box;
+            font-size: 13px;
+            padding: 9px 12px;
+        }
+
+        .action-buttons a.button.button-primary {
+            font-size: 13px;
+            padding: 9px 12px;
+        }
+
         .notice {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            padding: 12px;
-            border-radius: 4px;
-            margin-top: 15px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #78350f;
+        }
+
+        /* My Package — compact iOS-style list rows */
+        .starcast-package-management .current-package p {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 10px 0;
+            margin: 0;
+            border-bottom: 1px solid var(--starcast-line);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .starcast-package-management .current-package p:last-child {
+            border-bottom: none;
+        }
+
+        .starcast-package-management .current-package p strong {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--starcast-muted);
+            flex-shrink: 0;
+            margin-right: 12px;
+        }
+
+        /* Content section padding */
+        .starcast-package-management,
+        .starcast-billing,
+        .starcast-account-details,
+        .starcast-support {
+            padding: 4px 0;
+        }
+
+        .starcast-package-management .current-package,
+        .starcast-package-management .package-options {
+            margin-bottom: 4px;
         }
         
         .status-paid {
@@ -1190,13 +1331,103 @@ class Starcast_Customer_Dashboard {
             font-weight: 600;
         }
 
+        /* Mobile two-state navigation */
+        @media (max-width: 768px) {
+            /* Hub nav: make items look like big tappable rows */
+            .woocommerce-account:not(.scd-endpoint-active) .woocommerce-MyAccount-navigation ul {
+                gap: 4px;
+            }
+
+            .woocommerce-account:not(.scd-endpoint-active) .woocommerce-MyAccount-navigation li a {
+                padding: 12px 16px;
+                font-size: 16px;
+                font-weight: 500;
+                border-radius: 10px;
+                background: var(--starcast-soft);
+            }
+
+            .woocommerce-account:not(.scd-endpoint-active) .woocommerce-MyAccount-navigation li a::after {
+                content: '›';
+                font-size: 18px;
+                font-weight: 400;
+                color: var(--starcast-muted);
+            }
+
+            /* Hub: /my-account/ — show only nav, hide content */
+            .woocommerce-account:not(.scd-endpoint-active) .woocommerce-MyAccount-content {
+                display: none !important;
+            }
+
+            /* Content page — hide nav, show back button + content */
+            .woocommerce-account.scd-endpoint-active .woocommerce-MyAccount-navigation {
+                display: none !important;
+            }
+
+            .scd-back-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 0 0 14px 0;
+                color: var(--starcast-accent);
+                font-weight: 500;
+                font-size: 13px;
+                text-decoration: none;
+            }
+
+            .scd-back-btn:hover {
+                opacity: 0.8;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .scd-back-btn { display: none; }
+        }
+
         @media (max-width: 900px) {
             .woocommerce-account .woocommerce {
-                padding: 24px 16px 40px;
+                padding: 16px 12px 32px;
             }
 
             .woocommerce-account .woocommerce-MyAccount-navigation {
-                margin-bottom: 18px;
+                margin-bottom: 16px;
+            }
+
+            .woocommerce-account .woocommerce-MyAccount-content {
+                padding: 20px 16px 24px;
+                min-height: unset;
+            }
+
+            .woocommerce-account h2 {
+                font-size: 19px;
+                margin-bottom: 12px;
+            }
+
+            .package-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .detail-item .label {
+                width: 130px;
+            }
+
+
+            .billing-amount .amount {
+                font-size: 28px;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .stat-value {
+                font-size: 24px;
             }
 
             .woocommerce-account:not(.logged-in) .entry-content .woocommerce {
@@ -1210,13 +1441,92 @@ class Starcast_Customer_Dashboard {
                 display: block;
             }
         }
+
+        @media (max-width: 480px) {
+            .woocommerce-account .woocommerce {
+                padding: 12px 10px 24px;
+            }
+
+            .woocommerce-account .woocommerce-MyAccount-content {
+                padding: 16px 14px 20px;
+                border-radius: 12px;
+            }
+
+            .woocommerce-account .woocommerce-MyAccount-navigation {
+                border-radius: 12px;
+                padding: 12px;
+            }
+
+            .woocommerce-account h2 {
+                font-size: 20px;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                gap: 2px;
+                padding: 10px 0;
+            }
+
+            .detail-item .label {
+                width: auto;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                color: var(--starcast-muted);
+            }
+
+            .detail-item .value {
+                font-weight: 600;
+            }
+
+            .package-header h3 {
+                font-size: 18px;
+            }
+
+
+            .billing-amount .amount {
+                font-size: 22px;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-box {
+                padding: 16px 12px;
+            }
+
+            .stat-value {
+                font-size: 20px;
+                margin-bottom: 4px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .starcast-dashboard,
+            .starcast-package-management,
+            .starcast-billing,
+            .starcast-account-details,
+            .starcast-support {
+                padding: 4px 0;
+            }
+
+            .payment-card {
+                padding: 18px 14px;
+            }
+
+            .billing-summary {
+                padding: 14px;
+            }
+        }
         ";
     }
 
     private function get_login_css() {
         return "
-        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-
         :root {
             --starcast-ink: #0f172a;
             --starcast-muted: #5b6475;
@@ -1230,7 +1540,7 @@ class Starcast_Customer_Dashboard {
         }
 
         body.login {
-            font-family: 'IBM Plex Sans', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: var(--starcast-ink);
             background: radial-gradient(1200px 800px at 18% -10%, #f2f7ff 0%, #f8f4ff 35%, #ffffff 70%);
         }
@@ -1246,8 +1556,8 @@ class Starcast_Customer_Dashboard {
             height: auto;
             width: auto;
             text-indent: 0;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 26px;
+            font-family: inherit;
+            font-size: 24px;
             font-weight: 700;
             color: var(--starcast-ink);
             letter-spacing: -0.02em;
@@ -1328,7 +1638,7 @@ class Starcast_Customer_Dashboard {
         .kadence-header .menu a,
         .kadence-header .header-navigation a,
         .site-header .main-navigation a {
-            font-family: 'IBM Plex Sans', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-weight: 600;
             letter-spacing: -0.01em;
             text-transform: none;

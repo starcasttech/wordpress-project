@@ -41,6 +41,10 @@ if (! function_exists('blocksy_main_menu_fallback')) {
 			$list_pages_args['blocksy_advanced_item'] = $args['blocksy_advanced_item'];
 		}
 
+		if (isset($args['blocksy_should_add_dropdown_active'])) {
+			$list_pages_args['blocksy_should_add_dropdown_active'] = $args['blocksy_should_add_dropdown_active'];
+		}
+
 		if (isset($args['skip_ghost'])) {
 			$list_pages_args['skip_ghost'] = $args['skip_ghost'];
 		}
@@ -277,6 +281,20 @@ add_filter(
 				in_array($page->ID, $_current_page->ancestors)
 			) {
 				$css_class[] = 'current-menu-ancestor';
+				
+				if (
+					isset($args['blocksy_should_add_dropdown_active'])
+					&&
+					$args['blocksy_should_add_dropdown_active']
+					&&
+					(
+						in_array('current_page_parent', $css_class, true)
+						||
+						in_array('current_page_ancestor', $css_class, true)
+					)
+				) {
+					$css_class[] = 'dropdown-active';
+				}
 			}
 
 			if ($page->ID === $current_page) {
@@ -338,7 +356,21 @@ add_filter(
 			! isset($args->blocksy_mega_menu)
 			||
 			! $args->blocksy_mega_menu
-		) {
+		) {			
+			if (
+				isset($args->blocksy_should_add_dropdown_active)
+				&&
+				$args->blocksy_should_add_dropdown_active
+				&&
+				(
+					in_array('current-menu-parent', $classes, true)
+					||
+					in_array('current-menu-ancestor', $classes, true)
+				)
+			) {
+				$classes[] = 'dropdown-active';
+			}
+
 			return $classes;
 		}
 

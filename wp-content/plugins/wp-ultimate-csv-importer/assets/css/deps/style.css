@@ -4806,5 +4806,7 @@ div[style*="inline-block"]:hover .tooltip-box {
   border-left-color: #303030;
   margin-top: 5px;
 }
-
+#wpcontent {
+  padding-left: 0px !important;
+}
 

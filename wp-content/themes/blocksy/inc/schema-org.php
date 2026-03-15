@@ -287,6 +287,7 @@ if (! function_exists('blocksy_schema_org_definitions')) {
 
 		if ($place === 'comment') {
 			$value = [
+				'itemprop' => 'comment',
 				'itemscope' => '',
 				'itemtype' => "https://schema.org/Comment"
 			];

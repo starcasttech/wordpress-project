@@ -78,7 +78,7 @@ export const mount = (el, { event }) => {
 			properValue < max
 				? Math.round(
 						(properValue + parseFloat(input.step || '1')) * 100
-				  ) / 100
+					) / 100
 				: max
 	}
 
@@ -91,7 +91,7 @@ export const mount = (el, { event }) => {
 			properValue > min
 				? Math.round(
 						(properValue - parseFloat(input.step || '1')) * 100
-				  ) / 100
+					) / 100
 				: min
 	}
 

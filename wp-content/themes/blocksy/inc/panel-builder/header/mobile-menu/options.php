@@ -44,6 +44,15 @@ $options = [
 						'condition' => [ 'mobile_menu_interactive' => 'yes' ],
 						'options' => [
 
+							'mobile_menu_interactive_auto_expand' => [
+								'label' => __( 'Auto Expand Current Item', 'blocksy' ),
+								'type' => 'ct-switch',
+								'value' => 'no',
+								'divider' => 'top',
+								'setting' => [ 'transport' => 'postMessage' ],
+								'desc' => __('This option will automatically expand the current menu item and its sub-menu items.', 'blocksy'),
+							],
+
 							'mobile_menu_type' => [
 								'label' => __( 'Dropdown Toggle Icon', 'blocksy' ),
 								'type' => 'ct-image-picker',

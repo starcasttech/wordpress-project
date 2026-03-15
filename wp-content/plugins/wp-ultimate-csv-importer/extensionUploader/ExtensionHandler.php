@@ -142,6 +142,40 @@ class ExtensionHandler{
 			$importas['WooCommerce Customer'] = 'WooCommerceCustomer';
 		}
 
+		if ( is_plugin_active( 'easy-digital-downloads/easy-digital-downloads.php' ) ) {
+
+			$importas['EDD Downloads']  = 'EDD_DOWNLOADS';
+			$importas['EDD Customers']  = 'EDD_CUSTOMERS';
+			$importas['EDD Discounts']  = 'EDD_DISCOUNTS';
+
+			if ( isset( $importas['download'] ) ) {
+				unset( $importas['download'] );
+			}
+		}
+		if (is_plugin_active('surecart/surecart.php')) {
+
+			$importas['SureCart Products'] = 'SURECART_PRODUCTS';
+			$importas['SureCart Customers'] = 'SURECART_CUSTOMERS';
+			$importas['SureCart Coupons'] = 'SURECART_COUPONS';
+
+			if (isset($importas['sc_product'])) {
+				unset($importas['sc_product']);
+			}
+			if (isset($importas['sc_order'])) {
+				unset($importas['sc_order']);
+			}
+			if (isset($importas['sc_customer'])) {
+				unset($importas['sc_customer']);
+			}
+			if (isset($importas['sc_subscription'])) {
+				unset($importas['sc_subscription']);
+			}
+			if (isset($importas['sc_coupon'])) {
+				unset($importas['sc_coupon']);
+			}
+		}
+
+
 		if(array_key_exists('location' , $importas) && array_key_exists('event-recurring' , $importas)){
 			unset($importas['location']);
 			unset($importas['event-recurring']);

@@ -1,3 +1,5 @@
+@use "../../../1-helpers/functions";
+
 .product > .woocommerce-tabs {
 	padding-top: 60px;
 	clear: both;
@@ -12,12 +14,12 @@
 		flex-wrap: wrap;
 		align-items: var(--vertical-alignment, center);
 
-		@include media-breakpoint-down(sm) {
+		@include functions.media-breakpoint-down(sm) {
 			flex-direction: column;
 			--vertical-alignment: stretch;
 		}
 
-		@include media-breakpoint-up(md) {
+		@include functions.media-breakpoint-up(md) {
 			justify-content: var(--horizontal-alignment, center);
 		}
 
@@ -25,7 +27,7 @@
 			position: relative;
 			display: inline-flex;
 
-			@include media-breakpoint-down(sm) {
+			@include functions.media-breakpoint-down(sm) {
 				border-top: 1px solid var(--tab-border-color, var(--theme-border-color));
 			}
 
@@ -80,13 +82,13 @@
 		li {
 			border: 1px solid var(--tab-border-color, var(--theme-border-color));
 
-			@include media-breakpoint-down(sm) {
+			@include functions.media-breakpoint-down(sm) {
 				&:not(:first-child) {
 					margin-top: -1px;
 				}
 			}
 
-			@include media-breakpoint-up(md) {
+			@include functions.media-breakpoint-up(md) {
 				margin-inline-end: -1px;
 			}
 
@@ -99,7 +101,7 @@
 			}
 		}
 
-		@include media-breakpoint-up(md) {
+		@include functions.media-breakpoint-up(md) {
 			&:before,
 			&:after {
 				flex: 1 0 auto;
@@ -109,7 +111,7 @@
 		}
 	}
 
-	@include media-breakpoint-up(md) {
+	@include functions.media-breakpoint-up(md) {
 		&[data-type*='left'] .tabs {
 			&:after {
 				content: '';

@@ -1,10 +1,12 @@
+@use "variables";
+
 .ct-panel-builder {
 	position: absolute;
 	z-index: 3;
 	left: 0;
 	width: 100%;
 	// right: 0;
-	bottom: -#{$panel-height};
+	bottom: -#{variables.$panel-height};
 	// height: $panel-height;
 	background: #f0f0f1;
 	box-sizing: border-box;
@@ -31,7 +33,7 @@
 
 		&.ct-show-builder {
 			#customize-preview {
-				bottom: $panel-height;
+				bottom: variables.$panel-height;
 			}
 
 			.ct-panel-builder {
@@ -41,11 +43,11 @@
 			// collapsed builder
 			&.ct-builder-collapsed {
 				#customize-preview {
-					bottom: $panel-bar-height;
+					bottom: variables.$panel-bar-height;
 				}
 
 				.placements-builder {
-					margin-bottom: -#{$panel-placement-height};
+					margin-bottom: -#{variables.$panel-placement-height};
 				}
 			}
 		}

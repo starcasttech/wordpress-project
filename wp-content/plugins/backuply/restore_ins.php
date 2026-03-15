@@ -1621,8 +1621,10 @@ class softtar{
 							$v_dest_file = fopen($v_header['filename'], "wb", 0, $stream_context);
 
 						}else{
-							// We will not restore the root htaccess file if the user is migrating to prevent issues related to difference in environment on the new server.
-							if(!empty($data['is_migrating']) && $v_header['filename'] == $data['softpath'] .'/'. '.htaccess'){
+							// We will not restore the root htaccess file to prevent issues related to difference in environment
+							// It was causing issue for users who either migrate to new server or if the user has changed their environment
+							// since the backup they are restoring, and issue in htaccess causes issue with restoring site properly
+							if($v_header['filename'] == $data['softpath'] .'/'. '.htaccess'){
 								$v_header['filename'] .=  '.backuply';
 							}
 

@@ -103,10 +103,6 @@ Blocksy is distributed under the terms of the GNU GPL
 
 Blocksy bundles the following third-party resources:
 
-@reach/router, Copyright (c) 2018-present, Ryan Florence
-Licenses: The MIT License (MIT)
-Source: https://github.com/reach/router
-
 @wordpress/element, WordPress - Web publishing software, Copyright 2011-2019 by the contributors
 Licenses: GNU GENERAL PUBLIC LICENSE
 Source: https://github.com/WordPress/gutenberg/tree/master/packages/element
@@ -127,10 +123,6 @@ classnames, Copyright (c) 2018 Jed Watson
 Licenses: The MIT License (MIT)
 Source: https://github.com/JedWatson/classnames
 
-ct-log, Copyright (c) 2016 Creative Themes
-Licenses: The MIT License (MIT)
-Source: https://github.com/Creative-Themes/wp-js-log
-
 deep-equal
 Licenses: MIT. Derived largely from node's assert module.
 Source: https://github.com/substack/node-deep-equal
@@ -142,10 +134,6 @@ Source: https://github.com/vadimdemedes/dom-chef
 downshift, Copyright (c) 2017 PayPal
 Licenses: The MIT License (MIT)
 Source: https://github.com/downshift-js/downshift
-
-file-saver, Copyright © 2016 Eli Grey
-Licenses: The MIT License
-Source: https://github.com/eligrey/FileSaver.js
 
 infinite-scroll
 Licenses: GNU GPL license v3
@@ -166,10 +154,6 @@ Source: https://github.com/constancecchen/object-fit-polyfill
 react-outside-click-handler, Copyright (c) 2018 Airbnb
 Licenses: MIT License
 Source: https://github.com/airbnb/react-outside-click-handler
-
-react-sortable-hoc, Copyright (c) 2016, Claudéric Demers
-Licenses: The MIT License (MIT)
-Source: https://github.com/clauderic/react-sortable-hoc
 
 react-spring, Copyright (c) 2018 Paul Henschel
 Licenses: MIT License

@@ -1,8 +1,9 @@
-@import 'customizer';
-@import 'native-options';
-@import 'builder/main';
-@import 'modal';
-@import 'customizer-preview';
+@use 'customizer';
+@use 'native-options';
+@use 'builder/main';
+@use 'modal';
+@use 'customizer-preview';
 
 // dark mode
-@import 'dark-mode/main';
+@use 'dark-mode/main' as main2;
+

@@ -1,15 +1,17 @@
+@use "../../1-helpers/functions";
+
 [data-archive="default"][data-layout="simple"] {
 
 	article {
 		display: flex;
 		gap: var(--card-inner-spacing, 30px);
 
-		@include media-breakpoint-down (sm) {
+		@include functions.media-breakpoint-down (sm) {
 			flex-direction: column;
 		}
 
 		> .ct-media-container {
-			@include media-breakpoint-up (md) {
+			@include functions.media-breakpoint-up (md) {
 				max-width: var(--card-media-max-width, 40%);
 				flex-shrink: 0;
 				margin-inline-end: 0;
@@ -23,7 +25,7 @@
 		.card-content {
 			flex: 1;
 			
-			@include media-breakpoint-up (md) {
+			@include functions.media-breakpoint-up (md) {
 				align-self: center;
 			}
 		}
@@ -45,7 +47,7 @@
 
 		.entry-card .boundless-image {
 
-			@include media-breakpoint-up (md) {
+			@include functions.media-breakpoint-up (md) {
 				width: 100%;
 				margin-bottom: calc(var(--card-inner-spacing, 30px) * -1);
 			}

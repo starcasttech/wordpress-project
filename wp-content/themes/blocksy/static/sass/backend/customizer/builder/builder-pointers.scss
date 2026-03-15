@@ -1,3 +1,5 @@
+@use "variables";
+
 $pointer-color: rgba(130, 131, 134, 0.7);
 $pointer-color: var(--ui-accent-color);
 
@@ -42,8 +44,8 @@ $pointer-color: var(--ui-accent-color);
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	width: $builder-item-height;
-	height: $builder-item-height;
+	width: variables.$builder-item-height;
+	height: variables.$builder-item-height;
 
 	&:before,
 	&:after {

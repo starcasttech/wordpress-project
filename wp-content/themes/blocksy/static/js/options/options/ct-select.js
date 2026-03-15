@@ -7,7 +7,6 @@ import {
 	Fragment,
 } from '@wordpress/element'
 import { maybeTransformUnorderedChoices } from '../helpers/parse-choices'
-import Downshift from 'downshift'
 import classnames from 'classnames'
 import { __ } from 'ct-i18n'
 

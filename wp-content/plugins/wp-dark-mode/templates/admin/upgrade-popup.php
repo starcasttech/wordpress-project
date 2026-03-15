@@ -27,7 +27,7 @@ $is_campaign = $campaign_ends > time() && $campaign_starts < time();
 // Formatted data.
 $data = [
 	'counter_time' => $is_campaign ? $campaign_ends : $countdown_timer,
-	'discount'     => $is_campaign ? 50 : 35,
+	'discount'     => $is_campaign ? 50 : 16,
 ];
 
 $countdown_time = [

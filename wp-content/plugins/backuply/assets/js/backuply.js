@@ -422,7 +422,7 @@ jQuery(document).ready(function(){
 			
 		}
 	});
-});	
+});
 
 // Handles Dashboard Tabs
 function backuply_handle_tab() {
@@ -1180,8 +1180,7 @@ function backuply_backup_progress() {
 				if(res.status == 508){
 					retry_time_seconds = 5000;
 				}
-        
-        console.log('Attempting Retry');
+
 				setTimeout(backuply_backup_progress, retry_time_seconds);	
 			}
 		}

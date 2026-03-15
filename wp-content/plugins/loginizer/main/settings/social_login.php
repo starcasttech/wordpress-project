@@ -90,9 +90,9 @@ function loginizer_social_login(){
 	foreach($providers as $key => $provider){
 
 		$action_class = '';
-		$action_text = __('Get Started');
+		$action_text = __('Get Started', 'loginizer');
 		if(array_key_exists($key, $provider_settings)){
-			$action_text = __('Settings');
+			$action_text = __('Settings', 'loginizer');
 		}
 
 		$action_to = admin_url('admin.php?page=loginizer_social_login&provider='.$key);

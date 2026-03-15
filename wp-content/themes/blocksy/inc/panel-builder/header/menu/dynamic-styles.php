@@ -130,11 +130,17 @@ blocksy_output_colors([
 blocksy_output_colors([
 	'value' => blocksy_akg('menuIndicatorColor', $atts),
 	'default' => [
+		'default' => [ 'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT') ],
 		'hover' => [ 'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT') ],
 		'active' => [ 'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT') ],
 	],
 	'css' => $css,
 	'variables' => [
+		'default' => [
+			'selector' => blocksy_assemble_selector($root_selector),
+			'variable' => 'menu-indicator-initial-color'
+		],
+
 		'hover' => [
 			'selector' => blocksy_assemble_selector($root_selector),
 			'variable' => 'menu-indicator-hover-color'
@@ -293,12 +299,25 @@ if (isset($has_transparent_header) && $has_transparent_header) {
 	blocksy_output_colors([
 		'value' => blocksy_akg('transparentMenuIndicatorColor', $atts),
 		'default' => [
+			'default' => [ 'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT') ],
 			'hover' => [ 'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT') ],
 			'active' => [ 'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT') ],
 		],
 		'css' => $css,
 
 		'variables' => [
+
+			'default' => [
+				'selector' => blocksy_assemble_selector(
+					blocksy_mutate_selector([
+						'selector' => $root_selector,
+						'operation' => 'between',
+						'to_add' => '[data-transparent-row="yes"]'
+					])
+				),
+				'variable' => 'menu-indicator-initial-color'
+			],
+
 			'hover' => [
 				'selector' => blocksy_assemble_selector(
 					blocksy_mutate_selector([
@@ -488,12 +507,24 @@ if (isset($has_sticky_header) && $has_sticky_header) {
 	blocksy_output_colors([
 		'value' => blocksy_akg('stickyMenuIndicatorColor', $atts),
 		'default' => [
+			'default' => [ 'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT') ],
 			'hover' => [ 'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT') ],
 			'active' => [ 'color' => Blocksy_Css_Injector::get_skip_rule_keyword('DEFAULT') ],
 		],
 		'css' => $css,
 
 		'variables' => [
+			'default' => [
+				'selector' => blocksy_assemble_selector(
+					blocksy_mutate_selector([
+						'selector' => $root_selector,
+						'operation' => 'between',
+						'to_add' => '[data-sticky*="yes"]'
+					])
+				),
+				'variable' => 'menu-indicator-initial-color'
+			],
+
 			'hover' => [
 				'selector' => blocksy_assemble_selector(
 					blocksy_mutate_selector([

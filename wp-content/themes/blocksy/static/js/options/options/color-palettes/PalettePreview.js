@@ -72,7 +72,10 @@ const PalettePreview = ({
 							value: currentPalette,
 
 							afterPill: ({ picker }) => {
-								if (!option.palettes) {
+								if (
+									!option.palettes ||
+									!option.palettes.length
+								) {
 									return null
 								}
 

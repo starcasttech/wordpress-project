@@ -1,3 +1,5 @@
+@use "../../1-helpers/functions";
+
 .form-row {
 	
 	label {
@@ -34,7 +36,7 @@
 }
 
 
-@include media-breakpoint-up (md) {
+@include functions.media-breakpoint-up (md) {
 	.form-row-first,
 	.form-row-last {
 		width: 48%;

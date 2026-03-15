@@ -7,8 +7,6 @@ if (defined('WC_VERSION') && version_compare(WC_VERSION, '2.3', '>=')) {
 	add_filter('add_to_cart_fragments', 'blocksy_header_cart_item_fragment');
 }
 
-remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
-
 if (! function_exists('blocksy_header_cart_item_fragment')) {
 	function blocksy_header_cart_item_fragment($fragments) {
 		$header = new Blocksy_Header_Builder_Render();

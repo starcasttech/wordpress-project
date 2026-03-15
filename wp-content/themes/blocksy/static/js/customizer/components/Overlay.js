@@ -24,6 +24,7 @@ const Overlay = ({
 	className,
 	initialFocusRef,
 	onDismiss,
+	onDismissed,
 	onCloseButtonClick,
 }) => {
 	return (
@@ -34,6 +35,11 @@ const Overlay = ({
 					'ct-dashboard-overlay-open'
 				)
 			}
+			onRest={(result, spring, item) => {
+				if (onDismissed && !isVisible(item)) {
+					onDismissed()
+				}
+			}}
 			config={{ duration: 200 }}
 			from={{ opacity: 0, y: -10 }}
 			enter={{ opacity: 1, y: 0 }}

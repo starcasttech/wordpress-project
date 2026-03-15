@@ -2495,12 +2495,13 @@
 
 			if ( $( '#customize-control-loginpress_customization-back_display_text input[type="checkbox"]' ).is( ":checked" ) ) {
 
-				$( '#customize-control-loginpress_customization-login_back_text_decoration' ).css( 'display', 'list-item' );
-				$( '#customize-control-loginpress_customization-login_back_color' ).css( 'display', 'list-item' );
-				$( '#customize-control-loginpress_customization-login_back_color_hover' ).css( 'display', 'list-item' );
-				$( '#customize-control-loginpress_customization-login_back_font_size' ).css( 'display', 'list-item' );
-				$( '#customize-control-loginpress_customization-login_back_bg_color' ).css( 'display', 'list-item' );
-				$( '#customize-control-loginpress_customization-copyright_background_color' ).css( 'display', 'list-item' );
+				loginpress_find( '.login' ).append( '<p id="backtoblog"></p>' );
+				$( '#customize-preview iframe' ).contents().find( '.login #backtoblog' ).css( 'display', 'block' );
+				$( '#customize-control-loginpress_customization-login_back_text_decoration' ).fadeIn().css( 'display', 'list-item' );
+				$( '#customize-control-loginpress_customization-login_back_color' ).fadeIn().css( 'display', 'list-item' );
+				$( '#customize-control-loginpress_customization-login_back_color_hover' ).fadeIn().css( 'display', 'list-item' );
+				$( '#customize-control-loginpress_customization-login_back_font_size' ).fadeIn().css( 'display', 'list-item' );
+				$( '#customize-control-loginpress_customization-login_back_bg_color' ).fadeIn().css( 'display', 'list-item' );
 
 			} else {
 

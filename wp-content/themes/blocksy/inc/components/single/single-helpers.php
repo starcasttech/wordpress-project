@@ -55,7 +55,10 @@ if (! function_exists('blocksy_get_author_id')) {
 		$author_id = get_queried_object_id();
 
 		if (is_singular()) {
-			$author_id = get_the_author_meta('ID');
+			// Previously used get_the_author_meta('ID') but it relies on global
+			// $authordata which is only set after setup_postdata() in the loop.
+			// get_post_field() reads directly from global $post which is available earlier.
+			$author_id = get_post_field('post_author');
 		}
 
 		if (! $author_id) {
@@ -570,6 +573,17 @@ if (! function_exists('blocksy_get_featured_image_source')) {
 			return [
 				'strategy' => 'customizer',
 				'prefix' => 'single_page'
+			];
+		}
+
+		if (
+			class_exists('Visual_Portfolio')
+			&&
+			is_singular('portfolio')
+		) {
+			return [
+				'strategy' => 'customizer',
+				'prefix' => 'vs_portfolio_single'
 			];
 		}
 

@@ -586,11 +586,41 @@ $options = [
 				'type' => 'ct-condition',
 				'condition' => [ 'headerRowWidth:responsive' => 'boxed' ],
 				'options' => [
+					'header_row_padding' => [
+						'label' => __( 'Row Padding', 'blocksy' ),
+						'type' => 'ct-spacing',
+						'divider' => 'top: full',
+						'value' => [
+							'desktop' => blocksy_spacing_value([
+								'top' => 'auto',
+								'left' => '35px',
+								'right' => '35px',
+								'bottom' => 'auto',
+							]),
+							'tablet' => blocksy_spacing_value([
+								'top' => 'auto',
+								'left' => '4vw',
+								'right' => '4vw',
+								'bottom' => 'auto',
+							]),
+							'mobile'=> blocksy_spacing_value([
+								'top' => 'auto',
+								'left' => '5vw',
+								'right' => '5vw',
+								'bottom' => 'auto',
+							]),
+							'__changed' => ['tablet', 'mobile']
+						],
+						'min' => 0,
+						'responsive' => true,
+						'sync' => 'live',
+					],
+
 					'header_row_border_radius' => [
-						'label' => __( 'Border Radius', 'blocksy' ),
+						'label' => __( 'Row Border Radius', 'blocksy' ),
 						'type' => 'ct-spacing',
 						'sync' => 'live',
-						'divider' => 'top: full',
+						'divider' => 'top:',
 						'value' => blocksy_spacing_value(),
 						'min' => 0,
 						'responsive' => true

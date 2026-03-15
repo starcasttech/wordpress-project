@@ -1,6 +1,12 @@
-@import 'cart-block';
-@import 'checkout-block';
+@use 'cart-block';
+@use 'checkout-block';
 
+div:is(
+	.wp-block-woocommerce-cart,
+	.wp-block-woocommerce-checkout
+) {
+	width: var(--theme-block-width);
+}
 
 // forms
 .wc-block-components-textarea,

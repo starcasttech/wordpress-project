@@ -1,7 +1,7 @@
 import { createElement, useEffect, useState, useMemo } from '@wordpress/element'
 import { __ } from 'ct-i18n'
 
-import cachedFetch from 'ct-wordpress-helpers/cached-fetch'
+import cachedFetch from '@creative-themes/wordpress-helpers/cached-fetch'
 import Select from './ct-select'
 
 const withUniqueIDs = (data) =>

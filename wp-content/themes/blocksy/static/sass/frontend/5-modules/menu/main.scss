@@ -1,15 +1,15 @@
-@import 'menu-common';
-@import 'menu-base';
-@import 'menu-type';
-@import 'menu-responsive';
+@use 'menu-common';
+@use 'menu-base';
+@use 'menu-type';
+@use 'menu-responsive';
 
 // dropdown
-@import 'menu-dropdown';
-@import 'dropdown-items';
-@import 'dropdown-animation';
+@use 'menu-dropdown';
+@use 'dropdown-items';
+@use 'dropdown-animation';
 
 // mobile menu
-@import 'mobile-menu-base';
+@use 'mobile-menu-base';
 
 // header tablet & mobile menu, footer menu
-@import 'menu-inline';
+@use 'menu-inline';

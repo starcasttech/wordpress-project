@@ -1,31 +1,30 @@
-$sides_spacing: 20px;
-
-@import 'general';
-@import 'spacing';
-@import 'colors';
-@import 'forms';
-@import 'alignment';
-@import 'typography';
-@import 'visibility';
-@import 'margin-reset';
+@use 'general';
+@use 'spacing';
+@use 'colors';
+@use 'forms';
+@use 'alignment';
+@use 'typography';
+@use 'visibility';
+// @use 'margin-reset';
 
 // blocks
-@import 'drop-cap';
-@import 'post-title';
-@import 'figcaption';
-@import 'block-list';
-@import 'block-code';
-@import 'block-quote';
-@import 'block-table';
-@import 'block-button';
-@import 'block-search';
-@import 'block-calendar';
-@import 'block-wp-forms';
-@import 'block-separator';
-@import 'block-post-title';
+@use 'drop-cap';
+@use 'post-title';
+@use 'figcaption';
+@use 'block-list';
+@use 'block-code';
+@use 'block-quote';
+@use 'block-table';
+@use 'block-button';
+@use 'block-search';
+@use 'block-calendar';
+@use 'block-wp-forms';
+@use 'block-accordion';
+@use 'block-separator';
+@use 'block-post-title';
 
 // states
-@import 'has-background';
+@use 'has-background';
 
 // builders
-@import 'block-builders';
+@use 'block-builders';

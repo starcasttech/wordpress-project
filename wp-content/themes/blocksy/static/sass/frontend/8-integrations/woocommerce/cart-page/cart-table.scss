@@ -1,3 +1,5 @@
+@use "../../../1-helpers/functions";
+
 // general styles
 .woocommerce-cart-form {
 
@@ -10,22 +12,22 @@
 // theme speciffic styles
 [class*="ct-woocommerce"] .shop_table {
 
-	@include media-breakpoint-down (sm) {
+	@include functions.media-breakpoint-down (sm) {
 		--theme-table-padding: 1.3em 0.7em;
 	}
 
-	@include media-breakpoint-up (md) {
+	@include functions.media-breakpoint-up (md) {
 		--theme-table-padding: 1.5em 0.7em;
 	}
 
 
 	// pruduct thumbnail
 	[class*="product-thumbnail"] {
-		@include media-breakpoint-down (md) {
+		@include functions.media-breakpoint-down (md) {
 			width: 120px;
 		}
 
-		@include media-breakpoint-up (lg) {
+		@include functions.media-breakpoint-up (lg) {
 			width: 100px;
 		}
 
@@ -37,11 +39,11 @@
 
 	// product name
 	[class*="product-name"] {
-		@include media-breakpoint-up (md) {
+		@include functions.media-breakpoint-up (md) {
 			max-width: 300px;
 		}
 
-		@include media-breakpoint-down (md) {
+		@include functions.media-breakpoint-down (md) {
 			padding-inline-end: 0;
 		}
 
@@ -84,7 +86,7 @@
 
 
 	// misc
-	@include media-breakpoint-down (md) {
+	@include functions.media-breakpoint-down (md) {
 		tr > {
 			.product-price,
 			.product-quantity,

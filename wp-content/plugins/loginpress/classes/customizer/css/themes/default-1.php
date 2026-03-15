@@ -128,8 +128,6 @@ function first_presets() {
 			-ms-border-radius: 5px;
 			-o-border-radius: 5px;
 			border-radius: 5px;
-			-webkit-box-shadow: 0 0 15px rgba(0,0,0,.8);
-			box-shadow: 0 0 15px rgba(0,0,0,.8);
 			max-width: 350px;
 			padding: 26px 26px 6px 26px;
 			width: 100%;
@@ -296,7 +294,7 @@ function first_presets() {
 			position: -webkit-sticky;
 			position: sticky;
 			top: 100vh;
-			margin-top: 30px;
+			margin-top: 150px;
 		}
 		.footer-cont{
 			right: 0;

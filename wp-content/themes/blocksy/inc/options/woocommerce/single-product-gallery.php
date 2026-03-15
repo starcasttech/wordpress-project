@@ -314,7 +314,7 @@ $options = [
 									'options' => [
 
 										'gallery_style' => [
-											'label' => __('Position', 'blocksy'),
+											'label' => __('Thumbnails Position', 'blocksy'),
 											'type' => 'ct-radio',
 											'value' => 'horizontal',
 											'view' => 'text',
@@ -334,13 +334,25 @@ $options = [
 									],
 								],
 
-								'gallery_thumbnail_image_width' => [
-									'type' => 'text',
-									'label' => __('Image Size', 'blocksy'),
-									'desc' => __('Image size used for the gallery thumbnails on single product pages.', 'blocksy'),
-									'value' => 100,
-									'design' => 'inline',
+								'product_gallery_thumbs_ratio' => [
+									'label' => __( 'Image Ratio', 'blocksy' ),
+									'type' => 'ct-ratio',
+									'value' => '1/1',
+									'design' => 'block',
+									'attr' => [ 'data-type' => 'compact' ],
+									'setting' => [ 'transport' => 'postMessage' ],
+									'preview_width_key' => 'gallery_thumbnail_image_width',
+									'view' => 'inline',
 									'divider' => 'bottom',
+									'inner-options' => [
+										'gallery_thumbnail_image_width' => [
+											'type' => 'text',
+											'label' => __('Image Size', 'blocksy'),
+											'desc' => __('Image size used for the gallery thumbnails on single product pages.', 'blocksy'),
+											'value' => 100,
+											'design' => 'inline',
+										],
+									],
 								],
 
 								'product_thumbs_spacing' => [

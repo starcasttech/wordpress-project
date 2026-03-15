@@ -87,9 +87,15 @@ class WC_Stripe_Express_Checkout_Ajax_Handler {
 
 		WC()->shipping->reset_shipping();
 
-		$product_id   = isset( $_POST['product_id'] ) ? absint( $_POST['product_id'] ) : 0;
-		$qty          = ! isset( $_POST['qty'] ) ? 1 : absint( $_POST['qty'] );
-		$product      = wc_get_product( $product_id );
+		$product_id = isset( $_POST['product_id'] ) ? absint( $_POST['product_id'] ) : 0;
+		$qty        = ! isset( $_POST['qty'] ) ? 1 : absint( $_POST['qty'] );
+		$product    = wc_get_product( $product_id );
+
+		if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
+			/* translators: 1) The product Id */
+			throw new Exception( sprintf( __( 'Product with the ID (%1$s) not found.', 'woocommerce-gateway-stripe' ), $product_id ) );
+		}
+
 		$product_type = $product->get_type();
 
 		$booking_ids = [];
@@ -126,7 +132,6 @@ class WC_Stripe_Express_Checkout_Ajax_Handler {
 		$data          += $this->express_checkout_helper->build_display_items();
 		$data['result'] = 'success';
 
-		// @phpstan-ignore-next-line (return statement is added)
 		wp_send_json( $data );
 	}
 
@@ -240,7 +245,7 @@ class WC_Stripe_Express_Checkout_Ajax_Handler {
 	public function ajax_get_selected_product_data() {
 		check_ajax_referer( 'wc-stripe-get-selected-product-data', 'security' );
 
-		try { // @phpstan-ignore-line (return statement is added)
+		try {
 			$product_id      = isset( $_POST['product_id'] ) ? absint( $_POST['product_id'] ) : 0;
 			$qty             = ! isset( $_POST['qty'] ) ? 1 : apply_filters( 'woocommerce_add_to_cart_quantity', absint( $_POST['qty'] ), $product_id );
 			$addon_value     = isset( $_POST['addon_value'] ) ? max( floatval( $_POST['addon_value'] ), 0 ) : 0;
@@ -250,7 +255,7 @@ class WC_Stripe_Express_Checkout_Ajax_Handler {
 			$is_deposit      = isset( $_POST['wc_deposit_option'] ) ? 'yes' === sanitize_text_field( wp_unslash( $_POST['wc_deposit_option'] ) ) : null;
 			$deposit_plan_id = isset( $_POST['wc_deposit_payment_plan'] ) ? absint( $_POST['wc_deposit_payment_plan'] ) : 0;
 
-			if ( ! is_a( $product, 'WC_Product' ) ) {
+			if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
 				/* translators: 1) The product Id */
 				throw new Exception( sprintf( __( 'Product with the ID (%1$s) cannot be found.', 'woocommerce-gateway-stripe' ), $product_id ) );
 			}
@@ -331,7 +336,7 @@ class WC_Stripe_Express_Checkout_Ajax_Handler {
 
 			wp_send_json( $data );
 		} catch ( Exception $e ) {
-			WC_Stripe_Logger::log( 'Product data error in express checkout: ' . $e->getMessage() );
+			WC_Stripe_Logger::error( 'Product data error in express checkout.', [ 'error_message' => $e->getMessage() ] );
 			wp_send_json( [ 'error' => wp_strip_all_tags( $e->getMessage() ) ] );
 		}
 	}
@@ -344,11 +349,14 @@ class WC_Stripe_Express_Checkout_Ajax_Handler {
 
 		$errors = isset( $_POST['errors'] ) ? wc_clean( wp_unslash( $_POST['errors'] ) ) : '';
 
-		WC_Stripe_Logger::log( $errors );
+		if ( is_array( $errors ) ) {
+			$errors = wp_json_encode( $errors );
+		}
+
+		WC_Stripe_Logger::error( (string) $errors );
 
 		exit;
 	}
-
 	/**
 	 * Processes the Pay for Order AJAX request from the Express Checkout.
 	 *
@@ -402,7 +410,7 @@ class WC_Stripe_Express_Checkout_Ajax_Handler {
 
 			$result = apply_filters( 'woocommerce_payment_successful_result', $result, $order_id );
 		} catch ( Exception $e ) {
-			WC_Stripe_Logger::log( 'Pay for order failed for order ' . $order_id . ' with express checkout: ' . $e );
+			WC_Stripe_Logger::error( 'Pay for order failed for order ' . $order_id . ' with express checkout', [ 'error_message' => $e->getMessage() ] );
 
 			$result = [
 				'result'   => 'error',
@@ -427,10 +435,10 @@ class WC_Stripe_Express_Checkout_Ajax_Handler {
 			return $locale;
 		}
 
-		include_once WC_STRIPE_PLUGIN_PATH . '/includes/constants/class-wc-stripe-payment-request-button-states.php';
+		include_once WC_STRIPE_PLUGIN_PATH . '/includes/constants/class-wc-stripe-express-checkout-button-states.php';
 
 		// For countries that don't have state fields, make the state field optional.
-		foreach ( WC_Stripe_Payment_Request_Button_States::STATES as $country_code => $states ) {
+		foreach ( WC_Stripe_Express_Checkout_Button_States::STATES as $country_code => $states ) {
 			if ( empty( $states ) ) {
 				$locale[ $country_code ]['state']['required'] = false;
 			}

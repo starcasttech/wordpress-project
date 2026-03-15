@@ -830,12 +830,21 @@ class Kadence_Blocks_Prebuilt_Library_REST_Controller extends WP_REST_Controller
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 *
-	 * @return array<array{id: int, url: string}> A list of local or pexels images, where the ID is an attachment_id or pexels_id.
+	 * @return array<array{id: int, url: string}>|\WP_Error A list of local or pexels images, or WP_Error on permission failure.
 	 * @throws InvalidArgumentException
 	 * @throws Throwable
 	 * @throws ImageDownloadException
 	 */
-	public function process_images( WP_REST_Request $request ): array {
+	public function process_images( WP_REST_Request $request ) {
+		// Require upload capability; this endpoint downloads images and adds them to the media library.
+		if ( ! current_user_can( 'upload_files' ) ) {
+			return new WP_Error(
+				'rest_forbidden',
+				__( 'You do not have permission to upload files.', 'kadence-blocks' ),
+				array( 'status' => 403 )
+			);
+		}
+
 		$parameters = (array) $request->get_json_params();
 
 		return kadence_blocks()->get( Image_Downloader::class )->download( $parameters );
@@ -846,14 +855,26 @@ class Kadence_Blocks_Prebuilt_Library_REST_Controller extends WP_REST_Controller
 	 * @param string $content The content to process.
 	 */
 	public function process_cpt( $content, $cpt_blocks, $style ) {
+		$valid_cpt_block_names = [
+			'kadence/header',
+			'kadence/navigation',
+			'kadence/advanced-form',
+			'kadence/query',
+			'kadence/query-card',
+		];
+		$valid_cpt_block_post_types = [
+			'kadence_header',
+			'kadence_navigation',
+			'kadence_form',
+			'kadence_query',
+			'kadence_query_card',
+		];
+
+
 		foreach ( $cpt_blocks as $cpt_block_name => $cpt_block_content ) {
-			switch ( $cpt_block_name ) {
-				case 'kadence/header':
-				case 'kadence/navigation':
-				case 'kadence/advanced-form':
-				case 'kadence/query':
-				case 'kadence/query-card':
-					foreach ( $cpt_block_content as $cpt_key => $cpt_data ) {
+			if ( in_array( $cpt_block_name, $valid_cpt_block_names ) ) {
+				foreach ( $cpt_block_content as $cpt_key => $cpt_data ) {
+					if ( in_array( $cpt_data['post_type'], $valid_cpt_block_post_types ) ) {
 						$old_id = $cpt_data['ID'];
 						$id_map = [];
 						if ( ! empty( $cpt_data['inner_posts'] ) && is_array( $cpt_data['inner_posts'] ) ) {
@@ -872,7 +893,7 @@ class Kadence_Blocks_Prebuilt_Library_REST_Controller extends WP_REST_Controller
 							$content               = $this->update_block_ids( $content, $new_id_map );
 						}
 					}
-					break;
+				}
 			}
 		}
 		return $content;
@@ -922,7 +943,7 @@ class Kadence_Blocks_Prebuilt_Library_REST_Controller extends WP_REST_Controller
 				'post_type'    => $cpt_data['post_type'],
 				'post_title'   => $title,
 				'post_content' => '',
-				'post_status'  => 'publish',
+				'post_status'  => current_user_can( 'publish_posts' ) ? 'publish' : 'pending',
 			],
 			true
 		);
@@ -1200,6 +1221,15 @@ class Kadence_Blocks_Prebuilt_Library_REST_Controller extends WP_REST_Controller
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
 	 */
 	public function process_pattern( WP_REST_Request $request ) {
+		// Require upload capability; pattern processing downloads images and adds them to the media library.
+		if ( ! current_user_can( 'upload_files' ) ) {
+			return new WP_Error(
+				'rest_forbidden',
+				__( 'You do not have permission to upload files.', 'kadence-blocks' ),
+				array( 'status' => 403 )
+			);
+		}
+
 		$parameters = $request->get_json_params();
 		if ( empty( $parameters['content'] ) ) {
 			return rest_ensure_response( 'failed' );

@@ -39,15 +39,18 @@ function blocksy_sync_whole_page($args = []) {
 
 	$selector = 'main#main';
 
-	return array_merge(
-		[
-			'selector' => $selector,
-			'container_inclusive' => true,
-			'render' => function () {
-				echo blocksy_replace_current_template();
-			}
-		],
-		$args
+	return apply_filters(
+		'blocksy:customizer:sync:whole-page',
+		array_merge(
+			[
+				'selector' => $selector,
+				'container_inclusive' => true,
+				'render' => function () {
+					echo blocksy_replace_current_template();
+				}
+			],
+			$args
+		)
 	);
 }
 
@@ -149,6 +152,11 @@ if (! function_exists('blocksy_render_view')) {
 
 		return ob_get_clean();
 	}
+}
+
+function blocksy_render_view_e($file_path, $view_variables = [], $default_value = '') {
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo blocksy_render_view($file_path, $view_variables, $default_value);
 }
 
 function blocksy_get_wp_theme() {
@@ -253,7 +261,7 @@ if (! function_exists('blocksy_debug')) {
 	}
 }
 
-function blocksy_output_html_safely($html) {
+function blocksy_sanitize_user_html($html) {
 	// Just drop scripts from the html content, if user doesnt have
 	// unfiltered_html capability.
 	//
@@ -262,8 +270,20 @@ function blocksy_output_html_safely($html) {
 	// places.
 	if (! current_user_can('unfiltered_html')) {
 		$html = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $html);
+
+		// Remove any on*="…" or on*='…' or on*=… (unquoted) attributes
+		// Matches: space + on + letters + optional whitespace = optional quotes + anything except > + optional closing quote
+		$html = preg_replace(
+			'#\s+on[a-z]+\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^\s>]+)#is',
+			'',
+			$html
+		);
 	}
 
+	return $html;
+}
+
+function blocksy_output_html_safely($html) {
 	return do_shortcode($html);
 
 	// Dont use wp_filter_post_kses() as it is very unstable as far as slashes go.

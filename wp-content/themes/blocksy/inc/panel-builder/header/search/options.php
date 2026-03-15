@@ -714,6 +714,27 @@ $options = [
 				])
 			],
 
+			blocksy_rand_md5() => [
+				'type' => 'ct-condition',
+				'condition' => [ 'searchHeaderImages' => 'yes' ],
+				'options' => [
+
+					'search_thumb_radius' => [
+						'label' => __( 'Image Border Radius', 'blocksy' ),
+						'type' => 'ct-spacing',
+						'divider' => 'top',
+						'value' => blocksy_spacing_value(),
+						'inputAttr' => [
+							'placeholder' => '2'
+						],
+						'min' => 0,
+						'responsive' => true,
+						'sync' => 'live',
+					],
+
+				],
+			],
+
 			'search_close_button_type' => [
 				'label' => __('Close Button Type', 'blocksy'),
 				'type' => 'ct-select',

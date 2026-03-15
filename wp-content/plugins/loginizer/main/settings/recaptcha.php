@@ -18,7 +18,7 @@ function loginizer_page_recaptcha(){
 	}
 	
 	if(!loginizer_is_premium() && count($_POST) > 0){
-		$lz_error['not_in_free'] = __('This feature is not available in the Free version. <a href="'.LOGINIZER_PRICING_URL.'" target="_blank" style="text-decoration:none; color:green;"><b>Upgrade to Pro</b></a>', 'loginizer');
+		$lz_error['not_in_free'] = __('This feature is not available in the Free version.', 'loginizer').' <a href="'.LOGINIZER_PRICING_URL.'" target="_blank" style="text-decoration:none; color:green;"><b>'.esc_html__('Upgrade to Pro', 'loginizer').'</b></a>';
 		return loginizer_page_recaptcha_T();
 	}
 
@@ -156,6 +156,8 @@ function loginizer_page_recaptcha(){
 			$option['captcha_wc_checkout'] = (int) lz_optpost('captcha_wc_checkout');
 			$option['captcha_wc_block_checkout'] = isset($_POST['captcha_wc_block_checkout']);
 			$option['captcha_wc_checkout_pos'] = lz_optpost('captcha_wc_checkout_pos');
+			$option['captcha_wpforms'] = (int) lz_optpost('captcha_wpforms');
+			$option['captcha_contactform7'] = (int) lz_optpost('captcha_contactform7');
 			
 			// Are we to use Math Captcha ?
 			if(!empty($_POST['captcha_status']) && $_POST['captcha_status'] == 2){
@@ -390,7 +392,7 @@ input[type="text"], textarea, select {
 			<tr class="lz_google_cap">
 				<td scope="row" valign="top"><label><b><?php echo __('reCAPTCHA type', 'loginizer'); ?></b></label><br>
 				<?php echo __('Choose the type of reCAPTCHA', 'loginizer'); ?><br />
-				<?php echo __('<a href="https://developers.google.com/recaptcha/docs/versions" target="_blank">See Site Types for more details</a>', 'loginizer'); ?>
+				<?php echo '<a href="https://developers.google.com/recaptcha/docs/versions" target="_blank">'.__('See Site Types for more details', 'loginizer').'</a>'; ?>
 				</td>
 				<td>
 					<input type="radio" value="v3" onchange="google_recaptcha_type()" <?php echo lz_POSTradio('captcha_type', 'v3', (!empty($loginizer['captcha_type']) ? $loginizer['captcha_type'] : '')); ?> name="captcha_type" id="captcha_type_v3" /> <label for="captcha_type_v3"><?php echo __('reCAPTCHA v3', 'loginizer'); ?></label><br /><br />
@@ -404,7 +406,7 @@ input[type="text"], textarea, select {
 				</td>
 				<td>
 					<input type="text" size="50" value="<?php echo lz_optpost('captcha_key', (!empty($loginizer['captcha_key']) ? $loginizer['captcha_key'] : '')); ?>" name="captcha_key" id="captcha_key" /><br />
-					<?php echo __('Get the Site Key and Secret Key from <a href="https://www.google.com/recaptcha/admin/" target="_blank">Google</a>', 'loginizer'); ?>
+					<?php echo __('Get the Site Key and Secret Key from', 'loginizer'). ' <a href="https://www.google.com/recaptcha/admin/" target="_blank">Google</a>'; ?>
 				</td>
 			</tr>
 			<tr class="lz_google_cap">
@@ -481,7 +483,7 @@ input[type="text"], textarea, select {
 				</td>
 				<td>
 					<input type="text" size="50" value="<?php echo lz_optpost('turn_captcha_key', (!empty($loginizer['turn_captcha_key']) ? $loginizer['turn_captcha_key'] : '')); ?>" name="turn_captcha_key" id="turn_captcha_key" /><br />
-					<?php echo __('Get the Site Key and Secret Key from <a href="https://dash.cloudflare.com/sign-up?to=/:account/turnstile" target="_blank">Cloudflare Turnstile</a>', 'loginizer'); ?>
+					<?php echo __('Get the Site Key and Secret Key from', 'loginizer').' <a href="https://dash.cloudflare.com/sign-up?to=/:account/turnstile" target="_blank">Cloudflare Turnstile</a>'; ?>
 				</td>
 			</tr>
 			<tr class="lz_turnstile_cap">
@@ -628,6 +630,17 @@ input[type="text"], textarea, select {
 									<option value="before_submit" '.(isset($loginizer['captcha_wc_checkout_pos']) ? selected($loginizer['captcha_wc_checkout_pos'], 'before_submit', false) : '').'>'.__('Before Order Button', 'loginizer').'</option>
 								</select>
 							</td>
+						</tr>
+						<tr>
+							<td><label for="captcha_wpforms">'.__('WPForms', 'loginizer').'</label></td>
+							<td><input type="checkbox" value="1" name="captcha_wpforms" id="captcha_wpforms" '.lz_POSTchecked('captcha_wpforms', (empty($loginizer['captcha_wpforms']) ? false : true)).' /></td>
+						</tr>
+						<tr>
+							<td><label for="captcha_contactform7">'.__('ContactForm7', 'loginizer').'</label></td>
+							<td><input type="checkbox" value="1" name="captcha_contactform7" id="captcha_contactform7" '.lz_POSTchecked('captcha_contactform7', (empty($loginizer['captcha_contactform7']) ? false : true)).' /></td>
+						</tr>
+						<tr>
+							<td>'.__('To use the Loginizer reCAPTCHA on Contact Form 7 please enable the above checkbox add the shortcode: [loginizer_pro_recaptcha]', 'loginizer').'</td>
 						</tr>';
 						}
 						

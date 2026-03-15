@@ -1,5 +1,5 @@
 import { createElement, Component } from '@wordpress/element'
-import SortableJS, { Sortable as SortableChanged } from './sortablejs'
+import SortableJS from './sortablejs'
 
 const store = {
 	nextSibling: null,

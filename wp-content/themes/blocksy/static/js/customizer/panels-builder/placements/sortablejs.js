@@ -4169,3 +4169,5 @@
 
   return Sortable;
 });
+
+export default typeof module !== 'undefined' && module.exports ? module.exports : window.Sortable;

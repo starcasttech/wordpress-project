@@ -1,15 +1,15 @@
-# Copyright (C) 2025 WooCommerce
+# Copyright (C) 2026 WooCommerce
 # This file is distributed under the same license as the WooCommerce Payfast Gateway package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Payfast Gateway 1.7.4\n"
+"Project-Id-Version: WooCommerce Payfast Gateway 1.7.5\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/woocommerce-gateway-payfast\n"
-"POT-Creation-Date: 2025-11-03 15:06:21+00:00\n"
+"POT-Creation-Date: 2026-02-24 19:05:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: node-wp-i18n 1.2.8\n"
@@ -353,19 +353,19 @@ msgstr ""
 msgid "Amount Net:"
 msgstr ""
 
-#: woocommerce-gateway-payfast.php:62
+#: woocommerce-gateway-payfast.php:61
 msgid "Settings"
 msgstr ""
 
-#: woocommerce-gateway-payfast.php:63
+#: woocommerce-gateway-payfast.php:62
 msgid "Support"
 msgstr ""
 
-#: woocommerce-gateway-payfast.php:64
+#: woocommerce-gateway-payfast.php:63
 msgid "Docs"
 msgstr ""
 
-#: woocommerce-gateway-payfast.php:142
+#: woocommerce-gateway-payfast.php:154
 #. translators: %s WooCommerce download URL link.
 msgid ""
 "WooCommerce Payfast Gateway requires WooCommerce to be installed and "

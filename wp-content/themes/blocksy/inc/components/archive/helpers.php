@@ -27,6 +27,10 @@ if (! function_exists('blocksy_render_archive_cards')) {
 		]);
 
 		if ($args['query']->have_posts()) {
+			// Load styles for entries. WP Collocation mechanism will move styles
+			// to <head>.
+			wp_enqueue_style('ct-entries-styles');
+
 			$entries_open = [
 				'class' => 'entries',
 			];
@@ -58,7 +62,9 @@ if (! function_exists('blocksy_render_archive_cards')) {
 				$entries_open['data-archive'] = "default";
 			}
 
-			$entries_open['data-layout'] = esc_attr($blog_post_structure);
+			if (! $args['has_slideshow']) {
+				$entries_open['data-layout'] = esc_attr($blog_post_structure);
+			}
 
 			if ($has_cards_type) {
 				$card_type = blocksy_get_listing_card_type([
@@ -166,7 +172,7 @@ if (! function_exists('blocksy_render_archive_cards')) {
 							'prev' => '<svg width="16" height="10" fill="currentColor" viewBox="0 0 16 10"><path d="M15.3 4.3h-13l2.8-3c.3-.3.3-.7 0-1-.3-.3-.6-.3-.9 0l-4 4.2-.2.2v.6c0 .1.1.2.2.2l4 4.2c.3.4.6.4.9 0 .3-.3.3-.7 0-1l-2.8-3h13c.2 0 .4-.1.5-.2s.2-.3.2-.5-.1-.4-.2-.5c-.1-.1-.3-.2-.5-.2z"></path></svg>',
 							'next' => '<svg width="16" height="10" fill="currentColor" viewBox="0 0 16 10"><path d="M.2 4.5c-.1.1-.2.3-.2.5s.1.4.2.5c.1.1.3.2.5.2h13l-2.8 3c-.3.3-.3.7 0 1 .3.3.6.3.9 0l4-4.2.2-.2V5v-.3c0-.1-.1-.2-.2-.2l-4-4.2c-.3-.4-.6-.4-.9 0-.3.3-.3.7 0 1l2.8 3H.7c-.2 0-.4.1-.5.2z"></path></svg>'
 						]
-					);	
+					);
 
 					$arrows = '<span class="flexy-arrow-prev">' . $arrow_icons['prev'] . '</span>
 							<span class="flexy-arrow-next">' . $arrow_icons['next'] . '</span>';
@@ -194,4 +200,3 @@ if (! function_exists('blocksy_render_archive_cards')) {
 		}
 	}
 }
-

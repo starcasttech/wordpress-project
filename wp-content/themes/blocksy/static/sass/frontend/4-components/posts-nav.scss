@@ -1,4 +1,4 @@
-@import '../1-helpers/functions';
+@use '../1-helpers/functions';
 
 .post-navigation {
 	display: grid;
@@ -15,7 +15,7 @@
 		position: relative;
 		border-radius: var(--theme-border-radius, 100%);
 
-		@include media-breakpoint-down(sm) {
+		@include functions.media-breakpoint-down(sm) {
 			--thumb-width: 45px;
 			--thumb-margin: 15px;
 		}
@@ -84,7 +84,7 @@
 		text-transform: uppercase;
 		opacity: 0.9;
 
-		@include media-breakpoint-down(sm) {
+		@include functions.media-breakpoint-down(sm) {
 			span {
 				display: none;
 			}

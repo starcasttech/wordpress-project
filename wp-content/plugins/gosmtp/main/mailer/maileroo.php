@@ -5,7 +5,7 @@
  * @since 1.1.5
  */
 
-namespace GoSMTP\Mailer;
+namespace GOSMTP\Mailer;
 
 use GOSMTP\Mailer\Loader;
 

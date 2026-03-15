@@ -1,14 +1,14 @@
 class DomEvents {
 	_callbacksMap = {}
 
-	on(topic, callback) {
+	on(topic, callback, options = {}) {
 		const cb = (e) => {
 			callback(e.detail)
 		}
 
 		this._callbacksMap[callback] = cb
 
-		document.addEventListener(topic, cb)
+		document.addEventListener(topic, cb, options)
 	}
 
 	once(topic, callback) {

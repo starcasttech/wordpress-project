@@ -32,17 +32,9 @@
 	backdrop-filter: none;
 
 	> div {
-		padding: var(--padding, 0 35px);
+		padding: var(--row-padding, 0 35px);
 		box-shadow: var(--theme-box-shadow);
 		border-radius: var(--row-border-radius);
 		backdrop-filter: blur(var(--theme-backdrop-blur));
-
-		@include media-breakpoint-down(sm) {
-			--padding: 0 5vw;
-		}
-
-		@include media-breakpoint-only(md) {
-			--padding: 0 4vw;
-		}
 	}
 }

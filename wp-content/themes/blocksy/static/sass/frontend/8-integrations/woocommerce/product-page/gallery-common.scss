@@ -1,3 +1,5 @@
+@use "../../../1-helpers/functions";
+
 .woocommerce-product-gallery {
 	transition: opacity 0.3s ease;
 
@@ -19,27 +21,27 @@
 
 	.product-entry-wrapper {
 
-		@include media-breakpoint-up (lg) {
+		@include functions.media-breakpoint-up (lg) {
 			display: flex;
 		}
 	}
 
 	.woocommerce-product-gallery {
-		@include media-breakpoint-only (md) {
+		@include functions.media-breakpoint-only (md) {
 			width: 100%;
 		}
 
-		@include media-breakpoint-up (lg) {
+		@include functions.media-breakpoint-up (lg) {
 			width: var(--product-gallery-width, 50%);
 		}
 	}
 
 	.entry-summary {
-		@include media-breakpoint-only (md) {
+		@include functions.media-breakpoint-only (md) {
 			width: 100%;
 		}
 
-		@include media-breakpoint-up (lg) {
+		@include functions.media-breakpoint-up (lg) {
 			margin-inline-start: 40px;
 			width: calc( 100% - var(--product-gallery-width, 50%) );
 		}

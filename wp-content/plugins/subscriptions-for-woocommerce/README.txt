@@ -3,10 +3,10 @@ Contributors: wpswings
 Donate link:  https://wpswings.com/
 Tags: subscriptions,subscription billing, subscription box, subscription, woocommerce subscriptions
 Requires at least: 6.7.0
-Tested up to: 6.8.3
+Tested up to: 6.9.1
 WC requires at least: 6.5.0
-WC tested up to: 10.3.5
-Stable tag: 1.8.10
+WC tested up to: 10.5.2
+Stable tag: 1.9.3
 Requires PHP: 7.4
 License: GNU General Public License v3.0 
 License URI: http://www.gnu.org/licenses/gpl-3.0.html 
@@ -116,6 +116,8 @@ For previous users, the WPS PayPal Payment option will appear in the payment sec
 
 
 == SUBSCRIPTIONS PLUGIN COMPATIBILITIES ==
+
+* **Compatible With PDF Generator For WordPress Pro:** Subscription for WooCommerce plugin is compatible with [**PDF Generator for WordPress Pro**](https://wpswings.com/product/pdf-generator-for-wp-pro/). This compaitblity allows store owners to automatically send PDF invoices to customers whenever a subscription renewal order status is updated. Customers can also easily download their invoices directly from the order section of their account
 
 * **Compatible With Affiliate Manager**: Our Subscription for WooCommerce plugin works smoothly with the [**Affiliates Manager plugin by WP Insider**](https://wordpress.org/plugins/affiliates-manager/). This means affiliates can earn commissions on both the first subscription purchase and on every renewal. It keeps affiliates motivated and helps boost your subscription sales in the long run.
 
@@ -306,6 +308,24 @@ Check out [**Subscriptions  for WooCommerce Knowledge Base**](https://support.wp
 
 == Changelog ==
 
+= 1.9.3 - Released on 27 February 2026 =
+* New: Compatibility with latest WP( 6.9.1) and WC( 10.5.2 )
+* Fix: issue fix for invalid product id for subscription box in case variation product.
+* Fix: Vulnerability fixes for Unauthenticated Arbitrary Subscription Cancellation.
+
+= 1.9.2 - Released on 29 January 2026 =
+* Fix: Critical error resolved by fixing the number of arguments passed to add_filter.
+
+= 1.9.1 - Released on 28 January 2026 =
+* New: Compatibility with [**PDF Generator For WP Pro**](https://wpswings.com/product/pdf-generator-for-wp-pro/) by Wpswings
+* New: Subscription Relation column in WooCommerce order section
+
+= 1.9.0 - Released on 15 January 2026 =
+* New: Latest WP(6.9) and WC(10.4.3) Compatibility
+* Fix: Fatal Error fixes with WooCommerce stripe plugin in term sepa class not found
+* Fix: Vulnerability and security related fixes for subscription box feature
+* Fix: html showing on cart page for subscription and subscription box product
+
 = 1.8.10 - Released on 17 November 2025 =
 * New: Latest WC(10.3.5) Compatibility
 * Fix: bulk action and status filter issue
@@ -423,8 +443,6 @@ Check out [**Subscriptions  for WooCommerce Knowledge Base**](https://support.wp
 * New : Renewal order contain downloadable/virtual product will go to complete status
 * Fix : Issue with Subscription status translation
 * Fix : Place order button label text issue
-
-
 
 
 = 1.6.3 - Released on 06 March 2024 =
@@ -663,7 +681,7 @@ Check out [**Subscriptions  for WooCommerce Knowledge Base**](https://support.wp
 
 == Upgrade Notice ==
 
-= 1.8.10 - Released on 17 November 2025 =
-* New: Latest WC(10.3.5) Compatibility
-* Fix: bulk action and status filter issue
-
+= 1.9.3 - Released on 27 February 2026 =
+* New: Compatibility with latest WP( 6.9.1) and WC( 10.5.2 )
+* Fix: issue fix for invalid product id for subscription box in case variation product.
+* Fix: Vulnerability fixes for Unauthenticated Arbitrary Subscription Cancellation.

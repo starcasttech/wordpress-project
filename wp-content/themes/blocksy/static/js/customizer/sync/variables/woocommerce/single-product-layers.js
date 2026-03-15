@@ -222,7 +222,13 @@ const collectVariablesForLayers = (v) => {
 					responsive: true,
 					unit: 'px',
 					extractValue: () => {
-						return layer.add_to_cart_button_height
+						return (
+							layer.add_to_cart_button_height || {
+								mobile: 40,
+								tablet: 55,
+								desktop: 55,
+							}
+						)
 					},
 				},
 			]

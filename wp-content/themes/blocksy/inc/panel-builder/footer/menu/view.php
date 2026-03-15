@@ -53,6 +53,10 @@ $menu_args = [
 
 $menu = blocksy_default_akg('menu', $atts, 'blocksy_location');
 
+if (! wp_get_nav_menu_object($menu) && $menu !== 'blocksy_location') {
+	$menu = 'blocksy_location';
+}
+
 $menu_object = null;
 
 if ($menu === 'blocksy_location') {

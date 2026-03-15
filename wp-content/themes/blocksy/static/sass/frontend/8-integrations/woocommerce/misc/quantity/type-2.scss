@@ -1,3 +1,5 @@
+@use "../../../../1-helpers/functions";
+
 .quantity[data-type="type-2"] {
 	width: var(--quantity-width, 130px);
 
@@ -44,7 +46,7 @@
 .mini_cart_item .ct-product-actions,
 table.shop_table .ct-checkout-cart-item {
 
-	@include media-breakpoint-down (xs) {
+	@include functions.media-breakpoint-down (xs) {
 
 		.quantity[data-type="type-2"] {
 			--quantity-width: 80px;

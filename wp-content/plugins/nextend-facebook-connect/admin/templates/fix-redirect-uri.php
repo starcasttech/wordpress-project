@@ -3,7 +3,7 @@
     <?php
     /** @var NextendSocialProvider[] $wrongOauthProviders */
     $wrongOauthProviders = array();
-    foreach (NextendSocialLogin::$enabledProviders AS $provider) {
+    foreach (NextendSocialLogin::$enabledProviders as $provider) {
         if (!$provider->checkAuthRedirectUrl()) {
             $wrongOauthProviders[] = $provider;
         }
@@ -15,18 +15,20 @@
         if (count($wrongOauthProviders) === 0) {
             echo '<div class="updated"><p>' . __('Every Oauth Redirect URI seems fine', 'nextend-facebook-connect') . '</p></div>';
 
-            foreach (NextendSocialLogin::$enabledProviders AS $provider) {
+            foreach (NextendSocialLogin::$enabledProviders as $provider) {
                 $provider->getAdmin()
                          ->renderOauthChangedInstruction();
+                echo "<hr>";
             }
         } else {
             ?>
             <p><?php printf(__('%s detected that your login url changed. You must update the Oauth redirect URIs in the related social applications.', 'nextend-facebook-connect'), '<b>Nextend Social Login</b>'); ?></p>
 
             <?php
-            foreach ($wrongOauthProviders AS $provider) {
+            foreach ($wrongOauthProviders as $provider) {
                 $provider->getAdmin()
                          ->renderOauthChangedInstruction();
+                echo "<hr>";
             }
             ?>
 

@@ -149,6 +149,8 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 
 		$this->common_settings();
 
+		$this->php_load_as_file_setting_upsell();
+
 		$this->metabox_row(
 			__( 'Allow Usage Tracking', 'insert-headers-and-footers' ),
 			$this->get_checkbox_toggle(
@@ -233,6 +235,47 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 				1
 			),
 			'wpcode-admin-bar-info'
+		);
+	}
+
+	/**
+	 * Output the PHP load as file setting upsell for lite users.
+	 *
+	 * @return void
+	 */
+	public function php_load_as_file_setting_upsell() {
+		$description = esc_html__( 'When enabled, all active PHP, HTML, and Universal snippets will be loaded from files instead of the database. Files are stored in ', 'insert-headers-and-footers' );
+
+		// Show site-specific path in multisite.
+		if ( function_exists( 'is_multisite' ) && is_multisite() && function_exists( 'get_current_blog_id' ) ) {
+			$blog_id = get_current_blog_id();
+			if ( $blog_id > 0 ) {
+				$file_path = str_replace( ABSPATH, '', WP_CONTENT_DIR . '/wpcode/snippets/site-' . absint( $blog_id ) . '/' );
+			} else {
+				$file_path = str_replace( ABSPATH, '', WP_CONTENT_DIR . '/wpcode/snippets/' );
+			}
+		} else {
+			$file_path = str_replace( ABSPATH, '', WP_CONTENT_DIR . '/wpcode/snippets/' );
+		}
+
+		$description .= '<code>' . esc_html( $file_path ) . '</code>';
+
+		if ( is_multisite() ) {
+			$description .= ' <strong>' . esc_html__( 'Note: In multisite networks, each site has its own file directory to prevent cross-site conflicts.', 'insert-headers-and-footers' ) . '</strong>';
+		}
+
+		$this->metabox_row(
+			__( 'Load PHP Snippets as Files', 'insert-headers-and-footers' ),
+			$this->get_checkbox_toggle(
+				false,
+				'wpcode-php-load-as-file',
+				$description
+			),
+			'wpcode-php-load-as-file',
+			'',
+			'',
+			'',
+			true
 		);
 	}
 

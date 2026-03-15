@@ -1,5 +1,6 @@
 <?php
 
+require get_template_directory() . '/admin/helpers/validator.php';
 require get_template_directory() . '/admin/helpers/options.php';
 require get_template_directory() . '/admin/helpers/meta-boxes.php';
 require get_template_directory() . '/admin/helpers/options-logic.php';

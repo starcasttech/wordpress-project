@@ -1,3 +1,5 @@
+@use "../../1-helpers/functions";
+
 table.shop_table {
 	margin-bottom: 2em;
 	--theme-table-padding: 1em 0.7em;
@@ -66,7 +68,7 @@ table.shop_table {
 
 
 // responsive table
-@include media-breakpoint-down (sm) {
+@include functions.media-breakpoint-down (sm) {
 	table.shop_table_responsive {
 		--theme-table-padding: 1em 0;
 

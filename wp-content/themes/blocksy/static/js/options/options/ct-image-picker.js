@@ -22,12 +22,13 @@ const ImagePicker = ({
 		deviceChoices = mobileChoices
 	}
 
-	let matchingChoices = (Array.isArray(deviceChoices)
-		? deviceChoices
-		: Object.keys(deviceChoices).map((choice) => ({
-				key: choice,
-				...deviceChoices[choice],
-		  }))
+	let matchingChoices = (
+		Array.isArray(deviceChoices)
+			? deviceChoices
+			: Object.keys(deviceChoices).map((choice) => ({
+					key: choice,
+					...deviceChoices[choice],
+			  }))
 	).filter(({ key }) => {
 		if (!option.conditions) {
 			return true
@@ -42,6 +43,7 @@ const ImagePicker = ({
 			values
 		)
 	})
+
 
 	let normalizedValue = matchingChoices.map(({ key }) => key).includes(value)
 		? value

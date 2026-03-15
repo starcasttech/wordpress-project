@@ -314,6 +314,8 @@ const loadSingleEntryPoint = ({
 					return false
 				}
 
+				const controller = new AbortController()
+
 				el.addEventListener(
 					'mouseover',
 					(event) => {
@@ -332,16 +334,22 @@ const loadSingleEntryPoint = ({
 							mouseOverState = setTimeout(() => {
 								mouseOverState = true
 								l(event)
+
+								controller.abort()
 							}, 500)
 						}
 
 						// Non touch device gets processed immediately, to not
 						// make it wait.
 						if (!isTouchDevice()) {
+							controller.abort()
+
 							l(event)
 						}
 					},
-					{ once: true }
+					{
+						signal: controller.signal,
+					}
 				)
 
 				if (isTouchDevice()) {
@@ -351,6 +359,8 @@ const loadSingleEntryPoint = ({
 							if (isIgnored(event)) {
 								return
 							}
+
+							controller.abort()
 
 							// Previously, iOS devices were handling such
 							// behavior out of the box, but now it is
@@ -368,7 +378,9 @@ const loadSingleEntryPoint = ({
 
 							l(event)
 						},
-						{ once: true }
+						{
+							signal: controller.signal,
+						}
 					)
 				}
 

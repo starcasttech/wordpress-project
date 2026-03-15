@@ -1,3 +1,5 @@
+@use "../1-helpers/functions";
+
 #main-container {
 	display: flex;
 	flex-direction: column;
@@ -41,7 +43,7 @@
 .ct-container-fluid {
 	width: calc(var(--theme-container-edge-spacing) - var(--theme-frame-size, 0px) * 2);
 
-	@include media-breakpoint-up (lg) {
+	@include functions.media-breakpoint-up (lg) {
 		--theme-container-edge-spacing: calc(100vw - 60px);
 	}
 }

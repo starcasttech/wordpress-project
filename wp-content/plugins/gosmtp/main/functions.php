@@ -29,6 +29,8 @@ function gosmtp_get_mailer_list(){
 		'elasticemail' => [ 'title' => __('Elastic Email', 'gosmtp'), 'class' => 'GOSMTP\Mailer\ElasticEmail'],
 		'smtp2go' => [ 'title' => __('SMTP2Go', 'gosmtp'), 'class' => 'GOSMTP\Mailer\SMTP2Go'],
 		'maileroo' => [ 'title' => __('Maileroo', 'gosmtp'), 'class' => 'GOSMTP\Mailer\Maileroo'],
+		'resend' => [ 'title' => __('Resend', 'gosmtp'), 'class' => 'GOSMTP\Mailer\Resend'],
+		'mailersend' => [ 'title' => __('MailerSend', 'gosmtp'), 'class' => 'GOSMTP\Mailer\MailerSend'],
 	);
 	
 	return apply_filters( 'gosmtp_get_mailer_list', $list );

@@ -1,3 +1,5 @@
+@use "variables";
+
 // available items
 .ct-available-items {
 	
@@ -9,8 +11,8 @@
 
 		> * {
 			width: 100%;
-			height: #{$builder-item-height + 4px};
-			flex: 0 0 #{$builder-item-height + 4px};
+			height: #{variables.$builder-item-height + 4px};
+			flex: 0 0 #{variables.$builder-item-height + 4px};
 
 			&:not(:last-child) {
 				margin-bottom: 13px;

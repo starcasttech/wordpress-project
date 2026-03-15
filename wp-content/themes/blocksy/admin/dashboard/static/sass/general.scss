@@ -33,6 +33,8 @@
 
 // loading state
 .ct-loading-text {
+	position: absolute;
+	inset-inline: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;

@@ -1,10 +1,10 @@
 // theme blocks
-@import 'theme-blocks-common';
-@import 'theme-block-posts';
-@import 'theme-block-search';
-@import 'theme-block-about-me';
-@import 'theme-block-share-box';
-@import 'theme-block-breadcrumbs';
-@import 'theme-block-code-editor';
-@import 'theme-block-dynamic-data';
-@import 'theme-block-contact-info';
+@use 'theme-blocks-common';
+@use 'theme-block-posts';
+@use 'theme-block-search';
+@use 'theme-block-about-me';
+@use 'theme-block-share-box';
+@use 'theme-block-breadcrumbs';
+@use 'theme-block-code-editor';
+@use 'theme-block-dynamic-data';
+@use 'theme-block-contact-info';

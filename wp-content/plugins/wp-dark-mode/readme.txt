@@ -4,7 +4,7 @@ Tags: dark mode, dark, night mode, dark theme, accessibility
 Requires at least: 5.0  
 Tested up to: 6.9  
 Requires PHP: 5.6  
-Stable tag: 5.3.0 
+Stable tag: 5.3.3 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -241,6 +241,19 @@ Yes, You can toggle modes by keyboard shortcut `(Ctrl + Alt + D)`.
 
 == Changelog ==
 
+= 5.3.3 – 16 FEB 2026 =
+* **Fix:** Compatible with screen readers (Verified ARIA support).
+* **Fix:** Resolved keyboard navigation issues for accessibility switches.
+
+= 5.3.2 – 10 FEB 2026 =
+* **Fix:** Fixed minor issues and maintenance update.
+
+= 5.3.1 – 26 JAN 2026 =
+* **Improvement:** Fixed a compatibility issue with the Site Reviews plugin where star ratings and text colors were not displaying correctly in Dark Mode without a page refresh.
+* **Fix:** Resolved a 404 error occurring in the WordPress admin panel when Dark Mode was enabled.
+* **Fix:** Fixed an issue where the WP Dark Mode usage counter was not updating immediately when Dark Mode was enabled or disabled by visitors.
+* **Fix:** Resolved an analytics chart rendering issue where the chart would not reappear after switching tabs, causing a blank canvas until the page was reloaded.
+
 = 5.3.0 – 22 DEC 2025 =
 * **New: AI-Powered Color Preset Generator:**
 You can now generate custom dark mode color presets using AI prompts in WP Dark Mode. Simply describe the color style you want, and AI will instantly create a unique preset for your website that would be perfect for branding, accessibility, and creative themes.
@@ -256,10 +269,5 @@ This feature extends our existing Custom Color Presets to give you more control 
 = 5.2.18 – 25 NOV 2025 =
 * **New:** “Custom Triggers” added to Switch Settings, allowing users to assign their own elements or buttons.
 * **Improvement:** Changed the Save button position from right to left.
-
-= 5.2.17 – 19 NOV 2025 =
-* **New:** Added AI-powered social share buttons including ChatGPT, Grok, Perplexity, Gemini, and Claude.
-* **Fix:** In the "Manage Channels" section, when editing any social channel, the cursor automatically jumps to the beginning after typing a single letter.
-* **Fix:** The "Hide/Show on PC/Laptop" and "Hide/Show on Mobile" features are not functioning correctly.
 
 **For older changelog entries, please see the [additional changelog.txt file](https://plugins.svn.wordpress.org/wp-dark-mode/trunk/changelog.txt) delivered with the plugin.**

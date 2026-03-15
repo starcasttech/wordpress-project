@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import { Flexy } from 'flexy'
+import { Flexy } from '@creative-themes/flexy'
 import ctEvents from 'ct-events'
 import { getCurrentScreen } from '../frontend/helpers/current-screen'
 import { isTouchDevice } from '../frontend/helpers/is-touch-device'
@@ -36,24 +36,33 @@ export const mount = (sliderEl, args) => {
 		rightArrow = maybeSuggested.querySelector('.ct-arrow-next')
 	}
 
+	const pillsSelector = '.flexy-pills > * > *'
+
 	const isPillsDragEvent =
 		args.event &&
 		args.event.type === 'touchstart' &&
-		args.event.target.closest('.flexy-pills > * > *')
+		args.event.target.closest(pillsSelector)
 
-	// On touch devices, if the mount occured on a click on a pill, simulate
-	// the click again.
-	if (
-		args.event &&
-		args.event.type === 'mouseover' &&
-		args.event.target.closest('.flexy-pills > * > *') &&
-		isTouchDevice()
-	) {
-		const pill = args.event.target.closest('.flexy-pills > * > *')
+	// On touch devices, if the mount occured on a click on a pill or arrows,
+	// simulate the click again.
+	if (args.event && args.event.type === 'mouseover' && isTouchDevice()) {
+		let maybeClickTarget = args.event.target.closest(pillsSelector)
 
-		setTimeout(() => {
-			pill.click()
-		})
+		const arrowSelector = '.flexy-arrow-prev, .flexy-arrow-next'
+
+		if (!maybeClickTarget) {
+			maybeClickTarget = args.event.target.closest(arrowSelector)
+		}
+
+		if (!maybeClickTarget && args.event.target.matches(arrowSelector)) {
+			maybeClickTarget = args.event.target
+		}
+
+		if (maybeClickTarget) {
+			setTimeout(() => {
+				maybeClickTarget.click()
+			})
+		}
 	}
 
 	const inst = new Flexy(
@@ -165,4 +174,4 @@ export const mount = (sliderEl, args) => {
 	return inst
 }
 
-export { Flexy } from 'flexy'
+export { Flexy } from '@creative-themes/flexy'

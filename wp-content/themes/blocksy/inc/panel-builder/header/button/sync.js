@@ -19,6 +19,15 @@ const getVariables = ({ itemId, fullItemId, panelType }) => ({
 		unit: 'px',
 	},
 
+	cta_button_gap: {
+		selector: assembleSelector(
+			getRootSelectorFor({ itemId, fullItemId, panelType })
+		),
+		variable: 'theme-button-gap',
+		responsive: true,
+		unit: '',
+	},
+
 	headerCtaRadius: {
 		selector: assembleSelector(
 			getRootSelectorFor({ itemId, fullItemId, panelType })

@@ -27,10 +27,6 @@ $sticky_logo = blocksy_expand_responsive_value(
 $custom_logo_id = '';
 $additional_logos = [];
 
-$logo_position = blocksy_expand_responsive_value(
-	blocksy_default_akg('logo_position', $atts, '')
-);
-
 if (
 	isset($has_transparent_header)
 	&&
@@ -196,6 +192,12 @@ if ($custom_logo_id) {
 				);
 			}
 
+			$svg = apply_filters(
+				'blocksy:' . $panel_type . ':logo:svg-content',
+				$svg,
+				$custom_logo_id
+			);
+
 			$image_logo_html = $svg;
 		}
 	}
@@ -233,6 +235,12 @@ if ($custom_logo_id) {
 						false
 					);
 				}
+
+				$svg = apply_filters(
+					'blocksy:' . $panel_type . ':logo:svg-content',
+					$svg,
+					$additional_logo['id']
+				);
 
 				$additional_logo_html = $svg;
 			}
@@ -278,32 +286,43 @@ if ($custom_logo_id) {
 		$aria_label,
 		$image_logo_html . $footer_mobile_logo_html,
 	);
+
+	if (blocksy_akg('has_logo_image_link', $atts, 'yes') !== 'yes') {
+		$logo_html = blocksy_safe_sprintf(
+			'<span class="site-logo-container" %1$s>%2$s</span>',
+			$aria_label,
+			$image_logo_html . $footer_mobile_logo_html,
+		);
+	}
 }
 
-$tagline_class = 'site-description ' . blocksy_visibility_classes(
-	blocksy_default_akg('blogdescription_visibility', $atts, [
-		'desktop' => true,
-		'tablet' => true,
-		'mobile' => true,
-	])
-);
-
-$site_title_class = 'site-title ' . blocksy_visibility_classes(
-	blocksy_default_akg('blogname_visibility', $atts, [
-		'desktop' => true,
-		'tablet' => true,
-		'mobile' => true,
-	])
-);
-
-$tag = 'span';
-$tag = apply_filters('blocksy:' . $panel_type . ':logo:tag', $tag);
 $wrapper_tag = apply_filters('blocksy:' . $panel_type . ':logo:wrapper-tag', 'div');
+
+$logo_position = '';
+
+$wrapper_class = 'site-branding';
+
+$wrapper_class = trim($wrapper_class . ' ' . blocksy_default_akg(
+	'header_logo_class',
+	$atts,
+	''
+));
+
+$wrapper_class = trim($wrapper_class . ' ' . blocksy_visibility_classes(
+	blocksy_akg('visibility', $atts, [
+		'desktop' => true,
+		'tablet' => true,
+		'mobile' => true,
+	])
+));
+
+$is_desktop = $device === 'desktop';
+
+$blogname_html = '';
+$tagline_html = '';
 
 $has_site_title = blocksy_akg('has_site_title', $atts, 'yes') === 'yes';
 $has_tagline = blocksy_akg('has_tagline', $atts, 'no') === 'yes';
-
-$logo_position = '';
 
 if (
 	$custom_logo_id
@@ -321,22 +340,92 @@ if (
 	$logo_position = 'data-logo="' . $logo_position_v[$device] . '"';
 }
 
-$wrapper_class = 'site-branding';
+if ($has_site_title) {
+	$blog_name = blocksy_translate_dynamic(
+		blocksy_default_akg(
+			'blogname',
+			$atts,
+			get_bloginfo('name')
+		),
+		$panel_type . ':' . $section_id . ':logo:blogname'
+	);
 
+	$tag = apply_filters('blocksy:' . $panel_type . ':logo:tag', 'span');
 
-$wrapper_class = trim($wrapper_class . ' ' . blocksy_default_akg(
-	'header_logo_class',
-	$atts,
-	''
-));
+	$site_title_class = 'site-title ' . blocksy_visibility_classes(
+		blocksy_default_akg('blogname_visibility', $atts, [
+			'desktop' => true,
+			'tablet' => true,
+			'mobile' => true,
+		])
+	);
 
-$wrapper_class = trim($wrapper_class . ' ' . blocksy_visibility_classes(
-	blocksy_akg('visibility', $atts, [
-		'desktop' => true,
-		'tablet' => true,
-		'mobile' => true,
-	])
-));
+	$has_site_title_link = blocksy_akg('has_site_title_link', $atts, 'yes') === 'yes';
+
+	$blogname_html = blocksy_html_tag(
+		$tag,
+		array_merge(
+			[
+				'class' => $site_title_class
+			],
+			blocksy_schema_org_definitions(
+				'name',
+				[
+					'condition' => $is_desktop,
+					'array' => true
+				]
+			)
+		),
+		$has_site_title_link ? blocksy_safe_sprintf(
+			'<a href="%1$s" rel="home" %2$s>%3$s</a>',
+			esc_url(
+				apply_filters('blocksy:' . $panel_type . ':logo:url', home_url('/'))
+			),
+			blocksy_schema_org_definitions(
+				'url',
+				[
+					'condition' => $is_desktop
+				]
+			),
+			$blog_name
+		) : $blog_name
+	);
+}
+
+if ($has_tagline) {
+	$tagline_class = 'site-description ' . blocksy_visibility_classes(
+		blocksy_default_akg('blogdescription_visibility', $atts, [
+			'desktop' => true,
+			'tablet' => true,
+			'mobile' => true,
+		])
+	);
+
+	$tagline_html = blocksy_html_tag(
+		'p',
+		array_merge(
+			[
+				'class' => $tagline_class
+			],
+			blocksy_schema_org_definitions(
+				'description',
+				[
+					'condition' => $device === 'desktop',
+					'array' => true
+				]
+			)
+		),
+		blocksy_translate_dynamic(
+			blocksy_default_akg(
+				'blogdescription',
+				$atts,
+				get_bloginfo('description')
+			),
+			$panel_type . ':' . $section_id . ':logo:blogdescription'
+		)
+	);
+}
+
 
 ?>
 
@@ -344,7 +433,7 @@ $wrapper_class = trim($wrapper_class . ' ' . blocksy_visibility_classes(
 	class="<?php echo $wrapper_class ?>"
 	<?php echo blocksy_attr_to_html($attr) ?>
 	<?php echo $logo_position ?>
-	<?php echo blocksy_schema_org_definitions('logo', ['condition' => $device === 'desktop']) ?>>
+	<?php echo blocksy_schema_org_definitions('logo', ['condition' => $is_desktop]) ?>>
 
 	<?php if ($custom_logo_id) { ?>
 		<?php echo $logo_html; ?>
@@ -352,31 +441,8 @@ $wrapper_class = trim($wrapper_class . ' ' . blocksy_visibility_classes(
 
 	<?php if ($has_site_title || $has_tagline) { ?>
 		<div class="site-title-container">
-			<?php if ($has_site_title) { ?>
-				<<?php echo $tag ?> class="<?php echo $site_title_class ?>" <?php echo blocksy_schema_org_definitions('name', ['condition' => $device === 'desktop']) ?>>
-					<a href="<?php echo esc_url(apply_filters('blocksy:' . $panel_type . ':logo:url', home_url('/'))); ?>" rel="home" <?php echo blocksy_schema_org_definitions('url', ['condition' => $device === 'desktop'])?>>
-						<?php
-							echo blocksy_translate_dynamic(blocksy_default_akg(
-								'blogname',
-								$atts,
-								get_bloginfo('name')
-							), $panel_type . ':' . $section_id . ':logo:blogname');
-						?>
-					</a>
-				</<?php echo $tag ?>>
-			<?php } ?>
-
-			<?php if ($has_tagline) { ?>
-				<p class="<?php echo $tagline_class ?>" <?php echo blocksy_schema_org_definitions('description', ['condition' => $device === 'desktop']) ?>>
-					<?php
-						echo blocksy_translate_dynamic(blocksy_default_akg(
-							'blogdescription',
-							$atts,
-							get_bloginfo('description')
-						), $panel_type . ':' . $section_id . ':logo:blogdescription');
-					?>
-				</p>
-			<?php } ?>
+			<?php echo $blogname_html; ?>
+			<?php echo $tagline_html; ?>
 		</div>
 	  <?php } ?>
 </<?php echo $wrapper_tag ?>>

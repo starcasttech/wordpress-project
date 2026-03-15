@@ -1,4 +1,7 @@
 <?php
+/**
+ * Default meta options.
+ */
 
 $maybe_taxonomy = blocksy_maybe_get_matching_taxonomy($post_type->name, false);
 

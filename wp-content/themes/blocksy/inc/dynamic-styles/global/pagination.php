@@ -42,7 +42,7 @@ blocksy_output_spacing([
 	'tablet_css' => $tablet_css,
 	'mobile_css' => $mobile_css,
 	'selector' => blocksy_prefix_selector('.ct-pagination', $prefix),
-	'property' => 'theme-border-radius',
+	'property' => 'theme-button-border-radius',
 	'value' => blocksy_get_theme_mod(
 		$option_prefix . '_pagination_border_radius',
 		blocksy_spacing_value()

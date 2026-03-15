@@ -1,10 +1,10 @@
-=== Migration, Backup, Staging – WPvivid Backup & Migration ===
+=== WPvivid — Backup, Migration & Staging ===
 Contributors: wpvivid
 Tags: duplicate, clone, migrate, staging, backup
 Requires at least: 4.5
 Tested up to: 6.9
 Requires PHP: 5.3
-Stable tag: 0.9.122
+Stable tag: 0.9.124
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -80,6 +80,9 @@ WPvivid Backup & Migration plugin supports Dropbox, Google Drive, Microsoft OneD
 3.Find WPvivid Backup & Migration and click Install Now.
 4. Click Activate.
 
+== External Services ==
+This plugin can optionally connect to third-party storage providers — Google Drive, Dropbox, Microsoft OneDrive, Amazon S3, DigitalOcean Spaces, and FTP/SFTP servers — to store backup files. When remote storage is enabled, backup archives and required authentication tokens are sent to the selected service's API. Use of these services is subject to their own terms and privacy policies.
+
 == Frequently Asked Questions ==
 = What does WPvivid Backup & Migration Plugin do? =
 As the name says, WPvivid Backup & Migration Plugin is an all in one free WP backup & migration plugin that enables you to easily clone and migrate a WordPress site to a new domain, to perform manual backups and schedule automatic backups of your WordPress site, to backup to cloud storage and restore backups directly from your sites admin dashboard.
@@ -97,6 +100,14 @@ Yes, absolutely. Whenever you need help, start a thread on the [support forum](h
 Yes, we do. Here are the guides for [migrating your site to a new host](https://wpvivid.com/get-started-transfer-site.html), [creating a manual backup](https://wpvivid.com/get-started-create-a-manual-backup.html), [restoring your site from a backup](https://wpvivid.com/get-started-restore-site.html), and more on [our docs page](https://wpvivid.com/documents).
 
 == Changelog ==
+= 0.9.124 =
+- Fixed a vulnerability in the plugin code.
+- Fixed a UI display bug on cloud storage editing page.
+= 0.9.123 =
+- Improved: Automatically exclude WPvivid JSON file when uploading backup files to avoid upload failure.
+- Fixed: SFTP uploads could fail in certain server environments.
+- Fixed: Some used images would be incorrectly scanned as unused.
+- Fixed: Typos in backup email reports.
 = 0.9.122 =
 - Added automatic exclusion of macOS .DS_Store files during backup and migration.
 - Successfully tested with WorPress 6.9.
@@ -671,7 +682,7 @@ Yes, we do. Here are the guides for [migrating your site to a new host](https://
 - Initial release of the plugin. Now you see it.
 
 == Upgrade Notice ==
-Latest version 0.9.122:
-= 0.9.122 =
-- Added automatic exclusion of macOS .DS_Store files during backup and migration.
-- Successfully tested with WorPress 6.9.
+Latest version 0.9.124:
+= 0.9.124 =
+- Fixed a vulnerability in the plugin code.
+- Fixed a UI display bug on cloud storage editing page.

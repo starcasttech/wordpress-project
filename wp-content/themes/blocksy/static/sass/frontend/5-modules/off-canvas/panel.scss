@@ -1,3 +1,5 @@
+@use "variables";
+
 [data-behaviour*='side'] {
 
 	.ct-panel-inner {
@@ -9,7 +11,7 @@
 		margin: var(--side-panel-offset, 0px);
 		box-shadow: var(--theme-box-shadow);
 		border-radius: var(--side-panel-border-radius, 0px);
-		transition: transform $transition-duration ease-in-out;
+		transition: transform variables.$transition-duration ease-in-out;
 	}
 }
 

@@ -2,9 +2,9 @@
 Contributors: Ozow
 Tags: woocommerce, payment request, online refund
 Requires at least: 6.6
-Tested up to: 6.8.2
+Tested up to: 6.9.1
 Requires PHP: 7.4 or later
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,3 +93,8 @@ For any information or support please contact us at support@ozow.com
 = 1.3.2 - 2025-09-22 =
 * Fix – Resolved deprecated warnings for dynamic property creation in PHP 8.2+ by declaring protected properties and using getter methods.
 * Dev – Improved compatibility with PHP 8.2, 8.3, and 8.4.
+
+= 1.3.3 - 2026-02-11 =
+* Dev – Tested with WordPress 6.9.1 and WooCommerce 10.5.0.
+* Dev – Updated plugin metadata and “tested up to” version fields.
+* Dev – No functional changes.
